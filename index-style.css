@@ -12,4 +12,29 @@ header {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+
+    color:white;
+    text-align:center;
+}
+
+header ul, header ul li, header nav{
+display:inline-block;
+}
+header nav{
+    margin-top:10px;
+}
+header ul li{
+    list-style-type: none;
+    padding: 10px;
+    margin: 10px;
+    border:2px solid #fff;
+    border-radius:60% 10%;
+}
+header ul li:hover{
+    background-color:#fff;
+    color:black;
+}
+header ul li a{
+    text-decoration:none;
+    color:inherit;
 }
