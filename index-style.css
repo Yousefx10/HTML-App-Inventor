@@ -1,0 +1,15 @@
+body{
+    background-color:#eee;
+    margin:auto;
+}
+header {
+    height:400px;
+    width:100%;
+/*
+ * Color pattern's : (#001220) (#FBAE3C)
+ */
+    background-image: url('media/svg/wallpaper.svg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
