@@ -24,7 +24,14 @@ text-align:center;
     padding: 5px;
     min-width:22%;
     max-width:24%;
-
-height:100%;
-
+    height:100%;
 }
+
+/*[START]Toolkit*/
+.kit{
+    background-color:darkgray;
+}
+.kit p{
+    display:inline;
+}
+/*[END]Toolkit*/
