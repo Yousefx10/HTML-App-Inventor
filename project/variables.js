@@ -4,7 +4,7 @@
 
 //Basic array list for active added elements to the project time_line and project_live
 let  active_kit =[];
-
+let COUNT_KIT_PROGRESS =0;
 let project_timeline = document.getElementById('project_timeline'),
 
     properties_value = document.getElementById('properties_value'),

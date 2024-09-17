@@ -18,14 +18,16 @@ newParagraph.onclick = () => timeline_properties('param1',newParagraph.innerHTML
     //kit type instructions :
     //1 : label
     //2 : text
+    COUNT_KIT_PROGRESS++;
     switch(kit_type){
+
         case 1:
-            active_kit.push(1);
+            active_kit.push([COUNT_KIT_PROGRESS,NameKit(kit_type)]);
             newParagraph.textContent = "You've Added a Label";
             break;
 
         case 2:
-            active_kit.push(2);
+            active_kit.push([COUNT_KIT_PROGRESS,NameKit(kit_type)]);
             newParagraph.textContent = "You've Added a Text";
             break;
     }
@@ -34,7 +36,21 @@ newParagraph.onclick = () => timeline_properties('param1',newParagraph.innerHTML
 
 }
 
+function NameKit(kit_num)
+{
+    //kit type instructions :
+    //1 : label
+    //2 : text
 
+    switch(kit_num){
+        case 1:
+            return 'Label';
+            break;
+        case 2:
+            return 'Text';
+            break;
+    }
+}
 
 function timeline_properties(current_kit,current_details)
 {
