@@ -6,23 +6,26 @@ let project_timeline = document.getElementById('project_timeline');
 //[FUNCTIONS] Area
 function addKIT(kit_type)
 {
+    //Main element that will have the content for the new added element.
+    let newParagraph = document.createElement('p');
+        newParagraph.classList.add('project_timeline_kit');
+
     //kit type instructions :
     //1 : label
     //2 : text
     switch(kit_type){
         case 1:
             active_kit.push(1);
-            console.log(active_kit);
-
-            let newParagraph = document.createElement('p');
-            newParagraph.textContent = "You've Added a label";
-            project_timeline.appendChild(newParagraph);
-
+            newParagraph.textContent = "You've Added a Label";
             break;
 
         case 2:
+            active_kit.push(2);
+            newParagraph.textContent = "You've Added a Text";
             break;
     }
+    console.log(active_kit);
+    project_timeline.appendChild(newParagraph);
 
 }
 
