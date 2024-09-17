@@ -9,15 +9,12 @@ function addKIT(kit_type)
         newParagraph.classList.add('project_timeline_kit');
         newParagraph.id='test' + kit_type;
 
-        //newParagraph.onclick = timeline_properties;//option 1 : won't be visible in the dom.
-//newParagraph.setAttribute('onclick', 'handleClick()');//option 2: will be visible in the dom.
-newParagraph.onclick = () => timeline_properties('param1',newParagraph.innerHTML);
 //this i can pass parameters without EXECUTE the function FROM FIRST TIME
+newParagraph.onclick = () => timeline_properties('param1',newParagraph.innerHTML);
 
 
-    //kit type instructions :
-    //1 : label
-    //2 : text
+
+
     COUNT_KIT_PROGRESS++;
     switch(kit_type){
 
