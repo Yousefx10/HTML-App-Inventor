@@ -134,7 +134,7 @@ function live_iframe(KITtype,KITcontent="",kitID,change=false) {
             // Add a class to the element
             elementToModify.classList.add('MEselected'); // Replace 'myNewClass' with the desired class name
         } else {
-            console.log('Element not found in the iframe.(' + kitID);
+            console.log('Element not found in the iframe ==>' + kitID);
         }
 
     }
@@ -152,4 +152,8 @@ function SAVINGtime(){
         const current_kitID = document.getElementById('hidden_kitID').value;
         const UPDATEDcontent = document.getElementById('properties_value').value;
         document.getElementById('active_kit'+current_kitID).innerHTML=UPDATEDcontent;
+
+        document.getElementById('live_iframe').contentWindow.UPDATEcurrentCONTENT(current_kitID,UPDATEDcontent);
+
+
     }

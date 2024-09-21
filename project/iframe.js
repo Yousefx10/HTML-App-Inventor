@@ -31,6 +31,12 @@
             });
 
             }
+
+
+            function UPDATEcurrentCONTENT(kitID,newContent)
+            {
+                document.getElementById("live"+kitID).innerHTML=newContent;
+            }
             </script>
             </body>
           </html>
