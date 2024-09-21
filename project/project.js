@@ -72,3 +72,33 @@ function timeline_properties(current_kit,current_details)
 
 
 
+
+function live_iframe() {
+
+    const iframe = document.getElementById('live_iframe');
+        const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+
+        const newContent = iframeDoc.getElementById('stop');
+        newContent.innerHTML = '<p>Updated content</p>';
+
+    }
+
+//default code to write to iframe
+    let iframe = document.getElementById("live_iframe");
+        let iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+
+        // Write HTML content inside the iframe
+        iframeDoc.open();
+        iframeDoc.write(`
+          <html>
+            <head><title>Inside Iframe</title></head>
+            <body>
+              <h1>This is a paragraph inside the iframe</h1>
+              <p id="stop">Hello, this is dynamically added content!</p>
+              <img src="https://via.placeholder.com/150" alt="Sample Image">
+            </body>
+          </html>
+        `);
+        iframeDoc.close(); // Close the document to render content
+
+
