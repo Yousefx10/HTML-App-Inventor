@@ -157,3 +157,14 @@ function SAVINGtime(){
 
 
     }
+
+
+    function REMOVINGtime(){
+        const current_kitID = document.getElementById('hidden_kitID').value;
+
+        document.getElementById('active_kit'+current_kitID).remove();
+
+        document.getElementById('live_iframe').contentWindow.REMOVEkit(current_kitID);
+
+
+    }

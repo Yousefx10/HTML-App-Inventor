@@ -37,6 +37,10 @@
             {
                 document.getElementById("live"+kitID).innerHTML=newContent;
             }
+            function REMOVEkit(kitID)
+            {
+                document.getElementById("live"+kitID).remove();
+            }
             </script>
             </body>
           </html>
