@@ -80,6 +80,14 @@ text-align:center;
 .project_properties{
     position:relative; /*the main use for this is to fix the SAVE BUTTON to the bottom*/
 }
+
+.project_live{
+    display: flex; /* Make parent a flex container */
+    flex-direction: column; /* Align children in a column */
+
+}
+
+
 #Save_button{
     position:absolute;
     bottom : 10px;
@@ -89,3 +97,4 @@ text-align:center;
     width:80%;
     cursor:pointer;
 }
+
