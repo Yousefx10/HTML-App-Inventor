@@ -89,17 +89,20 @@ text-align:center;
     padding:0; /* TO INSURE THE IFRAME SHOWS THE CONTENT EXACTLY INSIDE IT*/
 }
 
-
-#Save_button{
+#btns{
     position:absolute;
     bottom : 10px;
     left:50%;
+    width:80%;
     transform: translateX(-50%);
+
+}
+#btns button{
     padding:10px;
+    margin:5px;
     width:80%;
     cursor:pointer;
 }
-
 .MEselected{
     background:green;
 }
