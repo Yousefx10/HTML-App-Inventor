@@ -10,3 +10,29 @@ newParagraph.setAttribute('onclick', 'handleClick()');//option 2: will be visibl
 ##kit type instructions :
 1 : label
 2 : text
+
+
+
+
+
+
+##iframe alternatives
+maybe using this code in the future to replace the violation error related to document.write()
+
+const html = `
+    <!DOCTYPE html>
+    <html lang="en">
+        <head>
+            <title>Hello</title>
+        </head>
+        <body>World!</body>
+    </html>
+`;
+const iframe = document.createElement('iframe');
+iframe.addEventListener('load', () => {
+    const docOld = iframe.contentWindow.document;
+    const docNew = new DOMParser().parseFromString(html, 'text/html');
+    docOld.insertBefore(docNew.doctype, docOld.firstChild);
+    docOld.replaceChild(docNew.documentElement, docOld.documentElement);
+});
+document.body.appendChild(iframe);

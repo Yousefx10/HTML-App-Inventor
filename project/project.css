@@ -84,7 +84,6 @@ text-align:center;
 .project_live{
     display: flex; /* Make parent a flex container */
     flex-direction: column; /* Align children in a column */
-
 }
 
 
