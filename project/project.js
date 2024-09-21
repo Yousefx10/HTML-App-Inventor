@@ -39,7 +39,7 @@ newParagraph.onclick = () => timeline_properties(GETkitID(newParagraph.id),newPa
     console.log(active_kit);
     //finally, adding the kit to the timeline box.
     project_timeline.appendChild(newParagraph);
-    live_iframe(newParagraph.textContent);
+    live_iframe(kit_type,newParagraph.textContent);
 
 }
 
@@ -74,7 +74,7 @@ function timeline_properties(current_kit,current_details)
 
 
 
-function live_iframe(IFRAMEcontent="",change=false) {
+function live_iframe(KITtype,KITcontent="",change=false) {
     const iframe = document.getElementById('live_iframe');
     const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
 
@@ -82,11 +82,22 @@ function live_iframe(IFRAMEcontent="",change=false) {
             {
 
                 const newContent = iframeDoc.getElementById('updateME');
-                newContent.innerHTML = '<p>'+IFRAMEcontent+'</p>';
+                newContent.innerHTML = '<p>'+KITcontent+'</p>';
             }
             else{
-                const newParagraph = document.createElement('p');
-                newParagraph.textContent = IFRAMEcontent;
+                var elementKITtype="p";
+
+                switch(KITtype){
+                    case 1:
+                        elementKITtype ="h3";
+                        break;
+                    case 2:
+                        elementKITtype ="p";
+                        break;
+                }
+
+                const newParagraph = document.createElement(elementKITtype);
+                newParagraph.textContent = KITcontent;
 
                 // Append the new <p> element to the body or a specific element
                 iframeDoc.body.appendChild(newParagraph); // This appends it to the body
