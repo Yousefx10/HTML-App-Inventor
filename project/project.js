@@ -167,4 +167,7 @@ function SAVINGtime(){
         document.getElementById('live_iframe').contentWindow.REMOVEkit(current_kitID);
 
 
+        document.getElementById("Remove_button").disabled = true;
+
+
     }
