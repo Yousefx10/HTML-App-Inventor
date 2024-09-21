@@ -60,3 +60,14 @@ text-align:center;
     font-size:10px;
 
 }
+
+
+.project_properties{
+    position:relative; /*the main use for this is to fix the SAVE BUTTON to the bottom*/
+}
+#Save_button{
+    position:absolute;
+    bottom : 10px;
+    left:50%;
+    transform: translateX(-50%);
+}
