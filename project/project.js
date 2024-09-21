@@ -69,9 +69,14 @@ function timeline_properties(current_kit,current_details)
 {
     properties_value.value =current_details;
     properties_name.innerHTML =current_kit;
+
+    //updating THE HIDDEN INPUT value for the currently selected kitID
+    document.getElementById("hidden_kitID").value=current_kit;
+
     LIVE_select_kit(current_kit);
     TimeLine_RemoveALLselected();//to remove current/previous selected timelineKIT
     document.getElementById("active_kit"+current_kit).classList.add('MEselected');
+
 }
 
 
@@ -136,11 +141,15 @@ function live_iframe(KITtype,KITcontent="",kitID,change=false) {
 
 
 
-
+//this function is used to unfocus the selected kit in project_timeline
     function TimeLine_RemoveALLselected() {
         // Use a single line to remove the class from all matching elements
         document.querySelectorAll('.MEselected').forEach(element => element.classList.remove('MEselected'));
     }
 
 
-
+function SAVINGtime(){
+        const current_kitID = document.getElementById('hidden_kitID').value;
+        const UPDATEDcontent = document.getElementById('properties_value').value;
+        document.getElementById('active_kit'+current_kitID).innerHTML=UPDATEDcontent;
+    }
