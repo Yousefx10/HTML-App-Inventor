@@ -119,7 +119,7 @@ function live_iframe(KITtype,KITcontent="",kitID,change=false) {
         const iframe = document.getElementById('live_iframe');
         const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
 
-
+        iframe.RemoveALLselected();
         const elementToModify = iframeDoc.getElementById('live'+kitID);
 
         if (elementToModify) {
