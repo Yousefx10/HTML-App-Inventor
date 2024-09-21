@@ -137,6 +137,7 @@ function live_iframe(KITtype,KITcontent="",kitID,change=false) {
             console.log('Element not found in the iframe ==>' + kitID);
         }
         DELETEbtn.disabled = false;
+        SAVEbtn.disabled = false;
     }
 
 
@@ -155,6 +156,7 @@ function SAVINGtime(){
 
         document.getElementById('live_iframe').contentWindow.UPDATEcurrentCONTENT(current_kitID,UPDATEDcontent);
 
+        SAVEbtn.disabled = true;
 
     }
 
@@ -168,6 +170,7 @@ function SAVINGtime(){
 
 
         DELETEbtn.disabled = true;
+        SAVEbtn.disabled = true;
 
 
     }
