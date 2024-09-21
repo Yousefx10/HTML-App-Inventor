@@ -39,6 +39,7 @@ newParagraph.onclick = () => timeline_properties(GETkitID(newParagraph.id),newPa
     console.log(active_kit);
     //finally, adding the kit to the timeline box.
     project_timeline.appendChild(newParagraph);
+    live_iframe(newParagraph.textContent);
 
 }
 
@@ -85,14 +86,12 @@ function live_iframe(IFRAMEcontent="",change=false) {
             }
             else{
                 const newParagraph = document.createElement('p');
-                newParagraph.textContent = IFRAMEcontent; // Use your variable 'well'
+                newParagraph.textContent = IFRAMEcontent;
 
                 // Append the new <p> element to the body or a specific element
                 iframeDoc.body.appendChild(newParagraph); // This appends it to the body
 
-                // If want to append it to a specific element within the iframe, use:
-                // const updateME = iframeDoc.getElementById('updateME');
-                // updateME.appendChild(newParagraph);
+
 
             }
 
