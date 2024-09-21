@@ -18,8 +18,7 @@ newParagraph.onclick = () => timeline_properties(GETkitID(newParagraph.id),newPa
 
 
 
-//increasing the id counter.
-    COUNT_KIT_PROGRESS++;
+
 
     //Naming the kit before adding it to the timeline box.
     switch(kit_type){
@@ -39,8 +38,9 @@ newParagraph.onclick = () => timeline_properties(GETkitID(newParagraph.id),newPa
     console.log(active_kit);
     //finally, adding the kit to the timeline box.
     project_timeline.appendChild(newParagraph);
-    live_iframe(kit_type,newParagraph.textContent);
-
+    live_iframe(kit_type,newParagraph.textContent,COUNT_KIT_PROGRESS);
+    //increasing the id counter.
+    COUNT_KIT_PROGRESS++;
 }
 
 function NameKit(kit_num)
@@ -69,12 +69,13 @@ function timeline_properties(current_kit,current_details)
 {
     properties_value.value =current_details;
     properties_name.innerHTML =current_kit;
+    LIVE_select_kit(current_kit);
 }
 
 
 
 
-function live_iframe(KITtype,KITcontent="",change=false) {
+function live_iframe(KITtype,KITcontent="",kitID,change=false) {
     const iframe = document.getElementById('live_iframe');
     const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
 
@@ -85,7 +86,7 @@ function live_iframe(KITtype,KITcontent="",change=false) {
                 newContent.innerHTML = '<p>'+KITcontent+'</p>';
             }
             else{
-                var elementKITtype="p";
+                var elementKITtype="span";//as default unknown type
 
                 switch(KITtype){
                     case 1:
@@ -96,11 +97,12 @@ function live_iframe(KITtype,KITcontent="",change=false) {
                         break;
                 }
 
-                const newParagraph = document.createElement(elementKITtype);
-                newParagraph.textContent = KITcontent;
+                const neWelement = document.createElement(elementKITtype);
+                neWelement.id="live" + kitID;
+                neWelement.textContent = KITcontent;
 
                 // Append the new <p> element to the body or a specific element
-                iframeDoc.body.appendChild(newParagraph); // This appends it to the body
+                iframeDoc.body.appendChild(neWelement); // This appends it to the body
 
 
 
@@ -108,6 +110,32 @@ function live_iframe(KITtype,KITcontent="",change=false) {
 
 
     }
+
+
+
+    function LIVE_select_kit(kitID)
+    {
+
+        const iframe = document.getElementById('live_iframe');
+        const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+
+
+        const elementToModify = iframeDoc.getElementById('live'+kitID);
+
+        if (elementToModify) {
+            // Add a class to the element
+            elementToModify.classList.add('MEselected'); // Replace 'myNewClass' with the desired class name
+        } else {
+            console.log('Element not found in the iframe.(' + kitID);
+        }
+
+    }
+
+
+
+
+
+
 
 //default code to write to iframe
     let iframe = document.getElementById("live_iframe");
@@ -120,6 +148,7 @@ function live_iframe(KITtype,KITcontent="",change=false) {
             <head><meta charset="UTF-8"/>
              <style>
              *{margin:0}
+             .MEselected{background:green;color:white;}
              </style>
             </head>
             <body id="updateME">
