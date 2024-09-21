@@ -174,3 +174,10 @@ function SAVINGtime(){
 
 
     }
+
+
+
+    function unFocus()
+    {
+        document.getElementById("project_properties").style.display="none";
+    }
