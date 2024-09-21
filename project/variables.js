@@ -28,8 +28,11 @@ let project_timeline = document.getElementById('project_timeline'),
 
 
 //[[DEFAULT VARIABLES ARENA]]
-const phrase1 = "You've Added a";
+const phrase1 = "You've Added a ";
 
+//kit type instructions :
+//1 : label
+//2 : text
 const element1 = "Label";
 const element2 = "Text";
 //[[DEFAULT VARIABLES ARENA]]

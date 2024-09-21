@@ -9,7 +9,7 @@ function addKIT(kit_type)
     //[START] Main element that will have the content for the new added element.
     let newParagraph = document.createElement('p');
         newParagraph.classList.add('project_timeline_kit');
-        newParagraph.id='test' + kit_type;
+        newParagraph.id='active_kit' + COUNT_KIT_PROGRESS;
     //[END] Main element that will have the content for the new added element.
 
 
