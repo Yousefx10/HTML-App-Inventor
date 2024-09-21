@@ -138,6 +138,8 @@ function live_iframe(KITtype,KITcontent="",kitID,change=false) {
         }
         DELETEbtn.disabled = false;
         SAVEbtn.disabled = false;
+
+        ReFocus();
     }
 
 
@@ -172,12 +174,22 @@ function SAVINGtime(){
         DELETEbtn.disabled = true;
         SAVEbtn.disabled = true;
 
-
+        unFocus();
     }
+
+
+
 
 
 
     function unFocus()
     {
         document.getElementById("project_properties").style.display="none";
+
+    }
+
+    function ReFocus()
+    {
+        document.getElementById("project_properties").style.display="inline-block";
+
     }
