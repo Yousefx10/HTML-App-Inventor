@@ -26,12 +26,12 @@ newParagraph.onclick = () => timeline_properties('param1',newParagraph.innerHTML
 
         case 1:
             active_kit.push([COUNT_KIT_PROGRESS,NameKit(kit_type)]);
-            newParagraph.textContent = "You've Added a Label";
+            newParagraph.textContent = phrase1 + element1 ;
             break;
 
         case 2:
             active_kit.push([COUNT_KIT_PROGRESS,NameKit(kit_type)]);
-            newParagraph.textContent = "You've Added a Text";
+            newParagraph.textContent = phrase1 + element2 ;
             break;
     }
 
@@ -50,10 +50,10 @@ function NameKit(kit_num)
 
     switch(kit_num){
         case 1:
-            return 'Label';
+            return element1;
             break;
         case 2:
-            return 'Text';
+            return element2;
             break;
     }
 }

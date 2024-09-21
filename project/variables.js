@@ -9,3 +9,27 @@ let project_timeline = document.getElementById('project_timeline'),
 
     properties_value = document.getElementById('properties_value'),
     properties_name = document.getElementById('properties_name');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//[[DEFAULT VARIABLES ARENA]]
+const phrase1 = "You've Added a";
+
+const element1 = "Label";
+const element2 = "Text";
+//[[DEFAULT VARIABLES ARENA]]
