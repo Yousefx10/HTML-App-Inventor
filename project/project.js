@@ -193,3 +193,25 @@ function SAVINGtime(){
         document.getElementById("project_properties").style.display="inline-block";
 
     }
+
+
+    function change_visibility()
+    {//hidden_kit_visible
+        let visibility_status = document.getElementById('hidden_kit_visible').value;
+        if(visibility_status==1)
+            {//in this case, it's visible
+
+//1) changing visibility_status to ZERO
+//2) changing data-visible to ZERO
+//3) switch the button to red
+//4) hide the element from project_live only
+
+
+
+
+
+            }
+            else{
+
+            }
+    }

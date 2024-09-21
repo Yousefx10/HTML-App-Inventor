@@ -121,3 +121,15 @@ text-align:center;
     background-color:red;
     cursor:pointer;
 }
+
+
+.btn_visible{
+    padding:10px;
+    border:none;
+    cursor:pointer;
+    background-color:palegreen;
+    font-weight:bolder;
+}
+.btn_unvisible{
+    background-color:orangered !important;
+}

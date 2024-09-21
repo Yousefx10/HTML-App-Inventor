@@ -12,7 +12,8 @@
 
 
 
-    <div class='project_div' id="project_properties" style="display:none">
+    <!--<div class='project_div' id="project_properties" style="display:none">-->
+    <div class='project_div' id="project_properties">
         <p id='properties_name'>project_properties</p>
 
 
@@ -25,6 +26,9 @@
 
         <!--hidden element can save current kit's id-->
         <input type="hidden" value="" id="hidden_kitID"/>
+
+        <!--hidden element can save current kit's VISIBILITY STATUS-->
+        <input type="hidden" value="1" id="hidden_kit_visible"/>
 
 
         <div id="btns">
@@ -42,11 +46,11 @@
         </div>
 
 
+        <hr/>
+            <span>Kit's Visibility :</span>
+            <button class="btn_visible" onclick="change_visibility();">Visible</button>
 
-        <label>
-            Kit's Visibility
-        </label>
-        <button>Visible</button>
+
     </div>
 
 
