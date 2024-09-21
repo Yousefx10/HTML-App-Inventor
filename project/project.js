@@ -14,7 +14,7 @@ function addKIT(kit_type)
 
 
 //this i can pass parameters without EXECUTE the function FROM FIRST TIME.
-newParagraph.onclick = () => timeline_properties('param1',newParagraph.innerHTML);
+newParagraph.onclick = () => timeline_properties(GETkitID(newParagraph.id),newParagraph.innerHTML);
 
 
 
@@ -58,6 +58,10 @@ function NameKit(kit_num)
     }
 }
 
+function GETkitID(kitID)
+{
+    return kitID.slice(10);
+}
 
 //this function manages timeline properties, and it occur everytime original kit get pressed
 function timeline_properties(current_kit,current_details)
