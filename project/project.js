@@ -73,13 +73,29 @@ function timeline_properties(current_kit,current_details)
 
 
 
-function live_iframe( well="") {
-
+function live_iframe(IFRAMEcontent="",change=false) {
     const iframe = document.getElementById('live_iframe');
-        const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+    const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
 
-        const newContent = iframeDoc.getElementById('updateME');
-        newContent.innerHTML = '<p>'+well+'</p>';
+        if(change)
+            {
+
+                const newContent = iframeDoc.getElementById('updateME');
+                newContent.innerHTML = '<p>'+IFRAMEcontent+'</p>';
+            }
+            else{
+                const newParagraph = document.createElement('p');
+                newParagraph.textContent = IFRAMEcontent; // Use your variable 'well'
+
+                // Append the new <p> element to the body or a specific element
+                iframeDoc.body.appendChild(newParagraph); // This appends it to the body
+
+                // If want to append it to a specific element within the iframe, use:
+                // const updateME = iframeDoc.getElementById('updateME');
+                // updateME.appendChild(newParagraph);
+
+            }
+
 
     }
 
