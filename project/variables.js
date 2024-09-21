@@ -11,7 +11,8 @@ let project_timeline = document.getElementById('project_timeline'),
     properties_name = document.getElementById('properties_name');
 
 
-
+let DELETEbtn = document.getElementById("Remove_button");
+let SAVEbtn = document.getElementById("Save_button");
 
 
 
