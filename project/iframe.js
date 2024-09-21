@@ -23,7 +23,7 @@
             const classNameToRemove = 'MEselected'; //class need to be removed
 
             // Select all elements that have the specified class
-            const elementsWithClass = document.querySelectorAll(\`.${classNameToRemove}\`);
+            const elementsWithClass = document.querySelectorAll('.' + classNameToRemove);
 
             // Iterate over each element and remove the class
             elementsWithClass.forEach(element => {
