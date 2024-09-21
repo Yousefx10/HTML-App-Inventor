@@ -106,3 +106,14 @@ text-align:center;
 .MEselected{
     background:green;
 }
+
+#unselect{
+    position: absolute; /* Use absolute positioning for the button */
+    top: 0; /* Position at the top */
+    left: 0; /* Position on the left */
+
+
+    height:35px;
+    width:35px;
+    padding:0;
+}
