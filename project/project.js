@@ -235,3 +235,30 @@ function SAVINGtime(){
             }
             document.getElementById("active_kit"+kitID).classList.toggle('not-visible-emoji');
     }
+
+
+
+
+
+    //ALIGN TEXT
+    function alignTEXT(alignmentTYPE,alignmentELEMENT)
+    {
+        const elements = document.querySelectorAll('.btn_alignment-SELECTED'); // Select all matching elements
+
+        elements.forEach(element => {
+          element.classList.remove('btn_alignment-SELECTED'); // Remove the class from each element
+        });
+        alignmentELEMENT.classList.toggle('btn_alignment-SELECTED');
+
+        switch(alignmentTYPE){
+            case 1://IT'S LEFT
+
+                break;
+
+            case 2://IT'S CENTER
+                break;
+
+            case 3://IT'S RIGHT
+                break;
+        }
+    }

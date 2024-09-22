@@ -153,5 +153,5 @@ color:mediumseagreen;
 }
 .btn_alignment-SELECTED:hover{
     color:green;
-    cursor:no-drop;
+    cursor:default;
 }
