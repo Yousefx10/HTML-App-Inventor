@@ -24,7 +24,7 @@ let SAVEbtn = document.getElementById("Save_button");
 let infoParagraph = document.getElementById("infoP");
 
 
-
+const kit_HINTS = ["", "This is label", "this is text"];
 
 
 
