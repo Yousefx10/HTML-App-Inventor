@@ -89,6 +89,10 @@ function timeline_properties(current_kit,current_details)
         document.getElementById('hidden_kit_visible').value="0";
     }
 
+
+    let current_alignment_status = document.getElementById("active_kit"+current_kit).dataset.alignment;
+    reSHOWINGcorrectAlign(document.getElementById("align"+current_alignment_status));
+
 }
 
 
@@ -244,12 +248,7 @@ function SAVINGtime(){
     //ALIGN TEXT
     function alignTEXT(alignmentTYPE,alignmentELEMENT)
     {
-        const elements = document.querySelectorAll('.btn_alignment-SELECTED'); // Select all matching elements
-
-        elements.forEach(element => {
-          element.classList.remove('btn_alignment-SELECTED'); // Remove the class from each element
-        });
-        alignmentELEMENT.classList.toggle('btn_alignment-SELECTED');
+        reSHOWINGcorrectAlign(alignmentELEMENT);
         let kitID = document.getElementById('hidden_kitID').value;
 
         switch(alignmentTYPE){
@@ -268,4 +267,13 @@ function SAVINGtime(){
 
         let KITalignment =  document.getElementById("active_kit"+kitID).dataset.alignment;
         document.getElementById('live_iframe').contentWindow.kitALIGNMENT(kitID,KITalignment);
+    }
+
+    function reSHOWINGcorrectAlign(alignmentELEMENT){
+        const elements = document.querySelectorAll('.btn_alignment-SELECTED'); // Select all matching elements
+
+        elements.forEach(element => {
+          element.classList.remove('btn_alignment-SELECTED'); // Remove the class from each element
+        });
+        alignmentELEMENT.classList.toggle('btn_alignment-SELECTED');
     }
