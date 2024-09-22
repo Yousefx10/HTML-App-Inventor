@@ -164,4 +164,9 @@ color:mediumseagreen;
     bottom: 0;
     left: 0;
     width: 100%;
+
+    color:darkkhaki;
+    background-color:black;
+    max-height:100px;
+    overflow:auto;
 }

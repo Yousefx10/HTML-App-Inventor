@@ -83,7 +83,7 @@ function timeline_properties(current_kit,current_details)
     LIVE_select_kit(current_kit);
 
     TimeLine_RemoveALLselected();//to remove current/previous selected timelineKIT
-    
+
     GET_THE_KIT_ID("active_kit",current_kit).classList.add('MEselected');
 
     let current_visible_status = GET_THE_KIT_ID("active_kit",current_kit).dataset.visible;
@@ -329,3 +329,6 @@ function SAVINGtime(){
         GET_THE_KIT_ID("active_kit",kitID).dataset.margin =NewMargin;
     }
 
+function showHINT(HINT){
+        document.getElementById("infoP").innerHTML=HINT;
+    }

@@ -118,7 +118,7 @@
         -->
         <div class='kit'>
             <span class='kit_right'>
-                <span>[?]</span>
+                <span onmouseover="showHINT(this.dataset.type);" data-type="label">[?]</span>
                 <span class='kit_add' onclick='addKIT(1)'>[+]</span>
             </span>
 
@@ -127,7 +127,7 @@
 
         <div class='kit'>
             <span class='kit_right'>
-                <span>[?]</span>
+                <span onmouseover="showHINT(this.dataset.type);" data-type="Text">[?]</span>
                 <span class='kit_add' onclick='addKIT(2)'>[+]</span>
             </span>
 
@@ -135,7 +135,7 @@
         </div>
 
         <div id="infoDIV">
-            <p>this is just a small example of explanation will be shown here</p>
+            <p id="infoP">Any Kit's Information Will Be Displayed Here</p>
         </div>
     </div>
 
