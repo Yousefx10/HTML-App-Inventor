@@ -77,7 +77,7 @@ function timeline_properties(current_kit,current_details)
     properties_name.innerHTML =current_kit;
 
     //updating THE HIDDEN INPUT value for the currently selected kitID
-    document.getElementById("hidden_kitID").value=current_kit;
+    hidden_kitID.value=current_kit;
 
     LIVE_select_kit(current_kit);
 
@@ -188,7 +188,7 @@ function live_iframe(KITtype,KITcontent="",kitID,change=false) {
 
 
 function SAVINGtime(){
-        const current_kitID = document.getElementById('hidden_kitID').value;
+        const current_kitID = hidden_kitID.value;
         const UPDATEDcontent = document.getElementById('properties_value').value;
         document.getElementById('active_kit'+current_kitID).innerHTML=UPDATEDcontent;
 
@@ -200,7 +200,7 @@ function SAVINGtime(){
 
 
     function REMOVINGtime(){
-        const current_kitID = document.getElementById('hidden_kitID').value;
+        const current_kitID = hidden_kitID.value;
 
         document.getElementById('active_kit'+current_kitID).remove();
 
@@ -244,7 +244,7 @@ function SAVINGtime(){
 
         //hidden_kit_visible
         let visibility_status = document.getElementById('hidden_kit_visible');
-        let kitID = document.getElementById('hidden_kitID').value;
+        let kitID = hidden_kitID.value;
 
         document.getElementById('live_iframe').contentWindow.TOGGLEhiding(kitID);
 
@@ -268,7 +268,7 @@ function SAVINGtime(){
     function alignTEXT(alignmentTYPE,alignmentELEMENT)
     {
         reSHOWINGcorrectAlign(alignmentELEMENT);
-        let kitID = document.getElementById('hidden_kitID').value;
+        let kitID = hidden_kitID.value;
 
         switch(alignmentTYPE){
             case 1://IT'S LEFT
@@ -302,7 +302,7 @@ function SAVINGtime(){
     function UpdateColor(colorElement)
     {
         let NewColor = colorElement.value;
-        let kitID = document.getElementById('hidden_kitID').value;
+        let kitID = hidden_kitID.value;
         document.getElementById('live_iframe').contentWindow.UpdateColor(kitID,NewColor);
 
         document.getElementById("active_kit"+kitID).dataset.color =NewColor;
@@ -311,7 +311,7 @@ function SAVINGtime(){
     function UpdateFontSize(SizeElement)
     {
         let NewSize = SizeElement.value;
-        let kitID = document.getElementById('hidden_kitID').value;
+        let kitID = hidden_kitID.value;
         document.getElementById('live_iframe').contentWindow.UpdateFontSize(kitID,NewSize);
 
         document.getElementById("active_kit"+kitID).dataset.size =NewSize;
@@ -320,7 +320,7 @@ function SAVINGtime(){
     function UpdateMargin(SizeElement)
     {
         let NewMargin = SizeElement.value;
-        let kitID = document.getElementById('hidden_kitID').value;
+        let kitID = hidden_kitID.value;
         document.getElementById('live_iframe').contentWindow.UpdateMargin(kitID,NewMargin);
 
         document.getElementById("active_kit"+kitID).dataset.margin =NewMargin;
