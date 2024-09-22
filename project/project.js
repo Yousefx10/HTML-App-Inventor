@@ -147,7 +147,7 @@ function live_iframe(KITtype,KITcontent="",kitID,change=false) {
             console.log('Element not found in the iframe ==>' + kitID);
         }
         DELETEbtn.disabled = false;
-        SAVEbtn.disabled = false;
+        //SAVEbtn.disabled = false;
 
         ReFocus();
 
