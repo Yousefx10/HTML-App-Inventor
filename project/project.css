@@ -26,6 +26,8 @@ text-align:center;
     max-width:24%;
     height:100%;
 
+    /*For Displaying the information div in the bottom:*/
+    position: relative;
     box-sizing: border-box;
 }
 
@@ -154,4 +156,12 @@ color:mediumseagreen;
 .btn_alignment-SELECTED:hover{
     color:green;
     cursor:default;
+}
+
+/*The information Div*/
+#infoDIV{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
 }
