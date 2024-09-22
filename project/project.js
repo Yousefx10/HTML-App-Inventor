@@ -15,6 +15,7 @@ function addKIT(kit_type)
     newParagraph.setAttribute("data-visible","1");
     newParagraph.setAttribute("data-alignment","1");
     newParagraph.setAttribute("data-color","black");
+    newParagraph.setAttribute("data-size","medium");
 //this i can pass parameters without EXECUTE the function FROM FIRST TIME.
 newParagraph.onclick = () => timeline_properties(GETkitID(newParagraph.id),newParagraph.innerHTML);
 
@@ -99,6 +100,11 @@ function timeline_properties(current_kit,current_details)
     document.getElementById('ColorDropDown').disabled=true;
     document.getElementById('ColorDropDown').value = current_color;
     document.getElementById('ColorDropDown').disabled=false;
+
+    let current_size = document.getElementById("active_kit"+current_kit).dataset.size;
+    document.getElementById('FontSizeDropDown').disabled=true;
+    document.getElementById('FontSizeDropDown').value = current_size;
+    document.getElementById('FontSizeDropDown').disabled=false;
 }
 
 
@@ -293,4 +299,13 @@ function SAVINGtime(){
         document.getElementById('live_iframe').contentWindow.UpdateColor(kitID,NewColor);
 
         document.getElementById("active_kit"+kitID).dataset.color =NewColor;
+    }
+
+    function UpdateFontSize(SizeElement)
+    {
+        let NewSize = SizeElement.value;
+        let kitID = document.getElementById('hidden_kitID').value;
+        document.getElementById('live_iframe').contentWindow.UpdateFontSize(kitID,NewSize);
+
+        document.getElementById("active_kit"+kitID).dataset.size =NewSize;
     }

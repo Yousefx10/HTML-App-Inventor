@@ -60,6 +60,11 @@
             {
                 document.getElementById("live"+kitID).style.color=newColor;
             }
+
+            function UpdateFontSize(kitID,NewSize)
+            {
+                document.getElementById("live"+kitID).style.fontSize=NewSize;
+            }
             </script>
             </body>
           </html>
