@@ -10,6 +10,7 @@
              <style>
              *{margin:0}
              .MEselected{background:green;color:white;}
+             .hide{display:none;}
              </style>
             </head>
             <body id="updateME">
@@ -40,6 +41,10 @@
             function REMOVEkit(kitID)
             {
                 document.getElementById("live"+kitID).remove();
+            }
+            function TOGGLEhiding(kitID)
+            {
+                document.getElementById("live"+kitID).classList.toggle('hide');
             }
             </script>
             </body>

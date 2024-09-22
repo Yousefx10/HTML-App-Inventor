@@ -196,22 +196,28 @@ function SAVINGtime(){
 
 
     function change_visibility()
-    {//hidden_kit_visible
-        let visibility_status = document.getElementById('hidden_kit_visible').value;
-        if(visibility_status==1)
-            {//in this case, it's visible
-
-//1) changing visibility_status to ZERO
-//2) changing data-visible to ZERO
-//3) switch the button to red
-//4) hide the element from project_live only
+    {
+        //1) changing visibility_status to ZERO
+        //2) changing data-visible to ZERO
+        //3) switch the button to red
+        //4) hide the element from project_live only
 
 
 
 
+        //hidden_kit_visible
+        let visibility_status = document.getElementById('hidden_kit_visible');
+        let kitID = document.getElementById('hidden_kitID').value;
 
+        document.getElementById('live_iframe').contentWindow.TOGGLEhiding(kitID);
+
+        if(visibility_status.value==1)
+            {//in this case, it's visible, will be not visible in this code:
+            visibility_status.value="0";
+            document.getElementById("active_kit"+kitID).setAttribute("data-visible","0");
             }
             else{
-
+                visibility_status.value="1";
+                document.getElementById("active_kit"+kitID).setAttribute("data-visible","1");
             }
     }
