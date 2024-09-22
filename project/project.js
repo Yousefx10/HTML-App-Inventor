@@ -330,5 +330,5 @@ function SAVINGtime(){
     }
 
 function showHINT(HINT){
-        document.getElementById("infoP").innerHTML=HINT;
+        infoParagraph.innerHTML=HINT;
     }

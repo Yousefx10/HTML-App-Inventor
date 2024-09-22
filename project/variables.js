@@ -21,7 +21,7 @@ let live_iframe = document.getElementById('live_iframe');
 let DELETEbtn = document.getElementById("Remove_button");
 let SAVEbtn = document.getElementById("Save_button");
 
-
+let infoParagraph = document.getElementById("infoP");
 
 
 
