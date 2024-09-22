@@ -94,6 +94,11 @@ function timeline_properties(current_kit,current_details)
     let current_alignment_status = document.getElementById("active_kit"+current_kit).dataset.alignment;
     reSHOWINGcorrectAlign(document.getElementById("align"+current_alignment_status));
 
+
+    let current_color = document.getElementById("active_kit"+current_kit).dataset.color;
+    document.getElementById('ColorDropDown').disabled=true;
+    document.getElementById('ColorDropDown').value = current_color;
+    document.getElementById('ColorDropDown').disabled=false;
 }
 
 
@@ -286,4 +291,6 @@ function SAVINGtime(){
         let NewColor = colorElement.value;
         let kitID = document.getElementById('hidden_kitID').value;
         document.getElementById('live_iframe').contentWindow.UpdateColor(kitID,NewColor);
+
+        document.getElementById("active_kit"+kitID).dataset.color =NewColor;
     }
