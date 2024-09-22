@@ -29,6 +29,7 @@ newParagraph.onclick = () => timeline_properties(GETkitID(newParagraph.id),newPa
         case 1:
             active_kit.push([COUNT_KIT_PROGRESS,NameKit(kit_type)]);
             newParagraph.textContent = phrase1 + element1 ;
+            newParagraph.setAttribute("data-size","large");//specific font size for the label
             break;
 
         case 2:
