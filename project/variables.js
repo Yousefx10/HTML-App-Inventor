@@ -29,7 +29,10 @@ const kit_HINTS = ["",
     "This is a text which helps you to display a longer texts"  //for Text  (2)
 ];
 
-
+const DATA_ONLY =[
+    "all",
+    "button"
+];
 
 
 

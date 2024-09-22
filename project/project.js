@@ -21,6 +21,8 @@ function addKIT(kit_type)
         newKIT.setAttribute("data-color","black");
         newKIT.setAttribute("data-size","medium");
         newKIT.setAttribute("data-margin","0");
+        newKIT.setAttribute("data-only","all");
+
 
         //this i can pass parameters without EXECUTE the function FROM FIRST TIME.
         newKIT.onclick = () => timeline_properties(currentkitID,newKIT.innerHTML);
@@ -43,6 +45,7 @@ function addKIT(kit_type)
         case 3:
             active_kit.push([COUNT_KIT_PROGRESS,NameKit(kit_type)]);
             newKIT.textContent = phrase2 ;
+            newKIT.setAttribute("data-only","button");
             break;
     }
 
@@ -123,6 +126,19 @@ function timeline_properties(current_kit,current_details)
     document.getElementById('MarginDropDown').disabled=true;
     document.getElementById('MarginDropDown').value = current_margin;
     document.getElementById('MarginDropDown').disabled=false;
+
+
+
+
+    const elements = document.querySelectorAll('.only-option');
+    elements.forEach(element => {
+        element.classList.add("only-hide");
+        console.log("should be done??");
+    });
+
+    document.getElementById("only-"+GET_THE_KIT_ID("active_kit",current_kit).dataset.only)
+        .classList.remove("only-hide");
+console.log("only-"+GET_THE_KIT_ID("active_kit",current_kit).dataset.only);
 }
 
 
