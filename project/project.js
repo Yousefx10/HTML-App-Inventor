@@ -214,7 +214,7 @@ function SAVINGtime(){
         //2) changing data-visible to ZERO.
         //3) switch the button to red.
         //4) hide the element from project_live only.
-
+        //5) replace visiblity emoji
 
 
 
@@ -233,4 +233,5 @@ function SAVINGtime(){
                 visibility_status.value="1";
                 document.getElementById("active_kit"+kitID).setAttribute("data-visible","1");
             }
+            document.getElementById("active_kit"+kitID).classList.toggle('not-visible-emoji');
     }

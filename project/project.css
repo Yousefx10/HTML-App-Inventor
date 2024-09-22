@@ -71,10 +71,14 @@ text-align:center;
 }
 
 .project_timeline_kit::before {
-    content: "[*]";               /* Unicode for the bullet */
+    content: "[👁️‍🗨️]";               /* Unicode for the bullet */
     margin-right: 10px;         /* Space between the bullet and the paragraph */
     font-size: 1.5em;           /* Adjust the bullet size (optional) */
     color: black;               /* Bullet color */
+}
+
+.not-visible-emoji::before{
+    content: "[🚫]" !important;
 }
 
 
