@@ -1,4 +1,7 @@
-
+//THIS CONTROL IS MADE FOR MAKING IT EASIER TO HAVE THE CONTROL ID
+function GET_THE_KIT_ID(prefix_name,kitID){
+    return document.getElementById(prefix_name+kitID);
+}
 
 
 
@@ -7,18 +10,18 @@
 function addKIT(kit_type)
 {
     //[START] Main element that will have the content for the new added element.
-    let newParagraph = document.createElement('p');
-        newParagraph.classList.add('project_timeline_kit');
-        newParagraph.id='active_kit' + COUNT_KIT_PROGRESS;
+    let newKIT = document.createElement('p');
+        newKIT.classList.add('project_timeline_kit');
+        newKIT.id='active_kit' + COUNT_KIT_PROGRESS;
     //[END] Main element that will have the content for the new added element.
 
-    newParagraph.setAttribute("data-visible","1");
-    newParagraph.setAttribute("data-alignment","1");
-    newParagraph.setAttribute("data-color","black");
-    newParagraph.setAttribute("data-size","medium");
-    newParagraph.setAttribute("data-margin","0");
+        newKIT.setAttribute("data-visible","1");
+        newKIT.setAttribute("data-alignment","1");
+        newKIT.setAttribute("data-color","black");
+        newKIT.setAttribute("data-size","medium");
+        newKIT.setAttribute("data-margin","0");
 //this i can pass parameters without EXECUTE the function FROM FIRST TIME.
-newParagraph.onclick = () => timeline_properties(GETkitID(newParagraph.id),newParagraph.innerHTML);
+        newKIT.onclick = () => timeline_properties(GETkitID(newKIT.id),newKIT.innerHTML);
 
 
 
@@ -29,21 +32,21 @@ newParagraph.onclick = () => timeline_properties(GETkitID(newParagraph.id),newPa
 
         case 1:
             active_kit.push([COUNT_KIT_PROGRESS,NameKit(kit_type)]);
-            newParagraph.textContent = phrase1 + element1 ;
-            newParagraph.setAttribute("data-size","large");//specific font size for the label
+            newKIT.textContent = phrase1 + element1 ;
+            newParnewKITagraph.setAttribute("data-size","large");//specific font size for the label
             break;
 
         case 2:
             active_kit.push([COUNT_KIT_PROGRESS,NameKit(kit_type)]);
-            newParagraph.textContent = phrase1 + element2 ;
+            newKIT.textContent = phrase1 + element2 ;
             break;
     }
 
     //showing the current ARRAY that contains the kit's
     console.log(active_kit);
     //finally, adding the kit to the timeline box.
-    project_timeline.appendChild(newParagraph);
-    live_iframe_add(kit_type,newParagraph.textContent,COUNT_KIT_PROGRESS);
+    project_timeline.appendChild(newKIT);
+    live_iframe_add(kit_type,newKIT.textContent,COUNT_KIT_PROGRESS);
     //increasing the id counter.
     COUNT_KIT_PROGRESS++;
 }
@@ -326,7 +329,3 @@ function SAVINGtime(){
         GET_THE_KIT_ID("active_kit",kitID).dataset.margin =NewMargin;
     }
 
-//THIS CONTROL IS MADE FOR MAKING IT EASIER TO HAVE THE CONTROL ID
-    function GET_THE_KIT_ID(prefix_name,kitID){
-        return document.getElementById(prefix_name+kitID);
-    }
