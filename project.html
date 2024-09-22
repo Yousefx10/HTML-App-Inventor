@@ -47,12 +47,18 @@
         <hr/>
             <span>Kit's Visibility :</span>
             <button id="btn_visible" onclick="change_visibility();this.classList.toggle('btn_unvisible');" title="show or hide the kit">Visible</button>
+
             <hr/>
-            <span>Text Alignment :</span>
-            <span class='btn_alignment btn_alignment-SELECTED' onclick="alignTEXT(1,this)"id="align1">Left</span>
-            <span class='btn_alignment'                        onclick="alignTEXT(2,this)"id="align2">Center</span>
-            <span class='btn_alignment'                        onclick="alignTEXT(3,this)"id="align3">Right</span>
-            <hr/>
+            <div class="only-hide only-option" id="only-text">
+                <span>Text Alignment :</span>
+                <span class='btn_alignment btn_alignment-SELECTED' onclick="alignTEXT(1,this)"id="align1">Left</span>
+                <span class='btn_alignment'                        onclick="alignTEXT(2,this)"id="align2">Center</span>
+                <span class='btn_alignment'                        onclick="alignTEXT(3,this)"id="align3">Right</span>
+                <hr/>
+            </div>
+
+
+
               <label for="ColorDropDown">Kit's Color:</label>
               <select id="ColorDropDown" onchange="UpdateColor(this)">
                 <option value="black">Black</option>
@@ -79,7 +85,7 @@
                 <option value="0" selected>None</option>
               </select>
               <hr/>
-              <div class="only-hide only-option" id="only-all">0</div>
+
               <div class="only-hide only-option" id="only-button">
                   <span>settings only for button</span>
                   <button>test</button>

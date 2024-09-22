@@ -21,7 +21,7 @@ function addKIT(kit_type)
         newKIT.setAttribute("data-color","black");
         newKIT.setAttribute("data-size","medium");
         newKIT.setAttribute("data-margin","0");
-        newKIT.setAttribute("data-only","all");
+        newKIT.setAttribute("data-only","text");
 
 
         //this i can pass parameters without EXECUTE the function FROM FIRST TIME.
@@ -129,16 +129,15 @@ function timeline_properties(current_kit,current_details)
 
 
 
-
+//THIS LOOP IS TO HIDE ALL PROPERTIES THAT "MIGHT BE ONLY GOOD WITH SPECIFIC KIT".
     const elements = document.querySelectorAll('.only-option');
     elements.forEach(element => {
         element.classList.add("only-hide");
-        console.log("should be done??");
     });
-
+//THIS LINE HELPS TO ONLY SHOW THE "PROPERTIES" THAT'S ONLY GOOD FOR INDIVIDUAL KIT.
     document.getElementById("only-"+GET_THE_KIT_ID("active_kit",current_kit).dataset.only)
         .classList.remove("only-hide");
-console.log("only-"+GET_THE_KIT_ID("active_kit",current_kit).dataset.only);
+
 }
 
 
