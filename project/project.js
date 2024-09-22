@@ -75,6 +75,7 @@ function timeline_properties(current_kit,current_details)
     document.getElementById("hidden_kitID").value=current_kit;
 
     LIVE_select_kit(current_kit);
+
     TimeLine_RemoveALLselected();//to remove current/previous selected timelineKIT
     document.getElementById("active_kit"+current_kit).classList.add('MEselected');
     let current_visible_status = document.getElementById("active_kit"+current_kit).dataset.visible;
@@ -132,7 +133,6 @@ function live_iframe(KITtype,KITcontent="",kitID,change=false) {
 
     function LIVE_select_kit(kitID)
     {
-
         const iframe = document.getElementById('live_iframe');
         const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
 
@@ -197,7 +197,8 @@ function SAVINGtime(){
     function unFocus()
     {
         document.getElementById("project_properties").style.display="none";
-
+               document.getElementById('live_iframe').contentWindow.RemoveALLselected();//unselect all highlighted kits in LIVE
+               TimeLine_RemoveALLselected();//unselect all highlighted kits in TIME_LINE
     }
 
     function ReFocus()
