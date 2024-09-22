@@ -330,6 +330,7 @@ function SAVINGtime(){
     }
 
 function showHINT(HINT){
+        infoParagraph.style.display="block";
         infoParagraph.innerHTML=HINT;
     }
 
