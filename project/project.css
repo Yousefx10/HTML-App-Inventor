@@ -127,7 +127,7 @@ text-align:center;
 }
 
 
-.btn_visible{
+#btn_visible{
     padding:10px;
     border:none;
     cursor:pointer;
@@ -136,4 +136,22 @@ text-align:center;
 }
 .btn_unvisible{
     background-color:orangered !important;
+}
+
+
+
+.btn_alignment{
+    cursor:pointer;
+}
+.btn_alignment:hover{
+color:mediumseagreen;
+}
+.btn_alignment-SELECTED{
+    color:green;
+    font-weight:bolder;
+    text-decoration: underline;
+}
+.btn_alignment-SELECTED:hover{
+    color:green;
+    cursor:no-drop;
 }
