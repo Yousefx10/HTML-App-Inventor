@@ -40,6 +40,10 @@ function addKIT(kit_type)
             active_kit.push([COUNT_KIT_PROGRESS,NameKit(kit_type)]);
             newKIT.textContent = phrase1 + element2 ;
             break;
+        case 3:
+            active_kit.push([COUNT_KIT_PROGRESS,NameKit(kit_type)]);
+            newKIT.textContent = phrase2 ;
+            break;
     }
 
 
@@ -57,12 +61,16 @@ function NameKit(kit_num)
     //kit type instructions :
     //1 : label
     //2 : text
+    //3 : Button
 
     switch(kit_num){
         case 1:
             return element1;
             break;
         case 2:
+            return element2;
+            break;
+        case 3:
             return element2;
             break;
     }
@@ -139,6 +147,9 @@ function live_iframe_add(KITtype,KITcontent="",kitID,change=false) {
                         break;
                     case 2:
                         elementKITtype ="p";
+                        break;
+                    case 3:
+                        elementKITtype ="button";
                         break;
                 }
 

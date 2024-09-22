@@ -40,10 +40,13 @@ const kit_HINTS = ["",
 
 //[[DEFAULT VARIABLES ARENA]]
 const phrase1 = "You've Added a ";
+const phrase2 = "Click Me";
 
 //kit type instructions :
 //1 : label
 //2 : text
+//3 : Button
 const element1 = "Label";
 const element2 = "Text";
+const element3 = "Button";
 //[[DEFAULT VARIABLES ARENA]]
