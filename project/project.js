@@ -14,6 +14,7 @@ function addKIT(kit_type)
 
     newParagraph.setAttribute("data-visible","1");
     newParagraph.setAttribute("data-alignment","1");
+    newParagraph.setAttribute("data-color","black");
 //this i can pass parameters without EXECUTE the function FROM FIRST TIME.
 newParagraph.onclick = () => timeline_properties(GETkitID(newParagraph.id),newParagraph.innerHTML);
 
