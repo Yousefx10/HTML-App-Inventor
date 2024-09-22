@@ -23,8 +23,11 @@ let SAVEbtn = document.getElementById("Save_button");
 
 let infoParagraph = document.getElementById("infoP");
 
-
-const kit_HINTS = ["", "This is label", "this is text"];
+//HINT SECTION
+const kit_HINTS = ["",
+    "This is a label wich makes you to print out something",    //for Label (1)
+    "This is a text which helps you to display a longer texts"  //for Text  (2)
+];
 
 
 
