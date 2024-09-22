@@ -11,8 +11,11 @@ let project_timeline = document.getElementById('project_timeline'),
     properties_name = document.getElementById('properties_name');
 
 
+//Variable For hidden_kitID [the hidden element that saves the current kit's ID]
 let hidden_kitID = document.getElementById('hidden_kitID');
 
+//Variable For live_iframe [THE HEART OF IFRAME ELEMENT]
+let live_iframe = document.getElementById('live_iframe');
 
 
 let DELETEbtn = document.getElementById("Remove_button");
