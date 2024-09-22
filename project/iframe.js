@@ -65,6 +65,10 @@
             {
                 document.getElementById("live"+kitID).style.fontSize=NewSize;
             }
+             function UpdateMargin(kitID,NewSize)
+            {
+                document.getElementById("live"+kitID).style.margin=NewSize;
+            }
             </script>
             </body>
           </html>

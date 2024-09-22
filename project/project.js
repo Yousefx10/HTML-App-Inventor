@@ -16,6 +16,7 @@ function addKIT(kit_type)
     newParagraph.setAttribute("data-alignment","1");
     newParagraph.setAttribute("data-color","black");
     newParagraph.setAttribute("data-size","medium");
+    newParagraph.setAttribute("data-margin","0");
 //this i can pass parameters without EXECUTE the function FROM FIRST TIME.
 newParagraph.onclick = () => timeline_properties(GETkitID(newParagraph.id),newParagraph.innerHTML);
 
@@ -106,6 +107,11 @@ function timeline_properties(current_kit,current_details)
     document.getElementById('FontSizeDropDown').disabled=true;
     document.getElementById('FontSizeDropDown').value = current_size;
     document.getElementById('FontSizeDropDown').disabled=false;
+
+    let current_margin = document.getElementById("active_kit"+current_kit).dataset.margin;
+    document.getElementById('MarginDropDown').disabled=true;
+    document.getElementById('MarginDropDown').value = current_margin;
+    document.getElementById('MarginDropDown').disabled=false;
 }
 
 
@@ -309,4 +315,13 @@ function SAVINGtime(){
         document.getElementById('live_iframe').contentWindow.UpdateFontSize(kitID,NewSize);
 
         document.getElementById("active_kit"+kitID).dataset.size =NewSize;
+    }
+
+    function UpdateMargin(SizeElement)
+    {
+        let NewMargin = SizeElement.value;
+        let kitID = document.getElementById('hidden_kitID').value;
+        document.getElementById('live_iframe').contentWindow.UpdateMargin(kitID,NewMargin);
+
+        document.getElementById("active_kit"+kitID).dataset.margin =NewMargin;
     }
