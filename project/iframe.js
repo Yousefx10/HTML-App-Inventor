@@ -55,6 +55,11 @@
                                            "left";//default answer
                 document.getElementById("live"+kitID).style.textAlign = NEWalignment_result;
             }
+
+            function UpdateColor(kitID,newColor)
+            {
+                document.getElementById("live"+kitID).style.color=newColor;
+            }
             </script>
             </body>
           </html>

@@ -277,3 +277,12 @@ function SAVINGtime(){
         });
         alignmentELEMENT.classList.toggle('btn_alignment-SELECTED');
     }
+
+
+
+    function UpdateColor(colorElement)
+    {
+        let NewColor = colorElement.value;
+        let kitID = document.getElementById('hidden_kitID').value;
+        document.getElementById('live_iframe').contentWindow.UpdateColor(kitID,NewColor);
+    }
