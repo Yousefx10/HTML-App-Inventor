@@ -12,7 +12,7 @@ function addKIT(kit_type)
         newParagraph.id='active_kit' + COUNT_KIT_PROGRESS;
     //[END] Main element that will have the content for the new added element.
 
-
+    newParagraph.setAttribute("data-visible","1");
 //this i can pass parameters without EXECUTE the function FROM FIRST TIME.
 newParagraph.onclick = () => timeline_properties(GETkitID(newParagraph.id),newParagraph.innerHTML);
 
@@ -67,6 +67,7 @@ function GETkitID(kitID)
 //this function manages timeline properties, and it occur everytime original kit get pressed
 function timeline_properties(current_kit,current_details)
 {
+
     properties_value.value =current_details;
     properties_name.innerHTML =current_kit;
 
@@ -76,6 +77,15 @@ function timeline_properties(current_kit,current_details)
     LIVE_select_kit(current_kit);
     TimeLine_RemoveALLselected();//to remove current/previous selected timelineKIT
     document.getElementById("active_kit"+current_kit).classList.add('MEselected');
+    let current_visible_status = document.getElementById("active_kit"+current_kit).dataset.visible;
+    if(current_visible_status==1){
+        document.getElementById("btn_visible").classList.remove('btn_unvisible');
+        document.getElementById('hidden_kit_visible').value="1";
+    }
+    else{
+        document.getElementById("btn_visible").classList.add('btn_unvisible');
+        document.getElementById('hidden_kit_visible').value="0";
+    }
 
 }
 
@@ -140,6 +150,8 @@ function live_iframe(KITtype,KITcontent="",kitID,change=false) {
         SAVEbtn.disabled = false;
 
         ReFocus();
+
+
     }
 
 
@@ -197,10 +209,10 @@ function SAVINGtime(){
 
     function change_visibility()
     {
-        //1) changing visibility_status to ZERO
-        //2) changing data-visible to ZERO
-        //3) switch the button to red
-        //4) hide the element from project_live only
+        //1) changing visibility_status to ZERO.
+        //2) changing data-visible to ZERO.
+        //3) switch the button to red.
+        //4) hide the element from project_live only.
 
 
 
