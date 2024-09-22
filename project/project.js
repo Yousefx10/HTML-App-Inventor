@@ -82,8 +82,8 @@ function timeline_properties(current_kit,current_details)
     LIVE_select_kit(current_kit);
 
     TimeLine_RemoveALLselected();//to remove current/previous selected timelineKIT
-    document.getElementById("active_kit"+current_kit).classList.add('MEselected');
-    let current_visible_status = document.getElementById("active_kit"+current_kit).dataset.visible;
+    GET_THE_KIT_ID("active_kit",current_kit).classList.add('MEselected');
+    let current_visible_status = GET_THE_KIT_ID("active_kit",current_kit).dataset.visible;
     if(current_visible_status==1){
         document.getElementById("btn_visible").classList.remove('btn_unvisible');
         document.getElementById('hidden_kit_visible').value="1";
@@ -190,7 +190,7 @@ function live_iframe_add(KITtype,KITcontent="",kitID,change=false) {
 function SAVINGtime(){
         const current_kitID = hidden_kitID.value;
         const UPDATEDcontent = document.getElementById('properties_value').value;
-        document.getElementById('active_kit'+current_kitID).innerHTML=UPDATEDcontent;
+        GET_THE_KIT_ID('active_kit',current_kitID).innerHTML=UPDATEDcontent;
 
         live_iframe.contentWindow.UPDATEcurrentCONTENT(current_kitID,UPDATEDcontent);
 
@@ -202,7 +202,7 @@ function SAVINGtime(){
     function REMOVINGtime(){
         const current_kitID = hidden_kitID.value;
 
-        document.getElementById('active_kit'+current_kitID).remove();
+        GET_THE_KIT_ID('active_kit',current_kitID).remove();
 
         live_iframe.contentWindow.REMOVEkit(current_kitID);
 
@@ -251,13 +251,13 @@ function SAVINGtime(){
         if(visibility_status.value==1)
             {//in this case, it's visible, will be not visible in this code:
             visibility_status.value="0";
-            document.getElementById("active_kit"+kitID).setAttribute("data-visible","0");
+            GET_THE_KIT_ID("active_kit",kitID).setAttribute("data-visible","0");
             }
             else{
                 visibility_status.value="1";
-                document.getElementById("active_kit"+kitID).setAttribute("data-visible","1");
+                GET_THE_KIT_ID("active_kit",kitID).setAttribute("data-visible","1");
             }
-            document.getElementById("active_kit"+kitID).classList.toggle('not-visible-emoji');
+            GET_THE_KIT_ID("active_kit",kitID).classList.toggle('not-visible-emoji');
     }
 
 
@@ -272,19 +272,19 @@ function SAVINGtime(){
 
         switch(alignmentTYPE){
             case 1://IT'S LEFT
-                document.getElementById("active_kit"+kitID).dataset.alignment ="1";
+                GET_THE_KIT_ID("active_kit",kitID).dataset.alignment ="1";
                 break;
 
             case 2://IT'S CENTER
-                document.getElementById("active_kit"+kitID).dataset.alignment ="2";
+                GET_THE_KIT_ID("active_kit",kitID).dataset.alignment ="2";
                 break;
 
             case 3://IT'S RIGHT
-                document.getElementById("active_kit"+kitID).dataset.alignment ="3";
+                GET_THE_KIT_ID("active_kit",kitID).dataset.alignment ="3";
                 break;
         }
 
-        let KITalignment =  document.getElementById("active_kit"+kitID).dataset.alignment;
+        let KITalignment =  GET_THE_KIT_ID("active_kit",kitID).dataset.alignment;
         live_iframe.contentWindow.kitALIGNMENT(kitID,KITalignment);
     }
 
@@ -305,7 +305,7 @@ function SAVINGtime(){
         let kitID = hidden_kitID.value;
         live_iframe.contentWindow.UpdateColor(kitID,NewColor);
 
-        document.getElementById("active_kit"+kitID).dataset.color =NewColor;
+        GET_THE_KIT_ID("active_kit",kitID).dataset.color =NewColor;
     }
 
     function UpdateFontSize(SizeElement)
@@ -314,7 +314,7 @@ function SAVINGtime(){
         let kitID = hidden_kitID.value;
         live_iframe.contentWindow.UpdateFontSize(kitID,NewSize);
 
-        document.getElementById("active_kit"+kitID).dataset.size =NewSize;
+        GET_THE_KIT_ID("active_kit",kitID).dataset.size = NewSize;
     }
 
     function UpdateMargin(SizeElement)
@@ -323,5 +323,10 @@ function SAVINGtime(){
         let kitID = hidden_kitID.value;
         live_iframe.contentWindow.UpdateMargin(kitID,NewMargin);
 
-        document.getElementById("active_kit"+kitID).dataset.margin =NewMargin;
+        GET_THE_KIT_ID("active_kit",kitID).dataset.margin =NewMargin;
+    }
+
+//THIS CONTROL IS MADE FOR MAKING IT EASIER TO HAVE THE CONTROL ID
+    function GET_THE_KIT_ID(prefix_name,kitID){
+        return document.getElementById(prefix_name+kitID);
     }
