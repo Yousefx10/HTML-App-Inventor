@@ -13,6 +13,7 @@ function addKIT(kit_type)
     //[END] Main element that will have the content for the new added element.
 
     newParagraph.setAttribute("data-visible","1");
+    newParagraph.setAttribute("data-alignment","1");
 //this i can pass parameters without EXECUTE the function FROM FIRST TIME.
 newParagraph.onclick = () => timeline_properties(GETkitID(newParagraph.id),newParagraph.innerHTML);
 
@@ -249,16 +250,22 @@ function SAVINGtime(){
           element.classList.remove('btn_alignment-SELECTED'); // Remove the class from each element
         });
         alignmentELEMENT.classList.toggle('btn_alignment-SELECTED');
+        let kitID = document.getElementById('hidden_kitID').value;
 
         switch(alignmentTYPE){
             case 1://IT'S LEFT
-
+                document.getElementById("active_kit"+kitID).dataset.alignment ="1";
                 break;
 
             case 2://IT'S CENTER
+                document.getElementById("active_kit"+kitID).dataset.alignment ="2";
                 break;
 
             case 3://IT'S RIGHT
+                document.getElementById("active_kit"+kitID).dataset.alignment ="3";
                 break;
         }
+
+        let KITalignment =  document.getElementById("active_kit"+kitID).dataset.alignment;
+        document.getElementById('live_iframe').contentWindow.kitALIGNMENT(kitID,KITalignment);
     }

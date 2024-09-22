@@ -46,6 +46,15 @@
             {
                 document.getElementById("live"+kitID).classList.toggle('hide');
             }
+
+            function kitALIGNMENT(kitID,NEWalignment)
+            {
+                const NEWalignment_result = NEWalignment === "1" ? "left" :
+                                            NEWalignment === "2" ? "center" :
+                                            NEWalignment === "3" ? "right" :
+                                           "left";//default answer
+                document.getElementById("live"+kitID).style.textAlign = NEWalignment_result;
+            }
             </script>
             </body>
           </html>
