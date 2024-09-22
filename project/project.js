@@ -13,6 +13,7 @@ function addKIT(kit_type)
     let newKIT = document.createElement('p');
         newKIT.classList.add('project_timeline_kit');
         newKIT.id='active_kit' + COUNT_KIT_PROGRESS;
+        let currentkitID = COUNT_KIT_PROGRESS;
     //[END] Main element that will have the content for the new added element.
 
         newKIT.setAttribute("data-visible","1");
@@ -22,9 +23,7 @@ function addKIT(kit_type)
         newKIT.setAttribute("data-margin","0");
 
         //this i can pass parameters without EXECUTE the function FROM FIRST TIME.
-        newKIT.onclick = () => timeline_properties(COUNT_KIT_PROGRESS,newKIT.innerHTML);
-
-
+        newKIT.onclick = () => timeline_properties(currentkitID,newKIT.innerHTML);
 
 
 
@@ -34,7 +33,7 @@ function addKIT(kit_type)
         case 1:
             active_kit.push([COUNT_KIT_PROGRESS,NameKit(kit_type)]);
             newKIT.textContent = phrase1 + element1 ;
-            newParnewKITagraph.setAttribute("data-size","large");//specific font size for the label
+            newKIT.setAttribute("data-size","large");//specific font size for the label
             break;
 
         case 2:
@@ -42,6 +41,7 @@ function addKIT(kit_type)
             newKIT.textContent = phrase1 + element2 ;
             break;
     }
+
 
     //showing the current ARRAY that contains the kit's
     console.log(active_kit);
@@ -83,15 +83,17 @@ function timeline_properties(current_kit,current_details)
     LIVE_select_kit(current_kit);
 
     TimeLine_RemoveALLselected();//to remove current/previous selected timelineKIT
+    console.log(current_kit);
     GET_THE_KIT_ID("active_kit",current_kit).classList.add('MEselected');
+
     let current_visible_status = GET_THE_KIT_ID("active_kit",current_kit).dataset.visible;
     if(current_visible_status==1){
         document.getElementById("btn_visible").classList.remove('btn_unvisible');
-        document.getElementById('hidden_kit_visible').value="1";
+
     }
     else{
         document.getElementById("btn_visible").classList.add('btn_unvisible');
-        document.getElementById('hidden_kit_visible').value="0";
+
     }
 
 
@@ -244,18 +246,18 @@ function SAVINGtime(){
 
 
         //hidden_kit_visible
-        let visibility_status = document.getElementById('hidden_kit_visible');
         let kitID = hidden_kitID.value;
+        let visibility_status = GET_THE_KIT_ID("active_kit",kitID).dataset.visible;
 
         live_iframe.contentWindow.TOGGLEhiding(kitID);
 
-        if(visibility_status.value==1)
+        if(visibility_status =="1")
             {//in this case, it's visible, will be not visible in this code:
-            visibility_status.value="0";
+            visibility_status ="0";
             GET_THE_KIT_ID("active_kit",kitID).setAttribute("data-visible","0");
             }
             else{
-                visibility_status.value="1";
+                visibility_status ="1";
                 GET_THE_KIT_ID("active_kit",kitID).setAttribute("data-visible","1");
             }
             GET_THE_KIT_ID("active_kit",kitID).classList.toggle('not-visible-emoji');
