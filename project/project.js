@@ -397,7 +397,7 @@ function alignBUTTON(alignmentTYPE,alignmentELEMENT){
         let NewMargin = SizeElement.value;
         let kitID = hidden_kitID.value;
         live_iframe.contentWindow.UpdateMargin(kitID,NewMargin);
-
+        console.log(NewMargin);
         GET_THE_KIT_ID("active_kit",kitID).dataset.margin =NewMargin;
     }
 
