@@ -93,13 +93,6 @@
                         //Append the target element as a child of the new parent
                         newParent.appendChild(targetElement);
                     }
-
-
-
-
-
-
-
             }
             function UpdateImgSize(kitID,NewSize)
             {

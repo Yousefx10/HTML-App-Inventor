@@ -384,6 +384,8 @@ function alignBUTTON(alignmentTYPE,alignmentELEMENT){
         live_iframe.contentWindow.kitALIGNMENTbutton(kitID,KITalignment);
     }
 
+
+
     function UpdateColor(colorElement)
     {
         let NewColor = colorElement.value;
