@@ -114,7 +114,6 @@
              function UpdateMargin(kitID,NewSize)
             {
                 document.getElementById("live"+kitID).style.margin=NewSize+"px";
-                console.log("live is okay");
             }
             </script>
             </body>
