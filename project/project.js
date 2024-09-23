@@ -121,6 +121,8 @@ function timeline_properties(current_kit,current_details)
     let current_alignment_status = document.getElementById("active_kit"+current_kit).dataset.alignment;
     if(document.getElementById("active_kit"+current_kit).dataset.only=="button")//alignment for button
         reSHOWINGcorrectAlign(document.getElementById("alignBTN"+current_alignment_status));
+    else if(document.getElementById("active_kit"+current_kit).dataset.only=="img")
+        reSHOWINGcorrectAlign(document.getElementById("alignIMG"+current_alignment_status));
     else//text alignment
         reSHOWINGcorrectAlign(document.getElementById("align"+current_alignment_status));
 
@@ -135,6 +137,11 @@ function timeline_properties(current_kit,current_details)
     document.getElementById('FontSizeDropDown').disabled=true;
     document.getElementById('FontSizeDropDown').value = current_size;
     document.getElementById('FontSizeDropDown').disabled=false;
+
+    let current_img_size = document.getElementById("active_kit"+current_kit).dataset.size;
+    document.getElementById('ImageSize').disabled=true;
+    document.getElementById('ImageSize').value = current_img_size;
+    document.getElementById('ImageSize').disabled=false;
 
     let current_margin = document.getElementById("active_kit"+current_kit).dataset.margin;
     document.getElementById('MarginDropDown').disabled=true;
