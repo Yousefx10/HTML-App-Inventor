@@ -112,6 +112,14 @@
             {
                 document.getElementById("live"+kitID).style.margin=NewSize+"px";
             }
+            function UPDATEborder(kitID,BorderSize,BorderStyle,BorderColor)
+            {
+
+                document.getElementById("live"+kitID).style.borderWidth = BorderSize;
+                document.getElementById("live"+kitID).style.borderStyle = BorderStyle;
+                document.getElementById("live"+kitID).style.borderColor = BorderColor;
+                console.log(BorderSize + BorderStyle + BorderColor );
+            }
             </script>
             </body>
           </html>

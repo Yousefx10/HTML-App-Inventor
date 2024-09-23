@@ -129,38 +129,47 @@
                   <label>
 
                       Add Border
-                      <input type="checkbox" id="myCheckbox" onchange="handleCheckboxChange(event)">
+                      <input type="checkbox" id="myCheckbox" onchange="">
                   </label>
 
                   <br/>
 
-                  <label for="MarginDropDown">Border Type :</label>
-                  <select id="MarginDropDown" onchange="UpdateMargin(this)">
-                    <option value="" selected>Full</option>
-                    <option value="">Underline</option>
-                    <option value="" >Side</option>
+                  <label for="theBorderType">Border Type :</label>
+                  <select id="theBorderType" onchange="haveBORDER(this,1)">
+                    <option value="1" selected>Full</option>
+                    <option value="2">Underline</option>
+                    <option value="3" >Side</option>
                   </select>
 
                   <hr/>
 
-                  <label for="MarginDropDown">Border Color :</label>
-                  <select id="MarginDropDown" onchange="UpdateMargin(this)">
-                      <option value="" selected>Black</option>
-                      <option value="">Red</option>
-                      <option value="" >Blue</option>
-                      <option value="" >Yellow</option>
+                  <label for="theBorderColor">Border Color :</label>
+                  <select id="theBorderColor" onchange="haveBORDER(this,2)">
+                      <option value="black" selected>Black</option>
+                      <option value="red">Red</option>
+                      <option value="blue" >Blue</option>
+                      <option value="yellow" >Yellow</option>
                     </select>
 
                     <hr/>
 
-                    <label for="MarginDropDown">Border Style :</label>
-                    <select id="MarginDropDown" onchange="UpdateMargin(this)">
-                        <option value="" selected>Solid</option>
-                        <option value="">Double</option>
-                        <option value="" >Ridge</option>
-                        <option value="" >Dashed</option>
+                    <label for="theBorderStyle">Border Style :</label>
+                    <select id="theBorderStyle" onchange="haveBORDER(this,3)">
+                        <option value="solid" selected>Solid</option>
+                        <option value="double">Double</option>
+                        <option value="ridge" >Ridge</option>
+                        <option value="dashed" >Dashed</option>
                       </select>
                       <hr/>
+
+                      <label for="theBorderSize">Border Size :</label>
+                      <select id="theBorderSize" onchange="haveBORDER(this,4)">
+                          <option value="20px">Huge</option>
+                          <option value="10px">Large</option>
+                          <option value="5px" selected>Medium</option>
+                          <option value="2px" >Small</option>
+                        </select>
+                        <hr/>
               </div>
 
 

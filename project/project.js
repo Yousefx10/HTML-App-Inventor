@@ -23,6 +23,11 @@ function addKIT(kit_type)
         newKIT.setAttribute("data-margin","0");
         newKIT.setAttribute("data-only","text");
 
+        newKIT.setAttribute("data-border","0");
+        newKIT.setAttribute("data-border-type","0");
+        newKIT.setAttribute("data-border-color","black");
+        newKIT.setAttribute("data-border-style","solid");
+        newKIT.setAttribute("data-border-size","1px");
 
         //this i can pass parameters without EXECUTE the function FROM FIRST TIME.
         newKIT.onclick = () => timeline_properties(currentkitID,newKIT.innerHTML);
@@ -481,7 +486,41 @@ function handleFileUpload(event) {
     4) selecting the border style format.
 */
 
-function haveBORDER()
+function haveBORDER(borderVALUE,borderTYPE)
 {
+    let kitID = hidden_kitID.value;
+    let NewborderVALUE = borderVALUE.value;
+    switch(borderTYPE)
+    {
+        case 1:
 
+            GET_THE_KIT_ID("active_kit",kitID).dataset.borderType = NewborderVALUE;
+
+            break;
+        case 2:
+            GET_THE_KIT_ID("active_kit",kitID).dataset.borderColor = NewborderVALUE;
+            break;
+        case 3:
+            GET_THE_KIT_ID("active_kit",kitID).dataset.borderStyle = NewborderVALUE;
+            break;
+        case 4:
+            GET_THE_KIT_ID("active_kit",kitID).dataset.borderSize = NewborderVALUE;
+            break;
+    }
+let currentType = GET_THE_KIT_ID("active_kit",kitID).dataset.borderType;
+let currentSize = GET_THE_KIT_ID("active_kit",kitID).dataset.borderSize;
+
+let currentStyle = GET_THE_KIT_ID("active_kit",kitID).dataset.borderStyle;
+let currentColor = GET_THE_KIT_ID("active_kit",kitID).dataset.borderColor;
+
+    const Final_Type_Size = currentType === "1" ? currentSize :
+                            currentType === "2" ? "0 0 "+currentSize :
+                            currentType === "3" ? "0 0 0 "+currentSize :
+                            currentSize;//default value
+
+    //border: 1px solid #000;
+
+
+        //+GET_THE_KIT_ID("active_kit",kitID).dataset.borderType;
+    live_iframe.contentWindow.UPDATEborder(kitID,Final_Type_Size,currentStyle,currentColor);
 }
