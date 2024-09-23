@@ -57,7 +57,7 @@
                                            "left";//default answer
                 document.getElementById("live"+kitID).style.textAlign = NEWalignment_result;
             }
-            function kitALIGNMENTbutton(kitID,NEWalignment)
+            function kitALIGNMENTcontrol(kitID,NEWalignment)
             {
 
                 const targetElement = document.getElementById("live"+kitID);
@@ -66,7 +66,7 @@
                 const NEWalignment_result = NEWalignment === "1" ? "left" :
                                             NEWalignment === "2" ? "center" :
                                             NEWalignment === "3" ? "right" :
-                                           "left";//default answer
+                                           "left";//default value
 
                if (parentElement.classList.contains("parent_here"))
                 {

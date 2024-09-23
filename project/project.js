@@ -369,7 +369,8 @@ function SAVINGtime(){
 
 
     //ALIGN BUTTON
-function alignBUTTON(alignmentTYPE,alignmentELEMENT){
+    // renamed fron [alignBUTTON] TO [alignCONTROLS]
+function alignCONTROLS(alignmentTYPE,alignmentELEMENT){
 
         reSHOWINGcorrectAlign(alignmentELEMENT);
         let kitID = hidden_kitID.value;
@@ -388,7 +389,7 @@ function alignBUTTON(alignmentTYPE,alignmentELEMENT){
                 break;
         }
         let KITalignment =  GET_THE_KIT_ID("active_kit",kitID).dataset.alignment;
-        live_iframe.contentWindow.kitALIGNMENTbutton(kitID,KITalignment);
+        live_iframe.contentWindow.kitALIGNMENTcontrol(kitID,KITalignment);
     }
 
 
