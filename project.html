@@ -129,10 +129,12 @@
                   <label>
 
                       Add Border
-                      <input type="checkbox" id="myCheckbox" onchange="">
+                      <input type="checkbox" id="myCheckbox" onchange="EnableBorder(this.checked);">
                   </label>
 
                   <br/>
+<div id="bordersAll">
+
 
                   <label for="theBorderType">Border Type :</label>
                   <select id="theBorderType" onchange="haveBORDER(this,1)">
@@ -170,6 +172,7 @@
                           <option value="2px" >Small</option>
                         </select>
                         <hr/>
+</div>
               </div>
 
 

@@ -23,6 +23,10 @@ let SAVEbtn = document.getElementById("Save_button");
 
 let infoParagraph = document.getElementById("infoP");
 
+//current borders group without the checkbox
+let bordersAll = document.getElementById("bordersAll");
+
+
 //HINT SECTION
 const kit_HINTS = ["",
     "This is a label which makes you to print out something",    //for Label (1)

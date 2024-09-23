@@ -524,3 +524,17 @@ let currentColor = GET_THE_KIT_ID("active_kit",kitID).dataset.borderColor;
         //+GET_THE_KIT_ID("active_kit",kitID).dataset.borderType;
     live_iframe.contentWindow.UPDATEborder(kitID,Final_Type_Size,currentStyle,currentColor);
 }
+
+
+function EnableBorder(CurrentBorderStatus)
+{
+
+    if(CurrentBorderStatus)
+        {
+            bordersAll.style.display="none";
+        }
+    else
+        {
+            bordersAll.style.display="block";
+        }
+}
