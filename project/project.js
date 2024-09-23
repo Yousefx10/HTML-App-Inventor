@@ -481,6 +481,13 @@ window.onload = function() {
     elements.forEach(element => {
         element.dataset.hint=kit_HINTS[element.dataset.hint];
     });
+
+
+    fetch('blocks/toolkit.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('fetchContainer').innerHTML = data;
+        });
 };
 
 
