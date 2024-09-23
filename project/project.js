@@ -24,10 +24,10 @@ function addKIT(kit_type)
         newKIT.setAttribute("data-only","text");
 
         newKIT.setAttribute("data-border","0");
-        newKIT.setAttribute("data-border-type","0");
+        newKIT.setAttribute("data-border-type","1");
         newKIT.setAttribute("data-border-color","black");
         newKIT.setAttribute("data-border-style","solid");
-        newKIT.setAttribute("data-border-size","1px");
+        newKIT.setAttribute("data-border-size","2px");
 
         //this i can pass parameters without EXECUTE the function FROM FIRST TIME.
         newKIT.onclick = () => timeline_properties(currentkitID,newKIT.innerHTML);
@@ -153,6 +153,44 @@ function timeline_properties(current_kit,current_details)
     document.getElementById('MarginDropDown').value = current_margin;
     document.getElementById('MarginDropDown').disabled=false;
 
+
+
+//BORDER AREA
+let current_Border_status = document.getElementById("active_kit"+current_kit).dataset.border;
+console.log(current_Border_status);
+if(current_Border_status=="1")
+    {
+
+        bordersCHECKbox.checked=true;
+    }
+    else{
+        bordersCHECKbox.checked=false;
+    }
+
+    EnableBorder(bordersCHECKbox.checked);
+
+
+
+let current_BorderType = document.getElementById("active_kit"+current_kit).dataset.borderType;
+        document.getElementById('theBorderType').disabled=true;
+        document.getElementById('theBorderType').value = current_BorderType;
+        document.getElementById('theBorderType').disabled=false;
+
+        let current_BorderColor = document.getElementById("active_kit"+current_kit).dataset.borderColor;
+        document.getElementById('theBorderColor').disabled=true;
+        document.getElementById('theBorderColor').value = current_BorderColor;
+        document.getElementById('theBorderColor').disabled=false;
+
+        let current_BorderStyle = document.getElementById("active_kit"+current_kit).dataset.borderStyle;
+        document.getElementById('theBorderStyle').disabled=true;
+        document.getElementById('theBorderStyle').value = current_BorderStyle;
+        document.getElementById('theBorderStyle').disabled=false;
+
+
+        let current_BorderSize = document.getElementById("active_kit"+current_kit).dataset.borderSize;
+        document.getElementById('theBorderSize').disabled=true;
+        document.getElementById('theBorderSize').value = current_BorderSize;
+        document.getElementById('theBorderSize').disabled=false;
 
 //THIS LOOP IS TO HIDE ALL PROPERTIES THAT "MIGHT BE ONLY GOOD WITH SPECIFIC KIT".
     const elements = document.querySelectorAll('.only-option');
@@ -529,12 +567,27 @@ let currentColor = GET_THE_KIT_ID("active_kit",kitID).dataset.borderColor;
 function EnableBorder(CurrentBorderStatus)
 {
     let kitID = hidden_kitID.value;
+
+    let currentType = GET_THE_KIT_ID("active_kit",kitID).dataset.borderType;
+    let currentSize = GET_THE_KIT_ID("active_kit",kitID).dataset.borderSize;
+
+    let currentStyle = GET_THE_KIT_ID("active_kit",kitID).dataset.borderStyle;
+    let currentColor = GET_THE_KIT_ID("active_kit",kitID).dataset.borderColor;
+    const Final_Type_Size = currentType === "1" ? currentSize :
+                            currentType === "2" ? "0 0 "+currentSize :
+                            currentType === "3" ? "0 0 0 "+currentSize :
+                            currentSize;//default value
+
+
     if(CurrentBorderStatus)
         {
             bordersAll.style.display="block";
             GET_THE_KIT_ID("active_kit",kitID).dataset.border="1";
             //haveBORDER(1,1);
-            live_iframe.contentWindow.UPDATEborder(kitID,"2px","solid","black");
+            live_iframe.contentWindow.UPDATEborder(kitID,
+                Final_Type_Size,
+                currentStyle,
+                currentColor);
         }
     else
         {

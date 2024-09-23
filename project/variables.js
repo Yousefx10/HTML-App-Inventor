@@ -26,6 +26,8 @@ let infoParagraph = document.getElementById("infoP");
 //current borders group without the checkbox
 let bordersAll = document.getElementById("bordersAll");
 
+let bordersCHECKbox = document.getElementById("border_checkBox");
+
 
 //HINT SECTION
 const kit_HINTS = ["",
