@@ -150,7 +150,11 @@ function timeline_properties(current_kit,current_details)
 //THIS LINE HELPS TO ONLY SHOW THE "PROPERTIES" THAT'S ONLY GOOD FOR INDIVIDUAL KIT.
     document.getElementById("only-"+GET_THE_KIT_ID("active_kit",current_kit).dataset.only)
         .classList.remove("only-hide");
-
+let checkGENERAL_only_value =GET_THE_KIT_ID("active_kit",current_kit).dataset.only;
+if( checkGENERAL_only_value =="text" || checkGENERAL_only_value =="button"){
+    document.getElementById("only-general")
+        .classList.remove("only-hide");
+}
 }
 
 
