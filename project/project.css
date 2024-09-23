@@ -139,7 +139,10 @@ text-align:center;
 .btn_unvisible{
     background-color:orangered !important;
 }
-
+.btn_unvisible::before{
+/*Converting the word 'visible' to 'unvisible' */
+    content : "un";
+}
 
 
 .btn_alignment{
