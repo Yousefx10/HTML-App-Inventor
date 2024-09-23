@@ -109,7 +109,11 @@ function timeline_properties(current_kit,current_details)
 
 
     let current_alignment_status = document.getElementById("active_kit"+current_kit).dataset.alignment;
-    reSHOWINGcorrectAlign(document.getElementById("align"+current_alignment_status));
+    if(document.getElementById("active_kit"+current_kit).dataset.only=="button")//alignment for button
+        reSHOWINGcorrectAlign(document.getElementById("alignBTN"+current_alignment_status));
+    else//text alignment
+        reSHOWINGcorrectAlign(document.getElementById("align"+current_alignment_status));
+
 
 
     let current_color = document.getElementById("active_kit"+current_kit).dataset.color;
@@ -317,6 +321,8 @@ function SAVINGtime(){
         live_iframe.contentWindow.kitALIGNMENT(kitID,KITalignment);
     }
 
+
+
     function reSHOWINGcorrectAlign(alignmentELEMENT){
         const elements = document.querySelectorAll('.btn_alignment-SELECTED'); // Select all matching elements
 
@@ -325,6 +331,8 @@ function SAVINGtime(){
         });
         alignmentELEMENT.classList.toggle('btn_alignment-SELECTED');
     }
+
+
     //ALIGN BUTTON
 function alignBUTTON(alignmentTYPE,alignmentELEMENT){
 

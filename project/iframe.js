@@ -11,7 +11,6 @@
              *{margin:0}
              .MEselected{background:green;color:white;}
              .hide{display:none;}
-             .alignment-button-left{text-align:left;}
              .alignment-button-center{text-align:center;}
              .alignment-button-right{text-align:right;}
              </style>
