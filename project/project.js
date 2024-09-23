@@ -192,6 +192,8 @@ function live_iframe_add(KITtype,KITcontent="",kitID,change=false) {
                 else
                     neWelement.alt = KITcontent;
 
+                    neWelement.style.fontSize=GET_THE_KIT_ID("active_kit",kitID).dataset.size;
+
                 // Append the new <p> element to the body or a specific element
                 iframeDoc.body.appendChild(neWelement); // This appends it to the body
 
