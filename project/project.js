@@ -47,6 +47,11 @@ function addKIT(kit_type)
             newKIT.textContent = phrase2 ;
             newKIT.setAttribute("data-only","button");
             break;
+        case 4:
+            active_kit.push([COUNT_KIT_PROGRESS,NameKit(kit_type)]);
+            newKIT.textContent = phrase3 ;
+            newKIT.setAttribute("data-only","img");
+            break;
     }
 
 
@@ -65,6 +70,7 @@ function NameKit(kit_num)
     //1 : label
     //2 : text
     //3 : Button
+    //4 : Picture
 
     switch(kit_num){
         case 1:
@@ -74,7 +80,10 @@ function NameKit(kit_num)
             return element2;
             break;
         case 3:
-            return element2;
+            return element3;
+            break;
+        case 4:
+            return element4;
             break;
     }
 }
@@ -159,7 +168,7 @@ function live_iframe_add(KITtype,KITcontent="",kitID,change=false) {
             }
             else{
                 var elementKITtype="span";//as default unknown type
-
+                let notTEXABLE=false;
                 switch(KITtype){
                     case 1:
                         elementKITtype ="h3";
@@ -170,11 +179,18 @@ function live_iframe_add(KITtype,KITcontent="",kitID,change=false) {
                     case 3:
                         elementKITtype ="button";
                         break;
+                    case 4:
+                        elementKITtype ="img";
+                        notTEXABLE=true;
+                        break;
                 }
 
                 const neWelement = document.createElement(elementKITtype);
                 neWelement.id="live" + kitID;
+                if(!notTEXABLE)
                 neWelement.textContent = KITcontent;
+                else
+                    neWelement.alt = KITcontent;
 
                 // Append the new <p> element to the body or a specific element
                 iframeDoc.body.appendChild(neWelement); // This appends it to the body
