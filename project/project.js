@@ -51,6 +51,7 @@ function addKIT(kit_type)
             active_kit.push([COUNT_KIT_PROGRESS,NameKit(kit_type)]);
             newKIT.textContent = phrase3 ;
             newKIT.setAttribute("data-only","img");
+            newKIT.setAttribute("data-size","100%");
             break;
     }
 
@@ -141,7 +142,6 @@ function timeline_properties(current_kit,current_details)
     document.getElementById('MarginDropDown').disabled=false;
 
 
-
 //THIS LOOP IS TO HIDE ALL PROPERTIES THAT "MIGHT BE ONLY GOOD WITH SPECIFIC KIT".
     const elements = document.querySelectorAll('.only-option');
     elements.forEach(element => {
@@ -150,11 +150,13 @@ function timeline_properties(current_kit,current_details)
 //THIS LINE HELPS TO ONLY SHOW THE "PROPERTIES" THAT'S ONLY GOOD FOR INDIVIDUAL KIT.
     document.getElementById("only-"+GET_THE_KIT_ID("active_kit",current_kit).dataset.only)
         .classList.remove("only-hide");
-let checkGENERAL_only_value =GET_THE_KIT_ID("active_kit",current_kit).dataset.only;
-if( checkGENERAL_only_value =="text" || checkGENERAL_only_value =="button"){
-    document.getElementById("only-general")
-        .classList.remove("only-hide");
-}
+
+   //this line is made only to check whether the "general" properties like [font-size AND color] are needed for the current kit
+    let checkGENERAL_only_value =GET_THE_KIT_ID("active_kit",current_kit).dataset.only;
+    if( checkGENERAL_only_value =="text" || checkGENERAL_only_value =="button"){
+        document.getElementById("only-general")
+            .classList.remove("only-hide");
+    }
 }
 
 
@@ -194,7 +196,11 @@ function live_iframe_add(KITtype,KITcontent="",kitID,change=false) {
                 if(!notTEXABLE)
                 neWelement.textContent = KITcontent;
                 else
-                    neWelement.alt = KITcontent;
+                    {
+                        neWelement.alt = KITcontent;
+                        neWelement.style.maxWidth=GET_THE_KIT_ID("active_kit",kitID).dataset.size;
+                    }
+
 
                     neWelement.style.fontSize=GET_THE_KIT_ID("active_kit",kitID).dataset.size;
 
@@ -404,6 +410,15 @@ function alignBUTTON(alignmentTYPE,alignmentELEMENT){
         GET_THE_KIT_ID("active_kit",kitID).dataset.margin =NewMargin;
     }
 
+    function UpdateImgSize(SizeElement)
+    {
+        let NewSize = SizeElement.value;
+        let kitID = hidden_kitID.value;
+        live_iframe.contentWindow.UpdateImgSize(kitID,NewSize);
+        GET_THE_KIT_ID("active_kit",kitID).dataset.size =NewSize;
+    }
+
+
 function showHINT(HINT){
         infoParagraph.style.display="block";
         infoParagraph.innerHTML=HINT;
@@ -436,8 +451,10 @@ function handleFileUpload(event) {
                 img.src = e.target.result;
 
                 //img.style.display = 'block'; // Show the image
-                img.style.maxWidth  = '250px'; // Show the image
+                //img.style.maxWidth  = '250px'; // Show the image
             };
             reader.readAsDataURL(file); // Read the file as a data URL
+            // Reset the input value to allow re-uploading the same file
+            event.target.value = '';
         }
     }

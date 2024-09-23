@@ -64,11 +64,20 @@
                 <span class='btn_alignment'  onclick="alignBUTTON(3,this);" id="alignBTN3">Right</span>
                 <hr/>
             </div>
+
             <div class="only-hide only-option" id="only-img">
                 <label class="upload-btn">
                     Upload Picture
                     <input type="file" accept="image/*" onchange="handleFileUpload(event)">
                 </label>
+
+                <hr/>
+                <label for="ImageSize">Image Size :</label>
+                <select id="ImageSize" onchange="UpdateImgSize(this)">
+                  <option value="100%">100% From Screen</option>
+                  <option value="50%">50% From Screen </option>
+                  <option value="200px">Small</option>
+                </select>
 
                 <hr/>
             </div>
