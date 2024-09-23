@@ -528,13 +528,19 @@ let currentColor = GET_THE_KIT_ID("active_kit",kitID).dataset.borderColor;
 
 function EnableBorder(CurrentBorderStatus)
 {
-
+    let kitID = hidden_kitID.value;
     if(CurrentBorderStatus)
         {
-            bordersAll.style.display="none";
+            bordersAll.style.display="block";
+            GET_THE_KIT_ID("active_kit",kitID).dataset.border="1";
+            //haveBORDER(1,1);
+            live_iframe.contentWindow.UPDATEborder(kitID,"2px","solid","black");
         }
     else
         {
-            bordersAll.style.display="block";
+            bordersAll.style.display="none";
+            GET_THE_KIT_ID("active_kit",kitID).dataset.border="0";
+            //haveBORDER(1,1);
+            live_iframe.contentWindow.UPDATEborder(kitID,"0","solid","black");
         }
 }
