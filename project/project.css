@@ -183,4 +183,25 @@ color:mediumseagreen;
 .only-hide{
     display:none;
 }
-/*ONLY SECTION*/
+/*ONLY SECTION
+ */
+
+
+
+/* Style the file input to look like a button */
+        .upload-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        /* Hide the actual file input */
+        input[type="file"] {
+            display: none;
+        }
+* 
