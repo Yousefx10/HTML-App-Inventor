@@ -412,3 +412,27 @@ window.onload = function() {
         element.dataset.hint=kit_HINTS[element.dataset.hint];
     });
 };
+
+
+function handleFileUpload(event) {
+        const file = event.target.files[0];
+
+        let kitID = hidden_kitID.value;
+
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+
+                const iframe = live_iframe;
+                const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+
+
+                const img = live_iframe.contentWindow.document.getElementById('live'+kitID);
+                img.src = e.target.result;
+
+                //img.style.display = 'block'; // Show the image
+                img.style.maxWidth  = '250px'; // Show the image
+            };
+            reader.readAsDataURL(file); // Read the file as a data URL
+        }
+    }

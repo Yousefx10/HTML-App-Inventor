@@ -69,26 +69,7 @@
                     Upload Picture
                     <input type="file" accept="image/*" onchange="handleFileUpload(event)">
                 </label>
-                <script>
-                    function handleFileUpload(event) {
-                        const file = event.target.files[0];
-                        if (file) {
-                            const reader = new FileReader();
-                            reader.onload = function(e) {
 
-                                const iframe = live_iframe;
-                                const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
-
-
-                                const img = live_iframe.contentWindow.document.getElementById('live0');
-                                img.src = e.target.result;
-
-                                img.style.display = 'block'; // Show the image
-                            };
-                            reader.readAsDataURL(file); // Read the file as a data URL
-                        }
-                    }
-                </script>
                 <hr/>
             </div>
 
