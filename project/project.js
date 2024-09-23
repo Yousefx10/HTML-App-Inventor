@@ -62,7 +62,7 @@ function addKIT(kit_type)
 
 
     //showing the current ARRAY that contains the kit's
-    console.log(active_kit);
+    // console.log(active_kit);
     //finally, adding the kit to the timeline box.
     project_timeline.appendChild(newKIT);
     live_iframe_add(kit_type,newKIT.textContent,COUNT_KIT_PROGRESS);
@@ -157,15 +157,12 @@ function timeline_properties(current_kit,current_details)
 
 //BORDER AREA
 let current_Border_status = document.getElementById("active_kit"+current_kit).dataset.border;
-console.log(current_Border_status);
-if(current_Border_status=="1")
-    {
 
-        bordersCHECKbox.checked=true;
-    }
-    else{
+
+if(current_Border_status=="1")
+    bordersCHECKbox.checked=true;
+    else
         bordersCHECKbox.checked=false;
-    }
 
     EnableBorder(bordersCHECKbox.checked);
 
