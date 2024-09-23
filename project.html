@@ -125,6 +125,44 @@
               </select>
               <hr/>
 
+              <div>
+                  <label>
+
+                      Add Border
+                      <input type="checkbox" id="myCheckbox" onchange="handleCheckboxChange(event)">
+                  </label>
+
+                  <br/>
+
+                  <label for="MarginDropDown">Border Type :</label>
+                  <select id="MarginDropDown" onchange="UpdateMargin(this)">
+                    <option value="" selected>Full</option>
+                    <option value="">Underline</option>
+                    <option value="" >Side</option>
+                  </select>
+
+                  <hr/>
+
+                  <label for="MarginDropDown">Border Color :</label>
+                  <select id="MarginDropDown" onchange="UpdateMargin(this)">
+                      <option value="" selected>Black</option>
+                      <option value="">Red</option>
+                      <option value="" >Blue</option>
+                      <option value="" >Yellow</option>
+                    </select>
+
+                    <hr/>
+
+                    <label for="MarginDropDown">Border Style :</label>
+                    <select id="MarginDropDown" onchange="UpdateMargin(this)">
+                        <option value="" selected>Solid</option>
+                        <option value="">Double</option>
+                        <option value="" >Ridge</option>
+                        <option value="" >Dashed</option>
+                      </select>
+                      <hr/>
+              </div>
+
 
     </div>
 

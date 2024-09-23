@@ -468,3 +468,20 @@ function handleFileUpload(event) {
             event.target.value = '';
         }
     }
+
+/*  Border Type [setting values]:
+    - none :default. [this will be as default when the checkbox is false]
+    - full : like box.
+    - underline : bottom line.
+    -one side : with background color.
+
+    1) check-box to have a border or not.
+    2) selecting the border type.
+    3) selecting the border color.
+    4) selecting the border style format.
+*/
+
+function haveBORDER()
+{
+
+}
