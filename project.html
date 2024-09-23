@@ -66,12 +66,21 @@
             </div>
 
             <div class="only-hide only-option" id="only-img">
+
+
+                <span>Image Alignment</span>
+                <span class='btn_alignment btn_alignment-SELECTED' onclick="alignCONTROLS(1,this);" id="alignIMG1">Left</span>
+                <span class='btn_alignment'  onclick="alignCONTROLS(2,this);" id="alignIMG2">Center</span>
+                <span class='btn_alignment'  onclick="alignCONTROLS(3,this);" id="alignIMG3">Right</span>
+                <hr/>
+
                 <label class="upload-btn">
                     Upload Picture
                     <input type="file" accept="image/*" onchange="handleFileUpload(event)">
                 </label>
 
                 <hr/>
+
                 <label for="ImageSize">Image Size :</label>
                 <select id="ImageSize" onchange="UpdateImgSize(this)">
                   <option value="100%">100% From Screen</option>
@@ -81,11 +90,8 @@
 
                 <hr/>
 
-                <span>Image Alignment</span>
-                <span class='btn_alignment btn_alignment-SELECTED' onclick="alignCONTROLS(1,this);" id="alignIMG1">Left</span>
-                <span class='btn_alignment'  onclick="alignCONTROLS(2,this);" id="alignIMG2">Center</span>
-                <span class='btn_alignment'  onclick="alignCONTROLS(3,this);" id="alignIMG3">Right</span>
-                <hr/>
+
+
             </div>
 
 
