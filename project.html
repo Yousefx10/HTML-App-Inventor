@@ -35,7 +35,7 @@
             <button id="Remove_button" onclick="REMOVINGtime();" title="Delete The Entire Kit" disabled>Remove</button>
             <!--REMOVE BUTTON-->
 
-            
+
             <!--SAVE BUTTON-->
             <button id="Save_button" onclick="SAVINGtime();" title="Save Your New Changes" disabled>Save</button>
             <!--SAVE BUTTON-->
@@ -87,16 +87,11 @@
               <hr/>
 
               <div class="only-hide only-option" id="only-button">
-                  <script>
-                      //here what you have to do:
-                      //i just created this <script> to write a comment line easly
-                      //just work on this section without any worries
-                      //add new properties specific only for button.
-                      //think also how to center it.
-                      //bye
-                  </script>
-                  <span>settings only for button</span>
-                  <button>test</button>
+
+                  <span>Button Alignment</span>
+                  <span class='btn_alignment btn_alignment-SELECTED' onclick="alignBUTTON(1,this);" id="alignBTN1">Left</span>
+                  <span class='btn_alignment'  onclick="alignBUTTON(2,this);" id="alignBTN2">Center</span>
+                  <span class='btn_alignment'  onclick="alignBUTTON(3,this);" id="alignBTN3">Right</span>
               </div>
     </div>
 

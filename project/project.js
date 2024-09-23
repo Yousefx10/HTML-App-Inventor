@@ -325,8 +325,28 @@ function SAVINGtime(){
         });
         alignmentELEMENT.classList.toggle('btn_alignment-SELECTED');
     }
+    //ALIGN BUTTON
+function alignBUTTON(alignmentTYPE,alignmentELEMENT){
 
+        reSHOWINGcorrectAlign(alignmentELEMENT);
+        let kitID = hidden_kitID.value;
 
+        switch(alignmentTYPE){
+            case 1://IT'S LEFT
+                GET_THE_KIT_ID("active_kit",kitID).dataset.alignment ="1";
+                break;
+
+            case 2://IT'S CENTER
+                GET_THE_KIT_ID("active_kit",kitID).dataset.alignment ="2";
+                break;
+
+            case 3://IT'S RIGHT
+                GET_THE_KIT_ID("active_kit",kitID).dataset.alignment ="3";
+                break;
+        }
+        let KITalignment =  GET_THE_KIT_ID("active_kit",kitID).dataset.alignment;
+        live_iframe.contentWindow.kitALIGNMENTbutton(kitID,KITalignment);
+    }
 
     function UpdateColor(colorElement)
     {

@@ -11,6 +11,9 @@
              *{margin:0}
              .MEselected{background:green;color:white;}
              .hide{display:none;}
+             .alignment-button-left{text-align:left;}
+             .alignment-button-center{text-align:center;}
+             .alignment-button-right{text-align:right;}
              </style>
             </head>
             <body id="updateME">
@@ -54,6 +57,50 @@
                                             NEWalignment === "3" ? "right" :
                                            "left";//default answer
                 document.getElementById("live"+kitID).style.textAlign = NEWalignment_result;
+            }
+            function kitALIGNMENTbutton(kitID,NEWalignment)
+            {
+
+                const targetElement = document.getElementById("live"+kitID);
+                const parentElement = targetElement.parentNode;
+
+                const NEWalignment_result = NEWalignment === "1" ? "left" :
+                                            NEWalignment === "2" ? "center" :
+                                            NEWalignment === "3" ? "right" :
+                                           "left";//default answer
+
+               if (parentElement.classList.contains("parent_here"))
+                {
+                        if(NEWalignment_result=="left")
+                            {
+
+                                parentElement.parentNode.replaceChild(targetElement, parentElement);
+                                return;
+                            }
+
+                            parentElement.classList.remove("alignment-button-center");
+                            parentElement.classList.remove("alignment-button-right");
+                            parentElement.classList.add("alignment-button-"+NEWalignment_result);
+
+                }
+                else{
+                        const newParent = document.createElement("div");
+                        newParent.classList.add("alignment-button-"+NEWalignment_result);
+                        newParent.classList.add("parent_here");// a tag to know that it's already have a parent
+
+                        //Replace the target element with the new parent
+                        targetElement.parentNode.replaceChild(newParent, targetElement);
+
+                        //Append the target element as a child of the new parent
+                        newParent.appendChild(targetElement);
+                    }
+
+
+
+
+
+
+
             }
 
             function UpdateColor(kitID,newColor)
