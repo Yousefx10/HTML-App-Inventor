@@ -25,8 +25,9 @@ let infoParagraph = document.getElementById("infoP");
 
 //HINT SECTION
 const kit_HINTS = ["",
-    "This is a label wich makes you to print out something",    //for Label (1)
-    "This is a text which helps you to display a longer texts"  //for Text  (2)
+    "This is a label which makes you to print out something",    //for Label (1)
+    "This is a text which helps you to display a longer texts",  //for Text  (2)
+    "This is a button which enables you to click on it and run some functions"  //for Text  (2)
 ];
 
 const DATA_ONLY =[
