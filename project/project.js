@@ -9,7 +9,6 @@ window.onload = function() {
         const elements = document.querySelectorAll('.hint');
         elements.forEach(element => {
             element.dataset.hint=kit_HINTS[element.dataset.hint];
-            console.log("what the heck");
         });
     
 };

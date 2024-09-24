@@ -214,6 +214,10 @@
         -Switch Page
         -Storage
         -->
+
+    <?php
+        include('project/blocks/toolkit.html');
+    ?>
     </div>
 
 
