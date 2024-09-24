@@ -7,7 +7,7 @@
     </head>
     <body>
 
-<div id='project_container'>
+<div id='project_container' class="additionalProjectContainer">
 
 
 
@@ -225,6 +225,33 @@
 
 </div>
 
+<button class="functionBTN" onclick="switchScreen();">
+Code Workspace⬇️
+</button>
+
+<div id="CodeWorkspace">
+hello world
+    <button class="functionBTN" onclick="switchScreen();">
+    Code Workspace⬆️
+    </button>
+</div>
+
+<script>
+function switchScreen()
+{
+    const screen1 = document.getElementById('project_container');
+    const screen2 = document.getElementById('CodeWorkspace');
+
+    // Toggle classes to switch screens
+    if (screen1.style.transform === 'translateY(-100%)') {
+        screen1.style.transform = 'translateY(0)'; // Move screen 1 back
+        screen2.style.transform = 'translateY(100%)'; // Move screen 2 off screen
+    } else {
+        screen1.style.transform = 'translateY(-100%)'; // Move screen 1 up
+        screen2.style.transform = 'translateY(0)'; // Move screen 2 into view
+    }
+}
+</script>
 
 <script src="project/variables.js"></script>
 <script src="project/iframe.js"></script>
