@@ -229,12 +229,7 @@
 Code Workspace⬇️
 </button>
 
-<div id="CodeWorkspace">
-hello world
-    <button class="functionBTN" onclick="switchScreen();">
-    Code Workspace⬆️
-    </button>
-</div>
+<?php include "project/blocks/workspace.html"?>
 
 <script>
 function switchScreen()
