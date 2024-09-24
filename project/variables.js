@@ -34,7 +34,8 @@ const kit_HINTS = ["",
     "This is a label which makes you to print out something",    //for Label (1)
     "This is a text which helps you to display a longer texts",  //for Text  (2)
     "This is a button which enables you to click on it and run some functions",  //for Button  (3)
-    "Allows You To Insert Images"  //for Picture  (4)
+    "Allows You To Insert Images",  //for Picture  (4)
+    "Get a running timer"  //for Timer  (5)
 ];
 
 const DATA_ONLY =[
@@ -53,6 +54,7 @@ const DATA_ONLY =[
 const phrase1 = "You've Added a ";
 const phrase2 = "Click Me";
 const phrase3 = "Image Area";
+const phrase4 = "Running";
 
 //kit type instructions :
 //1 : label
@@ -63,4 +65,5 @@ const element1 = "Label";
 const element2 = "Text";
 const element3 = "Button";
 const element4 = "Picture";
+const element5 = "Timer";
 //[[DEFAULT VARIABLES ARENA]]

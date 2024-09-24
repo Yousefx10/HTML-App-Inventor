@@ -6,11 +6,11 @@ function GET_THE_KIT_ID(prefix_name,kitID){
 window.onload = function() {
 
     //will use the ON LOAD func to re assign the HINTS to all the kit's
-        const elements = document.querySelectorAll('.hint');
-        elements.forEach(element => {
-            element.dataset.hint=kit_HINTS[element.dataset.hint];
-        });
-    
+    const elements = document.querySelectorAll('.hint');
+    elements.forEach(element => {
+        element.dataset.hint=kit_HINTS[element.dataset.hint];
+    });
+
 };
 
 
@@ -67,6 +67,10 @@ function addKIT(kit_type)
             newKIT.setAttribute("data-only","img");
             newKIT.setAttribute("data-size","100%");
             break;
+        case 5:
+            active_kit.push([COUNT_KIT_PROGRESS,NameKit(kit_type)]);
+            newKIT.textContent = phrase4 + element5 ;
+            break;
     }
 
 
@@ -99,6 +103,9 @@ function NameKit(kit_num)
             break;
         case 4:
             return element4;
+            break;
+        case 5:
+            return element5;
             break;
     }
 }
@@ -244,6 +251,9 @@ function live_iframe_add(KITtype,KITcontent="",kitID,change=false) {
                     case 4:
                         elementKITtype ="img";
                         notTEXABLE=true;
+                        break;
+                    case 5:
+                        elementKITtype ="p";
                         break;
                 }
 
