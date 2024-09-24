@@ -214,26 +214,53 @@
         -Switch Page
         -Storage
         -->
-        <div id="fetchContainer">
+<div id="fetchContainer">
 
-        </div>
-
-
+</div>
 
 
-        <div id="infoDIV">
-            <p id="infoP" style="display:none">Any Kit's Information Will Be Displayed Here</p>
-        </div>
+
+
+
     </div>
 
 
 
 
 </div>
+<script>
+    window.onload = function() {
 
 
-<script src="project/variables.js"></script>
-<script src="project/iframe.js"></script>
-<script src="project/project.js"></script>
+    }
+    function loadContent(id, file) {
+            fetch(file)
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById(id).innerHTML = data;
+                })
+                .catch(error => console.error('Error loading content:', error));
+
+            let script = document.createElement('script');
+            let script2 = document.createElement('script');
+            let script3 = document.createElement('script');
+
+            script.src = 'project/variables.js';// Load external script if needed
+            document.body.appendChild(script);
+
+            script2.src = 'project/iframe.js';
+            // Load external script if needed
+            document.body.appendChild(script2);
+
+            script3.src = 'project/project.js'; // Load external script if needed
+            document.body.appendChild(script3);
+        }
+
+        loadContent('fetchContainer', 'project/blocks/toolkit.html');
+</script>
+
+<!--<script src="project/variables.js"></script>-->
+<!--<script src="project/iframe.js"></script>-->
+<!--<script src="project/project.js"></script>-->
     </body>
 </html>

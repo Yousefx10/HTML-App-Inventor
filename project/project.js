@@ -3,6 +3,15 @@ function GET_THE_KIT_ID(prefix_name,kitID){
     return document.getElementById(prefix_name+kitID);
 }
 
+window.onload = function() {
+};
+
+//will use the ON LOAD func to re assign the HINTS to all the kit's
+    const elements = document.querySelectorAll('.hint');
+    elements.forEach(element => {
+        element.dataset.hint=kit_HINTS[element.dataset.hint];
+        console.log("what the heck");
+    });
 
 
 //[FUNCTIONS] Area
@@ -474,21 +483,7 @@ function showHINT(HINT){
         infoParagraph.innerHTML=HINT;
     }
 
-window.onload = function() {
 
-    //will use the ON LOAD func to re assign the HINTS to all the kit's
-    const elements = document.querySelectorAll('.hint');
-    elements.forEach(element => {
-        element.dataset.hint=kit_HINTS[element.dataset.hint];
-    });
-
-
-    fetch('blocks/toolkit.html')
-        .then(response => response.text())
-        .then(data => {
-            document.getElementById('fetchContainer').innerHTML = data;
-        });
-};
 
 
 function handleFileUpload(event) {
