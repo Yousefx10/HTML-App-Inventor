@@ -4,6 +4,7 @@
         <meta charset="UTF-8"/>
         <title>Build Up Your App</title>
         <link rel="stylesheet" href="project/project.css"/>
+        <link rel="stylesheet" href="project/workspace.css"/>
     </head>
     <body>
 

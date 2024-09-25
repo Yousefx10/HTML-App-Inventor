@@ -2,6 +2,9 @@
 function GET_THE_KIT_ID(prefix_name,kitID){
     return document.getElementById(prefix_name+kitID);
 }
+//This should run so if the page got scrolled, it won't stuck in the middle.
+window.history.scrollRestoration = 'manual';
+
 
 window.onload = function() {
 

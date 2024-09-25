@@ -1,3 +1,36 @@
 #workspaceContainer{
-    background: white;
+    background: red;
+    height: 80%;
+    margin-bottom: 5px;
+
+
+    display: flex; /* Enables Flexbox */
+    flex-wrap: wrap; /* Allows wrapping to the next line if necessary */
+    gap: 10px; /* Adds space between sections */
+    align-content: flex-start; /* Aligns items to the top of the container */
+
+}
+
+#statusBAR{
+    background: #0090ff;
+    width: 100%;
+    min-height: 10%;
+    max-height: 15%;
+}
+
+.workspaceDIV{
+    height: 80%;
+    width:22%;
+    min-width: 150px;
+    /*background-color: #586b7a;*/
+
+    flex: 1 1 calc(25% - 10px); /* Each section takes up 25% of the container width */
+    background-color: #f2f2f2; /* Background color */
+    display: flex; /* Center content inside */
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    box-sizing: border-box;
 }
