@@ -38,3 +38,12 @@
 #kit_space,#event_space,#actions_space{
     flex: 1 1 calc(15%);
 }
+
+.event_item{
+    color:green;
+    cursor: pointer;
+}
+
+.event_item:hover{
+    background-color: darkseagreen;
+}
