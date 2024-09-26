@@ -38,13 +38,6 @@ const kit_HINTS = ["",
     "Get a running timer"  //for Timer  (5)
 ];
 
-const DATA_ONLY =[
-    "all",
-    "button"
-];
-
-
-
 
 
 

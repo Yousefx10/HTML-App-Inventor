@@ -27,7 +27,7 @@
     flex: 1 1 calc(50%); /* Each section takes up 25% of the container width */
     background-color: #f2f2f2; /* Background color */
     display: flex; /* Center content inside */
-    align-items: center;
+    /*align-items: center;*/
     justify-content: center;
     border: 1px solid #ccc;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);

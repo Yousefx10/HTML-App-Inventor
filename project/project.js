@@ -72,7 +72,7 @@ function addKIT(kit_type)
             break;
         case 5:
             active_kit.push([COUNT_KIT_PROGRESS,NameKit(kit_type)]);
-            newKIT.textContent = phrase4 + element5 ;
+            newKIT.textContent = phrase4 + element5 +currentkitID;
             break;
     }
 
@@ -93,23 +93,19 @@ function NameKit(kit_num)
     //2 : text
     //3 : Button
     //4 : Picture
+    //5 : Timer
 
     switch(kit_num){
         case 1:
             return element1;
-            break;
         case 2:
             return element2;
-            break;
         case 3:
             return element3;
-            break;
         case 4:
             return element4;
-            break;
         case 5:
             return element5;
-            break;
     }
 }
 
@@ -241,6 +237,7 @@ function live_iframe_add(KITtype,KITcontent="",kitID,change=false) {
             else{
                 var elementKITtype="span";//as default unknown type
                 let notTEXABLE=false;
+                let isFUNCTIONAL=false;
                 switch(KITtype){
                     case 1:
                         elementKITtype ="h3";
@@ -256,7 +253,7 @@ function live_iframe_add(KITtype,KITcontent="",kitID,change=false) {
                         notTEXABLE=true;
                         break;
                     case 5:
-                        elementKITtype ="p";
+                        isFUNCTIONAL=true;
                         break;
                 }
 
@@ -269,6 +266,12 @@ function live_iframe_add(KITtype,KITcontent="",kitID,change=false) {
                         neWelement.alt = KITcontent;
                         neWelement.style.maxWidth=GET_THE_KIT_ID("active_kit",kitID).dataset.size;
                     }
+
+                if(isFUNCTIONAL)
+                {//This Part Helps to manage the functional kit's
+                    neWelement.style.display="none";
+                    Func_KIT(KITcontent,kitID,KITtype);
+                }
 
 
                     neWelement.style.fontSize=GET_THE_KIT_ID("active_kit",kitID).dataset.size;
