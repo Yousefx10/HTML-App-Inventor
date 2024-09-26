@@ -252,6 +252,7 @@ function switchScreen()
 <script src="project/variables.js"></script>
 <script src="project/iframe.js"></script>
 <script src="project/project.js"></script>
+<script src="project/workspace.js"></script>
 <script src="project/kit.js"></script>
     </body>
 </html>
