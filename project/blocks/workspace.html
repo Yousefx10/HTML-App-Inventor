@@ -11,20 +11,22 @@
 <!--List Of Kit's Bar-->
       <div class="workspaceDIV" id="kit_space">
         <div id="kit_space_container">
-        <input type="hidden" id="EVENTcurrentkitID"/>
+        <input type="hidden" id="EVENTcurrentkitID" value="0"/>
         </div>
       </div>
 <!--List Of Events Bar-->
         <div class="workspaceDIV" id="event_space">
             <div id="event_space_container">
-                <p class="event_item">On Click[]</p>
-                <p class="event_item">On LongPress[]</p>
-                <p class="event_item">While Trick[]</p>
+                <p class="event_item" onclick="Event_KIT(this.dataset.event)" data-event="click">On Click[]</p>
+                <p class="event_item" onclick="Event_KIT(this.dataset.event)" data-event="longpress">On LongPress[]</p>
+                <p class="event_item" onclick="Event_KIT(this.dataset.event)" data-event="trick">While Trick[]</p>
             </div>
         </div>
 <!--PlayGround Space-->
         <div class="workspaceDIV" id="playground_space">
-
+            <div id="playground_space_container">
+                <p>On Click</p>
+            </div>
         </div>
 <!--List Of Actions Bar-->
         <div class="workspaceDIV" id="actions_space">
