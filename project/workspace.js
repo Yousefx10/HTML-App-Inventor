@@ -31,7 +31,7 @@ function show_Event_KIT(kitID,KITtype)
                 break;
         }
 
-    StartPlayGround(kitID);
+
 }
 
 //This Function Create ALL THE EVENT'S THERE
@@ -58,7 +58,7 @@ function Event_KIT(CurrentEvent)
                 CurrentCode.dataset.eventTrick = "true";
             break;
     }
-
+    StartPlayGround(CurrentkitID);
 }
 const dynamicBLOCKsize = [];
 //dynamicArray[0] = 'First Value';
@@ -69,6 +69,7 @@ const dynamicMap = new Map();
 //This Function Will Display The Current PlayGround
 function StartPlayGround(kitID)
 {
+    document.getElementById("playground_space_container").innerHTML="";
    if(document.getElementById("code"+kitID).dataset.eventClick)
    {
        console.log("kit have click event");
