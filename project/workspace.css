@@ -55,5 +55,23 @@
     background-color: darkseagreen;
     color: white;
     border-radius: 5px 10px;
+    text-align: center;
+}
+.action_block{
+    border: 2px solid blanchedalmond;
+    padding: 5px;
+    background-color: thistle;
+    color: crimson;
+    border-radius: 0 20px 20px 0;
+    display: inline-block;
 
+}
+
+
+.properties_block {
+    display: inline-block;
+    border: 2px solid blanchedalmond;
+    padding: 5px;
+    background-color: thistle;
+    color: crimson;
 }

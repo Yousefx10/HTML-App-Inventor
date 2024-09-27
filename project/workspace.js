@@ -74,8 +74,57 @@ function StartPlayGround(kitID)
        console.log("kit have click event");
        let blocksSize = dynamicBLOCKsize[kitID];
 
+       const container = document.getElementById('playground_space_container');
+
+       const eventParagraph = document.createElement('p');
+       eventParagraph.className = 'eventONclick';
+       eventParagraph.textContent = 'On Click';
+
+       container.appendChild(eventParagraph);
+
        for (let i = 0; i < blocksSize; i++) {
-           console.log(dynamicMap.get('code'+kitID+i));
+
+           const actionParagraph = document.createElement('p');
+           actionParagraph.className = 'action_block';
+           actionParagraph.textContent = 'Change Text';
+
+           const propertiesBlock = document.createElement('div');
+           propertiesBlock.className = 'properties_block';
+
+           const kitSpan = document.createElement('span');
+           kitSpan.textContent = 'Kit :';
+
+
+           const kitSelect = document.createElement('select');
+           [1, 2, 3].forEach(num => {
+               const option = document.createElement('option');
+               option.textContent = num;
+               kitSelect.appendChild(option);
+           });
+
+           const valueSpan = document.createElement('span');
+           valueSpan.textContent = 'Value :';
+
+           const valueSelect = document.createElement('select');
+           [1, 2, 3].forEach(num => {
+               const option = document.createElement('option');
+               option.textContent = num;
+               valueSelect.appendChild(option);
+           });
+
+           propertiesBlock.appendChild(kitSpan);
+           propertiesBlock.appendChild(kitSelect);
+           propertiesBlock.appendChild(valueSpan);
+           propertiesBlock.appendChild(valueSelect);
+
+
+           container.appendChild(actionParagraph);
+           container.appendChild(propertiesBlock);
+
+           const lineBreak = document.createElement('br');
+           container.appendChild(lineBreak);
+
+
        }
 
    }
