@@ -47,3 +47,13 @@
 .event_item:hover{
     background-color: darkseagreen;
 }
+
+
+.eventONclick{
+    border: 1px solid darkblue;
+    padding:10px;
+    background-color: darkseagreen;
+    color: white;
+    border-radius: 5px 10px;
+
+}

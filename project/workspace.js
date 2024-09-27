@@ -31,7 +31,7 @@ function show_Event_KIT(kitID,KITtype)
                 break;
         }
 
-    StartPlayGround();
+    StartPlayGround(kitID);
 }
 
 //This Function Create ALL THE EVENT'S THERE
@@ -42,7 +42,12 @@ function Event_KIT(CurrentEvent)
     switch (CurrentEvent)
     {
         case "click":
-                CurrentCode.dataset.eventClick = "true";
+            CurrentCode.dataset.eventClick = "true";
+
+            //fake examples on setting some actions
+            dynamicBLOCKsize[CurrentkitID]=2;
+            dynamicMap.set('code'+CurrentkitID+'0', 'changetext,live0,ThisIsNewValue');
+            dynamicMap.set('code'+CurrentkitID+'1', 'changecolor,live0,red');
             break;
 
         case "longpress":
@@ -55,9 +60,23 @@ function Event_KIT(CurrentEvent)
     }
 
 }
+const dynamicBLOCKsize = [];
+//dynamicArray[0] = 'First Value';
+const dynamicMap = new Map();
 
+//dynamicMap.set('var1', 'Hello World');
+//dynamicMap.get('var1')
 //This Function Will Display The Current PlayGround
-function StartPlayGround()
+function StartPlayGround(kitID)
 {
+   if(document.getElementById("code"+kitID).dataset.eventClick)
+   {
+       console.log("kit have click event");
+       let blocksSize = dynamicBLOCKsize[kitID];
 
+       for (let i = 0; i < blocksSize; i++) {
+           console.log(dynamicMap.get('code'+kitID+i));
+       }
+
+   }
 }
