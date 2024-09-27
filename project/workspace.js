@@ -84,9 +84,13 @@ function StartPlayGround(kitID)
 
        for (let i = 0; i < blocksSize; i++) {
 
+           const words = dynamicMap.get('code'+kitID+i).split(',');
+
            const actionParagraph = document.createElement('p');
            actionParagraph.className = 'action_block';
-           actionParagraph.textContent = 'Change Text';
+           actionParagraph.textContent =words[0];
+
+
 
            const propertiesBlock = document.createElement('div');
            propertiesBlock.className = 'properties_block';
@@ -96,7 +100,7 @@ function StartPlayGround(kitID)
 
 
            const kitSelect = document.createElement('select');
-           [1, 2, 3].forEach(num => {
+           [words[1], 2, 3].forEach(num => {
                const option = document.createElement('option');
                option.textContent = num;
                kitSelect.appendChild(option);
@@ -104,18 +108,29 @@ function StartPlayGround(kitID)
 
            const valueSpan = document.createElement('span');
            valueSpan.textContent = 'Value :';
+            switch (words[0])
+            {
+                case "changetext":
+                    var valueInput = document.createElement('input');
+                    valueInput.type = 'text'; // Set the input type to text
+                    valueInput.placeholder = words[1]; // Optional placeholder text
+                    break;
+                case "changecolor":
+                    var valueInput = document.createElement('select');
+                    ["black","blue","red"].forEach(num => {
+                        const option = document.createElement('option');
+                        option.textContent = num;
+                        valueInput.appendChild(option);
+                    });
+                    break;
+            }
 
-           const valueSelect = document.createElement('select');
-           [1, 2, 3].forEach(num => {
-               const option = document.createElement('option');
-               option.textContent = num;
-               valueSelect.appendChild(option);
-           });
+
 
            propertiesBlock.appendChild(kitSpan);
            propertiesBlock.appendChild(kitSelect);
            propertiesBlock.appendChild(valueSpan);
-           propertiesBlock.appendChild(valueSelect);
+           propertiesBlock.appendChild(valueInput);
 
 
            container.appendChild(actionParagraph);
