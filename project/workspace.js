@@ -33,6 +33,29 @@ function show_Event_KIT(kitID,KITtype)
     });
 
 
+// you have to hide the * sign from the UnUsed event
+    ALL_available_EVENTS.forEach((element) => {
+
+
+        if(!document.getElementById("code" + kitID)
+            .hasAttribute
+            ("data-event-"+element.dataset.event))
+        {
+
+            //this means the specific kit doesn't have an attached actions with this event
+            element.classList.remove("beforeACTIVE");
+            console.log('this should NOT have *');
+
+        }
+        else {
+            element.classList.add("beforeACTIVE");
+            console.log(' have *');
+        }
+
+
+    });
+
+
     switch (KITtype)
         {
             case 3://Button
@@ -68,7 +91,7 @@ function Event_KIT(CurrentEvent)
             break;
 
         case "longpress":
-                CurrentCode.dataset.eventPress = "true";
+                CurrentCode.dataset.eventLongpress = "true";
                 currentACTIVEevent="longpress";
             //fake examples on setting some actions
             //dynamicBLOCKsize["longpress"+CurrentkitID]=1;
@@ -221,6 +244,11 @@ function action_add(actionType)
     // Increment the value if it's a valid number; otherwise, initialize it
     dynamicBLOCKsize[currentACTIVEevent + CurrentkitID] =
         (dynamicBLOCKsize[currentACTIVEevent + CurrentkitID] ?? 0) + 1;
+
+    //this line selected the current active EVENT, for example click, and find the div parent for it
+    //so click will convert to "event_CLICK"
+    document.getElementById("event_"+currentACTIVEevent.toUpperCase())
+        .classList.add("beforeACTIVE");
 
 
     switch (actionType)

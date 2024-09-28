@@ -97,3 +97,8 @@
     color: darkgoldenrod;
     background-color: navy;
 }
+/*the purpose from this class is to add a SIGN for the active events etc*/
+.beforeACTIVE::before{
+content: "*";
+    color: red;
+}
