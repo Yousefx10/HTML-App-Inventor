@@ -79,28 +79,28 @@ function Event_KIT(CurrentEvent)
     switch (CurrentEvent)
     {
         case "click":
-            CurrentCode.dataset.eventClick = "true";
+
             currentACTIVEevent="click";
             //fake examples on setting some actions
             //dynamicBLOCKsize["click"+CurrentkitID]=2;
             //dynamicMap.set('clickcode'+CurrentkitID+'0', 'changetext,live0,ThisIsNewValue');
             //dynamicMap.set('clickcode'+CurrentkitID+'1', 'changecolor,live0,red');
-            StartPlayGround(CurrentkitID,"click");
+            StartPlayGround(CurrentkitID,currentACTIVEevent);
 
 
             break;
 
         case "longpress":
-                CurrentCode.dataset.eventLongpress = "true";
+                //CurrentCode.dataset.eventLongpress = "true";
                 currentACTIVEevent="longpress";
             //fake examples on setting some actions
             //dynamicBLOCKsize["longpress"+CurrentkitID]=1;
             //dynamicMap.set('longpresscode'+CurrentkitID+'0', 'changetext,live0,Life is always good');
-            StartPlayGround(CurrentkitID,"longpress");
+            StartPlayGround(CurrentkitID,currentACTIVEevent);
             break;
 
         case "trick":
-                CurrentCode.dataset.eventTrick = "true";
+                //CurrentCode.dataset.eventTrick = "true";
                 currentACTIVEevent="trick";
             break;
     }
@@ -263,6 +263,9 @@ function action_add(actionType)
             break;
     }
 
+    //this line should save the event as true inside the kit attribute
+    document.getElementById("code"+CurrentkitID)
+        .setAttribute("data-event-"+currentACTIVEevent, "true");
 
     ADDINGsingleBLOCK(words);
 }
