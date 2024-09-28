@@ -90,6 +90,8 @@ function StartPlayGround(kitID,EventCase)
         case "click":
             if(document.getElementById("code"+kitID).dataset.eventClick)
             {
+
+
                 console.log("kit have click event");
                 let blocksSize = dynamicBLOCKsize["click"+kitID];
 
@@ -101,62 +103,15 @@ function StartPlayGround(kitID,EventCase)
 
                 container.appendChild(eventParagraph);
 
+
+
                 for (let i = 0; i < blocksSize; i++) {
 
+
+
                     const words = dynamicMap.get('clickcode'+kitID+i).split(',');
+                    ADDINGsingleBLOCK(words);
 
-                    const actionParagraph = document.createElement('p');
-                    actionParagraph.className = 'action_block';
-                    actionParagraph.textContent =words[0];
-
-
-
-                    const propertiesBlock = document.createElement('div');
-                    propertiesBlock.className = 'properties_block';
-
-                    const kitSpan = document.createElement('span');
-                    kitSpan.textContent = 'Kit :';
-
-
-                    const kitSelect = document.createElement('select');
-                    [words[1], 2, 3].forEach(num => {
-                        const option = document.createElement('option');
-                        option.textContent = num;
-                        kitSelect.appendChild(option);
-                    });
-
-                    const valueSpan = document.createElement('span');
-                    valueSpan.textContent = 'Value :';
-                    switch (words[0])
-                    {
-                        case "changetext":
-                            var valueInput = document.createElement('input');
-                            valueInput.type = 'text'; // Set the input type to text
-                            valueInput.placeholder = words[2]; // Optional placeholder text
-                            break;
-                        case "changecolor":
-                            var valueInput = document.createElement('select');
-                            ["black","blue","red"].forEach(num => {
-                                const option = document.createElement('option');
-                                option.textContent = num;
-                                valueInput.appendChild(option);
-                            });
-                            break;
-                    }
-
-
-
-                    propertiesBlock.appendChild(kitSpan);
-                    propertiesBlock.appendChild(kitSelect);
-                    propertiesBlock.appendChild(valueSpan);
-                    propertiesBlock.appendChild(valueInput);
-
-
-                    container.appendChild(actionParagraph);
-                    container.appendChild(propertiesBlock);
-
-                    const lineBreak = document.createElement('br');
-                    container.appendChild(lineBreak);
 
 
                 }
@@ -169,13 +124,13 @@ function StartPlayGround(kitID,EventCase)
                 console.log("kit have LongPress event");
                 let blocksSize = dynamicBLOCKsize["longpress"+kitID];
 
-                const container = document.getElementById('playground_space_container');
+
 
                 const eventParagraph = document.createElement('p');
                 eventParagraph.className = 'eventONclick';
                 eventParagraph.textContent = 'On LongPress';
 
-                container.appendChild(eventParagraph);
+                playground_space.appendChild(eventParagraph);
 
                 for (let i = 0; i < blocksSize; i++) {
 
@@ -228,11 +183,11 @@ function StartPlayGround(kitID,EventCase)
                     propertiesBlock.appendChild(valueInput);
 
 
-                    container.appendChild(actionParagraph);
-                    container.appendChild(propertiesBlock);
+                    playground_space.appendChild(actionParagraph);
+                    playground_space.appendChild(propertiesBlock);
 
                     const lineBreak = document.createElement('br');
-                    container.appendChild(lineBreak);
+                    playground_space.appendChild(lineBreak);
 
 
                 }
@@ -243,17 +198,77 @@ function StartPlayGround(kitID,EventCase)
 
 }
 
+//The Purpose of this function is to create a only one SINGLE block and add it to the workspace
+function ADDINGsingleBLOCK(words)
+{
+    //Creating the single action block
+    const actionParagraph = document.createElement('p');
+    actionParagraph.className = 'action_block';
+    actionParagraph.textContent =words[0];
 
+    //creating the entire block
+    const propertiesBlock = document.createElement('div');
+    propertiesBlock.className = 'properties_block';
+
+
+    const kitSpan = document.createElement('span');
+    kitSpan.textContent = 'Kit :';
+
+
+    const kitSelect = document.createElement('select');
+    [words[1], 2, 3].forEach(num => {
+        const option = document.createElement('option');
+        option.textContent = num;
+        kitSelect.appendChild(option);
+    });
+
+    const valueSpan = document.createElement('span');
+    valueSpan.textContent = 'Value :';
+    switch (words[0])
+    {
+        case "changetext":
+            var valueInput = document.createElement('input');
+            valueInput.type = 'text'; // Set the input type to text
+            valueInput.placeholder = words[2]; // Optional placeholder text
+            break;
+        case "changecolor":
+            var valueInput = document.createElement('select');
+            ["black","blue","red"].forEach(num => {
+                const option = document.createElement('option');
+                option.textContent = num;
+                valueInput.appendChild(option);
+            });
+            break;
+    }
+
+
+
+    propertiesBlock.appendChild(kitSpan);
+    propertiesBlock.appendChild(kitSelect);
+    propertiesBlock.appendChild(valueSpan);
+    propertiesBlock.appendChild(valueInput);
+
+
+    playground_space.appendChild(actionParagraph);
+    playground_space.appendChild(propertiesBlock);
+
+    const lineBreak = document.createElement('br');
+    playground_space.appendChild(lineBreak);
+}
 
 function action_add(actionType)
 {
+    let CurrentkitID = workspace_hidden_kitID.value;
     switch (actionType)
     {
         case "ChangeText":
             dynamicBLOCKsize[currentACTIVEevent+CurrentkitID]+=1;
-            dynamicMap.set('clickcode'+CurrentkitID+'0', 'changetext,live0,ThisIsNewValue');
+            dynamicMap.set(currentACTIVEevent+'code'+CurrentkitID+'0', 'changetext,live0,ThisIsNewValue');
 
-            //you have stopped here, after selecting the ACTION it should jump into the workspace
+
+            const words = dynamicMap.get(currentACTIVEevent+'code'+CurrentkitID+"0").split(',');
+            ADDINGsingleBLOCK(words);
+
             break;
     }
 }

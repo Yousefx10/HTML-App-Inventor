@@ -43,6 +43,7 @@ const kit_HINTS = ["",
 //********************************
 let kit_space = document.getElementById('kit_space_container');
 let event_space = document.getElementById('event_space_container');
+const playground_space = document.getElementById('playground_space_container');
 let actions_space = document.getElementById('actions_space_container');
 let workspace_hidden_kitID = document.getElementById('EVENTcurrentkitID');
 
