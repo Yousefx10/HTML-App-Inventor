@@ -44,12 +44,12 @@ function show_Event_KIT(kitID,KITtype)
 
             //this means the specific kit doesn't have an attached actions with this event
             element.classList.remove("beforeACTIVE");
-            console.log('this should NOT have *');
+
 
         }
         else {
             element.classList.add("beforeACTIVE");
-            console.log(' have *');
+
         }
 
 
@@ -125,10 +125,10 @@ function StartPlayGround(kitID,EventCase)
             {
 
 
-                console.log("kit have click event");
+
 
                 let blocksSize = dynamicBLOCKsize[currentACTIVEevent+kitID];
-                console.log(currentACTIVEevent+kitID);
+
                 const container = document.getElementById('playground_space_container');
 
                 const eventParagraph = document.createElement('p');
@@ -155,7 +155,7 @@ function StartPlayGround(kitID,EventCase)
         case "longpress":
             if(document.getElementById("code"+kitID).dataset.eventPress)
             {
-                console.log("kit have LongPress event");
+
                 let blocksSize = dynamicBLOCKsize["longpress"+kitID];
 
 
