@@ -121,14 +121,9 @@ function StartPlayGround(kitID,EventCase)
     actions_space.style.display="block";
     switch (EventCase){
         case "click":
-            if(document.getElementById("code"+kitID).dataset.eventClick)
-            {
-
-
-
 
                 let blocksSize = dynamicBLOCKsize[currentACTIVEevent+kitID];
-
+                if(isNaN(blocksSize))blocksSize=0;
                 const container = document.getElementById('playground_space_container');
 
                 const eventParagraph = document.createElement('p');
@@ -138,19 +133,18 @@ function StartPlayGround(kitID,EventCase)
                 container.appendChild(eventParagraph);
 
 
+            console.log(blocksSize);
+                for (let i = 1; i < blocksSize+1; i++) {
 
-                for (let i = 0; i < blocksSize; i++) {
 
 
-
-                    const words = dynamicMap.get(currentACTIVEevent+"code"+kitID+i).split(',');
-                    ADDINGsingleBLOCK(words);
+                   const words = dynamicMap.get(currentACTIVEevent+"code"+kitID+i).split(',');
+                   ADDINGsingleBLOCK(words);
 
 
 
                 }
 
-            }
             break;
         case "longpress":
             if(document.getElementById("code"+kitID).dataset.eventPress)
@@ -250,16 +244,20 @@ function action_add(actionType)
     document.getElementById("event_"+currentACTIVEevent.toUpperCase())
         .classList.add("beforeACTIVE");
 
-
+//you have stopped here, the issue you can see it by yourself in USER INTERFACE
+    //the <header> like click event for example is not showing
+    //i've correct this code by replacing the zero with real numbers
     switch (actionType)
     {
         case "ChangeText":
             dynamicMap.set(currentACTIVEevent+'code'+CurrentkitID+dynamicBLOCKsize[currentACTIVEevent + CurrentkitID], 'changetext,live0,ThisIsNewValue');
-            var words = dynamicMap.get(currentACTIVEevent+'code'+CurrentkitID+"0").split(',');
+            var words = dynamicMap.get(currentACTIVEevent+'code'+CurrentkitID+dynamicBLOCKsize[currentACTIVEevent + CurrentkitID]).split(',');
+            console.log(currentACTIVEevent+'code'+CurrentkitID+dynamicBLOCKsize[currentACTIVEevent + CurrentkitID]);
             break;
         case "ChangeColor":
             dynamicMap.set(currentACTIVEevent+'code'+CurrentkitID+dynamicBLOCKsize[currentACTIVEevent + CurrentkitID], 'changecolor,live0,blue');
-            var words = dynamicMap.get(currentACTIVEevent+'code'+CurrentkitID+"0").split(',');
+            var words = dynamicMap.get(currentACTIVEevent+'code'+CurrentkitID+dynamicBLOCKsize[currentACTIVEevent + CurrentkitID]).split(',');
+
             break;
     }
 
