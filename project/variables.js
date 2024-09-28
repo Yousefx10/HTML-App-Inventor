@@ -45,8 +45,12 @@ let kit_space = document.getElementById('kit_space_container');
 let event_space = document.getElementById('event_space_container');
 let workspace_hidden_kitID = document.getElementById('EVENTcurrentkitID');
 
+//this finds all the events there, to hide them or unhide them.
+let ALL_available_EVENTS = document.querySelectorAll('.event_item');
 
-
+let event_CLICK = document.getElementById("event_CLICK");
+let event_LONGPRESS = document.getElementById("event_LONGPRESS");
+let event_TRICK = document.getElementById("event_TRICK");
 //This const is for knowing how long the kit have blocks on it's event
 const dynamicBLOCKsize = {};
 //dynamicArray[0] = 'First Value';

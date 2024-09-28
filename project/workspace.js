@@ -15,15 +15,25 @@ function Func_KIT(kit_name,kitID,KITtype)
 //This Function is used to Show The Suitable event's for the selected kit
 function show_Event_KIT(kitID,KITtype)
 {
+
+
+
+// Loop through each element and hide it
+    ALL_available_EVENTS.forEach((element) => {
+        element.style.display = 'none'; // Hides the element
+    });
+
+
     switch (KITtype)
         {
             case 3://Button
-
+                event_CLICK.style.display="block";
+                event_LONGPRESS.style.display="block";
                 break;
             case 5://Timer
+                event_TRICK.style.display="block";
                 break;
         }
-
 
 }
 
