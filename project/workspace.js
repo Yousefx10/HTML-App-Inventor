@@ -122,18 +122,18 @@ function StartPlayGround(kitID,EventCase)
     switch (EventCase){
         case "click":
 
-                let blocksSize = dynamicBLOCKsize[currentACTIVEevent+kitID];
+                var blocksSize = dynamicBLOCKsize[currentACTIVEevent+kitID];
                 if(isNaN(blocksSize))blocksSize=0;
                 const container = document.getElementById('playground_space_container');
 
-                const eventParagraph = document.createElement('p');
+                var eventParagraph = document.createElement('p');
                 eventParagraph.className = 'eventONclick';
                 eventParagraph.textContent = 'On Click';
 
                 container.appendChild(eventParagraph);
 
 
-            console.log(blocksSize);
+
                 for (let i = 1; i < blocksSize+1; i++) {
 
 
@@ -147,27 +147,27 @@ function StartPlayGround(kitID,EventCase)
 
             break;
         case "longpress":
-            if(document.getElementById("code"+kitID).dataset.eventPress)
-            {
-
-                let blocksSize = dynamicBLOCKsize["longpress"+kitID];
 
 
+                var blocksSize = dynamicBLOCKsize[currentACTIVEevent+kitID];
+                if(isNaN(blocksSize))blocksSize=0;
 
-                const eventParagraph = document.createElement('p');
+
+
+                var eventParagraph = document.createElement('p');
                 eventParagraph.className = 'eventONclick';
                 eventParagraph.textContent = 'On LongPress';
 
                 playground_space.appendChild(eventParagraph);
 
-                for (let i = 0; i < blocksSize; i++) {
+                for (let i = 1; i < blocksSize+1; i++) {
 
                     const words = dynamicMap.get(currentACTIVEevent+"code"+kitID+i).split(',');
                     ADDINGsingleBLOCK(words);
 
                 }
 
-            }
+
             break;
     }
 
@@ -252,7 +252,7 @@ function action_add(actionType)
         case "ChangeText":
             dynamicMap.set(currentACTIVEevent+'code'+CurrentkitID+dynamicBLOCKsize[currentACTIVEevent + CurrentkitID], 'changetext,live0,ThisIsNewValue');
             var words = dynamicMap.get(currentACTIVEevent+'code'+CurrentkitID+dynamicBLOCKsize[currentACTIVEevent + CurrentkitID]).split(',');
-            console.log(currentACTIVEevent+'code'+CurrentkitID+dynamicBLOCKsize[currentACTIVEevent + CurrentkitID]);
+
             break;
         case "ChangeColor":
             dynamicMap.set(currentACTIVEevent+'code'+CurrentkitID+dynamicBLOCKsize[currentACTIVEevent + CurrentkitID], 'changecolor,live0,blue');
