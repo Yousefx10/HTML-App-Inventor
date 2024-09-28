@@ -21,6 +21,12 @@ function show_Event_KIT(kitID,KITtype)
     document.getElementById("playground_space_container").innerHTML="";
     actions_space.style.display="none";
 
+    // Loop through each kit to remove selected highlight
+    document.querySelectorAll('.kit_space_element').forEach((element) => {
+        element.classList.remove("selected_kit_from_space");
+    });
+    document.getElementById("code" + kitID).classList.add("selected_kit_from_space");
+
 // Loop through each element and hide it
     ALL_available_EVENTS.forEach((element) => {
         element.style.display = 'none'; // Hides the element

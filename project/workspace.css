@@ -92,3 +92,8 @@
 .kit_space_element:hover{
     color: crimson;
 }
+
+.selected_kit_from_space{
+    color: darkgoldenrod;
+    background-color: navy;
+}
