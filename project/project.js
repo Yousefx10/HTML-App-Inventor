@@ -237,7 +237,12 @@ function live_iframe_add(KITtype,KITcontent="",kitID,change=false) {
             else{
                 var elementKITtype="span";//as default unknown type
                 let notTEXABLE=false;
+                //this to know if the kit can attach to events or no
                 let isFUNCTIONAL=false;
+                //this to know if the kit should be visible or hidden
+                let shouldBEhidden=false;
+
+
                 switch(KITtype){
                     case 1:
                         elementKITtype ="h3";
@@ -247,6 +252,7 @@ function live_iframe_add(KITtype,KITcontent="",kitID,change=false) {
                         break;
                     case 3:
                         elementKITtype ="button";
+                        isFUNCTIONAL=true;
                         break;
                     case 4:
                         elementKITtype ="img";
@@ -254,6 +260,7 @@ function live_iframe_add(KITtype,KITcontent="",kitID,change=false) {
                         break;
                     case 5:
                         isFUNCTIONAL=true;
+                        shouldBEhidden=true;
                         break;
                 }
 
@@ -269,8 +276,10 @@ function live_iframe_add(KITtype,KITcontent="",kitID,change=false) {
 
                 if(isFUNCTIONAL)
                 {//This Part Helps to manage the functional kit's
-                    neWelement.style.display="none";
+
                     Func_KIT(KITcontent,kitID,KITtype);
+                    if(shouldBEhidden)
+                    neWelement.style.display="none";
                 }
 
 

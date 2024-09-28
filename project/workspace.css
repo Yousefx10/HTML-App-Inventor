@@ -75,3 +75,12 @@
     background-color: thistle;
     color: crimson;
 }
+
+
+#actions_space_container p{
+    cursor: pointer;
+}
+#actions_space_container p:hover{
+    background-color: darkcyan;
+    color: white;
+}

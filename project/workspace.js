@@ -42,21 +42,25 @@ function Event_KIT(CurrentEvent)
 {
     let CurrentkitID = workspace_hidden_kitID.value;
     let CurrentCode = document.getElementById("code" + CurrentkitID);
+
+    actions_space.style.display="block";
     switch (CurrentEvent)
     {
         case "click":
             CurrentCode.dataset.eventClick = "true";
-
+            currentACTIVEevent="click";
             //fake examples on setting some actions
-            dynamicBLOCKsize["click"+CurrentkitID]=2;
-            dynamicMap.set('clickcode'+CurrentkitID+'0', 'changetext,live0,ThisIsNewValue');
-            dynamicMap.set('clickcode'+CurrentkitID+'1', 'changecolor,live0,red');
+            //dynamicBLOCKsize["click"+CurrentkitID]=2;
+            //dynamicMap.set('clickcode'+CurrentkitID+'0', 'changetext,live0,ThisIsNewValue');
+            //dynamicMap.set('clickcode'+CurrentkitID+'1', 'changecolor,live0,red');
             StartPlayGround(CurrentkitID,"click");
+
+
             break;
 
         case "longpress":
                 CurrentCode.dataset.eventPress = "true";
-
+                currentACTIVEevent="longpress";
             //fake examples on setting some actions
             dynamicBLOCKsize["longpress"+CurrentkitID]=1;
             dynamicMap.set('longpresscode'+CurrentkitID+'0', 'changetext,live0,Life is always good');
@@ -65,6 +69,7 @@ function Event_KIT(CurrentEvent)
 
         case "trick":
                 CurrentCode.dataset.eventTrick = "true";
+                currentACTIVEevent="trick";
             break;
     }
 
@@ -236,4 +241,19 @@ function StartPlayGround(kitID,EventCase)
             break;
     }
 
+}
+
+
+
+function action_add(actionType)
+{
+    switch (actionType)
+    {
+        case "ChangeText":
+            dynamicBLOCKsize[currentACTIVEevent+CurrentkitID]+=1;
+            dynamicMap.set('clickcode'+CurrentkitID+'0', 'changetext,live0,ThisIsNewValue');
+
+            //you have stopped here, after selecting the ACTION it should jump into the workspace
+            break;
+    }
 }

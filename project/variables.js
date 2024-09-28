@@ -43,10 +43,14 @@ const kit_HINTS = ["",
 //********************************
 let kit_space = document.getElementById('kit_space_container');
 let event_space = document.getElementById('event_space_container');
+let actions_space = document.getElementById('actions_space_container');
 let workspace_hidden_kitID = document.getElementById('EVENTcurrentkitID');
 
 //this finds all the events there, to hide them or unhide them.
 let ALL_available_EVENTS = document.querySelectorAll('.event_item');
+let currentACTIVEevent="";
+
+
 
 let event_CLICK = document.getElementById("event_CLICK");
 let event_LONGPRESS = document.getElementById("event_LONGPRESS");
