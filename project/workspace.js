@@ -46,8 +46,8 @@ function Event_KIT(CurrentEvent)
 
             //fake examples on setting some actions
             dynamicBLOCKsize[CurrentkitID]=2;
-            dynamicMap.set('code'+CurrentkitID+'0', 'changetext,live0,ThisIsNewValue');
-            dynamicMap.set('code'+CurrentkitID+'1', 'changecolor,live0,red');
+            dynamicMap.set('clickcode'+CurrentkitID+'0', 'changetext,live0,ThisIsNewValue');
+            dynamicMap.set('clickcode'+CurrentkitID+'1', 'changecolor,live0,red');
             StartPlayGround(CurrentkitID,"click");
             break;
 
@@ -56,8 +56,8 @@ function Event_KIT(CurrentEvent)
 
             //fake examples on setting some actions
             dynamicBLOCKsize[CurrentkitID]=2;
-            dynamicMap.set('code'+CurrentkitID+'0', 'changetext,live0,Life is always good');
-            dynamicMap.set('code'+CurrentkitID+'1', 'changecolor,live0,green');
+            dynamicMap.set('longpresscode'+CurrentkitID+'0', 'changetext,live0,Life is always good');
+            dynamicMap.set('longpresscode'+CurrentkitID+'1', 'changecolor,live0,green');
             StartPlayGround(CurrentkitID,"longpress");
             break;
 
@@ -98,7 +98,7 @@ function StartPlayGround(kitID,EventCase)
 
                 for (let i = 0; i < blocksSize; i++) {
 
-                    const words = dynamicMap.get('code'+kitID+i).split(',');
+                    const words = dynamicMap.get('clickcode'+kitID+i).split(',');
 
                     const actionParagraph = document.createElement('p');
                     actionParagraph.className = 'action_block';
@@ -174,7 +174,7 @@ function StartPlayGround(kitID,EventCase)
 
                 for (let i = 0; i < blocksSize; i++) {
 
-                    const words = dynamicMap.get('code'+kitID+i).split(',');
+                    const words = dynamicMap.get('longpresscode'+kitID+i).split(',');
 
                     const actionParagraph = document.createElement('p');
                     actionParagraph.className = 'action_block';
@@ -194,7 +194,7 @@ function StartPlayGround(kitID,EventCase)
                         const option = document.createElement('option');
                         option.textContent = num;
                         kitSelect.appendChild(option);
-                    });
+                    });//you have stopped here, you have to select the correct value.
 
                     const valueSpan = document.createElement('span');
                     valueSpan.textContent = 'Value :';
