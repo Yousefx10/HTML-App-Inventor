@@ -84,3 +84,11 @@
     background-color: darkcyan;
     color: white;
 }
+
+.kit_space_element{
+    Color: green;
+    cursor: pointer;
+}
+.kit_space_element:hover{
+    color: crimson;
+}

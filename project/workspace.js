@@ -3,6 +3,7 @@ function Func_KIT(kit_name,kitID,KITtype)
 {
     const NewFuncKIT = document.createElement("p");
     NewFuncKIT.id="code" + kitID;
+    NewFuncKIT.className  ="kit_space_element";
     NewFuncKIT.textContent = kit_name;
 
 
@@ -17,7 +18,7 @@ function show_Event_KIT(kitID,KITtype)
 {
 
     workspace_hidden_kitID.value=kitID;
-
+    document.getElementById("playground_space_container").innerHTML="";
 // Loop through each element and hide it
     ALL_available_EVENTS.forEach((element) => {
         element.style.display = 'none'; // Hides the element
