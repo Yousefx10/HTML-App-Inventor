@@ -48,7 +48,7 @@ let workspace_hidden_kitID = document.getElementById('EVENTcurrentkitID');
 
 
 //This const is for knowing how long the kit have blocks on it's event
-const dynamicBLOCKsize = [];
+const dynamicBLOCKsize = {};
 //dynamicArray[0] = 'First Value';
 const dynamicMap = new Map();
 

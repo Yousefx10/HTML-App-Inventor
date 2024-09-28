@@ -38,7 +38,7 @@ function Event_KIT(CurrentEvent)
             CurrentCode.dataset.eventClick = "true";
 
             //fake examples on setting some actions
-            dynamicBLOCKsize[CurrentkitID]=2;
+            dynamicBLOCKsize["click"+CurrentkitID]=2;
             dynamicMap.set('clickcode'+CurrentkitID+'0', 'changetext,live0,ThisIsNewValue');
             dynamicMap.set('clickcode'+CurrentkitID+'1', 'changecolor,live0,red');
             StartPlayGround(CurrentkitID,"click");
@@ -48,9 +48,8 @@ function Event_KIT(CurrentEvent)
                 CurrentCode.dataset.eventPress = "true";
 
             //fake examples on setting some actions
-            dynamicBLOCKsize[CurrentkitID]=2;
+            dynamicBLOCKsize["longpress"+CurrentkitID]=1;
             dynamicMap.set('longpresscode'+CurrentkitID+'0', 'changetext,live0,Life is always good');
-            dynamicMap.set('longpresscode'+CurrentkitID+'1', 'changecolor,live0,green');
             StartPlayGround(CurrentkitID,"longpress");
             break;
 
@@ -77,7 +76,7 @@ function StartPlayGround(kitID,EventCase)
             if(document.getElementById("code"+kitID).dataset.eventClick)
             {
                 console.log("kit have click event");
-                let blocksSize = dynamicBLOCKsize[kitID];
+                let blocksSize = dynamicBLOCKsize["click"+kitID];
 
                 const container = document.getElementById('playground_space_container');
 
@@ -153,7 +152,7 @@ function StartPlayGround(kitID,EventCase)
             if(document.getElementById("code"+kitID).dataset.eventPress)
             {
                 console.log("kit have LongPress event");
-                let blocksSize = dynamicBLOCKsize[kitID];
+                let blocksSize = dynamicBLOCKsize["longpress"+kitID];
 
                 const container = document.getElementById('playground_space_container');
 
