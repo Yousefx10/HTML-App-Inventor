@@ -16,7 +16,7 @@ function Func_KIT(kit_name,kitID,KITtype)
 function show_Event_KIT(kitID,KITtype)
 {
 
-
+    workspace_hidden_kitID.value=kitID;
 
 // Loop through each element and hide it
     ALL_available_EVENTS.forEach((element) => {
@@ -62,8 +62,8 @@ function Event_KIT(CurrentEvent)
                 CurrentCode.dataset.eventPress = "true";
                 currentACTIVEevent="longpress";
             //fake examples on setting some actions
-            dynamicBLOCKsize["longpress"+CurrentkitID]=1;
-            dynamicMap.set('longpresscode'+CurrentkitID+'0', 'changetext,live0,Life is always good');
+            //dynamicBLOCKsize["longpress"+CurrentkitID]=1;
+            //dynamicMap.set('longpresscode'+CurrentkitID+'0', 'changetext,live0,Life is always good');
             StartPlayGround(CurrentkitID,"longpress");
             break;
 
@@ -110,7 +110,7 @@ function StartPlayGround(kitID,EventCase)
 
 
 
-                    const words = dynamicMap.get('clickcode'+kitID+i).split(',');
+                    const words = dynamicMap.get(currentACTIVEevent+"code"+kitID+i).split(',');
                     ADDINGsingleBLOCK(words);
 
 
@@ -135,7 +135,7 @@ function StartPlayGround(kitID,EventCase)
 
                 for (let i = 0; i < blocksSize; i++) {
 
-                    const words = dynamicMap.get('longpresscode'+kitID+i).split(',');
+                    const words = dynamicMap.get(currentACTIVEevent+"code"+kitID+i).split(',');
                     ADDINGsingleBLOCK(words);
 
                 }
@@ -207,23 +207,24 @@ function ADDINGsingleBLOCK(words)
 function action_add(actionType)
 {
     let CurrentkitID = workspace_hidden_kitID.value;
+
+    // Increment the value if it's a valid number; otherwise, initialize it
+    dynamicBLOCKsize[currentACTIVEevent + CurrentkitID] =
+        (dynamicBLOCKsize[currentACTIVEevent + CurrentkitID] ?? 0) + 1;
+
+
     switch (actionType)
     {
         case "ChangeText":
-
-            //dynamicBLOCKsize[currentACTIVEevent+CurrentkitID]=1;
-
-            // Increment the value if it's a valid number; otherwise, initialize it
-            dynamicBLOCKsize[currentACTIVEevent + CurrentkitID] =
-                (dynamicBLOCKsize[currentACTIVEevent + CurrentkitID] ?? 0) + 1;
-
-
             dynamicMap.set(currentACTIVEevent+'code'+CurrentkitID+'0', 'changetext,live0,ThisIsNewValue');
-
-
-            const words = dynamicMap.get(currentACTIVEevent+'code'+CurrentkitID+"0").split(',');
-            ADDINGsingleBLOCK(words);
-
+            var words = dynamicMap.get(currentACTIVEevent+'code'+CurrentkitID+"0").split(',');
+            break;
+        case "ChangeColor":
+            dynamicMap.set(currentACTIVEevent+'code'+CurrentkitID+'0', 'changecolor,live0,blue');
+            var words = dynamicMap.get(currentACTIVEevent+'code'+CurrentkitID+"0").split(',');
             break;
     }
+
+
+    ADDINGsingleBLOCK(words);
 }
