@@ -1,10 +1,3 @@
-//current variable for this space will be added here
-//then will be moved later to "variables.js"
-
-let kit_space = document.getElementById('kit_space_container');
-let event_space = document.getElementById('event_space_container');
-let workspace_hidden_kitID = document.getElementById('EVENTcurrentkitID');
-
 //This Function is used to add the functional kit's to appear on screen
 function Func_KIT(kit_name,kitID,KITtype)
 {
@@ -71,9 +64,7 @@ function Event_KIT(CurrentEvent)
 
 
 
-const dynamicBLOCKsize = [];
-//dynamicArray[0] = 'First Value';
-const dynamicMap = new Map();
+
 
 //dynamicMap.set('var1', 'Hello World');
 //dynamicMap.get('var1')

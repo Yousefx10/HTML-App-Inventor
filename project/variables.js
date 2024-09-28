@@ -39,6 +39,21 @@ const kit_HINTS = ["",
 ];
 
 
+//[START]Variables For Workspace ONLY
+//********************************
+let kit_space = document.getElementById('kit_space_container');
+let event_space = document.getElementById('event_space_container');
+let workspace_hidden_kitID = document.getElementById('EVENTcurrentkitID');
+
+
+
+//This const is for knowing how long the kit have blocks on it's event
+const dynamicBLOCKsize = [];
+//dynamicArray[0] = 'First Value';
+const dynamicMap = new Map();
+
+//********************************
+//[END]Variables For Workspace ONLY
 
 
 
