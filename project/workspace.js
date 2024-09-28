@@ -254,11 +254,11 @@ function action_add(actionType)
     switch (actionType)
     {
         case "ChangeText":
-            dynamicMap.set(currentACTIVEevent+'code'+CurrentkitID+'0', 'changetext,live0,ThisIsNewValue');
+            dynamicMap.set(currentACTIVEevent+'code'+CurrentkitID+dynamicBLOCKsize[currentACTIVEevent + CurrentkitID], 'changetext,live0,ThisIsNewValue');
             var words = dynamicMap.get(currentACTIVEevent+'code'+CurrentkitID+"0").split(',');
             break;
         case "ChangeColor":
-            dynamicMap.set(currentACTIVEevent+'code'+CurrentkitID+'0', 'changecolor,live0,blue');
+            dynamicMap.set(currentACTIVEevent+'code'+CurrentkitID+dynamicBLOCKsize[currentACTIVEevent + CurrentkitID], 'changecolor,live0,blue');
             var words = dynamicMap.get(currentACTIVEevent+'code'+CurrentkitID+"0").split(',');
             break;
     }
