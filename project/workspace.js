@@ -19,6 +19,8 @@ function show_Event_KIT(kitID,KITtype)
 
     workspace_hidden_kitID.value=kitID;
     document.getElementById("playground_space_container").innerHTML="";
+    actions_space.style.display="none";
+
 // Loop through each element and hide it
     ALL_available_EVENTS.forEach((element) => {
         element.style.display = 'none'; // Hides the element
@@ -87,6 +89,7 @@ function Event_KIT(CurrentEvent)
 function StartPlayGround(kitID,EventCase)
 {
     document.getElementById("playground_space_container").innerHTML="";
+    actions_space.style.display="block";
     switch (EventCase){
         case "click":
             if(document.getElementById("code"+kitID).dataset.eventClick)
