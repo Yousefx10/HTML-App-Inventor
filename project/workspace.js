@@ -93,8 +93,9 @@ function StartPlayGround(kitID,EventCase)
 
 
                 console.log("kit have click event");
-                let blocksSize = dynamicBLOCKsize["click"+kitID];
 
+                let blocksSize = dynamicBLOCKsize[currentACTIVEevent+kitID];
+                console.log(currentACTIVEevent+kitID);
                 const container = document.getElementById('playground_space_container');
 
                 const eventParagraph = document.createElement('p');
@@ -135,60 +136,7 @@ function StartPlayGround(kitID,EventCase)
                 for (let i = 0; i < blocksSize; i++) {
 
                     const words = dynamicMap.get('longpresscode'+kitID+i).split(',');
-
-                    const actionParagraph = document.createElement('p');
-                    actionParagraph.className = 'action_block';
-                    actionParagraph.textContent =words[0];
-
-
-
-                    const propertiesBlock = document.createElement('div');
-                    propertiesBlock.className = 'properties_block';
-
-                    const kitSpan = document.createElement('span');
-                    kitSpan.textContent = 'Kit :';
-
-
-                    const kitSelect = document.createElement('select');
-                    [words[1], 2, 3].forEach(num => {
-                        const option = document.createElement('option');
-                        option.textContent = num;
-                        kitSelect.appendChild(option);
-                    });//you have stopped here, you have to select the correct value.
-
-                    const valueSpan = document.createElement('span');
-                    valueSpan.textContent = 'Value :';
-                    switch (words[0])
-                    {
-                        case "changetext":
-                            var valueInput = document.createElement('input');
-                            valueInput.type = 'text'; // Set the input type to text
-                            valueInput.placeholder = words[2]; // Optional placeholder text
-                            break;
-                        case "changecolor":
-                            var valueInput = document.createElement('select');
-                            ["black","blue","red"].forEach(num => {
-                                const option = document.createElement('option');
-                                option.textContent = num;
-                                valueInput.appendChild(option);
-                            });
-                            break;
-                    }
-
-
-
-                    propertiesBlock.appendChild(kitSpan);
-                    propertiesBlock.appendChild(kitSelect);
-                    propertiesBlock.appendChild(valueSpan);
-                    propertiesBlock.appendChild(valueInput);
-
-
-                    playground_space.appendChild(actionParagraph);
-                    playground_space.appendChild(propertiesBlock);
-
-                    const lineBreak = document.createElement('br');
-                    playground_space.appendChild(lineBreak);
-
+                    ADDINGsingleBLOCK(words);
 
                 }
 
@@ -262,7 +210,14 @@ function action_add(actionType)
     switch (actionType)
     {
         case "ChangeText":
-            dynamicBLOCKsize[currentACTIVEevent+CurrentkitID]+=1;
+
+            //dynamicBLOCKsize[currentACTIVEevent+CurrentkitID]=1;
+
+            // Increment the value if it's a valid number; otherwise, initialize it
+            dynamicBLOCKsize[currentACTIVEevent + CurrentkitID] =
+                (dynamicBLOCKsize[currentACTIVEevent + CurrentkitID] ?? 0) + 1;
+
+
             dynamicMap.set(currentACTIVEevent+'code'+CurrentkitID+'0', 'changetext,live0,ThisIsNewValue');
 
 
