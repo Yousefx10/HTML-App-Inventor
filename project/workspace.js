@@ -201,6 +201,8 @@ function ADDINGsingleBLOCK(words,FullBlockID)
        // let CURRENTcountofActions = FullBlockID.split('.')[0];
         ACTIVEactions = ACTIVEactions.filter(value => value !== FullBlockID);
         dynamicMap.delete(FullBlockID);
+
+        document.getElementById(FullBlockID).remove();
         console.log(ACTIVEactions);
 
 
