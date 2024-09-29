@@ -194,28 +194,7 @@ function ADDINGsingleBLOCK(words,FullBlockID)
     DeleteBlock.textContent ="X";
     DeleteBlock.onclick = function() {
         //the code to remove the block correctly will be called here
-
-
-        //this will help to minus 1 from the totall blocks
-        //this lines prints the count of actions
-       let CURRENTcountofActions = FullBlockID.split('.')[0];
-        ACTIVEactions = ACTIVEactions.filter(value => value !== FullBlockID);
-        dynamicMap.delete(FullBlockID);
-
-        document.getElementById(FullBlockID).remove();
-
-        if(!ACTIVEactions.some(element => element.includes(CURRENTcountofActions+".")))
-        {
-            let CurrentkitID = workspace_hidden_kitID.value;
-            document.getElementById("code"+CurrentkitID)
-                .removeAttribute("data-event-"+currentACTIVEevent);
-
-            document.getElementById("event_"+currentACTIVEevent.toUpperCase())
-                .classList.remove("beforeACTIVE");
-
-            dynamicBLOCKsize[CURRENTcountofActions] = 0;
-        }
-
+        deleteblock(FullBlockID);
 
     };
 
@@ -275,6 +254,40 @@ function ADDINGsingleBLOCK(words,FullBlockID)
 
 
 }
+
+function deleteblock(FullBlockID)
+{
+
+    //this will help to minus 1 from the totall blocks
+    //this lines prints the count of actions
+    let CURRENTcountofActions = FullBlockID.split('.')[0];
+    ACTIVEactions = ACTIVEactions.filter(value => value !== FullBlockID);
+    dynamicMap.delete(FullBlockID);
+
+    document.getElementById(FullBlockID).remove();
+
+    if(!ACTIVEactions.some(element => element.includes(CURRENTcountofActions+".")))
+    {
+        let CurrentkitID = workspace_hidden_kitID.value;
+        document.getElementById("code"+CurrentkitID)
+            .removeAttribute("data-event-"+currentACTIVEevent);
+
+        document.getElementById("event_"+currentACTIVEevent.toUpperCase())
+            .classList.remove("beforeACTIVE");
+
+        dynamicBLOCKsize[CURRENTcountofActions] = 0;
+    }
+}
+
+
+
+
+
+
+
+
+
+
 
 function action_add(actionType)
 {
