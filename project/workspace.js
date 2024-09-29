@@ -102,6 +102,7 @@ function Event_KIT(CurrentEvent)
         case "trick":
                 //CurrentCode.dataset.eventTrick = "true";
                 currentACTIVEevent="trick";
+            StartPlayGround(CurrentkitID,currentACTIVEevent);
             break;
     }
 
@@ -126,7 +127,7 @@ function StartPlayGround(kitID,EventCase)
                 const container = document.getElementById('playground_space_container');
 
                 var eventParagraph = document.createElement('p');
-                eventParagraph.className = 'eventONclick';
+                eventParagraph.className = 'eventBOXtitle';
                 eventParagraph.textContent = 'On Click';
 
                 container.appendChild(eventParagraph);
@@ -144,10 +145,23 @@ function StartPlayGround(kitID,EventCase)
 
 
                 var eventParagraph = document.createElement('p');
-                eventParagraph.className = 'eventONclick';
+                eventParagraph.className = 'eventBOXtitle';
                 eventParagraph.textContent = 'On LongPress';
 
                 playground_space.appendChild(eventParagraph);
+
+
+
+            break;
+
+        case "trick":
+
+
+            var eventParagraph = document.createElement('p');
+            eventParagraph.className = 'eventBOXtitle';
+            eventParagraph.textContent = 'While Trick';
+
+            playground_space.appendChild(eventParagraph);
 
 
 
@@ -159,7 +173,7 @@ function StartPlayGround(kitID,EventCase)
     //NO NEED TO Repeat the code, it's one code FOR ALL events
     var blocksSize = dynamicBLOCKsize[currentACTIVEevent+"code"+kitID];
     if(isNaN(blocksSize))blocksSize=0;
-    //Adding + plus sign after the code kitID so it won't be mixed with future logic fatal error
+    //Adding . dot sign after the code kitID so it won't be mixed with future logic fatal error
     let prefix = currentACTIVEevent, contains = 'code'+kitID+".";
     ACTIVEactions
         .filter(blockID => blockID.startsWith(prefix) && blockID.includes(contains)) // Apply rules
