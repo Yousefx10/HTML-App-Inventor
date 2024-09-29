@@ -166,7 +166,7 @@ function StartPlayGround(kitID,EventCase)
         .forEach(blockID => {
 
 
-            console.log(blockID);
+
             const words = dynamicMap.get(blockID).split(',');
             ADDINGsingleBLOCK(words,blockID);
 
@@ -198,12 +198,21 @@ function ADDINGsingleBLOCK(words,FullBlockID)
 
         //this will help to minus 1 from the totall blocks
         //this lines prints the count of actions
-       // let CURRENTcountofActions = FullBlockID.split('.')[0];
+       let CURRENTcountofActions = FullBlockID.split('.')[0];
         ACTIVEactions = ACTIVEactions.filter(value => value !== FullBlockID);
         dynamicMap.delete(FullBlockID);
 
         document.getElementById(FullBlockID).remove();
-        console.log(ACTIVEactions);
+
+        if(!ACTIVEactions.some(element => element.includes(CURRENTcountofActions)))
+        {
+            let CurrentkitID = workspace_hidden_kitID.value;
+            document.getElementById("code"+CurrentkitID)
+                .removeAttribute("data-event-"+currentACTIVEevent);
+
+            document.getElementById("event_"+currentACTIVEevent.toUpperCase())
+                .classList.remove("beforeACTIVE");
+        }
 
 
     };
