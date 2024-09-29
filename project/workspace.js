@@ -227,11 +227,17 @@ function ADDINGsingleBLOCK(words,FullBlockID)
 
     const kitSelect = document.createElement('select');
     kitSelect.setAttribute('onchange', 'updateACTIONvalue(event,"kit",this.parentNode.parentNode.id);');
+
     active_kit.forEach(num => {
         const option = document.createElement('option');
         option.textContent = num[0]+num[1];
+        option.value = num[0];
         kitSelect.appendChild(option);
     });
+
+    //SO I WILL STOP HERE, I WILL FOCUS ON CONVERTING THIS ARRAY TO MAP ARRAY.
+    kitSelect.value= words[1];
+
 
     const valueSpan = document.createElement('span');
     valueSpan.textContent = 'Value :';
