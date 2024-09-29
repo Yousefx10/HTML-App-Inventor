@@ -204,7 +204,7 @@ function ADDINGsingleBLOCK(words,FullBlockID)
 
         document.getElementById(FullBlockID).remove();
 
-        if(!ACTIVEactions.some(element => element.includes(CURRENTcountofActions)))
+        if(!ACTIVEactions.some(element => element.includes(CURRENTcountofActions+".")))
         {
             let CurrentkitID = workspace_hidden_kitID.value;
             document.getElementById("code"+CurrentkitID)
@@ -212,6 +212,8 @@ function ADDINGsingleBLOCK(words,FullBlockID)
 
             document.getElementById("event_"+currentACTIVEevent.toUpperCase())
                 .classList.remove("beforeACTIVE");
+
+            dynamicBLOCKsize[CURRENTcountofActions] = 0;
         }
 
 

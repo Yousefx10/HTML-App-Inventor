@@ -48,8 +48,11 @@ maybe using this code in the future to replace the violation error related to do
 
 
 # Instructions For Building The Workspace
-1. When User Adds A "Functional" Kit.[DONE]
-2. That Kit Will Be Added into The #kit_space and saved in the memory.[DONE]
-3. Adds A List Of Known Event's That Suitable For Each Kit.
-4. After Adding The Selected Event, The #actions_space Will Start To Suggest Some Actions.
-5. Adding The Actions Will Be Merged With Events ON THE #PLAYGROUND_SPACE.
+## 1. When User Adds A "Functional" Kit.[DONE]
+## 2. That Kit Will Be Added into The #kit_space and saved in the memory.[DONE]
+## 3. Adds A List Of Known Event's That Suitable For Each Kit.[DONE]
+## 4. After Adding The Selected Event, The #actions_space Will Start To Suggest Some Actions.[DONE]
+## 5. Adding The Actions Will Be Merged With Events ON THE #PLAYGROUND_SPACE.[DONE]
+
+# IF YOU ARE READING THIS , THEN CONGRATS, YOU HAVE COMPLETED ALL THE REQUIRED TASKS FOR NOW,
+# START TO EXPLORE MORE PROBLEMS TO FIX.
