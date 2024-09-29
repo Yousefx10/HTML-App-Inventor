@@ -138,8 +138,8 @@ function StartPlayGround(kitID,EventCase)
 
 
             });
-
-            let prefix = currentACTIVEevent, contains = 'code'+kitID;
+            //Adding + plus sign after the code kitID so it won't be mixed with future logic fatal error
+            let prefix = currentACTIVEevent, contains = 'code'+kitID+"+";
             ACTIVEactions
                 .filter(blockID => blockID.startsWith(prefix) && blockID.includes(contains)) // Apply rules
                 .forEach(blockID => {
@@ -279,20 +279,20 @@ function action_add(actionType)
     switch (actionType)
     {
         case "ChangeText":
-            dynamicMap.set(currentACTIVEevent+'code'+CurrentkitID+temp_dynamicBLOCKsize, 'changetext,live0,ThisIsNewValue');
+            dynamicMap.set(currentACTIVEevent+'code'+CurrentkitID+"+"+temp_dynamicBLOCKsize, 'changetext,live0,ThisIsNewValue');
 
              words = dynamicMap.get(currentACTIVEevent+'code'+CurrentkitID+dynamicBLOCKsize[currentACTIVEevent + CurrentkitID]).split(',');
 
             break;
         case "ChangeColor":
-            dynamicMap.set(currentACTIVEevent+'code'+CurrentkitID+temp_dynamicBLOCKsize, 'changecolor,live0,blue');
+            dynamicMap.set(currentACTIVEevent+'code'+CurrentkitID+"+"+temp_dynamicBLOCKsize, 'changecolor,live0,blue');
 
             words = dynamicMap.get(currentACTIVEevent+'code'+CurrentkitID+dynamicBLOCKsize[currentACTIVEevent + CurrentkitID]).split(',');
 
             break;
     }
-    if (!ACTIVEactions.includes(currentACTIVEevent+'code'+CurrentkitID+temp_dynamicBLOCKsize)) {
-        ACTIVEactions.push(currentACTIVEevent+'code'+CurrentkitID+temp_dynamicBLOCKsize);
+    if (!ACTIVEactions.includes(currentACTIVEevent+'code'+CurrentkitID+"+"+temp_dynamicBLOCKsize)) {
+        ACTIVEactions.push(currentACTIVEevent+'code'+CurrentkitID+"+"+temp_dynamicBLOCKsize);
     }
 
     //this line should save the event as true inside the kit attribute
