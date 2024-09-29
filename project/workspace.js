@@ -208,6 +208,9 @@ function ADDINGsingleBLOCK(words,FullBlockID)
 
 
     //creating the entire block
+    const FullBlock = document.createElement('div');
+    FullBlock.id = FullBlockID;
+
     const propertiesBlock = document.createElement('div');
     propertiesBlock.className = 'properties_block';
 
@@ -242,6 +245,7 @@ function ADDINGsingleBLOCK(words,FullBlockID)
             break;
     }
 
+    const lineBreak = document.createElement('br');
 
 
     propertiesBlock.appendChild(kitSpan);
@@ -249,12 +253,14 @@ function ADDINGsingleBLOCK(words,FullBlockID)
     propertiesBlock.appendChild(valueSpan);
     propertiesBlock.appendChild(valueInput);
 
-    playground_space.appendChild(DeleteBlock);
-    playground_space.appendChild(actionParagraph);
-    playground_space.appendChild(propertiesBlock);
+    FullBlock.appendChild(DeleteBlock);
+    FullBlock.appendChild(actionParagraph);
+    FullBlock.appendChild(propertiesBlock);
+    FullBlock.appendChild(lineBreak);
 
-    const lineBreak = document.createElement('br');
-    playground_space.appendChild(lineBreak);
+    playground_space.appendChild(FullBlock);
+
+
 }
 
 function action_add(actionType)
