@@ -241,6 +241,7 @@ function ADDINGsingleBLOCK(words,FullBlockID)
             var valueInput = document.createElement('input');
             valueInput.type = 'text'; // Set the input type to text
             valueInput.placeholder = words[2]; // Optional placeholder text
+            valueInput.setAttribute('onchange', 'updateACTIONvalue(event,"value",this.parentNode.parentNode.id);');
             break;
         case "changecolor":
             var valueInput = document.createElement('select');
@@ -249,6 +250,8 @@ function ADDINGsingleBLOCK(words,FullBlockID)
                 option.textContent = num;
                 valueInput.appendChild(option);
             });
+
+            valueInput.setAttribute('onchange', 'updateACTIONvalue(event,"value",this.parentNode.parentNode.id);');
             break;
     }
 
@@ -366,22 +369,24 @@ function event_action_set(kitID)
 function updateACTIONvalue(event,updateTYPE,fullID)
 {
     const selectedValue = event.target.value;
-
+    let getkitIDfromSTRING = parseInt(selectedValue, 10);
+    let newkitID_VALUE;
     switch (updateTYPE)
     {
         case "kit":
             //convert string to number to get the kitID, but the number should be always in the beginning of the string
-            let getkitIDfromSTRING = parseInt(selectedValue, 10);
-            let newkitID_VALUE = dynamicMap.get(fullID).split(",").map((item, index) => index === 1 ? getkitIDfromSTRING : item).join(",");
 
-            dynamicMap.set(fullID, newkitID_VALUE);//adding ZERO as default value.
+             newkitID_VALUE =
+                 dynamicMap.get(fullID).split(",").map((item, index) => index === 1 ? getkitIDfromSTRING : item).join(",");
 
             break;
-        case "0":
+        case "value":
+             newkitID_VALUE =
+                 dynamicMap.get(fullID).split(",").map((item, index) => index === 2 ? selectedValue : item).join(",");
             break;
     }
 
 
-
+    dynamicMap.set(fullID, newkitID_VALUE);//adding ZERO as default value.
 
 }
