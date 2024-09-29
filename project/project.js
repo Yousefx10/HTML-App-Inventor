@@ -343,6 +343,7 @@ function SAVINGtime(){
 
     function REMOVINGtime(){
         const current_kitID = hidden_kitID.value;
+        active_kit = active_kit.filter(kit => kit[0] != current_kitID);
 
         GET_THE_KIT_ID('active_kit',current_kitID).remove();
 

@@ -226,9 +226,9 @@ function ADDINGsingleBLOCK(words,FullBlockID)
 
 
     const kitSelect = document.createElement('select');
-    [words[1], 2, 3].forEach(num => {
+    active_kit.forEach(num => {
         const option = document.createElement('option');
-        option.textContent = num;
+        option.textContent = num[0]+num[1];
         kitSelect.appendChild(option);
     });
 
@@ -355,7 +355,7 @@ function action_add(actionType)
 
 function event_action_set(kitID)
 {
-    console.log(kitID);
+
     live_iframe.contentWindow.document.getElementById('live'+kitID)
         .setAttribute("on"+currentACTIVEevent,`global_onClick(${kitID});`);
 }

@@ -60,8 +60,8 @@ maybe using this code in the future to replace the violation error related to do
 
 
 # Instructions For Activating The events and actions
-## first and for most include Real Event attribute to the live, for example on click will add onClick event for originall kit
-## that onclick will call the global onclick event on actions.js and pass the kitID
+## first and for most include Real Event attribute to the live, for example on click will add onClick event for originall kit.[DONE]
+## that onclick will call the global onclick event on actions.js and pass the kitID.[DONE]
 
 
 
