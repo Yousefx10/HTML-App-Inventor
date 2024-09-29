@@ -254,8 +254,10 @@ function ADDINGsingleBLOCK(words,FullBlockID)
             ["black","blue","red"].forEach(num => {
                 const option = document.createElement('option');
                 option.textContent = num;
+                option.value = num;
                 valueInput.appendChild(option);
             });
+            valueInput.value= words[2];
 
             valueInput.setAttribute('onchange', 'updateACTIONvalue(event,"value",this.parentNode.parentNode.id);');
             break;
@@ -339,7 +341,7 @@ function action_add(actionType)
     switch (actionType)
     {
         case "ChangeText":
-            dynamicMap.set(tempLONGvalue, 'changetext,0,ThisIsNewValue');//adding ZERO as default value.
+            dynamicMap.set(tempLONGvalue, 'changetext,0,This Is New Value');//adding ZERO as default value.
             console.log(tempLONGvalue);
              words = dynamicMap.get(tempLONGvalue).split(',');
 
