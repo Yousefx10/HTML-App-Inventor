@@ -60,9 +60,15 @@ let event_TRICK = document.getElementById("event_TRICK");
 //This const is for knowing how long the kit have blocks on it's event
 const dynamicBLOCKsize = {};
 //dynamicArray[0] = 'First Value';
-const dynamicMap = new Map();
+
+
+//this one is now GLOBAL VARIABLE and so it's accessible within any IFRAME
+//WINDOW. this means that the variable has been created and got globally, no need to var,let,const etc.
+window.dynamicMap = new Map();
+
 //this will store the actions FULL id, no matter got deleted or no
-let ACTIVEactions=[];
+//WINDOW. this means that the variable has been created and got globally, no need to var,let,const etc.
+window.ACTIVEactions=[];
 //********************************
 //[END]Variables For Workspace ONLY
 

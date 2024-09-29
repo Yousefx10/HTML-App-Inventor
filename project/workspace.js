@@ -350,4 +350,12 @@ function action_add(actionType)
         .setAttribute("data-event-"+currentACTIVEevent, "true");
 
     ADDINGsingleBLOCK(words,tempLONGvalue);
+    event_action_set(CurrentkitID);
+}
+
+function event_action_set(kitID)
+{
+    console.log(kitID);
+    live_iframe.contentWindow.document.getElementById('live'+kitID)
+        .setAttribute("on"+currentACTIVEevent,`global_onClick(${kitID});`);
 }

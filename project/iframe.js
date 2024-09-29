@@ -125,6 +125,9 @@
                     }
             }
             </script>
+            
+            <script src="project/variables.js"></script>
+            <script src="project/actions.js"></script>
             </body>
           </html>
         `);
