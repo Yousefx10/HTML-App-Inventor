@@ -102,3 +102,12 @@
 content: "*";
     color: red;
 }
+
+
+.DeleteBlock{
+    color:red;
+    padding: 5px;
+    cursor: pointer;
+    background-color: beige;
+    border-radius: 40%;
+}

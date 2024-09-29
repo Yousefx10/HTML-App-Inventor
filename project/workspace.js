@@ -178,8 +178,15 @@ function ADDINGsingleBLOCK(words)
 {
     //Creating the single action block
     const actionParagraph = document.createElement('p');
+
     actionParagraph.className = 'action_block';
     actionParagraph.textContent =words[0];
+
+    //new line that adds the X to REMOVE blocks
+    const DeleteBlock = document.createElement('span');
+    DeleteBlock.className = 'DeleteBlock';
+    DeleteBlock.textContent ="X";
+
 
     //creating the entire block
     const propertiesBlock = document.createElement('div');
@@ -223,7 +230,7 @@ function ADDINGsingleBLOCK(words)
     propertiesBlock.appendChild(valueSpan);
     propertiesBlock.appendChild(valueInput);
 
-
+    playground_space.appendChild(DeleteBlock);
     playground_space.appendChild(actionParagraph);
     playground_space.appendChild(propertiesBlock);
 
