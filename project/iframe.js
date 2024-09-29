@@ -115,10 +115,14 @@
             function UPDATEborder(kitID,BorderSize,BorderStyle,BorderColor)
             {
 
-                document.getElementById("live"+kitID).style.borderWidth = BorderSize;
-                document.getElementById("live"+kitID).style.borderStyle = BorderStyle;
-                document.getElementById("live"+kitID).style.borderColor = BorderColor;
-                
+                if(BorderSize=="0")//this should clear the added border and set it back to the default value
+                    document.getElementById("live"+kitID).style.border = "";
+                else
+                    {
+                    document.getElementById("live"+kitID).style.borderWidth = BorderSize;
+                    document.getElementById("live"+kitID).style.borderStyle = BorderStyle;
+                    document.getElementById("live"+kitID).style.borderColor = BorderColor;
+                    }
             }
             </script>
             </body>

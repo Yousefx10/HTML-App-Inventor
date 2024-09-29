@@ -443,7 +443,7 @@ function SAVINGtime(){
 
 
     //ALIGN BUTTON
-    // renamed fron [alignBUTTON] TO [alignCONTROLS]
+    // renamed from [alignBUTTON] TO [alignCONTROLS]
 function alignCONTROLS(alignmentTYPE,alignmentELEMENT){
 
         reSHOWINGcorrectAlign(alignmentELEMENT);
