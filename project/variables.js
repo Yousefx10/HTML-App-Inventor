@@ -56,11 +56,13 @@ let currentACTIVEevent="";
 let event_CLICK = document.getElementById("event_CLICK");
 let event_LONGPRESS = document.getElementById("event_LONGPRESS");
 let event_TRICK = document.getElementById("event_TRICK");
+
 //This const is for knowing how long the kit have blocks on it's event
 const dynamicBLOCKsize = {};
 //dynamicArray[0] = 'First Value';
 const dynamicMap = new Map();
-
+//this will store the actions FULL id, no matter got deleted or no
+const ACTIVEactions=[];
 //********************************
 //[END]Variables For Workspace ONLY
 

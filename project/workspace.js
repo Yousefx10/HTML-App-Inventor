@@ -134,16 +134,27 @@ function StartPlayGround(kitID,EventCase)
 
 
 
-                for (let i = 1; i < blocksSize+1; i++) {
+            ACTIVEactions.forEach(blockID => {
+
+
+            });
+
+            let prefix = currentACTIVEevent, contains = 'code'+kitID;
+            ACTIVEactions
+                .filter(blockID => blockID.startsWith(prefix) && blockID.includes(contains)) // Apply rules
+                .forEach(blockID => {
+
+
+                    console.log(blockID);
+                    const words = dynamicMap.get(blockID).split(',');
+                    ADDINGsingleBLOCK(words);
+
+                });
 
 
 
-                   const words = dynamicMap.get(currentACTIVEevent+"code"+kitID+i).split(',');
-                   ADDINGsingleBLOCK(words);
 
-
-
-                }
+                for (let i = 1; i < blocksSize+1; i++) {}
 
             break;
         case "longpress":
@@ -173,6 +184,8 @@ function StartPlayGround(kitID,EventCase)
 
 }
 
+
+
 //The Purpose of this function is to create a only one SINGLE block and add it to the workspace
 function ADDINGsingleBLOCK(words)
 {
@@ -186,6 +199,10 @@ function ADDINGsingleBLOCK(words)
     const DeleteBlock = document.createElement('span');
     DeleteBlock.className = 'DeleteBlock';
     DeleteBlock.textContent ="X";
+    DeleteBlock.onclick = function() {
+        //the code to remove the block correctly will be called here
+        console.log(words);
+    };
 
 
     //creating the entire block
@@ -242,9 +259,13 @@ function action_add(actionType)
 {
     let CurrentkitID = workspace_hidden_kitID.value;
 
-    // Increment the value if it's a valid number; otherwise, initialize it
+    //instead of increasing the value, store all the valid ID's
+    //back to have the ACTION BLOCK COUNTER
     dynamicBLOCKsize[currentACTIVEevent + CurrentkitID] =
         (dynamicBLOCKsize[currentACTIVEevent + CurrentkitID] ?? 0) + 1;
+    let temp_dynamicBLOCKsize = dynamicBLOCKsize[currentACTIVEevent + CurrentkitID] ;
+
+    // dynamicBLOCKsize[currentACTIVEevent + CurrentkitID] =
 
     //this line selected the current active EVENT, for example click, and find the div parent for it
     //so click will convert to "event_CLICK"
@@ -254,18 +275,24 @@ function action_add(actionType)
 //you have stopped here, the issue you can see it by yourself in USER INTERFACE
     //the <header> like click event for example is not showing
     //i've correct this code by replacing the zero with real numbers
+    var words;
     switch (actionType)
     {
         case "ChangeText":
-            dynamicMap.set(currentACTIVEevent+'code'+CurrentkitID+dynamicBLOCKsize[currentACTIVEevent + CurrentkitID], 'changetext,live0,ThisIsNewValue');
-            var words = dynamicMap.get(currentACTIVEevent+'code'+CurrentkitID+dynamicBLOCKsize[currentACTIVEevent + CurrentkitID]).split(',');
+            dynamicMap.set(currentACTIVEevent+'code'+CurrentkitID+temp_dynamicBLOCKsize, 'changetext,live0,ThisIsNewValue');
+
+             words = dynamicMap.get(currentACTIVEevent+'code'+CurrentkitID+dynamicBLOCKsize[currentACTIVEevent + CurrentkitID]).split(',');
 
             break;
         case "ChangeColor":
-            dynamicMap.set(currentACTIVEevent+'code'+CurrentkitID+dynamicBLOCKsize[currentACTIVEevent + CurrentkitID], 'changecolor,live0,blue');
-            var words = dynamicMap.get(currentACTIVEevent+'code'+CurrentkitID+dynamicBLOCKsize[currentACTIVEevent + CurrentkitID]).split(',');
+            dynamicMap.set(currentACTIVEevent+'code'+CurrentkitID+temp_dynamicBLOCKsize, 'changecolor,live0,blue');
+
+            words = dynamicMap.get(currentACTIVEevent+'code'+CurrentkitID+dynamicBLOCKsize[currentACTIVEevent + CurrentkitID]).split(',');
 
             break;
+    }
+    if (!ACTIVEactions.includes(currentACTIVEevent+'code'+CurrentkitID+temp_dynamicBLOCKsize)) {
+        ACTIVEactions.push(currentACTIVEevent+'code'+CurrentkitID+temp_dynamicBLOCKsize);
     }
 
     //this line should save the event as true inside the kit attribute
