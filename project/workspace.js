@@ -276,23 +276,25 @@ function action_add(actionType)
     //the <header> like click event for example is not showing
     //i've correct this code by replacing the zero with real numbers
     var words;
+    var tempLONGvalue = currentACTIVEevent+'code'+CurrentkitID+"+"+temp_dynamicBLOCKsize;
+
     switch (actionType)
     {
         case "ChangeText":
-            dynamicMap.set(currentACTIVEevent+'code'+CurrentkitID+"+"+temp_dynamicBLOCKsize, 'changetext,live0,ThisIsNewValue');
+            dynamicMap.set(tempLONGvalue, 'changetext,live0,ThisIsNewValue');
 
-             words = dynamicMap.get(currentACTIVEevent+'code'+CurrentkitID+dynamicBLOCKsize[currentACTIVEevent + CurrentkitID]).split(',');
+             words = dynamicMap.get(tempLONGvalue).split(',');
 
             break;
         case "ChangeColor":
-            dynamicMap.set(currentACTIVEevent+'code'+CurrentkitID+"+"+temp_dynamicBLOCKsize, 'changecolor,live0,blue');
+            dynamicMap.set(tempLONGvalue, 'changecolor,live0,blue');
 
-            words = dynamicMap.get(currentACTIVEevent+'code'+CurrentkitID+dynamicBLOCKsize[currentACTIVEevent + CurrentkitID]).split(',');
+            words = dynamicMap.get(tempLONGvalue).split(',');
 
             break;
     }
-    if (!ACTIVEactions.includes(currentACTIVEevent+'code'+CurrentkitID+"+"+temp_dynamicBLOCKsize)) {
-        ACTIVEactions.push(currentACTIVEevent+'code'+CurrentkitID+"+"+temp_dynamicBLOCKsize);
+    if (!ACTIVEactions.includes(tempLONGvalue)) {
+        ACTIVEactions.push(tempLONGvalue);
     }
 
     //this line should save the event as true inside the kit attribute
