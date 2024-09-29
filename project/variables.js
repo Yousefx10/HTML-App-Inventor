@@ -62,7 +62,7 @@ const dynamicBLOCKsize = {};
 //dynamicArray[0] = 'First Value';
 const dynamicMap = new Map();
 //this will store the actions FULL id, no matter got deleted or no
-const ACTIVEactions=[];
+let ACTIVEactions=[];
 //********************************
 //[END]Variables For Workspace ONLY
 

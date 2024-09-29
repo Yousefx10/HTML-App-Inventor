@@ -157,10 +157,10 @@ function StartPlayGround(kitID,EventCase)
 
 
     //NO NEED TO Repeat the code, it's one code FOR ALL events
-    var blocksSize = dynamicBLOCKsize[currentACTIVEevent+kitID];
+    var blocksSize = dynamicBLOCKsize[currentACTIVEevent+"code"+kitID];
     if(isNaN(blocksSize))blocksSize=0;
     //Adding + plus sign after the code kitID so it won't be mixed with future logic fatal error
-    let prefix = currentACTIVEevent, contains = 'code'+kitID+"+";
+    let prefix = currentACTIVEevent, contains = 'code'+kitID+".";
     ACTIVEactions
         .filter(blockID => blockID.startsWith(prefix) && blockID.includes(contains)) // Apply rules
         .forEach(blockID => {
@@ -168,7 +168,7 @@ function StartPlayGround(kitID,EventCase)
 
             console.log(blockID);
             const words = dynamicMap.get(blockID).split(',');
-            ADDINGsingleBLOCK(words);
+            ADDINGsingleBLOCK(words,blockID);
 
         });
 
@@ -180,7 +180,7 @@ function StartPlayGround(kitID,EventCase)
 
 
 //The Purpose of this function is to create a only one SINGLE block and add it to the workspace
-function ADDINGsingleBLOCK(words)
+function ADDINGsingleBLOCK(words,FullBlockID)
 {
     //Creating the single action block
     const actionParagraph = document.createElement('p');
@@ -194,7 +194,16 @@ function ADDINGsingleBLOCK(words)
     DeleteBlock.textContent ="X";
     DeleteBlock.onclick = function() {
         //the code to remove the block correctly will be called here
-        console.log(words);
+
+
+        //this will help to minus 1 from the totall blocks
+        //this lines prints the count of actions
+       // let CURRENTcountofActions = FullBlockID.split('.')[0];
+        ACTIVEactions = ACTIVEactions.filter(value => value !== FullBlockID);
+        dynamicMap.delete(FullBlockID);
+        console.log(ACTIVEactions);
+
+
     };
 
 
@@ -254,11 +263,11 @@ function action_add(actionType)
 
     //instead of increasing the value, store all the valid ID's
     //back to have the ACTION BLOCK COUNTER
-    dynamicBLOCKsize[currentACTIVEevent + CurrentkitID] =
-        (dynamicBLOCKsize[currentACTIVEevent + CurrentkitID] ?? 0) + 1;
-    let temp_dynamicBLOCKsize = dynamicBLOCKsize[currentACTIVEevent + CurrentkitID] ;
+    dynamicBLOCKsize[currentACTIVEevent +"code"+ CurrentkitID] =
+        (dynamicBLOCKsize[currentACTIVEevent +"code"+ CurrentkitID] ?? 0) + 1;
+    let temp_dynamicBLOCKsize = dynamicBLOCKsize[currentACTIVEevent +"code"+ CurrentkitID] ;
 
-    // dynamicBLOCKsize[currentACTIVEevent + CurrentkitID] =
+
 
     //this line selected the current active EVENT, for example click, and find the div parent for it
     //so click will convert to "event_CLICK"
@@ -269,7 +278,7 @@ function action_add(actionType)
     //the <header> like click event for example is not showing
     //i've correct this code by replacing the zero with real numbers
     var words;
-    var tempLONGvalue = currentACTIVEevent+'code'+CurrentkitID+"+"+temp_dynamicBLOCKsize;
+    var tempLONGvalue = currentACTIVEevent+'code'+CurrentkitID+"."+temp_dynamicBLOCKsize;
 
     switch (actionType)
     {
@@ -294,5 +303,5 @@ function action_add(actionType)
     document.getElementById("code"+CurrentkitID)
         .setAttribute("data-event-"+currentACTIVEevent, "true");
 
-    ADDINGsingleBLOCK(words);
+    ADDINGsingleBLOCK(words,tempLONGvalue);
 }
