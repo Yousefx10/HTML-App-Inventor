@@ -19,6 +19,7 @@
 }
 
 .workspaceDIV{
+    overflow: auto;
     height: 80%;
     width:22%;
     min-width: 150px;
