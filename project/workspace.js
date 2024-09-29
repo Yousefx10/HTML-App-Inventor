@@ -122,8 +122,7 @@ function StartPlayGround(kitID,EventCase)
     switch (EventCase){
         case "click":
 
-                var blocksSize = dynamicBLOCKsize[currentACTIVEevent+kitID];
-                if(isNaN(blocksSize))blocksSize=0;
+
                 const container = document.getElementById('playground_space_container');
 
                 var eventParagraph = document.createElement('p');
@@ -134,34 +133,13 @@ function StartPlayGround(kitID,EventCase)
 
 
 
-            ACTIVEactions.forEach(blockID => {
-
-
-            });
-            //Adding + plus sign after the code kitID so it won't be mixed with future logic fatal error
-            let prefix = currentACTIVEevent, contains = 'code'+kitID+"+";
-            ACTIVEactions
-                .filter(blockID => blockID.startsWith(prefix) && blockID.includes(contains)) // Apply rules
-                .forEach(blockID => {
-
-
-                    console.log(blockID);
-                    const words = dynamicMap.get(blockID).split(',');
-                    ADDINGsingleBLOCK(words);
-
-                });
 
 
 
-
-                for (let i = 1; i < blocksSize+1; i++) {}
 
             break;
         case "longpress":
 
-
-                var blocksSize = dynamicBLOCKsize[currentACTIVEevent+kitID];
-                if(isNaN(blocksSize))blocksSize=0;
 
 
 
@@ -171,16 +149,31 @@ function StartPlayGround(kitID,EventCase)
 
                 playground_space.appendChild(eventParagraph);
 
-                for (let i = 1; i < blocksSize+1; i++) {
-
-                    const words = dynamicMap.get(currentACTIVEevent+"code"+kitID+i).split(',');
-                    ADDINGsingleBLOCK(words);
-
-                }
 
 
             break;
     }
+
+
+
+    //NO NEED TO Repeat the code, it's one code FOR ALL events
+    var blocksSize = dynamicBLOCKsize[currentACTIVEevent+kitID];
+    if(isNaN(blocksSize))blocksSize=0;
+    //Adding + plus sign after the code kitID so it won't be mixed with future logic fatal error
+    let prefix = currentACTIVEevent, contains = 'code'+kitID+"+";
+    ACTIVEactions
+        .filter(blockID => blockID.startsWith(prefix) && blockID.includes(contains)) // Apply rules
+        .forEach(blockID => {
+
+
+            console.log(blockID);
+            const words = dynamicMap.get(blockID).split(',');
+            ADDINGsingleBLOCK(words);
+
+        });
+
+
+
 
 }
 
