@@ -24,10 +24,10 @@ function global_onClick(kitID){
 function doJOBS(COMMANDS){
     switch (COMMANDS[0]) {
         case "changetext":
-            document.getElementById(COMMANDS[1]).textContent=COMMANDS[2];
+            document.getElementById("live"+COMMANDS[1]).textContent=COMMANDS[2];
             break;
         case "changecolor":
-            document.getElementById(COMMANDS[1]).style.color=COMMANDS[2];
+            document.getElementById("live"+COMMANDS[1]).style.color=COMMANDS[2];
             break;
     }
 }

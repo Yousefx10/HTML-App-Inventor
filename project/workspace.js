@@ -226,6 +226,7 @@ function ADDINGsingleBLOCK(words,FullBlockID)
 
 
     const kitSelect = document.createElement('select');
+    kitSelect.setAttribute('onchange', 'updateACTIONvalue(event,"kit",this.parentNode.parentNode.id);');
     active_kit.forEach(num => {
         const option = document.createElement('option');
         option.textContent = num[0]+num[1];
@@ -329,13 +330,13 @@ function action_add(actionType)
     switch (actionType)
     {
         case "ChangeText":
-            dynamicMap.set(tempLONGvalue, 'changetext,live0,ThisIsNewValue');
-
+            dynamicMap.set(tempLONGvalue, 'changetext,0,ThisIsNewValue');//adding ZERO as default value.
+            console.log(tempLONGvalue);
              words = dynamicMap.get(tempLONGvalue).split(',');
 
             break;
         case "ChangeColor":
-            dynamicMap.set(tempLONGvalue, 'changecolor,live0,blue');
+            dynamicMap.set(tempLONGvalue, 'changecolor,0,blue');//adding ZERO as default kitID value.
 
             words = dynamicMap.get(tempLONGvalue).split(',');
 
@@ -358,4 +359,29 @@ function event_action_set(kitID)
 
     live_iframe.contentWindow.document.getElementById('live'+kitID)
         .setAttribute("on"+currentACTIVEevent,`global_onClick(${kitID});`);
+}
+
+
+
+function updateACTIONvalue(event,updateTYPE,fullID)
+{
+    const selectedValue = event.target.value;
+
+    switch (updateTYPE)
+    {
+        case "kit":
+            //convert string to number to get the kitID, but the number should be always in the beginning of the string
+            let getkitIDfromSTRING = parseInt(selectedValue, 10);
+            let newkitID_VALUE = dynamicMap.get(fullID).split(",").map((item, index) => index === 1 ? getkitIDfromSTRING : item).join(",");
+
+            dynamicMap.set(fullID, newkitID_VALUE);//adding ZERO as default value.
+
+            break;
+        case "0":
+            break;
+    }
+
+
+
+
 }
