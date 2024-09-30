@@ -26,25 +26,26 @@ function doJOBS(COMMANDS){
         case "changetext":
             //document.getElementById("live"+COMMANDS[1]).textContent=COMMANDS[2];
             UPDATEcurrentCONTENT(COMMANDS[1],COMMANDS[2]);
-            window.parent.generalUPDATE(COMMANDS[0],COMMANDS[1],COMMANDS[2]);
             break;
         case "changecolor":
             //document.getElementById("live"+COMMANDS[1]).style.color=COMMANDS[2];
             UpdateColor(COMMANDS[1],COMMANDS[2]);
-            window.parent.generalUPDATE(COMMANDS[0],COMMANDS[1],COMMANDS[2]);
             break;
         case "changevisibility":
+
             if(COMMANDS[2]=="Toggle")
                 TOGGLEhiding(COMMANDS[1]);
             else
                 document.getElementById("live"+COMMANDS[1]).style.display=(COMMANDS[2] === "Visible") ? "block" : "none";
 
-            window.parent.generalUPDATE(COMMANDS[0],COMMANDS[1],COMMANDS[2]);
             break;
         case "changefontsize":
-            document.getElementById("live"+COMMANDS[1]).style.fontSize=COMMANDS[2];
+            //document.getElementById("live"+COMMANDS[1]).style.fontSize=COMMANDS[2];
+            UpdateFontSize(COMMANDS[1],COMMANDS[2]);
             break;
     }
+
+    window.parent.generalUPDATE(COMMANDS[0],COMMANDS[1],COMMANDS[2]);
 }
 
 
@@ -80,9 +81,11 @@ function generalUPDATE(updateTYPE,kitID,newVALUE)
                     GET_THE_KIT_ID("active_kit",kitID).classList.add('not-visible-emoji');
             }
             //switching the old value to the new value
-            console.log(visibility_status);
             GET_THE_KIT_ID("active_kit",kitID).setAttribute("data-visible",visibility_status);
 
+            break;
+        case "changefontsize":
+            GET_THE_KIT_ID("active_kit",kitID).dataset.size = newVALUE;
             break;
     }
 
