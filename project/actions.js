@@ -1,10 +1,10 @@
 //All Running Actions Will Be Stated Here.
-function global_onClick(kitID){
+function global_onClick(kitID,event,prefix = "click"){
 
     //first of all is defining variables.
     let dynamicMap = window.parent.dynamicMap;
     let ACTIVEactions = window.parent.ACTIVEactions;
-    let prefix = "click", contains = 'code'+kitID+".";
+    let contains = 'code'+kitID+".";
 
     //then filtering the correct actions that are related to event
     ACTIVEactions
@@ -129,6 +129,34 @@ function generalUPDATE(updateTYPE,kitID,newVALUE)
     }
 
 }
-//u have stopped here and you have finish everything
-//find a new problem to solve
-//but first check on all alignment, maybe there's issue? i dont think but u gotta check on first
+
+//LONG PRESS AREA
+/*
+onmousedown="startPress()"
+onmouseup="cancelPress()"
+onmouseleave="cancelPress()"
+
+ontouchstart="startPress()"
+ontouchend="cancelPress()"
+ontouchcancel="cancelPress()"
+*/
+
+
+// Function to run when long press is detected
+function longPressAction(kitID) {
+    console.log("congrats, a long event click for "+kitID);
+
+    //will call the global click EVENT :
+    global_onClick(kitID,"longpress");
+}
+
+// Start the timer
+function startPress(elementEVENT,kitID) {
+    // Store timer on the specific button element
+    elementEVENT.pressTimer = setTimeout(() => longPressAction(kitID), 1000);
+}
+
+// Cancel the timer
+function cancelPress(elementEVENT) {
+    clearTimeout(elementEVENT.pressTimer);
+}

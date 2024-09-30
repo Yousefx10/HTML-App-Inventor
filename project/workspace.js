@@ -422,9 +422,24 @@ function action_add(actionType)
 
 function event_action_set(kitID)
 {
+    let currentIFRAMEwindow = live_iframe.contentWindow.document.getElementById('live'+kitID);
 
-    live_iframe.contentWindow.document.getElementById('live'+kitID)
-        .setAttribute("on"+currentACTIVEevent,`global_onClick(${kitID});`);
+    if(currentACTIVEevent=="click")
+        currentIFRAMEwindow.setAttribute("on"+currentACTIVEevent,`global_onClick(${kitID});`);
+
+    if(currentACTIVEevent=="longpress")
+    {
+        currentIFRAMEwindow.setAttribute("onmousedown", `startPress(this,${kitID});`);
+        currentIFRAMEwindow.setAttribute("onmouseup",   `cancelPress(this,${kitID});`);
+        currentIFRAMEwindow.setAttribute("onmouseleave",`cancelPress(this,${kitID});`);
+
+        //for smart phones with touch screen :
+        currentIFRAMEwindow.setAttribute("ontouchstart", `startPress(this,${kitID});`);
+        currentIFRAMEwindow.setAttribute("ontouchend",   `cancelPress(this,${kitID});`);
+        currentIFRAMEwindow.setAttribute("ontouchcancel",`cancelPress(this,${kitID});`);
+    }
+
+
 }
 
 
