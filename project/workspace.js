@@ -438,6 +438,14 @@ function event_action_set(kitID)
         currentIFRAMEwindow.setAttribute("ontouchend",   `cancelPress(this,${kitID});`);
         currentIFRAMEwindow.setAttribute("ontouchcancel",`cancelPress(this,${kitID});`);
     }
+    if(currentACTIVEevent=="trick")
+    {
+        console.log("started" + kitID);
+
+        live_iframe.contentWindow.startInterval(kitID);
+
+
+    }
 
 
 }

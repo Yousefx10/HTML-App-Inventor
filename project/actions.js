@@ -12,6 +12,7 @@ function global_onClick(kitID,prefix = "click"){
         .forEach(blockID => {
 
             const COMMANDS = dynamicMap.get(blockID).split(ProjectDelimiter);
+            console.log(COMMANDS);
             doJOBS(COMMANDS);
 
         });
@@ -158,4 +159,42 @@ function startPress(elementEVENT,kitID) {
 // Cancel the timer
 function cancelPress(elementEVENT) {
     clearTimeout(elementEVENT.pressTimer);
+}
+
+
+
+
+/*
+//timer area
+let start_trick1=true;
+// Run myFunction every 2000 milliseconds (2 seconds)
+const intervalId = setInterval(global_onClick(kitID,"trick"), 2000);
+
+// To stop the interval after a certain time, use clearInterval
+setTimeout(() => {
+    clearInterval(intervalId);
+    console.log("Interval cleared");
+}, 20000); // Clears the interval after 20 seconds
+
+*/
+
+let intervalId;
+
+
+function startInterval(kitID) {
+
+    if (!intervalId) { // Prevent starting multiple intervals
+        console.log("Interval started");
+
+        intervalId = setInterval(() => global_onClick(kitID,"trick"), 4000);
+    }
+
+}
+
+function stopInterval() {
+    if (intervalId) {
+        clearInterval(intervalId);
+        intervalId = null; // Reset the intervalId
+        console.log("Interval stopped");
+    }
 }
