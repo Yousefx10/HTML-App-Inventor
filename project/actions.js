@@ -29,5 +29,8 @@ function doJOBS(COMMANDS){
         case "changecolor":
             document.getElementById("live"+COMMANDS[1]).style.color=COMMANDS[2];
             break;
+        case "changevisibility":
+            document.getElementById("live"+COMMANDS[1]).style.display=(COMMANDS[2] === "Visible") ? "block" : "none";
+            break;
     }
 }

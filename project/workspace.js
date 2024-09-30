@@ -261,6 +261,18 @@ function ADDINGsingleBLOCK(words,FullBlockID)
 
             valueInput.setAttribute('onchange', 'updateACTIONvalue(event,"value",this.parentNode.parentNode.id);');
             break;
+        case "changevisibility":
+            var valueInput = document.createElement('select');
+            ["Visible","Hidden"].forEach(num => {
+                const option = document.createElement('option');
+                option.textContent = num;
+                option.value = num;
+                valueInput.appendChild(option);
+            });
+            valueInput.value= words[2];
+
+            valueInput.setAttribute('onchange', 'updateACTIONvalue(event,"value",this.parentNode.parentNode.id);');
+            break;
     }
 
     const lineBreak = document.createElement('br');
@@ -348,6 +360,12 @@ function action_add(actionType)
             break;
         case "ChangeColor":
             dynamicMap.set(tempLONGvalue, 'changecolor,0,blue');//adding ZERO as default kitID value.
+
+            words = dynamicMap.get(tempLONGvalue).split(',');
+
+            break;
+        case "ChangeVisibility":
+            dynamicMap.set(tempLONGvalue, 'changevisibility,0,Hidden');//as default will be hidden
 
             words = dynamicMap.get(tempLONGvalue).split(',');
 
