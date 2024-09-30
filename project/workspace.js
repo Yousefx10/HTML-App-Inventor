@@ -440,9 +440,8 @@ function event_action_set(kitID)
     }
     if(currentACTIVEevent=="trick")
     {
-        console.log("started" + kitID);
+        console.log("created action for timer" + kitID);
 
-        live_iframe.contentWindow.startInterval(kitID);
 
 
     }

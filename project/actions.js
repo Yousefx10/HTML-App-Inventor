@@ -176,25 +176,39 @@ setTimeout(() => {
     console.log("Interval cleared");
 }, 20000); // Clears the interval after 20 seconds
 
+
+
+
+        timerID = setInterval(() => global_onClick(kitID,"trick"), timerLONG);
 */
 
-let intervalId;
 
 
-function startInterval(kitID) {
+let intervals = {}; // Store intervals with kitID as keys
 
-    if (!intervalId) { // Prevent starting multiple intervals
-        console.log("Interval started");
+function startInterval(kitID, timerLONG) {
+    // Check if the interval for this kitID is already running
+    if (!intervals[kitID]) { // Prevent starting multiple intervals
+        console.log("Interval started for:", kitID);
 
-        intervalId = setInterval(() => global_onClick(kitID,"trick"), 4000);
-    }
-
-}
-
-function stopInterval() {
-    if (intervalId) {
-        clearInterval(intervalId);
-        intervalId = null; // Reset the intervalId
-        console.log("Interval stopped");
+        // Start the interval and store the timerID in the intervals object
+        intervals[kitID] = setInterval(() => global_onClick(kitID, "trick"), timerLONG);
     }
 }
+
+function stopInterval(kitID) {
+    // Check if the interval exists for the given kitID
+    if (intervals[kitID]) {
+        clearInterval(intervals[kitID]); // Stop the interval
+        delete intervals[kitID]; // Remove it from the object
+        console.log("Interval stopped for:", kitID);
+    } else {
+        console.log("No active interval found for:", kitID);
+    }
+}
+
+// Example usage:
+// Start an interval
+ // starts an interval for kitID 'kit1'
+// Stop the interval
+ // stops the interval for kitID 'kit1'

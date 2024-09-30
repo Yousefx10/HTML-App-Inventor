@@ -74,6 +74,7 @@ function addKIT(kit_type)
             break;
         case 5:
             //active_kit.push([COUNT_KIT_PROGRESS,NameKit(kit_type)]);
+            newKIT.setAttribute("data-only","timer");
             newKIT.textContent = phrase4 + element5 +currentkitID;
             break;
     }
