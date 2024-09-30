@@ -97,6 +97,11 @@
             <div class="only-hide only-option" id="only-timer">
                 <span>Timer Settings :</span>
                 <button onclick="ManageTimer();" id="TimerButton">Timer</button>
+                <br/>
+                <label for="timerDuration">Interval:</label>
+                <input id="timerDuration"type="range" min="1" max="100" value="1"
+                oninput="spanRanger.textContent = this.value;"/>
+                <span id="spanRanger">1</span><span>SEC</span>
                 <hr/>
             </div>
 <div class="only-hide only-option" id="only-general">

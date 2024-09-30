@@ -626,7 +626,8 @@ function ManageTimer()
     else
     {//WORK NOW :
 
-        live_iframe.contentWindow.startInterval(currentkitID, 5000);
+        live_iframe.contentWindow.startInterval(currentkitID, (rangerINPUT.value*1000));
+        console.log(rangerINPUT.value);
         GET_THE_KIT_ID("active_kit",currentkitID).dataset.timer="true";
         TimerButton.classList.add('TimerButtonENABLED');
     }
