@@ -247,3 +247,14 @@ color:mediumseagreen;
         input[type="file"] {
             display: none;
         }
+
+#TimerButton::before{
+    content: "Enable";
+    color: green;
+}
+
+.TimerButtonENABLED::before
+{
+    content: "Disable" !important;
+    color: orange !important;
+}

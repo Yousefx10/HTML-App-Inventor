@@ -16,7 +16,7 @@ let hidden_kitID = document.getElementById('hidden_kitID');
 
 //Variable For live_iframe [THE HEART OF IFRAME ELEMENT]
 let live_iframe = document.getElementById('live_iframe');
-
+let TimerButton = document.getElementById('TimerButton');
 
 let DELETEbtn = document.getElementById("Remove_button");
 let SAVEbtn = document.getElementById("Save_button");

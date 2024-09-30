@@ -75,6 +75,7 @@ function addKIT(kit_type)
         case 5:
             //active_kit.push([COUNT_KIT_PROGRESS,NameKit(kit_type)]);
             newKIT.setAttribute("data-only","timer");
+            newKIT.setAttribute("data-timer","false");
             newKIT.textContent = phrase4 + element5 +currentkitID;
             break;
     }
@@ -173,7 +174,13 @@ function timeline_properties(current_kit,current_details)
     document.getElementById('MarginDropDown').value = current_margin;
     document.getElementById('MarginDropDown').disabled=false;
 
-
+    let current_timerSTATUS = document.getElementById("active_kit"+current_kit).dataset.timer;
+    if(current_timerSTATUS=="true")
+    {
+        TimerButton.classList.add('TimerButtonENABLED');
+    }else {
+        TimerButton.classList.remove('TimerButtonENABLED');
+    }
 
 //BORDER AREA
 let current_Border_status = document.getElementById("active_kit"+current_kit).dataset.border;
@@ -600,4 +607,31 @@ function EnableBorder(CurrentBorderStatus)
             //haveBORDER(1,1);
             live_iframe.contentWindow.UPDATEborder(kitID,"0","solid","black");
         }
+}
+
+
+
+
+function ManageTimer()
+{
+    let currentkitID = hidden_kitID.value;
+
+    if(GET_THE_KIT_ID("active_kit",currentkitID).dataset.timer=="true")//currently set to true and should be false
+    {//STOP NOW :
+        stopThisTimer(currentkitID);
+        GET_THE_KIT_ID("active_kit",currentkitID).dataset.timer="false";
+        TimerButton.classList.remove('TimerButtonENABLED');
+
+    }
+    else
+    {//WORK NOW :
+
+        live_iframe.contentWindow.startInterval(currentkitID, 5000);
+        GET_THE_KIT_ID("active_kit",currentkitID).dataset.timer="true";
+        TimerButton.classList.add('TimerButtonENABLED');
+    }
+}
+function stopThisTimer(kitID)
+{
+    live_iframe.contentWindow.stopInterval(kitID);
 }

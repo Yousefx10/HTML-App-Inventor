@@ -96,22 +96,9 @@
             </div>
             <div class="only-hide only-option" id="only-timer">
                 <span>Timer Settings :</span>
-                <button onclick="startThisTimer();">start timer</button>
-                <button onclick="stopThisTimer();">stop timer</button>
+                <button onclick="ManageTimer();" id="TimerButton">Timer</button>
                 <hr/>
             </div>
-<script>
-function startThisTimer()
-    {
-        let currentkitID = hidden_kitID.value;
-            live_iframe.contentWindow.startInterval(currentkitID, 5000);
-    }
-function stopThisTimer()
-    {
-        let currentkitID = hidden_kitID.value;
-            live_iframe.contentWindow.stopInterval(currentkitID);
-    }
-</script>
 <div class="only-hide only-option" id="only-general">
               <label for="ColorDropDown">Kit's Color:</label>
               <select id="ColorDropDown" onchange="UpdateColor(this)">
