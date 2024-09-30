@@ -87,7 +87,8 @@ let FontSizesNAMES =[
     ["Large", "large"],
     ["Huge", "x-large"]
 ];
-
+//in this const, i'll replace "," with "~|" to get sure user won't include it on their string
+const ProjectDelimiter="~|";
 //********************************
 //[END]Variables For Workspace ONLY
 

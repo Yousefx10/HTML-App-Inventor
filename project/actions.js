@@ -11,7 +11,7 @@ function global_onClick(kitID){
         .filter(blockID => blockID.startsWith(prefix) && blockID.includes(contains)) // Apply rules
         .forEach(blockID => {
 
-            const COMMANDS = dynamicMap.get(blockID).split(',');
+            const COMMANDS = dynamicMap.get(blockID).split(ProjectDelimiter);
             doJOBS(COMMANDS);
 
         });

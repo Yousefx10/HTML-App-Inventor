@@ -181,7 +181,7 @@ function StartPlayGround(kitID,EventCase)
 
 
 
-            const words = dynamicMap.get(blockID).split(',');
+            const words = dynamicMap.get(blockID).split(ProjectDelimiter);
             ADDINGsingleBLOCK(words,blockID);
 
         });
@@ -365,27 +365,27 @@ function action_add(actionType)
     switch (actionType)
     {
         case "ChangeText":
-            dynamicMap.set(tempLONGvalue, 'changetext,0,This Is New Value');//adding ZERO as default value.
+            dynamicMap.set(tempLONGvalue, 'changetext'+ProjectDelimiter+'0'+ProjectDelimiter+'This Is New Value');//adding ZERO as default value.
             console.log(tempLONGvalue);
-             words = dynamicMap.get(tempLONGvalue).split(',');
+             words = dynamicMap.get(tempLONGvalue).split(ProjectDelimiter);
 
             break;
         case "ChangeColor":
-            dynamicMap.set(tempLONGvalue, 'changecolor,0,blue');//adding ZERO as default kitID value.
+            dynamicMap.set(tempLONGvalue, 'changecolor'+ProjectDelimiter+'0'+ProjectDelimiter+'blue');//adding ZERO as default kitID value.
 
-            words = dynamicMap.get(tempLONGvalue).split(',');
+            words = dynamicMap.get(tempLONGvalue).split(ProjectDelimiter);
 
             break;
         case "ChangeVisibility":
-            dynamicMap.set(tempLONGvalue, 'changevisibility,0,Hidden');//as default will be hidden
+            dynamicMap.set(tempLONGvalue, 'changevisibility'+ProjectDelimiter+'0'+ProjectDelimiter+'Hidden');//as default will be hidden
 
-            words = dynamicMap.get(tempLONGvalue).split(',');
+            words = dynamicMap.get(tempLONGvalue).split(ProjectDelimiter);
 
             break;
         case "ChangeFontSize":
-            dynamicMap.set(tempLONGvalue, 'changefontsize,0,medium');//as default will be Medium
+            dynamicMap.set(tempLONGvalue, 'changefontsize'+ProjectDelimiter+'0'+ProjectDelimiter+'medium');//as default will be Medium
 
-            words = dynamicMap.get(tempLONGvalue).split(',');
+            words = dynamicMap.get(tempLONGvalue).split(ProjectDelimiter);
 
             break;
     }
@@ -421,12 +421,12 @@ function updateACTIONvalue(event,updateTYPE,fullID)
             //convert string to number to get the kitID, but the number should be always in the beginning of the string
 
              newkitID_VALUE =
-                 dynamicMap.get(fullID).split(",").map((item, index) => index === 1 ? getkitIDfromSTRING : item).join(",");
+                 dynamicMap.get(fullID).split(ProjectDelimiter).map((item, index) => index === 1 ? getkitIDfromSTRING : item).join(ProjectDelimiter);
 
             break;
         case "value":
              newkitID_VALUE =
-                 dynamicMap.get(fullID).split(",").map((item, index) => index === 2 ? selectedValue : item).join(",");
+                 dynamicMap.get(fullID).split(ProjectDelimiter).map((item, index) => index === 2 ? selectedValue : item).join(ProjectDelimiter);
             break;
     }
 
