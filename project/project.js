@@ -395,15 +395,12 @@ function SAVINGtime(){
 
         live_iframe.contentWindow.TOGGLEhiding(kitID);
 
-        if(visibility_status =="1")
-            {//in this case, it's visible, will be not visible in this code:
-            visibility_status ="0";
-            GET_THE_KIT_ID("active_kit",kitID).setAttribute("data-visible","0");
-            }
-            else{
+        if(visibility_status =="1")//in this case, it's visible, will be not visible in this code:
+                visibility_status ="0";
+            else
                 visibility_status ="1";
-                GET_THE_KIT_ID("active_kit",kitID).setAttribute("data-visible","1");
-            }
+
+            GET_THE_KIT_ID("active_kit",kitID).setAttribute("data-visible",visibility_status);
             GET_THE_KIT_ID("active_kit",kitID).classList.toggle('not-visible-emoji');
     }
 
