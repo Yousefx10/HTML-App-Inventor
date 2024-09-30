@@ -24,7 +24,9 @@ function global_onClick(kitID){
 function doJOBS(COMMANDS){
     switch (COMMANDS[0]) {
         case "changetext":
-            document.getElementById("live"+COMMANDS[1]).textContent=COMMANDS[2];
+            //document.getElementById("live"+COMMANDS[1]).textContent=COMMANDS[2];
+            UPDATEcurrentCONTENT(COMMANDS[1],COMMANDS[2]);
+            window.parent.generalUPDATE(COMMANDS[0],COMMANDS[1],COMMANDS[2]);
             break;
         case "changecolor":
             //document.getElementById("live"+COMMANDS[1]).style.color=COMMANDS[2];
@@ -46,6 +48,9 @@ function doJOBS(COMMANDS){
 function generalUPDATE(updateTYPE,kitID,newVALUE)
 {
     switch (updateTYPE) {
+        case "changetext":
+            GET_THE_KIT_ID('active_kit',kitID).innerHTML=newVALUE;
+            break;
         case "changecolor":
             GET_THE_KIT_ID("active_kit",kitID).dataset.color =newVALUE;
             break;
