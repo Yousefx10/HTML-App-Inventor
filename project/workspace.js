@@ -263,7 +263,7 @@ function ADDINGsingleBLOCK(words,FullBlockID)
             break;
         case "changevisibility":
             var valueInput = document.createElement('select');
-            ["Visible","Hidden"].forEach(num => {
+            ["Toggle","Visible","Hidden"].forEach(num => {
                 const option = document.createElement('option');
                 option.textContent = num;
                 option.value = num;

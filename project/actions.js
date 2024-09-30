@@ -34,8 +34,11 @@ function doJOBS(COMMANDS){
             window.parent.generalUPDATE(COMMANDS[0],COMMANDS[1],COMMANDS[2]);
             break;
         case "changevisibility":
-            //document.getElementById("live"+COMMANDS[1]).style.display=(COMMANDS[2] === "Visible") ? "block" : "none";
-            TOGGLEhiding(COMMANDS[1]);
+            if(COMMANDS[2]=="Toggle")
+                TOGGLEhiding(COMMANDS[1]);
+            else
+                document.getElementById("live"+COMMANDS[1]).style.display=(COMMANDS[2] === "Visible") ? "block" : "none";
+
             window.parent.generalUPDATE(COMMANDS[0],COMMANDS[1],COMMANDS[2]);
             break;
         case "changefontsize":
@@ -57,10 +60,29 @@ function generalUPDATE(updateTYPE,kitID,newVALUE)
             GET_THE_KIT_ID("active_kit",kitID).dataset.color =newVALUE;
             break;
         case  "changevisibility":
-            let visibility_status= (newVALUE == "Visible") ? 1 : 0;
+            let visibility_status;
+
+            if(newVALUE=="Toggle"){//here's the toggle option, if visible make it unvisible and versa vice.
+
+                //get the current visibility status to toggle it
+                 visibility_status = GET_THE_KIT_ID("active_kit",kitID).dataset.visible;
+                 visibility_status = visibility_status == 1 ? 0 : 1;
+                 //toggling the eye emoji
+                 GET_THE_KIT_ID("active_kit",kitID).classList.toggle('not-visible-emoji');
+            }
+            else{//here if new value is visible, set it always visible, if unvisible, hide it always
+                //converting Visible and Hidden to NUMBERS
+                visibility_status= (newVALUE == "Visible") ? 1 : 0;
+
+                if(visibility_status==1)//if set to visible, show the eye
+                    GET_THE_KIT_ID("active_kit",kitID).classList.remove('not-visible-emoji');
+                else //if hidden, hide the eye
+                    GET_THE_KIT_ID("active_kit",kitID).classList.add('not-visible-emoji');
+            }
+            //switching the old value to the new value
             console.log(visibility_status);
             GET_THE_KIT_ID("active_kit",kitID).setAttribute("data-visible",visibility_status);
-            GET_THE_KIT_ID("active_kit",kitID).classList.toggle('not-visible-emoji');
+
             break;
     }
 
