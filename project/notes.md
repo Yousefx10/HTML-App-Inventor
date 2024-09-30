@@ -64,6 +64,9 @@ maybe using this code in the future to replace the violation error related to do
 ## that onclick will call the global onclick event on actions.js and pass the kitID.[DONE]
 
 
+# along side issues :
+## when trying to LONG PRESS on button and release the mouse click the mouse click event starts to run "from pc not touch screen".
+
 
 
 

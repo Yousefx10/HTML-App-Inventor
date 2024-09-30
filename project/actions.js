@@ -1,5 +1,5 @@
 //All Running Actions Will Be Stated Here.
-function global_onClick(kitID,event,prefix = "click"){
+function global_onClick(kitID,prefix = "click"){
 
     //first of all is defining variables.
     let dynamicMap = window.parent.dynamicMap;
@@ -110,7 +110,7 @@ function generalUPDATE(updateTYPE,kitID,newVALUE)
 
 
             //reSHOWINGcorrectAlign(alignmentELEMENT);
-            console.log(newVALUE);
+
             switch(newVALUE){
                 case "Left"://IT'S LEFT
                     GET_THE_KIT_ID("active_kit",kitID).dataset.alignment ="1";
@@ -144,7 +144,6 @@ ontouchcancel="cancelPress()"
 
 // Function to run when long press is detected
 function longPressAction(kitID) {
-    console.log("congrats, a long event click for "+kitID);
 
     //will call the global click EVENT :
     global_onClick(kitID,"longpress");

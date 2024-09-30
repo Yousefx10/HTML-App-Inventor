@@ -379,7 +379,7 @@ function action_add(actionType)
     {
         case "ChangeText":
             dynamicMap.set(tempLONGvalue, 'changetext'+ProjectDelimiter+'0'+ProjectDelimiter+'This Is New Value');//adding ZERO as default value.
-            console.log(tempLONGvalue);
+
              words = dynamicMap.get(tempLONGvalue).split(ProjectDelimiter);
 
             break;
