@@ -27,7 +27,9 @@ function doJOBS(COMMANDS){
             document.getElementById("live"+COMMANDS[1]).textContent=COMMANDS[2];
             break;
         case "changecolor":
-            document.getElementById("live"+COMMANDS[1]).style.color=COMMANDS[2];
+            //document.getElementById("live"+COMMANDS[1]).style.color=COMMANDS[2];
+            UpdateColor(COMMANDS[1],COMMANDS[2]);
+            window.parent.generalUPDATE(COMMANDS[0],COMMANDS[1],COMMANDS[2]);
             break;
         case "changevisibility":
             document.getElementById("live"+COMMANDS[1]).style.display=(COMMANDS[2] === "Visible") ? "block" : "none";
@@ -36,4 +38,17 @@ function doJOBS(COMMANDS){
             document.getElementById("live"+COMMANDS[1]).style.fontSize=COMMANDS[2];
             break;
     }
+}
+
+
+//this function should be called from the parent only.
+//the purpose of this is to update the changes into the properties and timeline
+function generalUPDATE(updateTYPE,kitID,newVALUE)
+{
+    switch (updateTYPE) {
+        case "changecolor":
+            GET_THE_KIT_ID("active_kit",kitID).dataset.color =newVALUE;
+            break;
+    }
+
 }
