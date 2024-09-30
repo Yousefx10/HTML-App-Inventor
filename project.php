@@ -70,9 +70,9 @@
 
 
                 <span>Image Alignment :</span>
-                <span class='btn_alignment btn_alignment-SELECTED' onclick="alignCONTROLS(1,this);" id="alignIMG1">Left</span>
-                <span class='btn_alignment'  onclick="alignCONTROLS(2,this);" id="alignIMG2">Center</span>
-                <span class='btn_alignment'  onclick="alignCONTROLS(3,this);" id="alignIMG3">Right</span>
+                <span class='btn_alignment btn_alignment-SELECTED' onclick="alignTEXT(1,'control',this);" id="alignIMG1">Left</span>
+                <span class='btn_alignment'  onclick="alignTEXT(2,'control',this);" id="alignIMG2">Center</span>
+                <span class='btn_alignment'  onclick="alignTEXT(3,'control',this);" id="alignIMG3">Right</span>
                 <hr/>
 
                 <label class="upload-btn">

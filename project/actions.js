@@ -48,7 +48,8 @@ function doJOBS(COMMANDS){
 
             //no need to have this or check on it :
             //const textableTags = ['P', 'H1', 'H2', 'H3', 'H4', 'H5', 'H6', 'SPAN', 'DIV', 'TEXTAREA'];
-            const controlTags = ['BUTTON', 'IMG' ,'INPUT', 'SELECT', 'TEXTAREA'];
+            //const controlTags = ['BUTTON', 'IMG' ,'INPUT', 'SELECT', 'TEXTAREA'];
+            const controlTags = ['button', 'img'];
             const targetElement = document.getElementById("live"+COMMANDS[1]);
 
             let kitTYPE = 'text';
@@ -128,3 +129,6 @@ function generalUPDATE(updateTYPE,kitID,newVALUE)
     }
 
 }
+//u have stopped here and you have finish everything
+//find a new problem to solve
+//but first check on all alignment, maybe there's issue? i dont think but u gotta check on first
