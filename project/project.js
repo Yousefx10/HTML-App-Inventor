@@ -429,7 +429,7 @@ function SAVINGtime(){
         }
 
         let KITalignment =  GET_THE_KIT_ID("active_kit",kitID).dataset.alignment;
-        live_iframe.contentWindow.kitALIGNMENT(kitID,KITalignment);
+        live_iframe.contentWindow.kitALIGNMENT(kitID,'text',KITalignment);
     }
 
 
@@ -465,7 +465,7 @@ function alignCONTROLS(alignmentTYPE,alignmentELEMENT){
                 break;
         }
         let KITalignment =  GET_THE_KIT_ID("active_kit",kitID).dataset.alignment;
-        live_iframe.contentWindow.kitALIGNMENTcontrol(kitID,KITalignment);
+        live_iframe.contentWindow.kitALIGNMENT(kitID,'control',KITalignment);
     }
 
 

@@ -49,50 +49,47 @@
                 document.getElementById("live"+kitID).classList.toggle('hide');
             }
 
-            function kitALIGNMENT(kitID,NEWalignment)
+             //merging kitALIGNMENT with kitALIGNMENTcontrol
+            function kitALIGNMENT(kitID,kitTYPE,NEWalignment)
             {
                 const NEWalignment_result = NEWalignment === "1" ? "left" :
                                             NEWalignment === "2" ? "center" :
                                             NEWalignment === "3" ? "right" :
-                                           "left";//default answer
-                document.getElementById("live"+kitID).style.textAlign = NEWalignment_result;
+                                           NEWalignment;//default answer
+               const targetElement = document.getElementById("live"+kitID);
+                if(kitTYPE == "text")
+                    targetElement.style.textAlign = NEWalignment_result;
+                else {
+                        const parentElement = targetElement.parentNode;
+                        if (parentElement.classList.contains("parent_here"))
+                            {
+                                if(NEWalignment_result=="left")
+                                    {
+                                        parentElement.parentNode.replaceChild(targetElement, parentElement);
+                                        return;
+                                    }
+                        
+                                parentElement.classList.remove("alignment-button-center");
+                                parentElement.classList.remove("alignment-button-right");
+                                parentElement.classList.add("alignment-button-"+NEWalignment_result);
+                            }
+                        else{
+                                const newParent = document.createElement("div");
+                                newParent.classList.add("alignment-button-"+NEWalignment_result);
+                                newParent.classList.add("parent_here");// a tag to know that it's already have a parent
+                        
+                                //Replace the target element with the new parent
+                                targetElement.parentNode.replaceChild(newParent, targetElement);
+                        
+                                //Append the target element as a child of the new parent
+                                newParent.appendChild(targetElement);
+                            }
+                    }
             }
             function kitALIGNMENTcontrol(kitID,NEWalignment)
             {
 
-                const targetElement = document.getElementById("live"+kitID);
-                const parentElement = targetElement.parentNode;
-
-                const NEWalignment_result = NEWalignment === "1" ? "left" :
-                                            NEWalignment === "2" ? "center" :
-                                            NEWalignment === "3" ? "right" :
-                                           "left";//default value
-
-               if (parentElement.classList.contains("parent_here"))
-                {
-                        if(NEWalignment_result=="left")
-                            {
-
-                                parentElement.parentNode.replaceChild(targetElement, parentElement);
-                                return;
-                            }
-
-                            parentElement.classList.remove("alignment-button-center");
-                            parentElement.classList.remove("alignment-button-right");
-                            parentElement.classList.add("alignment-button-"+NEWalignment_result);
-
-                }
-                else{
-                        const newParent = document.createElement("div");
-                        newParent.classList.add("alignment-button-"+NEWalignment_result);
-                        newParent.classList.add("parent_here");// a tag to know that it's already have a parent
-
-                        //Replace the target element with the new parent
-                        targetElement.parentNode.replaceChild(newParent, targetElement);
-
-                        //Append the target element as a child of the new parent
-                        newParent.appendChild(targetElement);
-                    }
+                
             }
             function UpdateImgSize(kitID,NewSize)
             {

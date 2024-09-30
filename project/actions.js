@@ -43,6 +43,10 @@ function doJOBS(COMMANDS){
             //document.getElementById("live"+COMMANDS[1]).style.fontSize=COMMANDS[2];
             UpdateFontSize(COMMANDS[1],COMMANDS[2]);
             break;
+        case "changealignment":
+            //document.getElementById("live"+COMMANDS[1]).style.color=COMMANDS[2];
+            kitALIGNMENT(COMMANDS[1],'text',COMMANDS[2]);
+            break;
     }
 
     window.parent.generalUPDATE(COMMANDS[0],COMMANDS[1],COMMANDS[2]);

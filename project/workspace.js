@@ -285,6 +285,19 @@ function ADDINGsingleBLOCK(words,FullBlockID)
 
             valueInput.setAttribute('onchange', 'updateACTIONvalue(event,"value",this.parentNode.parentNode.id);');
             break;
+
+        case "changealignment":
+            var valueInput = document.createElement('select');
+            ["Left","Center","Right"].forEach(num => {
+                const option = document.createElement('option');
+                option.textContent = num;
+                option.value = num;
+                valueInput.appendChild(option);
+            });
+            valueInput.value= words[2];
+
+            valueInput.setAttribute('onchange', 'updateACTIONvalue(event,"value",this.parentNode.parentNode.id);');
+            break;
     }
 
     const lineBreak = document.createElement('br');
@@ -384,6 +397,12 @@ function action_add(actionType)
             break;
         case "ChangeFontSize":
             dynamicMap.set(tempLONGvalue, 'changefontsize'+ProjectDelimiter+'0'+ProjectDelimiter+'medium');//as default will be Medium
+
+            words = dynamicMap.get(tempLONGvalue).split(ProjectDelimiter);
+
+            break;
+        case "ChangeAlignment":
+            dynamicMap.set(tempLONGvalue, 'changealignment'+ProjectDelimiter+'0'+ProjectDelimiter+'Left');//as default will be Medium
 
             words = dynamicMap.get(tempLONGvalue).split(ProjectDelimiter);
 
