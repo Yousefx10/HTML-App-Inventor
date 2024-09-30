@@ -32,5 +32,8 @@ function doJOBS(COMMANDS){
         case "changevisibility":
             document.getElementById("live"+COMMANDS[1]).style.display=(COMMANDS[2] === "Visible") ? "block" : "none";
             break;
+        case "changefontsize":
+            document.getElementById("live"+COMMANDS[1]).style.fontSize=COMMANDS[2];
+            break;
     }
 }

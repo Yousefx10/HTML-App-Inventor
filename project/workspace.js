@@ -273,6 +273,18 @@ function ADDINGsingleBLOCK(words,FullBlockID)
 
             valueInput.setAttribute('onchange', 'updateACTIONvalue(event,"value",this.parentNode.parentNode.id);');
             break;
+        case "changefontsize":
+            var valueInput = document.createElement('select');
+            FontSizesNAMES.forEach(num => {
+                const option = document.createElement('option');
+                option.textContent = num[0];
+                option.value = num[1];
+                valueInput.appendChild(option);
+            });
+            valueInput.value= words[2];
+
+            valueInput.setAttribute('onchange', 'updateACTIONvalue(event,"value",this.parentNode.parentNode.id);');
+            break;
     }
 
     const lineBreak = document.createElement('br');
@@ -366,6 +378,12 @@ function action_add(actionType)
             break;
         case "ChangeVisibility":
             dynamicMap.set(tempLONGvalue, 'changevisibility,0,Hidden');//as default will be hidden
+
+            words = dynamicMap.get(tempLONGvalue).split(',');
+
+            break;
+        case "ChangeFontSize":
+            dynamicMap.set(tempLONGvalue, 'changefontsize,0,medium');//as default will be Medium
 
             words = dynamicMap.get(tempLONGvalue).split(',');
 

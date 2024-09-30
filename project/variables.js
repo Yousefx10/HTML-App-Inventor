@@ -69,6 +69,25 @@ window.dynamicMap = new Map();
 //this will store the actions FULL id, no matter got deleted or no
 //WINDOW. this means that the variable has been created and got globally, no need to var,let,const etc.
 window.ACTIVEactions=[];
+
+
+
+// let FontSizesNAMES = new Map([
+//     ["Tiny", "x-small"],
+//     ["Small", "small"],
+//     ["Medium", "medium"],
+//     ["Large", "large"],
+//     ["Huge", "x-large"],
+// ]);
+
+let FontSizesNAMES =[
+    ["Tiny", "x-small"],
+    ["Small", "small"],
+    ["Medium", "medium"],
+    ["Large", "large"],
+    ["Huge", "x-large"]
+];
+
 //********************************
 //[END]Variables For Workspace ONLY
 
