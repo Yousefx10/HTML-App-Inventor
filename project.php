@@ -52,17 +52,17 @@
             <hr/>
             <div class="only-hide only-option" id="only-text">
                 <span>Text Alignment :</span>
-                <span class='btn_alignment btn_alignment-SELECTED' onclick="alignTEXT(1,this)"id="align1">Left</span>
-                <span class='btn_alignment'                        onclick="alignTEXT(2,this)"id="align2">Center</span>
-                <span class='btn_alignment'                        onclick="alignTEXT(3,this)"id="align3">Right</span>
+                <span class='btn_alignment btn_alignment-SELECTED' onclick="alignTEXT(1,'text',this)"id="align1">Left</span>
+                <span class='btn_alignment'                        onclick="alignTEXT(2,'text',this)"id="align2">Center</span>
+                <span class='btn_alignment'                        onclick="alignTEXT(3,'text',this)"id="align3">Right</span>
                 <hr/>
             </div>
             <div class="only-hide only-option" id="only-button">
 
                 <span>Button Alignment :</span>
-                <span class='btn_alignment btn_alignment-SELECTED' onclick="alignCONTROLS(1,this);" id="alignBTN1">Left</span>
-                <span class='btn_alignment'  onclick="alignCONTROLS(2,this);" id="alignBTN2">Center</span>
-                <span class='btn_alignment'  onclick="alignCONTROLS(3,this);" id="alignBTN3">Right</span>
+                <span class='btn_alignment btn_alignment-SELECTED' onclick="alignTEXT(1,'control',this);" id="alignBTN1">Left</span>
+                <span class='btn_alignment'  onclick="alignTEXT(2,'control',this);" id="alignBTN2">Center</span>
+                <span class='btn_alignment'  onclick="alignTEXT(3,'control',this);" id="alignBTN3">Right</span>
                 <hr/>
             </div>
 

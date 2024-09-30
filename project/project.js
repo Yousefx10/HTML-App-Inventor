@@ -408,8 +408,9 @@ function SAVINGtime(){
 
 
 
-    //ALIGN TEXT
-    function alignTEXT(alignmentTYPE,alignmentELEMENT)
+    //ALIGN TEXT or control
+    //alignmentSTATES = "text" or "control"
+    function alignTEXT(alignmentTYPE,alignmentSTATES,alignmentELEMENT)
     {
         reSHOWINGcorrectAlign(alignmentELEMENT);
         let kitID = hidden_kitID.value;
@@ -429,7 +430,7 @@ function SAVINGtime(){
         }
 
         let KITalignment =  GET_THE_KIT_ID("active_kit",kitID).dataset.alignment;
-        live_iframe.contentWindow.kitALIGNMENT(kitID,'text',KITalignment);
+        live_iframe.contentWindow.kitALIGNMENT(kitID,alignmentSTATES,KITalignment);
     }
 
 
@@ -443,30 +444,6 @@ function SAVINGtime(){
         alignmentELEMENT.classList.toggle('btn_alignment-SELECTED');
     }
 
-
-    //ALIGN BUTTON
-    // renamed from [alignBUTTON] TO [alignCONTROLS]
-function alignCONTROLS(alignmentTYPE,alignmentELEMENT){
-
-        reSHOWINGcorrectAlign(alignmentELEMENT);
-        let kitID = hidden_kitID.value;
-
-        switch(alignmentTYPE){
-            case 1://IT'S LEFT
-                GET_THE_KIT_ID("active_kit",kitID).dataset.alignment ="1";
-                break;
-
-            case 2://IT'S CENTER
-                GET_THE_KIT_ID("active_kit",kitID).dataset.alignment ="2";
-                break;
-
-            case 3://IT'S RIGHT
-                GET_THE_KIT_ID("active_kit",kitID).dataset.alignment ="3";
-                break;
-        }
-        let KITalignment =  GET_THE_KIT_ID("active_kit",kitID).dataset.alignment;
-        live_iframe.contentWindow.kitALIGNMENT(kitID,'control',KITalignment);
-    }
 
 
 

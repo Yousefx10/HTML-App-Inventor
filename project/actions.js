@@ -45,7 +45,18 @@ function doJOBS(COMMANDS){
             break;
         case "changealignment":
             //document.getElementById("live"+COMMANDS[1]).style.color=COMMANDS[2];
-            kitALIGNMENT(COMMANDS[1],'text',COMMANDS[2]);
+
+            //no need to have this or check on it :
+            //const textableTags = ['P', 'H1', 'H2', 'H3', 'H4', 'H5', 'H6', 'SPAN', 'DIV', 'TEXTAREA'];
+            const controlTags = ['BUTTON', 'IMG' ,'INPUT', 'SELECT', 'TEXTAREA'];
+            const targetElement = document.getElementById("live"+COMMANDS[1]);
+
+            let kitTYPE = 'text';
+
+            if (controlTags.includes(targetElement.tagName)) kitTYPE = 'control';
+
+
+            kitALIGNMENT(COMMANDS[1],kitTYPE,COMMANDS[2]);
             break;
     }
 
@@ -90,6 +101,29 @@ function generalUPDATE(updateTYPE,kitID,newVALUE)
             break;
         case "changefontsize":
             GET_THE_KIT_ID("active_kit",kitID).dataset.size = newVALUE;
+            break;
+        case "changealignment":
+            //GET_THE_KIT_ID("active_kit",kitID).dataset.color =newVALUE;
+            //alignCONTROLS(alignmentTYPE,alignmentELEMENT);
+            //alignTEXT(alignmentTYPE,alignmentELEMENT);
+
+
+            //reSHOWINGcorrectAlign(alignmentELEMENT);
+            console.log(newVALUE);
+            switch(newVALUE){
+                case "Left"://IT'S LEFT
+                    GET_THE_KIT_ID("active_kit",kitID).dataset.alignment ="1";
+                    break;
+
+                case "Center"://IT'S CENTER
+                    GET_THE_KIT_ID("active_kit",kitID).dataset.alignment ="2";
+                    break;
+
+                case "Right"://IT'S RIGHT
+                    GET_THE_KIT_ID("active_kit",kitID).dataset.alignment ="3";
+                    break;
+            }
+
             break;
     }
 

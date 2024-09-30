@@ -55,8 +55,10 @@
                 const NEWalignment_result = NEWalignment === "1" ? "left" :
                                             NEWalignment === "2" ? "center" :
                                             NEWalignment === "3" ? "right" :
-                                           NEWalignment;//default answer
+                                           NEWalignment.toLowerCase();//default answer
                const targetElement = document.getElementById("live"+kitID);
+                
+               
                 if(kitTYPE == "text")
                     targetElement.style.textAlign = NEWalignment_result;
                 else {
