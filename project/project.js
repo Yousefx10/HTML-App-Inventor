@@ -75,6 +75,7 @@ function addKIT(kit_type)
         case 5:
             //active_kit.push([COUNT_KIT_PROGRESS,NameKit(kit_type)]);
             newKIT.setAttribute("data-only","timer");
+            newKIT.setAttribute("data-duration","1");
             newKIT.setAttribute("data-timer","false");
             newKIT.textContent = phrase4 + element5 +currentkitID;
             break;
@@ -181,7 +182,8 @@ function timeline_properties(current_kit,current_details)
     }else {
         TimerButton.classList.remove('TimerButtonENABLED');
     }
-
+    rangerINPUT.value           =document.getElementById("active_kit"+current_kit).dataset.duration;
+    spanRanger.textContent      =rangerINPUT.value;
 //BORDER AREA
 let current_Border_status = document.getElementById("active_kit"+current_kit).dataset.border;
 
