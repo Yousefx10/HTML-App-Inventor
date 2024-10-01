@@ -62,18 +62,20 @@ let workspace_hidden_kitID = document.getElementById('EVENTcurrentkitID');
 let ALL_available_EVENTS = document.querySelectorAll('.event_item');
 let currentACTIVEevent="";
 
-
-
-let event_CLICK = document.getElementById("event_CLICK");
-let event_LONGPRESS = document.getElementById("event_LONGPRESS");
-let event_TRICK = document.getElementById("event_TRICK");
-
 //i'll use this for several usages
 const listOFevents=[
     "click",
     "longpress",
     "trick",
 ]
+
+
+
+let event_CLICK = document.getElementById("event_CLICK");
+let event_LONGPRESS = document.getElementById("event_LONGPRESS");
+let event_TRICK = document.getElementById("event_TRICK");
+
+
 
 //This const is for knowing how long the kit have blocks on it's event
 const dynamicBLOCKsize = {};

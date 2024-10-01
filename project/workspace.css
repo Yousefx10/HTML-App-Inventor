@@ -10,13 +10,15 @@
     align-content: flex-start; /* Aligns items to the top of the container */
     margin:10px;
 }
-#playground_text{
-    margin-top: 50%;
-}
+#playground_text{margin-top: 50%;}
 #playground_text::before{
     content: "Try To Explore Actions or add some event's";
     color: red;
-
+    text-shadow:
+            0 0 5px #fff,
+            0 0 10px #ff00ff,
+            0 0 20px #ff00ff,
+            0 0 50px #ff00ff; /* Static glow effect */
 }
 
 

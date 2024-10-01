@@ -371,28 +371,31 @@ function SAVINGtime(){
         unFocus();
 
 
+if(GET_DOC_ID("code",current_kitID))
+{
+    GET_DOC_ID("code",current_kitID).remove();
+    ACTIVEactions = ACTIVEactions.filter(action => !action.includes("code"+current_kitID+"."));
 
-        GET_DOC_ID("code",current_kitID).remove();
-        ACTIVEactions = ACTIVEactions.filter(action => !action.includes("code"+current_kitID+"."));
+    dynamicMap.forEach((_, key) => key.includes("code"+current_kitID+".") && dynamicMap.delete(key));
 
-        dynamicMap.forEach((_, key) => key.includes("code"+current_kitID+".") && dynamicMap.delete(key));
+    //the old way :
+    //Object.keys(dynamicBLOCKsize).forEach(key => key.includes("code"+current_kitID+".") && delete dynamicBLOCKsize[key]);
 
-        //the old way :
-        //Object.keys(dynamicBLOCKsize).forEach(key => key.includes("code"+current_kitID+".") && delete dynamicBLOCKsize[key]);
+    //the new way :
+    listOFevents.forEach(num => {
+        delete dynamicBLOCKsize[num+"code"+current_kitID+"."];
+    });
 
-        //the new way :
-        listOFevents.forEach(num => {
-            delete dynamicBLOCKsize[num+"code"+current_kitID+"."];
-        });
+    //clears the playground container
+    document.getElementById("playground_space_container").innerHTML="<p id='playground_text'></p>";
+    //to hide the action section
+    actions_space.style.display="none";
 
-        //clears the playground container
-        document.getElementById("playground_space_container").innerHTML="<p id='playground_text'></p>";
-        actions_space.style.display="none";
-        //
-        ALL_available_EVENTS.forEach((element) => {
-            element.style.display = 'none'; // Hides the element
-        });
-
+    //to clears the event section
+    ALL_available_EVENTS.forEach((element) => {
+        element.style.display = 'none'; // Hides the element
+    });
+}
     }
 
 
