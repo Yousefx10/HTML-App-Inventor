@@ -72,6 +72,8 @@ z-index: 2; /* Screen 1 is above screen 2 initially */
     /*For Displaying the information div in the bottom:*/
     position: relative;
     box-sizing: border-box;
+
+    overflow: auto;
 }
 
 /*[START]Toolkit*/
@@ -139,11 +141,8 @@ z-index: 2; /* Screen 1 is above screen 2 initially */
 }
 
 #btns{
-    position:absolute;
-    bottom : 10px;
-    left:50%;
-    width:80%;
-    transform: translateX(-50%);
+
+    margin-top: 10px;
 
 }
 #btns button{
@@ -152,6 +151,11 @@ z-index: 2; /* Screen 1 is above screen 2 initially */
     width:80%;
     cursor:pointer;
 }
+#newParent{
+    height: 70%;
+    overflow: auto;
+}
+
 .MEselected{
     background:green;
 }

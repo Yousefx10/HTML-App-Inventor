@@ -17,12 +17,17 @@
     <div class='project_div' id="project_properties">
         <p id='properties_name'>project_properties</p>
 
+        <div id="newParent">
+
+
+
+
 
 <button id="unselect" onclick="unFocus();" title="close this window">X</button>
         <label>
             Kit's Value :
         </label>
-        <input title="Write A New Value" type=['text'] oninput="SAVEbtn.disabled=false;" id='properties_value' placeholder='selected_element_text'/>
+        <input title="Write A New Value" type="text" oninput="SAVEbtn.disabled=false;" id='properties_value' placeholder='selected_element_text'/>
         <br/>
 
         <!--hidden element can save current kit's id-->
@@ -30,30 +35,33 @@
 
 
 
-        <div id="btns">
 
-            <!--REMOVE BUTTON-->
-            <button id="Remove_button" onclick="REMOVINGtime();" title="Delete The Entire Kit" disabled>Remove</button>
-            <!--REMOVE BUTTON-->
-
-
-            <!--SAVE BUTTON-->
-            <button id="Save_button" onclick="SAVINGtime();" title="Save Your New Changes" disabled>Save</button>
-            <!--SAVE BUTTON-->
-
-
-        </div>
 
 
         <hr/>
             <span>Kit's Visibility :</span>
             <button id="btn_visible" onclick="change_visibility();this.classList.toggle('btn_unvisible');" title="show or hide the kit">Visible</button>
                 <hr/>
+
                 <span id="mainAlignmentSPAN">Text Alignment :</span>
                 <span class='btn_alignment btn_alignment-SELECTED' onclick="alignTEXT(1,this.parentElement.dataset.alignmentType,this)"id="align1">Left</span>
                 <span class='btn_alignment'                        onclick="alignTEXT(2,this.parentElement.dataset.alignmentType,this)"id="align2">Center</span>
                 <span class='btn_alignment'                        onclick="alignTEXT(3,this.parentElement.dataset.alignmentType,this)"id="align3">Right</span>
             <hr/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             <div class="only-hide only-option" id="only-text">
                 <span>[Text Section]</span>
                 <hr/>
@@ -68,7 +76,7 @@
             <div class="only-hide only-option" id="only-img">
 
 
-                <span>Image Section :</span>
+                <span>[Image Section]</span>
 
                 <hr/>
 
@@ -181,7 +189,21 @@
 </div>
               </div>
 
+</div>
 
+        <div id="btns">
+
+            <!--REMOVE BUTTON-->
+            <button id="Remove_button" onclick="REMOVINGtime();" title="Delete The Entire Kit" disabled>Remove</button>
+            <!--REMOVE BUTTON-->
+
+
+            <!--SAVE BUTTON-->
+            <button id="Save_button" onclick="SAVINGtime();" title="Save Your New Changes" disabled>Save</button>
+            <!--SAVE BUTTON-->
+
+
+        </div>
     </div>
 
 
