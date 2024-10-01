@@ -48,31 +48,28 @@
         <hr/>
             <span>Kit's Visibility :</span>
             <button id="btn_visible" onclick="change_visibility();this.classList.toggle('btn_unvisible');" title="show or hide the kit">Visible</button>
-
+                <hr/>
+                <span id="mainAlignmentSPAN">Text Alignment :</span>
+                <span class='btn_alignment btn_alignment-SELECTED' onclick="alignTEXT(1,this.parentElement.dataset.alignmentType,this)"id="align1">Left</span>
+                <span class='btn_alignment'                        onclick="alignTEXT(2,this.parentElement.dataset.alignmentType,this)"id="align2">Center</span>
+                <span class='btn_alignment'                        onclick="alignTEXT(3,this.parentElement.dataset.alignmentType,this)"id="align3">Right</span>
             <hr/>
             <div class="only-hide only-option" id="only-text">
-                <span>Text Alignment :</span>
-                <span class='btn_alignment btn_alignment-SELECTED' onclick="alignTEXT(1,'text',this)"id="align1">Left</span>
-                <span class='btn_alignment'                        onclick="alignTEXT(2,'text',this)"id="align2">Center</span>
-                <span class='btn_alignment'                        onclick="alignTEXT(3,'text',this)"id="align3">Right</span>
+                <span>[Text Section]</span>
                 <hr/>
             </div>
             <div class="only-hide only-option" id="only-button">
 
-                <span>Button Alignment :</span>
-                <span class='btn_alignment btn_alignment-SELECTED' onclick="alignTEXT(1,'control',this);" id="alignBTN1">Left</span>
-                <span class='btn_alignment'  onclick="alignTEXT(2,'control',this);" id="alignBTN2">Center</span>
-                <span class='btn_alignment'  onclick="alignTEXT(3,'control',this);" id="alignBTN3">Right</span>
+                <span>[Button Section]</span>
+
                 <hr/>
             </div>
 
             <div class="only-hide only-option" id="only-img">
 
 
-                <span>Image Alignment :</span>
-                <span class='btn_alignment btn_alignment-SELECTED' onclick="alignTEXT(1,'control',this);" id="alignIMG1">Left</span>
-                <span class='btn_alignment'  onclick="alignTEXT(2,'control',this);" id="alignIMG2">Center</span>
-                <span class='btn_alignment'  onclick="alignTEXT(3,'control',this);" id="alignIMG3">Right</span>
+                <span>Image Section :</span>
+
                 <hr/>
 
                 <label class="upload-btn">

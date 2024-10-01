@@ -13,6 +13,7 @@ let project_timeline = document.getElementById('project_timeline'),
 
 //Variable For hidden_kitID [the hidden element that saves the current kit's ID]
 let hidden_kitID = document.getElementById('hidden_kitID');
+let mainAlignmentSPAN = document.getElementById('mainAlignmentSPAN');
 
 //Variable For live_iframe [THE HEART OF IFRAME ELEMENT]
 let live_iframe = document.getElementById('live_iframe');

@@ -119,104 +119,110 @@ function NameKit(kit_num)
 
 
 //this function manages timeline properties, and it occur everytime original kit get pressed
-function timeline_properties(current_kit,current_details)
-{
+function timeline_properties(current_kit,current_details) {
 
-    properties_value.value =current_details;
-    properties_name.innerHTML =current_kit;
+    properties_value.value = current_details;
+    properties_name.innerHTML = current_kit;
 
     //updating THE HIDDEN INPUT value for the currently selected kitID
-    hidden_kitID.value=current_kit;
+    hidden_kitID.value = current_kit;
 
     LIVE_select_kit(current_kit);
 
     TimeLine_RemoveALLselected();//to remove current/previous selected timelineKIT
 
-    GET_THE_KIT_ID("active_kit",current_kit).classList.add('MEselected');
+    GET_THE_KIT_ID("active_kit", current_kit).classList.add('MEselected');
 
-    let current_visible_status = GET_THE_KIT_ID("active_kit",current_kit).dataset.visible;
-    if(current_visible_status==1){
+    let current_visible_status = GET_THE_KIT_ID("active_kit", current_kit).dataset.visible;
+    if (current_visible_status == 1) {
         document.getElementById("btn_visible").classList.remove('btn_unvisible');
 
-    }
-    else{
+    } else {
         document.getElementById("btn_visible").classList.add('btn_unvisible');
 
     }
 
 
-    let current_alignment_status = document.getElementById("active_kit"+current_kit).dataset.alignment;
-    if(document.getElementById("active_kit"+current_kit).dataset.only=="button")//alignment for button
-        reSHOWINGcorrectAlign(document.getElementById("alignBTN"+current_alignment_status));
-    else if(document.getElementById("active_kit"+current_kit).dataset.only=="img")
-        reSHOWINGcorrectAlign(document.getElementById("alignIMG"+current_alignment_status));
-    else//text alignment
-        reSHOWINGcorrectAlign(document.getElementById("align"+current_alignment_status));
-
-
-
-    let current_color = document.getElementById("active_kit"+current_kit).dataset.color;
-    document.getElementById('ColorDropDown').disabled=true;
-    document.getElementById('ColorDropDown').value = current_color;
-    document.getElementById('ColorDropDown').disabled=false;
-
-    let current_size = document.getElementById("active_kit"+current_kit).dataset.size;
-    document.getElementById('FontSizeDropDown').disabled=true;
-    document.getElementById('FontSizeDropDown').value = current_size;
-    document.getElementById('FontSizeDropDown').disabled=false;
-
-    let current_img_size = document.getElementById("active_kit"+current_kit).dataset.size;
-    document.getElementById('ImageSize').disabled=true;
-    document.getElementById('ImageSize').value = current_img_size;
-    document.getElementById('ImageSize').disabled=false;
-
-    let current_margin = document.getElementById("active_kit"+current_kit).dataset.margin;
-    document.getElementById('MarginDropDown').disabled=true;
-    document.getElementById('MarginDropDown').value = current_margin;
-    document.getElementById('MarginDropDown').disabled=false;
-
-    let current_timerSTATUS = document.getElementById("active_kit"+current_kit).dataset.timer;
-    if(current_timerSTATUS=="true")
+    let current_alignment_status = document.getElementById("active_kit" + current_kit).dataset.alignment;
+    let alignmentText_Control = "text";//default is text, until some control change it.
+    if (document.getElementById("active_kit" + current_kit).dataset.only == "button")//alignment for button
     {
+        //this was for specific alignment, in the past.
+        //reSHOWINGcorrectAlign(document.getElementById("alignBTN" + current_alignment_status));
+        alignmentText_Control = "control";
+    } else if (document.getElementById("active_kit" + current_kit).dataset.only == "img") {
+        //this was for specific alignment, in the past.
+        //reSHOWINGcorrectAlign(document.getElementById("alignIMG" + current_alignment_status));
+        alignmentText_Control = "control";
+    }
+    //text alignment
+
+
+    reSHOWINGcorrectAlign(document.getElementById("align" + current_alignment_status));
+    //this line changes the <span id="mainAlignmentSPAN">Text Alignment :</span> data-alignment-Type when it's label or button
+    mainAlignmentSPAN.dataset.alignmentType = alignmentText_Control;
+
+
+    let current_color = document.getElementById("active_kit" + current_kit).dataset.color;
+    document.getElementById('ColorDropDown').disabled = true;
+    document.getElementById('ColorDropDown').value = current_color;
+    document.getElementById('ColorDropDown').disabled = false;
+
+    let current_size = document.getElementById("active_kit" + current_kit).dataset.size;
+    document.getElementById('FontSizeDropDown').disabled = true;
+    document.getElementById('FontSizeDropDown').value = current_size;
+    document.getElementById('FontSizeDropDown').disabled = false;
+
+    let current_img_size = document.getElementById("active_kit" + current_kit).dataset.size;
+    document.getElementById('ImageSize').disabled = true;
+    document.getElementById('ImageSize').value = current_img_size;
+    document.getElementById('ImageSize').disabled = false;
+
+    let current_margin = document.getElementById("active_kit" + current_kit).dataset.margin;
+    document.getElementById('MarginDropDown').disabled = true;
+    document.getElementById('MarginDropDown').value = current_margin;
+    document.getElementById('MarginDropDown').disabled = false;
+
+    let current_timerSTATUS = document.getElementById("active_kit" + current_kit).dataset.timer;
+    if (current_timerSTATUS == "true") {
         TimerButton.classList.add('TimerButtonENABLED');
-    }else {
+    } else {
         TimerButton.classList.remove('TimerButtonENABLED');
     }
-    rangerINPUT.value           =document.getElementById("active_kit"+current_kit).dataset.duration;
-    spanRanger.textContent      =rangerINPUT.value;
+    rangerINPUT.value = document.getElementById("active_kit" + current_kit).dataset.duration;
+    spanRanger.textContent = rangerINPUT.value;
 //BORDER AREA
-let current_Border_status = document.getElementById("active_kit"+current_kit).dataset.border;
+    let current_Border_status = document.getElementById("active_kit" + current_kit).dataset.border;
 
 
-if(current_Border_status=="1")
-    bordersCHECKbox.checked=true;
+    if (current_Border_status == "1")
+        bordersCHECKbox.checked = true;
     else
-        bordersCHECKbox.checked=false;
+        bordersCHECKbox.checked = false;
 
     EnableBorder(bordersCHECKbox.checked);
 
 
+    let current_BorderType = document.getElementById("active_kit" + current_kit).dataset.borderType;
+    document.getElementById('theBorderType').disabled = true;
+    document.getElementById('theBorderType').value = current_BorderType;
+    document.getElementById('theBorderType').disabled = false;
 
-let current_BorderType = document.getElementById("active_kit"+current_kit).dataset.borderType;
-        document.getElementById('theBorderType').disabled=true;
-        document.getElementById('theBorderType').value = current_BorderType;
-        document.getElementById('theBorderType').disabled=false;
+    let current_BorderColor = document.getElementById("active_kit" + current_kit).dataset.borderColor;
+    document.getElementById('theBorderColor').disabled = true;
+    document.getElementById('theBorderColor').value = current_BorderColor;
+    document.getElementById('theBorderColor').disabled = false;
 
-        let current_BorderColor = document.getElementById("active_kit"+current_kit).dataset.borderColor;
-        document.getElementById('theBorderColor').disabled=true;
-        document.getElementById('theBorderColor').value = current_BorderColor;
-        document.getElementById('theBorderColor').disabled=false;
-
-        let current_BorderStyle = document.getElementById("active_kit"+current_kit).dataset.borderStyle;
-        document.getElementById('theBorderStyle').disabled=true;
-        document.getElementById('theBorderStyle').value = current_BorderStyle;
-        document.getElementById('theBorderStyle').disabled=false;
+    let current_BorderStyle = document.getElementById("active_kit" + current_kit).dataset.borderStyle;
+    document.getElementById('theBorderStyle').disabled = true;
+    document.getElementById('theBorderStyle').value = current_BorderStyle;
+    document.getElementById('theBorderStyle').disabled = false;
 
 
-        let current_BorderSize = document.getElementById("active_kit"+current_kit).dataset.borderSize;
-        document.getElementById('theBorderSize').disabled=true;
-        document.getElementById('theBorderSize').value = current_BorderSize;
-        document.getElementById('theBorderSize').disabled=false;
+    let current_BorderSize = document.getElementById("active_kit" + current_kit).dataset.borderSize;
+    document.getElementById('theBorderSize').disabled = true;
+    document.getElementById('theBorderSize').value = current_BorderSize;
+    document.getElementById('theBorderSize').disabled = false;
 
 //THIS LOOP IS TO HIDE ALL PROPERTIES THAT "MIGHT BE ONLY GOOD WITH SPECIFIC KIT".
     const elements = document.querySelectorAll('.only-option');
@@ -224,21 +230,19 @@ let current_BorderType = document.getElementById("active_kit"+current_kit).datas
         element.classList.add("only-hide");
     });
 //THIS LINE HELPS TO ONLY SHOW THE "PROPERTIES" THAT'S ONLY GOOD FOR INDIVIDUAL KIT.
-    document.getElementById("only-"+GET_THE_KIT_ID("active_kit",current_kit).dataset.only)
+    document.getElementById("only-" + GET_THE_KIT_ID("active_kit", current_kit).dataset.only)
         .classList.remove("only-hide");
 
-   //this line is made only to check whether the "general" properties like [font-size AND color] are needed for the current kit
-    let checkGENERAL_only_value =GET_THE_KIT_ID("active_kit",current_kit).dataset.only;
-    if( checkGENERAL_only_value =="text" || checkGENERAL_only_value =="button"){
+    //this line is made only to check whether the "general" properties like [font-size AND color] are needed for the current kit
+    let checkGENERAL_only_value = GET_THE_KIT_ID("active_kit", current_kit).dataset.only;
+    if (checkGENERAL_only_value == "text" || checkGENERAL_only_value == "button") {
         document.getElementById("only-general")
             .classList.remove("only-hide");
     }
 }
 
 
-
-
-function live_iframe_add(KITtype,KITcontent="",kitID,change=false) {
+function live_iframe_add(KITtype, KITcontent = "",kitID,change=false) {
     const iframe = live_iframe;
     const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
 
