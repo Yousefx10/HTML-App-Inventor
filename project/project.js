@@ -378,14 +378,9 @@ function SAVINGtime(){
         GET_THE_KIT_ID("code",current_kitID).remove();
         ACTIVEactions = ACTIVEactions.filter(action => !action.includes("code"+current_kitID+"."));
 
-        //ACTIVEactions = ACTIVEactions.filter(value => value !== FullBlockID);
-        //dynamicMap.delete("code"+current_kitID+".");
         dynamicMap.forEach((_, key) => key.includes("code"+current_kitID+".") && dynamicMap.delete(key));
 
-        //dynamicBLOCKsize[CURRENTcountofActions] = 0;
-        //dynamicBLOCKsize = dynamicBLOCKsize.filter(item => !item.includes("code"+current_kitID+"."));
-        //dynamicBLOCKsize = dynamicBLOCKsize.filter(obj => !obj.name.includes("code"+current_kitID+"."));
-        //dynamicBLOCKsize.forEach((obj, i) => obj.name.includes("code"+current_kitID+".") && myArray.splice(i, 1));
+        Object.keys(dynamicBLOCKsize).forEach(key => key.includes("code"+current_kitID+".") && delete dynamicBLOCKsize[key]);
 
     }
 
