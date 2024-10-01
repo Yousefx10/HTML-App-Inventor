@@ -302,12 +302,15 @@ function ADDINGsingleBLOCK(words,FullBlockID)
     }
 
     const lineBreak = document.createElement('br');
-
+    const MoreProperties = document.createElement('button');
+    MoreProperties.textContent=">";
+    MoreProperties.setAttribute("onclick","showDialog(this);");
 
     propertiesBlock.appendChild(kitSpan);
     propertiesBlock.appendChild(kitSelect);
     propertiesBlock.appendChild(valueSpan);
     propertiesBlock.appendChild(valueInput);
+    propertiesBlock.appendChild(MoreProperties);
 
     FullBlock.appendChild(DeleteBlock);
     FullBlock.appendChild(actionParagraph);
@@ -316,6 +319,23 @@ function ADDINGsingleBLOCK(words,FullBlockID)
 
     playground_space.appendChild(FullBlock);
 
+
+}
+
+
+function showDialog(button) {
+//properties_dialog
+
+    // Get the button's position
+    const buttonRect = button.getBoundingClientRect();
+
+    // Position the dialog near the button
+    properties_dialog.style.left = `${buttonRect.left}px`; // Align with the button's left
+    properties_dialog.style.top = `${buttonRect.bottom + window.scrollY}px`; // Align just below the button
+    properties_dialog.style.display = 'block'; // Show the dialog
+
+}
+function hideDialog(event) {
 
 }
 

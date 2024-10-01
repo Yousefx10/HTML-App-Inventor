@@ -75,7 +75,7 @@ let event_CLICK = document.getElementById("event_CLICK");
 let event_LONGPRESS = document.getElementById("event_LONGPRESS");
 let event_TRICK = document.getElementById("event_TRICK");
 
-
+const properties_dialog = document.getElementById('dialog');
 
 //This const is for knowing how long the kit have blocks on it's event
 const dynamicBLOCKsize = {};
