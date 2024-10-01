@@ -1,6 +1,14 @@
 // SO HERE ALL JAVASCRIPT VARIABLES WILL DECLARED HERE
 
 
+//global function should be used in all project :
+//THIS CONTROL IS MADE FOR MAKING IT EASIER TO HAVE THE CONTROL ID
+function GET_DOC_ID(prefix_name,kitID){
+    return document.getElementById(prefix_name+kitID);
+}
+
+
+
 
 //Basic array list for active added elements to the project time_line and project_live
 let active_kit =[];

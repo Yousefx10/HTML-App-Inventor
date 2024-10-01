@@ -1,7 +1,4 @@
-//THIS CONTROL IS MADE FOR MAKING IT EASIER TO HAVE THE CONTROL ID
-function GET_THE_KIT_ID(prefix_name,kitID){
-    return document.getElementById(prefix_name+kitID);
-}
+
 //This should run so if the page got scrolled, it won't stuck in the middle.
 window.history.scrollRestoration = 'manual';
 
@@ -131,9 +128,9 @@ function timeline_properties(current_kit,current_details) {
 
     TimeLine_RemoveALLselected();//to remove current/previous selected timelineKIT
 
-    GET_THE_KIT_ID("active_kit", current_kit).classList.add('MEselected');
+    GET_DOC_ID("active_kit", current_kit).classList.add('MEselected');
 
-    let current_visible_status = GET_THE_KIT_ID("active_kit", current_kit).dataset.visible;
+    let current_visible_status = GET_DOC_ID("active_kit", current_kit).dataset.visible;
     if (current_visible_status == 1) {
         document.getElementById("btn_visible").classList.remove('btn_unvisible');
 
@@ -230,11 +227,11 @@ function timeline_properties(current_kit,current_details) {
         element.classList.add("only-hide");
     });
 //THIS LINE HELPS TO ONLY SHOW THE "PROPERTIES" THAT'S ONLY GOOD FOR INDIVIDUAL KIT.
-    document.getElementById("only-" + GET_THE_KIT_ID("active_kit", current_kit).dataset.only)
+    document.getElementById("only-" + GET_DOC_ID("active_kit", current_kit).dataset.only)
         .classList.remove("only-hide");
 
     //this line is made only to check whether the "general" properties like [font-size AND color] are needed for the current kit
-    let checkGENERAL_only_value = GET_THE_KIT_ID("active_kit", current_kit).dataset.only;
+    let checkGENERAL_only_value = GET_DOC_ID("active_kit", current_kit).dataset.only;
     if (checkGENERAL_only_value == "text" || checkGENERAL_only_value == "button") {
         document.getElementById("only-general")
             .classList.remove("only-hide");
@@ -289,7 +286,7 @@ function live_iframe_add(KITtype, KITcontent = "",kitID,change=false) {
                 else
                     {
                         neWelement.alt = KITcontent;
-                        neWelement.style.maxWidth=GET_THE_KIT_ID("active_kit",kitID).dataset.size;
+                        neWelement.style.maxWidth=GET_DOC_ID("active_kit",kitID).dataset.size;
                     }
 
                 if(isFUNCTIONAL)
@@ -301,7 +298,7 @@ function live_iframe_add(KITtype, KITcontent = "",kitID,change=false) {
                 }
 
 
-                    neWelement.style.fontSize=GET_THE_KIT_ID("active_kit",kitID).dataset.size;
+                    neWelement.style.fontSize=GET_DOC_ID("active_kit",kitID).dataset.size;
 
                 // Append the new <p> element to the body or a specific element
                 iframeDoc.body.appendChild(neWelement); // This appends it to the body
@@ -350,7 +347,7 @@ function live_iframe_add(KITtype, KITcontent = "",kitID,change=false) {
 function SAVINGtime(){
         const current_kitID = hidden_kitID.value;
         const UPDATEDcontent = document.getElementById('properties_value').value;
-        GET_THE_KIT_ID('active_kit',current_kitID).innerHTML=UPDATEDcontent;
+        GET_DOC_ID('active_kit',current_kitID).innerHTML=UPDATEDcontent;
 
         live_iframe.contentWindow.UPDATEcurrentCONTENT(current_kitID,UPDATEDcontent);
 
@@ -363,7 +360,7 @@ function SAVINGtime(){
         const current_kitID = hidden_kitID.value;
         active_kit = active_kit.filter(kit => kit[0] != current_kitID);
 
-        GET_THE_KIT_ID('active_kit',current_kitID).remove();
+        GET_DOC_ID('active_kit',current_kitID).remove();
 
         live_iframe.contentWindow.REMOVEkit(current_kitID);
 
@@ -375,7 +372,7 @@ function SAVINGtime(){
 
 
 
-        GET_THE_KIT_ID("code",current_kitID).remove();
+        GET_DOC_ID("code",current_kitID).remove();
         ACTIVEactions = ACTIVEactions.filter(action => !action.includes("code"+current_kitID+"."));
 
         dynamicMap.forEach((_, key) => key.includes("code"+current_kitID+".") && dynamicMap.delete(key));
@@ -421,7 +418,7 @@ function SAVINGtime(){
 
         //hidden_kit_visible
         let kitID = hidden_kitID.value;
-        let visibility_status = GET_THE_KIT_ID("active_kit",kitID).dataset.visible;
+        let visibility_status = GET_DOC_ID("active_kit",kitID).dataset.visible;
 
         live_iframe.contentWindow.TOGGLEhiding(kitID);
 
@@ -430,8 +427,8 @@ function SAVINGtime(){
             else
                 visibility_status ="1";
 
-            GET_THE_KIT_ID("active_kit",kitID).setAttribute("data-visible",visibility_status);
-            GET_THE_KIT_ID("active_kit",kitID).classList.toggle('not-visible-emoji');
+            GET_DOC_ID("active_kit",kitID).setAttribute("data-visible",visibility_status);
+            GET_DOC_ID("active_kit",kitID).classList.toggle('not-visible-emoji');
     }
 
 
@@ -447,19 +444,19 @@ function SAVINGtime(){
 
         switch(alignmentTYPE){
             case 1://IT'S LEFT
-                GET_THE_KIT_ID("active_kit",kitID).dataset.alignment ="1";
+                GET_DOC_ID("active_kit",kitID).dataset.alignment ="1";
                 break;
 
             case 2://IT'S CENTER
-                GET_THE_KIT_ID("active_kit",kitID).dataset.alignment ="2";
+                GET_DOC_ID("active_kit",kitID).dataset.alignment ="2";
                 break;
 
             case 3://IT'S RIGHT
-                GET_THE_KIT_ID("active_kit",kitID).dataset.alignment ="3";
+                GET_DOC_ID("active_kit",kitID).dataset.alignment ="3";
                 break;
         }
 
-        let KITalignment =  GET_THE_KIT_ID("active_kit",kitID).dataset.alignment;
+        let KITalignment =  GET_DOC_ID("active_kit",kitID).dataset.alignment;
         live_iframe.contentWindow.kitALIGNMENT(kitID,alignmentSTATES,KITalignment);
     }
 
@@ -483,7 +480,7 @@ function SAVINGtime(){
         let kitID = hidden_kitID.value;
         live_iframe.contentWindow.UpdateColor(kitID,NewColor);
 
-        GET_THE_KIT_ID("active_kit",kitID).dataset.color =NewColor;
+        GET_DOC_ID("active_kit",kitID).dataset.color =NewColor;
     }
 
     function UpdateFontSize(SizeElement)
@@ -492,7 +489,7 @@ function SAVINGtime(){
         let kitID = hidden_kitID.value;
         live_iframe.contentWindow.UpdateFontSize(kitID,NewSize);
 
-        GET_THE_KIT_ID("active_kit",kitID).dataset.size = NewSize;
+        GET_DOC_ID("active_kit",kitID).dataset.size = NewSize;
     }
 
     function UpdateMargin(SizeElement)
@@ -500,7 +497,7 @@ function SAVINGtime(){
         let NewMargin = SizeElement.value;
         let kitID = hidden_kitID.value;
         live_iframe.contentWindow.UpdateMargin(kitID,NewMargin);
-        GET_THE_KIT_ID("active_kit",kitID).dataset.margin =NewMargin;
+        GET_DOC_ID("active_kit",kitID).dataset.margin =NewMargin;
     }
 
     function UpdateImgSize(SizeElement)
@@ -508,7 +505,7 @@ function SAVINGtime(){
         let NewSize = SizeElement.value;
         let kitID = hidden_kitID.value;
         live_iframe.contentWindow.UpdateImgSize(kitID,NewSize);
-        GET_THE_KIT_ID("active_kit",kitID).dataset.size =NewSize;
+        GET_DOC_ID("active_kit",kitID).dataset.size =NewSize;
     }
 
 
@@ -565,24 +562,24 @@ function haveBORDER(borderVALUE,borderTYPE)
     {
         case 1:
 
-            GET_THE_KIT_ID("active_kit",kitID).dataset.borderType = NewborderVALUE;
+            GET_DOC_ID("active_kit",kitID).dataset.borderType = NewborderVALUE;
 
             break;
         case 2:
-            GET_THE_KIT_ID("active_kit",kitID).dataset.borderColor = NewborderVALUE;
+            GET_DOC_ID("active_kit",kitID).dataset.borderColor = NewborderVALUE;
             break;
         case 3:
-            GET_THE_KIT_ID("active_kit",kitID).dataset.borderStyle = NewborderVALUE;
+            GET_DOC_ID("active_kit",kitID).dataset.borderStyle = NewborderVALUE;
             break;
         case 4:
-            GET_THE_KIT_ID("active_kit",kitID).dataset.borderSize = NewborderVALUE;
+            GET_DOC_ID("active_kit",kitID).dataset.borderSize = NewborderVALUE;
             break;
     }
-let currentType = GET_THE_KIT_ID("active_kit",kitID).dataset.borderType;
-let currentSize = GET_THE_KIT_ID("active_kit",kitID).dataset.borderSize;
+let currentType = GET_DOC_ID("active_kit",kitID).dataset.borderType;
+let currentSize = GET_DOC_ID("active_kit",kitID).dataset.borderSize;
 
-let currentStyle = GET_THE_KIT_ID("active_kit",kitID).dataset.borderStyle;
-let currentColor = GET_THE_KIT_ID("active_kit",kitID).dataset.borderColor;
+let currentStyle = GET_DOC_ID("active_kit",kitID).dataset.borderStyle;
+let currentColor = GET_DOC_ID("active_kit",kitID).dataset.borderColor;
 
     const Final_Type_Size = currentType === "1" ? currentSize :
                             currentType === "2" ? "0 0 "+currentSize :
@@ -592,7 +589,7 @@ let currentColor = GET_THE_KIT_ID("active_kit",kitID).dataset.borderColor;
     //border: 1px solid #000;
 
 
-        //+GET_THE_KIT_ID("active_kit",kitID).dataset.borderType;
+        //+GET_DOC_ID("active_kit",kitID).dataset.borderType;
     live_iframe.contentWindow.UPDATEborder(kitID,Final_Type_Size,currentStyle,currentColor);
 }
 
@@ -601,11 +598,11 @@ function EnableBorder(CurrentBorderStatus)
 {
     let kitID = hidden_kitID.value;
 
-    let currentType = GET_THE_KIT_ID("active_kit",kitID).dataset.borderType;
-    let currentSize = GET_THE_KIT_ID("active_kit",kitID).dataset.borderSize;
+    let currentType = GET_DOC_ID("active_kit",kitID).dataset.borderType;
+    let currentSize = GET_DOC_ID("active_kit",kitID).dataset.borderSize;
 
-    let currentStyle = GET_THE_KIT_ID("active_kit",kitID).dataset.borderStyle;
-    let currentColor = GET_THE_KIT_ID("active_kit",kitID).dataset.borderColor;
+    let currentStyle = GET_DOC_ID("active_kit",kitID).dataset.borderStyle;
+    let currentColor = GET_DOC_ID("active_kit",kitID).dataset.borderColor;
     const Final_Type_Size = currentType === "1" ? currentSize :
                             currentType === "2" ? "0 0 "+currentSize :
                             currentType === "3" ? "0 0 0 "+currentSize :
@@ -615,7 +612,7 @@ function EnableBorder(CurrentBorderStatus)
     if(CurrentBorderStatus)
         {
             bordersAll.style.display="block";
-            GET_THE_KIT_ID("active_kit",kitID).dataset.border="1";
+            GET_DOC_ID("active_kit",kitID).dataset.border="1";
             //haveBORDER(1,1);
             live_iframe.contentWindow.UPDATEborder(kitID,
                 Final_Type_Size,
@@ -625,7 +622,7 @@ function EnableBorder(CurrentBorderStatus)
     else
         {
             bordersAll.style.display="none";
-            GET_THE_KIT_ID("active_kit",kitID).dataset.border="0";
+            GET_DOC_ID("active_kit",kitID).dataset.border="0";
             //haveBORDER(1,1);
             live_iframe.contentWindow.UPDATEborder(kitID,"0","solid","black");
         }
@@ -638,10 +635,10 @@ function ManageTimer()
 {
     let currentkitID = hidden_kitID.value;
 
-    if(GET_THE_KIT_ID("active_kit",currentkitID).dataset.timer=="true")//currently set to true and should be false
+    if(GET_DOC_ID("active_kit",currentkitID).dataset.timer=="true")//currently set to true and should be false
     {//STOP NOW :
         stopThisTimer(currentkitID);
-        GET_THE_KIT_ID("active_kit",currentkitID).dataset.timer="false";
+        GET_DOC_ID("active_kit",currentkitID).dataset.timer="false";
         TimerButton.classList.remove('TimerButtonENABLED');
 
     }
@@ -650,7 +647,7 @@ function ManageTimer()
 
         live_iframe.contentWindow.startInterval(currentkitID, (rangerINPUT.value*1000));
         console.log(rangerINPUT.value);
-        GET_THE_KIT_ID("active_kit",currentkitID).dataset.timer="true";
+        GET_DOC_ID("active_kit",currentkitID).dataset.timer="true";
         TimerButton.classList.add('TimerButtonENABLED');
     }
 }

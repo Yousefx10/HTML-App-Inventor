@@ -72,10 +72,10 @@ function generalUPDATE(updateTYPE,kitID,newVALUE)
 {
     switch (updateTYPE) {
         case "changetext":
-            GET_THE_KIT_ID('active_kit',kitID).innerHTML=newVALUE;
+            GET_DOC_ID('active_kit',kitID).innerHTML=newVALUE;
             break;
         case "changecolor":
-            GET_THE_KIT_ID("active_kit",kitID).dataset.color =newVALUE;
+            GET_DOC_ID("active_kit",kitID).dataset.color =newVALUE;
             break;
         case  "changevisibility":
             let visibility_status;
@@ -83,29 +83,29 @@ function generalUPDATE(updateTYPE,kitID,newVALUE)
             if(newVALUE=="Toggle"){//here's the toggle option, if visible make it unvisible and versa vice.
 
                 //get the current visibility status to toggle it
-                 visibility_status = GET_THE_KIT_ID("active_kit",kitID).dataset.visible;
+                 visibility_status = GET_DOC_ID("active_kit",kitID).dataset.visible;
                  visibility_status = visibility_status == 1 ? 0 : 1;
                  //toggling the eye emoji
-                 GET_THE_KIT_ID("active_kit",kitID).classList.toggle('not-visible-emoji');
+                 GET_DOC_ID("active_kit",kitID).classList.toggle('not-visible-emoji');
             }
             else{//here if new value is visible, set it always visible, if unvisible, hide it always
                 //converting Visible and Hidden to NUMBERS
                 visibility_status= (newVALUE == "Visible") ? 1 : 0;
 
                 if(visibility_status==1)//if set to visible, show the eye
-                    GET_THE_KIT_ID("active_kit",kitID).classList.remove('not-visible-emoji');
+                    GET_DOC_ID("active_kit",kitID).classList.remove('not-visible-emoji');
                 else //if hidden, hide the eye
-                    GET_THE_KIT_ID("active_kit",kitID).classList.add('not-visible-emoji');
+                    GET_DOC_ID("active_kit",kitID).classList.add('not-visible-emoji');
             }
             //switching the old value to the new value
-            GET_THE_KIT_ID("active_kit",kitID).setAttribute("data-visible",visibility_status);
+            GET_DOC_ID("active_kit",kitID).setAttribute("data-visible",visibility_status);
 
             break;
         case "changefontsize":
-            GET_THE_KIT_ID("active_kit",kitID).dataset.size = newVALUE;
+            GET_DOC_ID("active_kit",kitID).dataset.size = newVALUE;
             break;
         case "changealignment":
-            //GET_THE_KIT_ID("active_kit",kitID).dataset.color =newVALUE;
+            //GET_DOC_ID("active_kit",kitID).dataset.color =newVALUE;
             //alignCONTROLS(alignmentTYPE,alignmentELEMENT);
             //alignTEXT(alignmentTYPE,alignmentELEMENT);
 
@@ -114,15 +114,15 @@ function generalUPDATE(updateTYPE,kitID,newVALUE)
 
             switch(newVALUE){
                 case "Left"://IT'S LEFT
-                    GET_THE_KIT_ID("active_kit",kitID).dataset.alignment ="1";
+                    GET_DOC_ID("active_kit",kitID).dataset.alignment ="1";
                     break;
 
                 case "Center"://IT'S CENTER
-                    GET_THE_KIT_ID("active_kit",kitID).dataset.alignment ="2";
+                    GET_DOC_ID("active_kit",kitID).dataset.alignment ="2";
                     break;
 
                 case "Right"://IT'S RIGHT
-                    GET_THE_KIT_ID("active_kit",kitID).dataset.alignment ="3";
+                    GET_DOC_ID("active_kit",kitID).dataset.alignment ="3";
                     break;
             }
 
