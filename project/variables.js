@@ -90,14 +90,6 @@ window.ACTIVEactions=[];
 
 
 
-// let FontSizesNAMES = new Map([
-//     ["Tiny", "x-small"],
-//     ["Small", "small"],
-//     ["Medium", "medium"],
-//     ["Large", "large"],
-//     ["Huge", "x-large"],
-// ]);
-
 let FontSizesNAMES =[
     ["Tiny", "x-small"],
     ["Small", "small"],

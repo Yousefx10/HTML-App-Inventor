@@ -18,7 +18,7 @@ function show_Event_KIT(kitID,KITtype)
 {
 
     workspace_hidden_kitID.value=kitID;
-    document.getElementById("playground_space_container").innerHTML="";
+    document.getElementById("playground_space_container").innerHTML="<p id='playground_text'></p>";
     actions_space.style.display="none";
 
     // Loop through each kit to remove selected highlight

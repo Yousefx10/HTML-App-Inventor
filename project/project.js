@@ -385,6 +385,14 @@ function SAVINGtime(){
             delete dynamicBLOCKsize[num+"code"+current_kitID+"."];
         });
 
+        //clears the playground container
+        document.getElementById("playground_space_container").innerHTML="<p id='playground_text'></p>";
+        actions_space.style.display="none";
+        //
+        ALL_available_EVENTS.forEach((element) => {
+            element.style.display = 'none'; // Hides the element
+        });
+
     }
 
 

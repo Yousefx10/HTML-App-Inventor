@@ -105,7 +105,7 @@
                 <br/>
                 <label for="timerDuration">Interval:</label>
                 <input id="timerDuration"type="range" min="1" max="100" value="1"
-                oninput="spanRanger.textContent = this.value;GET_THE_KIT_ID('active_kit',hidden_kitID.value).dataset.duration=this.value"/>
+                oninput="spanRanger.textContent = this.value;GET_DOC_ID('active_kit',hidden_kitID.value).dataset.duration=this.value"/>
                 <span id="spanRanger">1</span><span>SEC</span>
                 <hr/>
             </div>
