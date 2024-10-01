@@ -380,7 +380,13 @@ function SAVINGtime(){
 
         dynamicMap.forEach((_, key) => key.includes("code"+current_kitID+".") && dynamicMap.delete(key));
 
-        Object.keys(dynamicBLOCKsize).forEach(key => key.includes("code"+current_kitID+".") && delete dynamicBLOCKsize[key]);
+        //the old way :
+        //Object.keys(dynamicBLOCKsize).forEach(key => key.includes("code"+current_kitID+".") && delete dynamicBLOCKsize[key]);
+
+        //the new way :
+        listOFevents.forEach(num => {
+            delete dynamicBLOCKsize[num+"code"+current_kitID+"."];
+        });
 
     }
 
