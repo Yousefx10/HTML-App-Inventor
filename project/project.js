@@ -372,6 +372,11 @@ function SAVINGtime(){
         SAVEbtn.disabled = true;
 
         unFocus();
+
+
+
+        GET_THE_KIT_ID("code",current_kitID).remove();
+
     }
 
 
