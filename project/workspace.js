@@ -171,7 +171,7 @@ function StartPlayGround(kitID,EventCase)
 
 
     //NO NEED TO Repeat the code, it's one code FOR ALL events
-    var blocksSize = dynamicBLOCKsize[currentACTIVEevent+"code"+kitID];
+    var blocksSize = dynamicBLOCKsize[currentACTIVEevent+"code"+kitID+"."];
     if(isNaN(blocksSize))blocksSize=0;
     //Adding . dot sign after the code kitID so it won't be mixed with future logic fatal error
     let prefix = currentACTIVEevent, contains = 'code'+kitID+".";
@@ -209,6 +209,7 @@ function ADDINGsingleBLOCK(words,FullBlockID)
     DeleteBlock.onclick = function() {
         //the code to remove the block correctly will be called here
         deleteblock(FullBlockID);
+        console.log(FullBlockID);
 
     };
 
@@ -338,7 +339,7 @@ function deleteblock(FullBlockID)
         document.getElementById("event_"+currentACTIVEevent.toUpperCase())
             .classList.remove("beforeACTIVE");
 
-        dynamicBLOCKsize[CURRENTcountofActions] = 0;
+        dynamicBLOCKsize[CURRENTcountofActions+"."] = 0;
     }
 }
 
@@ -358,9 +359,9 @@ function action_add(actionType)
 
     //instead of increasing the value, store all the valid ID's
     //back to have the ACTION BLOCK COUNTER
-    dynamicBLOCKsize[currentACTIVEevent +"code"+ CurrentkitID] =
-        (dynamicBLOCKsize[currentACTIVEevent +"code"+ CurrentkitID] ?? 0) + 1;
-    let temp_dynamicBLOCKsize = dynamicBLOCKsize[currentACTIVEevent +"code"+ CurrentkitID] ;
+    dynamicBLOCKsize[currentACTIVEevent +"code"+ CurrentkitID+"."] =
+        (dynamicBLOCKsize[currentACTIVEevent +"code"+ CurrentkitID+"."] ?? 0) + 1;
+    let temp_dynamicBLOCKsize = dynamicBLOCKsize[currentACTIVEevent +"code"+ CurrentkitID+"."] ;
 
 
 
