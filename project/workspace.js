@@ -357,6 +357,14 @@ function ADDINGsingleBLOCK(words,FullBlockID)
 
 }
 
+//the purpose of this function is to[Hide] and [Show] the two elements [Choose kit,Choose Value]
+function changePROPERTIES(currentvalue)
+{
+    if(currentvalue=="own_value")
+        dialogPROPERTIES.style.display="none";
+    else
+        dialogPROPERTIES.style.display="block";
+}
 
 function showDialog(button) {
 //properties_dialog
@@ -370,6 +378,11 @@ function showDialog(button) {
     properties_dialog.style.display = 'block'; // Show the dialog
 
     currentOPENED_dialog = button.parentNode.parentNode.id;
+
+//checks for the default :
+    const child = document.getElementById(currentOPENED_dialog).querySelector('.child');
+    if(window.getComputedStyle(child).display == 'none')
+    changePROPERTIES("kit_value");
 }
 
 function hideDialog() {
@@ -378,7 +391,7 @@ properties_dialog.style.display="none";
 
 //will use this part to temporary save changes:
 console.log(currentOPENED_dialog);
-    let allowCHANGEproperties = document.getElementById("allowCHANGEproperties");
+
     const child = document.getElementById(currentOPENED_dialog).querySelector('.child');
     const originalINPUT = document.getElementById(currentOPENED_dialog).querySelector('.original');
 
@@ -399,6 +412,10 @@ if(allowCHANGEproperties.checked)
 
 
     originalINPUT.style.display="none";
+
+
+    //now lets set everythings back to it's default for the next use :
+    changePROPERTIES("own_value");
 }
 else {
     let wholeVALUE="Enter Your New Value";

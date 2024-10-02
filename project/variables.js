@@ -79,6 +79,20 @@ let event_TRICK = document.getElementById("event_TRICK");
 let currentOPENED_dialog="";
 const properties_dialog = document.getElementById('dialog');
 
+//Choose kit <select>
+const advance_kit_property= document.getElementById('chooseKITproperties');
+//Choose Value <select>
+const advance_value_property= document.getElementById('chooseProperties');
+//the div that contains the both previous elements [Choose kit,Choose Value]
+let dialogPROPERTIES = document.getElementById("dialogPROPERTIES");
+
+//get the current [Choose Kit's Value] whether it's checked = choose this option, else : user will write his value.
+let allowCHANGEproperties = document.getElementById("allowCHANGEproperties");
+
+
+
+
+
 //This const is for knowing how long the kit have blocks on it's event
 const dynamicBLOCKsize = {};
 //dynamicArray[0] = 'First Value';
