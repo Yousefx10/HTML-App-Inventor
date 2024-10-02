@@ -361,9 +361,17 @@ function ADDINGsingleBLOCK(words,FullBlockID)
 function changePROPERTIES(currentvalue)
 {
     if(currentvalue=="own_value")
+    {
         dialogPROPERTIES.style.display="none";
+        document.getElementById("ownvalue").checked=true;
+    }
+
     else
+    {
         dialogPROPERTIES.style.display="block";
+        allowCHANGEproperties.checked=true;
+    }
+
 }
 
 function showDialog(button) {
@@ -379,10 +387,16 @@ function showDialog(button) {
 
     currentOPENED_dialog = button.parentNode.parentNode.id;
 
-//checks for the default :
+    //checks for the default :
     const child = document.getElementById(currentOPENED_dialog).querySelector('.child');
-    if(window.getComputedStyle(child).display == 'none')
-    changePROPERTIES("kit_value");
+    if(child.style.display!="none")
+    {
+
+        changePROPERTIES("kit_value");
+    }
+
+
+    //you have stopped here, and you have to check this isue
 }
 
 function hideDialog() {
