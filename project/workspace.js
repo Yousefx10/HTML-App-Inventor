@@ -334,8 +334,17 @@ function showDialog(button) {
     properties_dialog.style.top = `${buttonRect.bottom + window.scrollY}px`; // Align just below the button
     properties_dialog.style.display = 'block'; // Show the dialog
 
+    curreptOPENED_dialog = button.parentNode.parentNode.id;
 }
-function hideDialog(event) {
+function hideDialog() {
+properties_dialog.style.display="none";
+
+
+//will use this part to temporary save changes:
+console.log(curreptOPENED_dialog);
+let wholeVALUE="//"+advance_kit_property.value + "//"+ advance_value_property.value;
+console.log(wholeVALUE);
+    updateACTIONvalue(wholeVALUE,'mixed',curreptOPENED_dialog);
 
 }
 
@@ -474,7 +483,8 @@ function event_action_set(kitID)
 
 function updateACTIONvalue(event,updateTYPE,fullID)
 {
-    const selectedValue = event.target.value;
+    //const selectedValue = event.target.value || event;
+    const selectedValue = typeof event === 'string' ? event : event.target.value;
     let getkitIDfromSTRING = parseInt(selectedValue, 10);
     let newkitID_VALUE;
     switch (updateTYPE)
@@ -487,12 +497,16 @@ function updateACTIONvalue(event,updateTYPE,fullID)
 
             break;
         case "value":
-             newkitID_VALUE =
-                 dynamicMap.get(fullID).split(ProjectDelimiter).map((item, index) => index === 2 ? selectedValue : item).join(ProjectDelimiter);
+            newkitID_VALUE =
+                dynamicMap.get(fullID).split(ProjectDelimiter).map((item, index) => index === 2 ? selectedValue : item).join(ProjectDelimiter);
+            break;
+        case "mixed":
+            newkitID_VALUE =
+                dynamicMap.get(fullID).split(ProjectDelimiter).map((item, index) => index === 2 ? selectedValue : item).join(ProjectDelimiter);
             break;
     }
 
 
     dynamicMap.set(fullID, newkitID_VALUE);//adding ZERO as default value.
-
+console.log("went fine");
 }

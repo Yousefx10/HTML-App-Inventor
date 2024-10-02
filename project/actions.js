@@ -12,8 +12,9 @@ function global_onClick(kitID,prefix = "click"){
         .forEach(blockID => {
 
             const COMMANDS = dynamicMap.get(blockID).split(ProjectDelimiter);
+
             console.log(COMMANDS);
-            doJOBS(COMMANDS);
+            doJOBS(COMMANDS, do_property(COMMANDS[2]));
 
         });
 
@@ -22,11 +23,11 @@ function global_onClick(kitID,prefix = "click"){
 
 
 
-function doJOBS(COMMANDS){
+function doJOBS(COMMANDS,FINALvalue){
     switch (COMMANDS[0]) {
         case "changetext":
             //document.getElementById("live"+COMMANDS[1]).textContent=COMMANDS[2];
-            UPDATEcurrentCONTENT(COMMANDS[1],COMMANDS[2]);
+            UPDATEcurrentCONTENT(COMMANDS[1],FINALvalue);
             break;
         case "changecolor":
             //document.getElementById("live"+COMMANDS[1]).style.color=COMMANDS[2];
@@ -64,6 +65,35 @@ function doJOBS(COMMANDS){
 
     window.parent.generalUPDATE(COMMANDS[0],COMMANDS[1],COMMANDS[2]);
 }
+
+//this function checks if the job contains other kit value.
+function do_property(wholeVALUE)
+{
+    if (wholeVALUE.startsWith("//")) {
+        wholeVALUE= wholeVALUE.split("//");
+        //[0] is empty
+        //[1] is selected kit
+        //[2] is command to get.
+        switch (wholeVALUE[2])//text
+        {
+            case "text":
+                wholeVALUE= document.getElementById(wholeVALUE[1]).textContent;
+                break;
+        }
+    } else {
+        console.log("The string does not start with //");
+    }
+
+
+
+    return wholeVALUE;
+}
+
+
+
+
+
+
 
 
 //this function should be called from the parent only.

@@ -4,8 +4,29 @@
 <!--Status Bar-->
         <div id="statusBAR"></div>
 
-        <div id="dialog">This is a dialog!</div>
-
+        <div id="dialog">
+            <p onclick="hideDialog();">CLOSE</p>
+            <br/>
+            <label for="chooseKITproperties">Choose kit:</label>
+            <br/>
+            <select id="chooseKITproperties">
+                <option value="live0">label0</option>
+                <option value="">Color Property</option>
+                <option value="">Color Property</option>
+            </select>
+                <hr/>
+            <label for="chooseProperties">Choose Value:</label>
+            <br/>
+            <select id="chooseProperties">
+                <option value="text">Text</option>
+                <option value="color">Color</option>
+                <option value="fontSize">Font Size</option>
+            </select>
+        </div>
+<script>
+    const advance_kit_property= document.getElementById('chooseKITproperties');
+    const advance_value_property= document.getElementById('chooseProperties');
+</script>
 
 
 <!--List Of Kit's Bar-->
