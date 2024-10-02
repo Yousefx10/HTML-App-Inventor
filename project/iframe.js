@@ -101,6 +101,7 @@
             function UpdateColor(kitID,newColor)
             {
                 document.getElementById("live"+kitID).style.color=newColor;
+                console.log(newColor);
             }
 
             function UpdateFontSize(kitID,NewSize)

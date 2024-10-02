@@ -31,7 +31,7 @@ function doJOBS(COMMANDS,FINALvalue){
             break;
         case "changecolor":
             //document.getElementById("live"+COMMANDS[1]).style.color=COMMANDS[2];
-            UpdateColor(COMMANDS[1],COMMANDS[2]);
+            UpdateColor(COMMANDS[1],FINALvalue);
             break;
         case "changevisibility":
 
@@ -78,6 +78,24 @@ function do_property(wholeVALUE)
         {
             case "text":
                 wholeVALUE= document.getElementById("live"+wholeVALUE[1]).textContent;
+                //this works, continue tomorrow
+                break;
+            case "color":
+                wholeVALUE= window.getComputedStyle(document.getElementById("live"+wholeVALUE[1])).color;
+
+                console.log(wholeVALUE);
+                //this works, continue tomorrow
+                break;
+            case "visibility":
+                wholeVALUE= document.getElementById("live"+wholeVALUE[1]).style.display=="none" ?"Hidden":"Visible";
+                //this works, continue tomorrow
+                break;
+            case "fontSize":
+                wholeVALUE= document.getElementById("live"+wholeVALUE[1]).style.fontSize;
+                //this works, continue tomorrow
+                break;
+            case "alignment":
+                wholeVALUE= document.getElementById("live"+wholeVALUE[1]).style.textAlign;//want to re check on this one
                 //this works, continue tomorrow
                 break;
         }
