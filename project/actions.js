@@ -63,7 +63,7 @@ function doJOBS(COMMANDS,FINALvalue){
             break;
     }
 
-    window.parent.generalUPDATE(COMMANDS[0],COMMANDS[1],COMMANDS[2]);
+    window.parent.generalUPDATE(COMMANDS[0],COMMANDS[1],FINALvalue);
 }
 
 //this function checks if the job contains other kit value.
