@@ -258,7 +258,7 @@ function ADDINGsingleBLOCK(words,FullBlockID)
             var valueInput = document.createElement('input');
             valueInput.type = 'text'; // Set the input type to text
             valueInput.placeholder = words[2]; // Optional placeholder text
-            valueInput.className = "original"; // stopped here
+            valueInput.className = "original";
             valueInput.setAttribute('onchange', 'updateACTIONvalue(event,"value",this.parentNode.parentNode.id);');
             break;
         case "changecolor":
@@ -269,6 +269,7 @@ function ADDINGsingleBLOCK(words,FullBlockID)
                 option.value = num;
                 valueInput.appendChild(option);
             });
+            valueInput.className = "original";
             valueInput.value= words[2];
 
             valueInput.setAttribute('onchange', 'updateACTIONvalue(event,"value",this.parentNode.parentNode.id);');
@@ -281,6 +282,7 @@ function ADDINGsingleBLOCK(words,FullBlockID)
                 option.value = num;
                 valueInput.appendChild(option);
             });
+            valueInput.className = "original";
             valueInput.value= words[2];
 
             valueInput.setAttribute('onchange', 'updateACTIONvalue(event,"value",this.parentNode.parentNode.id);');
@@ -293,6 +295,7 @@ function ADDINGsingleBLOCK(words,FullBlockID)
                 option.value = num[1];
                 valueInput.appendChild(option);
             });
+            valueInput.className = "original";
             valueInput.value= words[2];
 
             valueInput.setAttribute('onchange', 'updateACTIONvalue(event,"value",this.parentNode.parentNode.id);');
@@ -306,6 +309,7 @@ function ADDINGsingleBLOCK(words,FullBlockID)
                 option.value = num;
                 valueInput.appendChild(option);
             });
+            valueInput.className = "original";
             valueInput.value= words[2];
 
             valueInput.setAttribute('onchange', 'updateACTIONvalue(event,"value",this.parentNode.parentNode.id);');
