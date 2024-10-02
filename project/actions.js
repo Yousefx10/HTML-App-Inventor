@@ -71,13 +71,14 @@ function do_property(wholeVALUE)
 {
     if (wholeVALUE.startsWith("//")) {
         wholeVALUE= wholeVALUE.split("//");
-        //[0] is empty
-        //[1] is selected kit
+        //[0] is always empty.
+        //[1] is selected kit.
         //[2] is command to get.
         switch (wholeVALUE[2])//text
         {
             case "text":
-                wholeVALUE= document.getElementById(wholeVALUE[1]).textContent;
+                wholeVALUE= document.getElementById("live"+wholeVALUE[1]).textContent;
+                //this works, continue tomorrow
                 break;
         }
     } else {

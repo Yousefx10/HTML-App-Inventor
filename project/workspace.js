@@ -229,11 +229,21 @@ function ADDINGsingleBLOCK(words,FullBlockID)
     const kitSelect = document.createElement('select');
     kitSelect.setAttribute('onchange', 'updateACTIONvalue(event,"kit",this.parentNode.parentNode.id);');
 
+//clear the kit_property dialog input
+    advance_kit_property.innerHTML="";
+
     active_kit.forEach(num => {
         const option = document.createElement('option');
         option.textContent = num[0]+num[1];
         option.value = num[0];
         kitSelect.appendChild(option);
+
+
+
+        const kit_property_option = document.createElement('option');
+        kit_property_option.textContent = num[0]+num[1];
+        kit_property_option.value = num[0];
+        advance_kit_property.appendChild(kit_property_option);
     });
 
     //SO I WILL STOP HERE, I WILL FOCUS ON CONVERTING THIS ARRAY TO MAP ARRAY.
@@ -248,6 +258,7 @@ function ADDINGsingleBLOCK(words,FullBlockID)
             var valueInput = document.createElement('input');
             valueInput.type = 'text'; // Set the input type to text
             valueInput.placeholder = words[2]; // Optional placeholder text
+            valueInput.className = "original"; // stopped here
             valueInput.setAttribute('onchange', 'updateACTIONvalue(event,"value",this.parentNode.parentNode.id);');
             break;
         case "changecolor":
@@ -301,6 +312,29 @@ function ADDINGsingleBLOCK(words,FullBlockID)
             break;
     }
 
+    //dialog properties
+    var SetProperties = document.createElement('span');
+    //hidden by default
+    SetProperties.style.display = 'none';
+    SetProperties.className = 'child';
+
+    if(words[2].startsWith("//"))
+    {
+        valueInput.style.display = 'none';
+        SetProperties.innerHTML =
+            `<span style="color:blue">${words[2].split("//")[1]}
+
+            <span style="color:green">${words[2].split("//")[2]}</span></span>`
+
+        SetProperties.style.display = 'inline';
+    }//you have stopped here, you have to manage it
+
+
+
+
+
+
+
     const lineBreak = document.createElement('br');
     const MoreProperties = document.createElement('button');
     MoreProperties.textContent=">";
@@ -310,6 +344,7 @@ function ADDINGsingleBLOCK(words,FullBlockID)
     propertiesBlock.appendChild(kitSelect);
     propertiesBlock.appendChild(valueSpan);
     propertiesBlock.appendChild(valueInput);
+    propertiesBlock.appendChild(SetProperties);
     propertiesBlock.appendChild(MoreProperties);
 
     FullBlock.appendChild(DeleteBlock);
@@ -334,17 +369,53 @@ function showDialog(button) {
     properties_dialog.style.top = `${buttonRect.bottom + window.scrollY}px`; // Align just below the button
     properties_dialog.style.display = 'block'; // Show the dialog
 
-    curreptOPENED_dialog = button.parentNode.parentNode.id;
+    currentOPENED_dialog = button.parentNode.parentNode.id;
 }
+
 function hideDialog() {
 properties_dialog.style.display="none";
 
 
 //will use this part to temporary save changes:
-console.log(curreptOPENED_dialog);
-let wholeVALUE="//"+advance_kit_property.value + "//"+ advance_value_property.value;
-console.log(wholeVALUE);
-    updateACTIONvalue(wholeVALUE,'mixed',curreptOPENED_dialog);
+console.log(currentOPENED_dialog);
+    let allowCHANGEproperties = document.getElementById("allowCHANGEproperties");
+    const child = document.getElementById(currentOPENED_dialog).querySelector('.child');
+    const originalINPUT = document.getElementById(currentOPENED_dialog).querySelector('.original');
+
+if(allowCHANGEproperties.checked)
+{
+    let wholeVALUE="//"+advance_kit_property.value + "//"+ advance_value_property.value;
+    console.log(wholeVALUE);
+    updateACTIONvalue(wholeVALUE,'mixed',currentOPENED_dialog);
+
+    child.style.display="inline";
+
+    //originalINPUT.value         =wholeVALUE;
+    //originalINPUT.placeholder   =wholeVALUE;
+
+    child.innerHTML =
+        `<span style="color:blue">${advance_kit_property.value}
+         <span style="color:green">${advance_value_property.value}</span></span>`;
+
+
+    originalINPUT.style.display="none";
+}
+else {
+    let wholeVALUE="Enter Your New Value";
+    console.log(wholeVALUE);
+    updateACTIONvalue(wholeVALUE,'value',currentOPENED_dialog);
+
+    //this line takes the span with class .child and start to hide it and restore the default control input
+
+
+
+    child.style.display="none";
+
+    originalINPUT.value         =wholeVALUE;
+    originalINPUT.placeholder   =wholeVALUE;
+    originalINPUT.style.display="inline";
+}
+
 
 }
 

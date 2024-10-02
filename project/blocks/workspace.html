@@ -3,27 +3,60 @@
     <div id="workspaceContainer">
 <!--Status Bar-->
         <div id="statusBAR"></div>
+<script>
 
+    function changePROPERTIES(currentvalue)
+    {
+        let dialogPROPERTIES = document.getElementById("dialogPROPERTIES");
+        if(currentvalue=="own_value")
+        {
+
+            dialogPROPERTIES.style.display="none";
+        }
+        else
+        {
+            dialogPROPERTIES.style.display="block";
+        }
+    }
+
+
+</script>
         <div id="dialog">
-            <p onclick="hideDialog();">CLOSE</p>
+            <p onclick="hideDialog();">SAVE</p>
             <br/>
-            <label for="chooseKITproperties">Choose kit:</label>
-            <br/>
-            <select id="chooseKITproperties">
-                <option value="live0">label0</option>
-                <option value="">Color Property</option>
-                <option value="">Color Property</option>
-            </select>
-                <hr/>
-            <label for="chooseProperties">Choose Value:</label>
-            <br/>
-            <select id="chooseProperties">
-                <option value="text">Text</option>
-                <option value="color">Color</option>
-                <option value="fontSize">Font Size</option>
-            </select>
+
+            <label>
+                <input type="radio"                            name="properties" value="own_value" checked onchange="changePROPERTIES(this.value);"> My Own Value
+            </label><br>
+            <label>
+                <input type="radio" id="allowCHANGEproperties" name="properties" value="kit_value" onchange="changePROPERTIES(this.value);"> Choose Kit's Value
+            </label><br>
+
+<div id="dialogPROPERTIES" style="display: none">
+
+    <label for="chooseKITproperties" >Choose kit:</label>
+    <br/>
+
+
+    <select id="chooseKITproperties">
+        <option value="live0">label0</option>
+        <option value="">Color Property</option>
+        <option value="">Color Property</option>
+    </select>
+    <hr/>
+    <label for="chooseProperties">Choose Value:</label>
+    <br/>
+    <select id="chooseProperties">
+        <option value="text">Text</option>
+        <option value="color">Color</option>
+        <option value="fontSize">Font Size</option>
+    </select>
+
+</div>
+
         </div>
 <script>
+
     const advance_kit_property= document.getElementById('chooseKITproperties');
     const advance_value_property= document.getElementById('chooseProperties');
 </script>
