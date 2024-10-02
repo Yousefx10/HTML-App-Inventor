@@ -209,7 +209,7 @@ function ADDINGsingleBLOCK(words,FullBlockID)
     DeleteBlock.onclick = function() {
         //the code to remove the block correctly will be called here
         deleteblock(FullBlockID);
-        console.log(FullBlockID);
+
 
     };
 
@@ -408,7 +408,7 @@ properties_dialog.style.display="none";
 
 
 //will use this part to temporary save changes:
-console.log(currentOPENED_dialog);
+
 
     const child = document.getElementById(currentOPENED_dialog).querySelector('.child');
     const originalINPUT = document.getElementById(currentOPENED_dialog).querySelector('.original');
@@ -416,7 +416,7 @@ console.log(currentOPENED_dialog);
 if(allowCHANGEproperties.checked)
 {
     let wholeVALUE="//"+advance_kit_property.value + "//"+ advance_value_property.value;
-    console.log(wholeVALUE);
+
     updateACTIONvalue(wholeVALUE,'mixed',currentOPENED_dialog);
 
     child.style.display="inline";
@@ -437,7 +437,7 @@ if(allowCHANGEproperties.checked)
 }
 else {
     let wholeVALUE="Enter Your New Value";
-    console.log(wholeVALUE);
+
     updateACTIONvalue(wholeVALUE,'value',currentOPENED_dialog);
 
     //this line takes the span with class .child and start to hide it and restore the default control input
@@ -614,5 +614,5 @@ function updateACTIONvalue(event,updateTYPE,fullID)
 
 
     dynamicMap.set(fullID, newkitID_VALUE);//adding ZERO as default value.
-console.log("went fine");
+
 }
