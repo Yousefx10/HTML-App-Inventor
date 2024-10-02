@@ -43,7 +43,7 @@ function doJOBS(COMMANDS,FINALvalue){
             break;
         case "changefontsize":
             //document.getElementById("live"+COMMANDS[1]).style.fontSize=COMMANDS[2];
-            UpdateFontSize(COMMANDS[1],COMMANDS[2]);
+            UpdateFontSize(COMMANDS[1],FINALvalue);
             break;
         case "changealignment":
             //document.getElementById("live"+COMMANDS[1]).style.color=COMMANDS[2];
@@ -74,29 +74,25 @@ function do_property(wholeVALUE)
         //[0] is always empty.
         //[1] is selected kit.
         //[2] is command to get.
+        const currentKIT="live"+wholeVALUE[1];
+        const currentKITstyle=window.getComputedStyle(document.getElementById(currentKIT));
         switch (wholeVALUE[2])//text
         {
             case "text":
-                wholeVALUE= document.getElementById("live"+wholeVALUE[1]).textContent;
-                //this works, continue tomorrow
+                wholeVALUE= document.getElementById(currentKIT).textContent;
                 break;
             case "color":
-                wholeVALUE= window.getComputedStyle(document.getElementById("live"+wholeVALUE[1])).color;
-
-                console.log(wholeVALUE);
-                //this works, continue tomorrow
+                wholeVALUE= currentKITstyle.color;
                 break;
             case "visibility":
-                wholeVALUE= window.getComputedStyle(document.getElementById("live"+wholeVALUE[1])).display=="none" ?"Hidden":"Visible";
-                //this works, continue tomorrow
+                wholeVALUE= currentKITstyle.display=="none" ?"Hidden":"Visible";
                 break;
             case "fontSize":
-                wholeVALUE= document.getElementById("live"+wholeVALUE[1]).style.fontSize;
-                //this works, continue tomorrow
+                wholeVALUE= currentKITstyle.fontSize;
+
                 break;
             case "alignment":
                 wholeVALUE= document.getElementById("live"+wholeVALUE[1]).style.textAlign;//want to re check on this one
-                //this works, continue tomorrow
                 break;
         }
     } else {
