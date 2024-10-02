@@ -35,10 +35,10 @@ function doJOBS(COMMANDS,FINALvalue){
             break;
         case "changevisibility":
 
-            if(COMMANDS[2]=="Toggle")
+            if(FINALvalue=="Toggle")
                 TOGGLEhiding(COMMANDS[1]);
             else
-                document.getElementById("live"+COMMANDS[1]).style.display=(COMMANDS[2] === "Visible") ? "block" : "none";
+                document.getElementById("live"+COMMANDS[1]).style.display=(FINALvalue === "Visible") ? "block" : "none";
 
             break;
         case "changefontsize":
@@ -87,7 +87,7 @@ function do_property(wholeVALUE)
                 //this works, continue tomorrow
                 break;
             case "visibility":
-                wholeVALUE= document.getElementById("live"+wholeVALUE[1]).style.display=="none" ?"Hidden":"Visible";
+                wholeVALUE= window.getComputedStyle(document.getElementById("live"+wholeVALUE[1])).display=="none" ?"Hidden":"Visible";
                 //this works, continue tomorrow
                 break;
             case "fontSize":
