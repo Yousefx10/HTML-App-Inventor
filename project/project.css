@@ -138,7 +138,31 @@ z-index: 2; /* Screen 1 is above screen 2 initially */
     display: flex; /* Make parent a flex container */
     flex-direction: column; /* Align children in a column */
     padding:0; /* TO INSURE THE IFRAME SHOWS THE CONTENT EXACTLY INSIDE IT*/
+
+
+/*new smartphone mockup section*/
+/*    position: relative;*/
+    /*width: 360px; !* Adjust to your image size *!*/
+    /*height: 640px; !* Adjust to your image size *!*/
+    overflow: hidden;
+    border:none;
 }
+.smartphone-frame {
+    width: 280px;
+    height: 570px;
+}
+.iframe-container {
+    position: absolute;
+    top: 95px; /* Adjust to align with the screen area of the phone */
+    left: 15px; /* Adjust to align with the screen area of the phone */
+    width: 89.5%; /* Adjust to the width of the phone screen */
+    height: 32em; /* Adjust to the height of the phone screen */
+    overflow: hidden;
+    border-radius: 0 0 44px 44px;
+}
+
+
+
 
 #btns{
 

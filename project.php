@@ -216,13 +216,11 @@
 
     <div class='project_div' id="project_live"><p>project_live</p>
 
-        <iframe id="live_iframe" style="flex: 1;height:100%;width:100%;border:0"></iframe>
 
-
-
-
-
-
+    <img src="media/mockup/iphone.png" alt="Smartphone Frame" class="smartphone-frame">
+    <div class="iframe-container">
+        <iframe frameborder="0" id="live_iframe" style="flex: 1;height:100%;width:100%;border:0;z-index: 1;"></iframe>
+    </div>
 
 
     </div>
