@@ -142,18 +142,15 @@ function timeline_properties(current_kit,current_details) {
 
     let current_alignment_status = document.getElementById("active_kit" + current_kit).dataset.alignment;
     let alignmentText_Control = "text";//default is text, until some control change it.
-    if (document.getElementById("active_kit" + current_kit).dataset.only == "button")//alignment for button
-    {
-        //this was for specific alignment, in the past.
-        //reSHOWINGcorrectAlign(document.getElementById("alignBTN" + current_alignment_status));
+
+    //checks if it's text or control, from the array list: CONTROLelements
+    if(CONTROLelements.includes(document.getElementById("active_kit" + current_kit).dataset.only))
         alignmentText_Control = "control";
-    } else if (document.getElementById("active_kit" + current_kit).dataset.only == "img") {
-        //this was for specific alignment, in the past.
-        //reSHOWINGcorrectAlign(document.getElementById("alignIMG" + current_alignment_status));
-        alignmentText_Control = "control";
-    }
+
     //text alignment
 
+
+console.log(alignmentText_Control);
 
     reSHOWINGcorrectAlign(document.getElementById("align" + current_alignment_status));
     //this line changes the <span id="mainAlignmentSPAN">Text Alignment :</span> data-alignment-Type when it's label or button
