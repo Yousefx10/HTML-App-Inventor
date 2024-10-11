@@ -69,4 +69,7 @@ maybe using this code in the future to replace the violation error related to do
 
 
 
-
+[good job]
+- you have to store the [custom] value for a custom font size.
+- you have to complete get / set the TEXT ALIGNMENT.
+- you have to hide the dialog whenever click on new kit or new event or new action or switch the code workspace.

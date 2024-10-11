@@ -93,6 +93,7 @@ let allowCHANGEproperties = document.getElementById("allowCHANGEproperties");
 
 
 
+
 //This const is for knowing how long the kit have blocks on it's event
 const dynamicBLOCKsize = {};
 //dynamicArray[0] = 'First Value';
@@ -115,6 +116,20 @@ let FontSizesNAMES =[
     ["Large", "large"],
     ["Huge", "x-large"]
 ];
+
+
+const customFontSizeOption = document.createElement('option');
+
+// Set its properties
+customFontSizeOption.value = 'custom';
+customFontSizeOption.id = 'fontSizeCustom';
+customFontSizeOption.textContent = 'Custom';
+
+
+
+
+
+
 //in this const, i'll replace "," with "~|" to get sure user won't include it on their string
 const ProjectDelimiter="~|";
 //********************************

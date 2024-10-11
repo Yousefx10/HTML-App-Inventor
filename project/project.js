@@ -167,6 +167,14 @@ function timeline_properties(current_kit,current_details) {
 
     let current_size = document.getElementById("active_kit" + current_kit).dataset.size;
     document.getElementById('FontSizeDropDown').disabled = true;
+    if(current_size == "custom") {
+        document.getElementById('FontSizeDropDown').appendChild(customFontSizeOption);
+    }else {
+        let fontSizeCustom= document.getElementById("fontSizeCustom");
+        if(fontSizeCustom)
+            fontSizeCustom.remove();//removing the Custom font size
+
+    }
     document.getElementById('FontSizeDropDown').value = current_size;
     document.getElementById('FontSizeDropDown').disabled = false;
 
@@ -498,6 +506,11 @@ if(GET_DOC_ID("code",current_kitID))
     {
         let NewSize = SizeElement.value;
         let kitID = hidden_kitID.value;
+
+        let fontSizeCustom= document.getElementById("fontSizeCustom");
+        if(fontSizeCustom)
+        fontSizeCustom.remove();//removing the Custom font size
+
         live_iframe.contentWindow.UpdateFontSize(kitID,NewSize);
 
         GET_DOC_ID("active_kit",kitID).dataset.size = NewSize;

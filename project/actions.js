@@ -88,7 +88,7 @@ function do_property(wholeVALUE)
                 wholeVALUE= currentKITstyle.display=="none" ?"Hidden":"Visible";
                 break;
             case "fontSize":
-                wholeVALUE= currentKITstyle.fontSize;
+                wholeVALUE=currentKITstyle.fontSize;
 
                 break;
             case "alignment":
@@ -147,6 +147,9 @@ function generalUPDATE(updateTYPE,kitID,newVALUE)
 
             break;
         case "changefontsize":
+            //custom value should be selected.
+            if(newVALUE.includes("px"))
+                newVALUE="custom";
             GET_DOC_ID("active_kit",kitID).dataset.size = newVALUE;
             break;
         case "changealignment":

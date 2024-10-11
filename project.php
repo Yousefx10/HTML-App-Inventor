@@ -126,6 +126,7 @@
                 <option value="medium" selected>Medium</option>
                 <option value="small">Small</option>
                 <option value="x-small">Tiny</option>
+                <!-- <option value="custom" id="custom_fontsize">Custom</option>-->
               </select>
               <hr/>
 </div>
