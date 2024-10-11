@@ -44,9 +44,9 @@
                 <hr/>
 
                 <span id="mainAlignmentSPAN">Text Alignment :</span>
-                <span class='btn_alignment btn_alignment-SELECTED' onclick="alignTEXT(1,this.parentElement.dataset.alignmentType,this)"id="align1">Left</span>
-                <span class='btn_alignment'                        onclick="alignTEXT(2,this.parentElement.dataset.alignmentType,this)"id="align2">Center</span>
-                <span class='btn_alignment'                        onclick="alignTEXT(3,this.parentElement.dataset.alignmentType,this)"id="align3">Right</span>
+                <span class='btn_alignment btn_alignment-SELECTED' onclick="alignTEXT(1,mainAlignmentSPAN.dataset.alignmentType,this)"id="align1">Left</span>
+                <span class='btn_alignment'                        onclick="alignTEXT(2,mainAlignmentSPAN.dataset.alignmentType,this)"id="align2">Center</span>
+                <span class='btn_alignment'                        onclick="alignTEXT(3,mainAlignmentSPAN.dataset.alignmentType,this)"id="align3">Right</span>
             <hr/>
 
 

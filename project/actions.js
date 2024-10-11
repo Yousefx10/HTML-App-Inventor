@@ -51,15 +51,17 @@ function doJOBS(COMMANDS,FINALvalue){
             //no need to have this or check on it :
             //const textableTags = ['P', 'H1', 'H2', 'H3', 'H4', 'H5', 'H6', 'SPAN', 'DIV', 'TEXTAREA'];
             //const controlTags = ['BUTTON', 'IMG' ,'INPUT', 'SELECT', 'TEXTAREA'];
-            const controlTags = ['button', 'img'];
+            //const controlTags = ['button', 'img'];
+
             const targetElement = document.getElementById("live"+COMMANDS[1]);
 
             let kitTYPE = 'text';
 
-            if (controlTags.includes(targetElement.tagName)) kitTYPE = 'control';
+            if (CONTROLelements.includes(targetElement.tagName.toLowerCase())) kitTYPE = 'control';
 
-
-            kitALIGNMENT(COMMANDS[1],kitTYPE,COMMANDS[2]);
+            console.log("what?"+FINALvalue);//issue with keywork start instead of left, just checking on it
+            console.log("what?"+kitTYPE);//issue with keywork start instead of left, just checking on it
+            kitALIGNMENT(COMMANDS[1],kitTYPE,FINALvalue);
             break;
     }
 
@@ -176,16 +178,17 @@ function generalUPDATE(updateTYPE,kitID,newVALUE)
 
             //reSHOWINGcorrectAlign(alignmentELEMENT);
 
-            switch(newVALUE){
-                case "Left"://IT'S LEFT
+            switch(newVALUE.toLowerCase()){
+                case "left":  //IT'S LEFT
+                case "start": //IT'S LEFT
                     GET_DOC_ID("active_kit",kitID).dataset.alignment ="1";
                     break;
 
-                case "Center"://IT'S CENTER
+                case "center"://IT'S CENTER
                     GET_DOC_ID("active_kit",kitID).dataset.alignment ="2";
                     break;
 
-                case "Right"://IT'S RIGHT
+                case "right"://IT'S RIGHT
                     GET_DOC_ID("active_kit",kitID).dataset.alignment ="3";
                     break;
             }
