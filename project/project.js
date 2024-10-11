@@ -88,6 +88,9 @@ function addKIT(kit_type)
     live_iframe_add(kit_type,newKIT.textContent,COUNT_KIT_PROGRESS);
     //increasing the id counter.
     COUNT_KIT_PROGRESS++;
+
+    //adding new kit will reset the workspace
+    commonPROJECTclearWORKSPACE();
 }
 
 function NameKit(kit_num)
@@ -372,7 +375,7 @@ function SAVINGtime(){
 
         DELETEbtn.disabled = true;
         SAVEbtn.disabled = true;
-
+        //to hide project_properties
         unFocus();
 
 
@@ -391,21 +394,27 @@ if(GET_DOC_ID("code",current_kitID))
         delete dynamicBLOCKsize[num+"code"+current_kitID+"."];
     });
 
+    commonPROJECTclearWORKSPACE();
+}
+    }
+
+
+//THIS function will clear the workspace area whenever ADDS or DELETES new kits.
+function commonPROJECTclearWORKSPACE()
+{
     //clears the playground container
     document.getElementById("playground_space_container").innerHTML="<p id='playground_text'></p>";
     //to hide the action section
     actions_space.style.display="none";
+
+    //to hide dialog if it's shown.
+    hideDialog(true);
 
     //to clears the event section
     ALL_available_EVENTS.forEach((element) => {
         element.style.display = 'none'; // Hides the element
     });
 }
-    }
-
-
-
-
 
 
     function unFocus()
