@@ -16,7 +16,7 @@ function Func_KIT(kit_name,kitID,KITtype)
 //This Function is used to Show The Suitable event's for the selected kit
 function show_Event_KIT(kitID,KITtype)
 {
-
+    hideDialog(true);//forcing to hide dialog
     workspace_hidden_kitID.value=kitID;
     document.getElementById("playground_space_container").innerHTML="<p id='playground_text'></p>";
     actions_space.style.display="none";
@@ -118,6 +118,7 @@ function Event_KIT(CurrentEvent)
 //This Function Will Display The Current PlayGround
 function StartPlayGround(kitID,EventCase)
 {
+    hideDialog(true);//forcing to hide dialog
     document.getElementById("playground_space_container").innerHTML="";
     actions_space.style.display="block";
     switch (EventCase){
@@ -403,8 +404,13 @@ function showDialog(button) {
     //you have stopped here, and you have to check this isue
 }
 
-function hideDialog() {
+function hideDialog(justHIDE=false) {
 properties_dialog.style.display="none";
+if(justHIDE)
+{
+    changePROPERTIES("own_value");
+    return;
+}
 
 
 //will use this part to temporary save changes:
@@ -456,6 +462,7 @@ else {
 
 function deleteblock(FullBlockID)
 {
+    hideDialog(true);//forcing to hide dialog
 
     //this will help to minus 1 from the totall blocks
     //this lines prints the count of actions
@@ -482,14 +489,11 @@ function deleteblock(FullBlockID)
 
 
 
-
-
-
-
-
-
+//this function adds action to current kit event
 function action_add(actionType)
 {
+    hideDialog(true);//forcing to hide dialog
+
     let CurrentkitID = workspace_hidden_kitID.value;
 
     //instead of increasing the value, store all the valid ID's

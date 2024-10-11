@@ -59,8 +59,6 @@ function doJOBS(COMMANDS,FINALvalue){
 
             if (CONTROLelements.includes(targetElement.tagName.toLowerCase())) kitTYPE = 'control';
 
-            console.log("what?"+FINALvalue);//issue with keywork start instead of left, just checking on it
-            console.log("what?"+kitTYPE);//issue with keywork start instead of left, just checking on it
             kitALIGNMENT(COMMANDS[1],kitTYPE,FINALvalue);
             break;
     }
