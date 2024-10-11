@@ -69,7 +69,7 @@ const listOFevents=[
     "trick",
 ]
 
-
+const CONTROLelements = ["button", "img"];
 
 let event_CLICK = document.getElementById("event_CLICK");
 let event_LONGPRESS = document.getElementById("event_LONGPRESS");

@@ -88,11 +88,7 @@
                             }
                     }
             }
-            function kitALIGNMENTcontrol(kitID,NEWalignment)
-            {
 
-                
-            }
             function UpdateImgSize(kitID,NewSize)
             {
                 document.getElementById("live"+kitID).style.maxWidth=NewSize;

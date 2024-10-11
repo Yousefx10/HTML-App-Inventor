@@ -92,7 +92,23 @@ function do_property(wholeVALUE)
 
                 break;
             case "alignment":
-                wholeVALUE= document.getElementById("live"+wholeVALUE[1]).style.textAlign;//want to re check on this one
+
+                wholeVALUE= currentKITstyle.textAlign;
+
+
+                let ele = document.getElementById(currentKIT);
+
+                if(CONTROLelements.includes(ele.tagName.toLowerCase()))
+                    wholeVALUE="left";
+
+                if(ele.parentElement.classList.contains("parent_here"))
+                {
+                    let temp = Array.from(ele.parentElement.classList).find(className => className.startsWith('alignment'));
+                    wholeVALUE= temp.split('-').pop();
+                }
+
+
+
                 break;
         }
     } else {
