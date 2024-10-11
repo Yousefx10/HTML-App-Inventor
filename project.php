@@ -214,7 +214,7 @@
 
 
 
-    <div class='project_div' id="project_live"><p>project_live</p>
+    <div class='project_div' id="project_live"><p style="margin:0">project_live</p>
 
 
     <img src="media/mockup/iphone.png" alt="Smartphone Frame" class="smartphone-frame">

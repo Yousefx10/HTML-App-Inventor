@@ -155,7 +155,7 @@ z-index: 2; /* Screen 1 is above screen 2 initially */
     position: absolute;
     top: 95px; /* Adjust to align with the screen area of the phone */
     left: 15px; /* Adjust to align with the screen area of the phone */
-    width: 89.5%; /* Adjust to the width of the phone screen */
+    width: 15.7em; /* Adjust to the width of the phone screen */
     height: 32em; /* Adjust to the height of the phone screen */
     overflow: hidden;
     border-radius: 0 0 44px 44px;
