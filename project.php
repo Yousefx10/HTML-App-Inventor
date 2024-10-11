@@ -14,7 +14,7 @@
 
 
     <!--<div class='project_div' id="project_properties" style="display:none">-->
-    <div class='project_div' id="project_properties">
+    <div class='project_div' id="project_properties" style="display:none">
         <p id='properties_name'>project_properties</p>
 
         <div id="newParent">
