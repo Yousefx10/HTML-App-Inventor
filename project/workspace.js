@@ -235,14 +235,14 @@ function ADDINGsingleBLOCK(words,FullBlockID)
 
     active_kit.forEach(num => {
         const option = document.createElement('option');
-        option.textContent = num[0]+num[1];
+        option.textContent = num[2];//shows the NAME that is giving to the kit
         option.value = num[0];
         kitSelect.appendChild(option);
 
 
 
         const kit_property_option = document.createElement('option');
-        kit_property_option.textContent = num[0]+num[1];
+        kit_property_option.textContent = num[2];//shows the NAME that is giving to the kit
         kit_property_option.value = num[0];
         advance_kit_property.appendChild(kit_property_option);
     });
@@ -429,9 +429,9 @@ if(allowCHANGEproperties.checked)
 
     //originalINPUT.value         =wholeVALUE;
     //originalINPUT.placeholder   =wholeVALUE;
-
+    var result = active_kit.find(item => item[0] === Number(advance_kit_property.value));
     child.innerHTML =
-        `<span style="color:blue">${advance_kit_property.value}
+        `<span style="color:blue">${result[2]}
          <span style="color:green">${advance_value_property.value}</span></span>`;
 
 
