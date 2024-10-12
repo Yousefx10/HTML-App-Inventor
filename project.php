@@ -214,12 +214,18 @@
 
 
 
-    <div class='project_div' id="project_live"><p style="margin:0">project_live</p>
+    <div class='project_div' id="project_live">
+        <div style="text-align:center;width:17em">
+        <button Style="width:50%;margin:auto">Run</button>
+        </div>
 
   <div class="status-bar">
     <div class="left" id="clock">00:00</div>
-    <div class="right">Some Text</div>
+      <div class="recording-dot"></div>
+    <div class="right">Welcome</div>
   </div>
+
+
 
     <img src="media/mockup/iphone.png" alt="Smartphone Frame" class="smartphone-frame">
     <div class="iframe-container">

@@ -177,6 +177,24 @@ z-index: 2; /* Screen 1 is above screen 2 initially */
     padding-right: 30px; /* leaves room for camera hole */
 }
 
+.recording-dot {
+    width: 10px;
+    height: 10px;
+    background-color: red;
+    border-radius: 50%;
+    /*adjust the correct location*/
+    margin-top: 7px;
+    margin-left: 70px;
+
+    /* Animation properties */
+    animation: blink 2s infinite;
+}
+
+@keyframes blink {
+    0% { opacity: 0; }
+    50% { opacity: 1; }
+    100% { opacity: 0; }
+}
 
 
 
