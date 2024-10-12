@@ -216,12 +216,12 @@
 
     <div class='project_div' id="project_live">
         <div style="text-align:center;width:17em">
-        <button Style="width:50%;margin:auto">Run</button>
+        <button onclick="ACTIVErun=!ACTIVErun;document.getElementById('activeDOT').classList.toggle('recording-dot');" Style="width:50%;margin:auto">Run</button>
         </div>
 
   <div class="status-bar">
     <div class="left" id="clock">00:00</div>
-      <div class="recording-dot"></div>
+      <div class="recording-dot" id="activeDOT"></div>
     <div class="right">Welcome</div>
   </div>
 

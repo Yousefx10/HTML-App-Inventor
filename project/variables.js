@@ -1,5 +1,7 @@
 // SO HERE ALL JAVASCRIPT VARIABLES WILL DECLARED HERE
 
+//this one is the global var to make sure inside iframe funcs are runnable or not.
+let ACTIVErun=false;
 
 //global function should be used in all project :
 //THIS CONTROL IS MADE FOR MAKING IT EASIER TO HAVE THE CONTROL ID
