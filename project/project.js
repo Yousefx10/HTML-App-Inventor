@@ -243,7 +243,7 @@ function timeline_properties(current_kit, current_details) {
     }
 }
 
-
+//so this function add the kit to iframe.
 function live_iframe_add(KITtype, KITcontent = "", kitID, change = false) {
     const iframe = live_iframe;
     const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
@@ -301,8 +301,11 @@ function live_iframe_add(KITtype, KITcontent = "", kitID, change = false) {
 
         neWelement.style.fontSize = GET_DOC_ID("active_kit", kitID).dataset.size;
 
-        // Append the new <p> element to the body or a specific element
-        iframeDoc.body.appendChild(neWelement); // This appends it to the body
+        // Append the new element to the selected screen.
+        const targetSCREEN = iframeDoc.getElementById("screen"+LIVE_SCREEN);
+        targetSCREEN.appendChild(neWelement);
+
+        //iframeDoc.body.appendChild(neWelement); // This appends it to the body
 
 
     }
@@ -722,7 +725,7 @@ function stopThisTimer(kitID) {
     {
         let ScreenName = prompt("Please enter Screen Name:");
 
-        if (ScreenName !== null) {
+        if (ScreenName !== '') {
             totalSCREENS++;//increase how many screens there.
             namingSCREENS.push([totalSCREENS,ScreenName]);
 
@@ -731,6 +734,18 @@ function stopThisTimer(kitID) {
             newOption.textContent = ScreenName; // Set the text displayed to the user
             selectSCREEN.appendChild(newOption);
 
+            const NewScreenDiv = document.createElement("div");
+            NewScreenDiv.style.display="none";
+            NewScreenDiv.className ="working-screen";//adding a global class to control all the screen's there
+
+            NewScreenDiv.id="screen"+totalSCREENS;
+
+
+
+            const iframe = live_iframe;
+            const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+            // Append the new element to the selected screen.
+            iframeDoc.body.appendChild(NewScreenDiv);
 
 
         } else alert("No name entered.");

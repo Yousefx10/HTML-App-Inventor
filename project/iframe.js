@@ -13,10 +13,11 @@
              .hide{display:none;}
              .alignment-button-center{text-align:center;}
              .alignment-button-right{text-align:right;}
+             .working-screen{background: #cccccc}
              </style>
             </head>
             <body id="updateME">
-
+            <div id="screen1" class="working-screen"></div>
 
 
 
@@ -118,6 +119,13 @@
                     document.getElementById("live"+kitID).style.borderStyle = BorderStyle;
                     document.getElementById("live"+kitID).style.borderColor = BorderColor;
                     }
+            }
+            
+            
+            
+            function AddNewScreen(screenID,screenName)
+            {
+                
             }
             </script>
             
