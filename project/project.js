@@ -707,7 +707,9 @@ function stopThisTimer(kitID) {
         var buttonRect = screenBUTTON.getBoundingClientRect();
 
         // Set the position of the dialog
-        screensPage.style.left = `${buttonRect.left }px`; // Align with the button's left
-        screensPage.style.top = `${buttonRect.bottom }px`; // Align just below the button
-        screensPage.style.display ="block";
+        screensPage.style.left = `${buttonRect.left  + window.scrollX}px`; // Align with the button's left
+        screensPage.style.top = `${buttonRect.bottom}px`; // Align just below the button
+        screensPage.classList.toggle('screenPAGEshow');
+        screensPage.classList.toggle('screenPAGEhide');
+        screensPage.style.transform = "translateY(0)";
     }

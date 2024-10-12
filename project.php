@@ -8,10 +8,18 @@
     </head>
     <body>
 <!--This is the screen dialog and it's outside the container-->
-    <div id="screensPAGE">
-        <p>screen content</p>
-        <p>screen content</p>
-        <p>screen content</p>
+    <div id="screensPAGE" class="screenPAGEhide">
+        <button>Add Screen</button>
+        <br/><hr/>
+
+        <span style="color:red">X</span>
+        <select>
+            <option>Screen1</option>
+        </select>
+    <span style="color:red">
+    🖋️
+    </span>
+
     </div>
 
 

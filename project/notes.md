@@ -85,3 +85,7 @@ taking the design into new era :
 ### - option to remove SELECTED SCREEN.
 ### - option to SWITCH BETWEEN SCREENS WHILE CODING IN MAIN SCREEN.
 ### - option to SWITCH BETWEEN FROM ACTION BLOCK.
+
+
+# this code will be used to fix dialog size when resizing
+`window.addEventListener("resize", setDialogPosition);`

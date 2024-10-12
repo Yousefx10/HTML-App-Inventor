@@ -64,6 +64,11 @@ z-index: 2; /* Screen 1 is above screen 2 initially */
     padding:5px;
     position: absolute;
     z-index: 3;
+}
+.screenPAGEshow{
+    display: block;
+}
+.screenPAGEhide{
     display: none;
 }
 
