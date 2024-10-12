@@ -74,7 +74,8 @@ function addKIT(kit_type) {
             newKIT.textContent = phrase4 + element5 + currentkitID;
             break;
     }
-    active_kit.push([COUNT_KIT_PROGRESS, NameKit(kit_type)]);
+    let tempNAME = COUNT_KIT_PROGRESS+NameKit(kit_type);//the first KIT-NAME will added, until it changes.
+    active_kit.push([COUNT_KIT_PROGRESS, NameKit(kit_type),tempNAME]);
     //failed try to convert two dimension array to dynamic map
     //active_kit.set(COUNT_KIT_PROGRESS, NameKit(kit_type));
 
@@ -117,7 +118,8 @@ function NameKit(kit_num) {
 function timeline_properties(current_kit, current_details) {
 
     properties_value.value = current_details;
-    properties_name.innerHTML = current_kit;
+    let result = active_kit.find(item => item[0] === current_kit);
+    properties_name.value = result[2];
 
     //updating THE HIDDEN INPUT value for the currently selected kitID
     hidden_kitID.value = current_kit;
@@ -666,4 +668,22 @@ function stopThisTimer(kitID) {
         document.getElementById('activeDOT').classList.toggle('recording-dot');
         butt.classList.toggle("btn-active-start"); // Toggle the stop class
         butt.classList.toggle("btn-active-stop"); // Toggle the start class
+    }
+
+    //this function will used to update the name of the selected KIT
+    function updateKITname(newNAME)
+    {
+
+        let currentKITid = Number(hidden_kitID.value);
+
+
+        let result = active_kit.find(item => item[0] === currentKITid);
+
+        // Check if the array is found
+        if (result) {
+            //this updates the name value to the original array active_kit
+            result[2] = newNAME;
+            console.log("updating kit name is completed");
+
+        }
     }

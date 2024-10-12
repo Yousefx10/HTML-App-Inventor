@@ -60,6 +60,12 @@ z-index: 2; /* Screen 1 is above screen 2 initially */
 
 }
 
+/*the input text for kit name so can be changed*/
+#properties_name{
+    border: none;
+    background: none;
+    border-bottom: 1px solid black;
+}
 
 .project_div{
     display:inline-block;
