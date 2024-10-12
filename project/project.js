@@ -725,7 +725,7 @@ function stopThisTimer(kitID) {
     {
         let ScreenName = prompt("Please enter Screen Name:");
 
-        if (ScreenName !== '') {
+        if (ScreenName !== '' && ScreenName!== null) {
             totalSCREENS++;//increase how many screens there.
             namingSCREENS.push([totalSCREENS,ScreenName]);
 
@@ -760,4 +760,5 @@ function stopThisTimer(kitID) {
         LIVE_SCREEN=NewSelectedScreen;
         live_iframe.contentWindow.HideAllScreens("screen"+LIVE_SCREEN);
         screenBUTTON.textContent= namingSCREENS.find(CurrentName => CurrentName[0] === Number(LIVE_SCREEN))[1];
+        //everything is working now, continue later to make the (delete button) and (change screen name button) working
     }
