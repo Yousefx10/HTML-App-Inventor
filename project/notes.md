@@ -3,16 +3,21 @@ i'll write here all the required notes for this project.
 
 
 ## Ways to call function when creaing new KIT
+<details>
+  <summary>See Codes</summary>
 newParagraph.onclick = timeline_properties;//option 1 : won't be visible in the dom.
 newParagraph.setAttribute('onclick', 'handleClick()');//option 2: will be visible in the dom.
-
+</details>
 
 ## kit type instructions :
+<details>
+  <summary>Kit's Names :</summary>
 1 : Label
 2 : Text
 3 : Button
 4 : Picture
 5 : Timer
+</details>
 
 
 
@@ -48,14 +53,18 @@ maybe using this code in the future to replace the violation error related to do
 
 
 # Instructions For Building The Workspace
+<details>
+  <summary>See Informations</summary>
 ## 1. When User Adds A "Functional" Kit.[DONE]
 ## 2. That Kit Will Be Added into The #kit_space and saved in the memory.[DONE]
 ## 3. Adds A List Of Known Event's That Suitable For Each Kit.[DONE]
 ## 4. After Adding The Selected Event, The #actions_space Will Start To Suggest Some Actions.[DONE]
 ## 5. Adding The Actions Will Be Merged With Events ON THE #PLAYGROUND_SPACE.[DONE]
+</details>
 
-# IF YOU ARE READING THIS , THEN CONGRATS, YOU HAVE COMPLETED ALL THE REQUIRED TASKS FOR NOW,
-# START TO EXPLORE MORE PROBLEMS TO FIX.
+
+## IF YOU ARE READING THIS , THEN CONGRATS, YOU HAVE COMPLETED ALL THE REQUIRED TASKS FOR NOW,
+## START TO EXPLORE MORE PROBLEMS TO FIX.
 
 
 
@@ -70,16 +79,18 @@ maybe using this code in the future to replace the violation error related to do
 
 
 # [good job]
-### - you have to store the [custom] value for a custom font size.[DONE]
-### - you have to complete get / set the TEXT ALIGNMENT.[DONE]
-### - you have to hide the dialog whenever click on new kit or new event or new action or switch the code workspace.[DONE]
+<details>
+    <summary>Tasks To Do</summary>
+- you have to store the [custom] value for a custom font size.[DONE]
+- you have to complete get / set the TEXT ALIGNMENT.[DONE]
+- you have to hide the dialog whenever click on new kit or new event or new action or switch the code workspace.[DONE]
+</details>
+
 
 
 # [important area]
 <details>
   <summary>taking the design into new era :</summary>
-  **Notes:**  
-
 - add smartphone frame to live iframe.[DONE]
 - add RUN button to start or stop the actions like [button click] or [timer trick].[DONE]
 - having the ability to naming the kits with a changable names.[DONE]
