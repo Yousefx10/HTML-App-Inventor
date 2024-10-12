@@ -1,14 +1,13 @@
-
 //This should run so if the page got scrolled, it won't stuck in the middle.
 window.history.scrollRestoration = 'manual';
 
 
-window.onload = function() {
+window.onload = function () {
 
     //will use the ON LOAD func to re assign the HINTS to all the kit's
     const elements = document.querySelectorAll('.hint');
     elements.forEach(element => {
-        element.dataset.hint=kit_HINTS[element.dataset.hint];
+        element.dataset.hint = kit_HINTS[element.dataset.hint];
     });
 
 };
@@ -16,68 +15,66 @@ window.onload = function() {
 
 //[FUNCTIONS] Area
 //this function runs when a new kit got born.
-function addKIT(kit_type)
-{
+function addKIT(kit_type) {
     //[START] Main element that will have the content for the new added element.
     let newKIT = document.createElement('p');
-        newKIT.classList.add('project_timeline_kit');
-        newKIT.id='active_kit' + COUNT_KIT_PROGRESS;
-        let currentkitID = COUNT_KIT_PROGRESS;
+    newKIT.classList.add('project_timeline_kit');
+    newKIT.id = 'active_kit' + COUNT_KIT_PROGRESS;
+    let currentkitID = COUNT_KIT_PROGRESS;
     //[END] Main element that will have the content for the new added element.
 
-        newKIT.setAttribute("data-visible","1");
-        newKIT.setAttribute("data-alignment","1");
-        newKIT.setAttribute("data-color","black");
-        newKIT.setAttribute("data-size","medium");
-        newKIT.setAttribute("data-margin","0");
-        newKIT.setAttribute("data-only","text");
+    newKIT.setAttribute("data-visible", "1");
+    newKIT.setAttribute("data-alignment", "1");
+    newKIT.setAttribute("data-color", "black");
+    newKIT.setAttribute("data-size", "medium");
+    newKIT.setAttribute("data-margin", "0");
+    newKIT.setAttribute("data-only", "text");
 
-        newKIT.setAttribute("data-border","0");
-        newKIT.setAttribute("data-border-type","1");
-        newKIT.setAttribute("data-border-color","black");
-        newKIT.setAttribute("data-border-style","solid");
-        newKIT.setAttribute("data-border-size","2px");
+    newKIT.setAttribute("data-border", "0");
+    newKIT.setAttribute("data-border-type", "1");
+    newKIT.setAttribute("data-border-color", "black");
+    newKIT.setAttribute("data-border-style", "solid");
+    newKIT.setAttribute("data-border-size", "2px");
 
-        //this i can pass parameters without EXECUTE the function FROM FIRST TIME.
-        newKIT.onclick = () => timeline_properties(currentkitID,newKIT.innerHTML);
-
+    //this i can pass parameters without EXECUTE the function FROM FIRST TIME.
+    newKIT.onclick = () => timeline_properties(currentkitID, newKIT.innerHTML);
 
 
     //Naming the kit before adding it to the timeline box.
-    switch(kit_type){
+    switch (kit_type) {
 
         case 1:
             //active_kit.push([COUNT_KIT_PROGRESS,NameKit(kit_type)]);
 
 
-            newKIT.textContent = phrase1 + element1 ;
-            newKIT.setAttribute("data-size","large");//specific font size for the label
+            newKIT.textContent = phrase1 + element1;
+            newKIT.setAttribute("data-size", "large");//specific font size for the label
             break;
 
         case 2:
             //active_kit.push([COUNT_KIT_PROGRESS,NameKit(kit_type)]);
-            newKIT.textContent = phrase1 + element2 ;
+            newKIT.textContent = phrase1 + element2;
             break;
         case 3:
             //active_kit.push([COUNT_KIT_PROGRESS,NameKit(kit_type)]);
-            newKIT.textContent = phrase2 ;
-            newKIT.setAttribute("data-only","button");
+            newKIT.textContent = phrase2;
+            newKIT.setAttribute("data-only", "button");
             break;
         case 4:
             //active_kit.push([COUNT_KIT_PROGRESS,NameKit(kit_type)]);
-            newKIT.textContent = phrase3 ;
-            newKIT.setAttribute("data-only","img");
-            newKIT.setAttribute("data-size","100%");
+            newKIT.textContent = phrase3;
+            newKIT.setAttribute("data-only", "img");
+            newKIT.setAttribute("data-size", "100%");
             break;
         case 5:
             //active_kit.push([COUNT_KIT_PROGRESS,NameKit(kit_type)]);
-            newKIT.setAttribute("data-only","timer");
-            newKIT.setAttribute("data-duration","1");
-            newKIT.setAttribute("data-timer","false");
-            newKIT.textContent = phrase4 + element5 +currentkitID;
+            newKIT.setAttribute("data-only", "timer");
+            newKIT.setAttribute("data-duration", "1");
+            newKIT.setAttribute("data-timer", "false");
+            newKIT.textContent = phrase4 + element5 + currentkitID;
             break;
     }
-    active_kit.push([COUNT_KIT_PROGRESS,NameKit(kit_type)]);
+    active_kit.push([COUNT_KIT_PROGRESS, NameKit(kit_type)]);
     //failed try to convert two dimension array to dynamic map
     //active_kit.set(COUNT_KIT_PROGRESS, NameKit(kit_type));
 
@@ -85,7 +82,7 @@ function addKIT(kit_type)
     // console.log(active_kit);
     //finally, adding the kit to the timeline box.
     project_timeline.appendChild(newKIT);
-    live_iframe_add(kit_type,newKIT.textContent,COUNT_KIT_PROGRESS);
+    live_iframe_add(kit_type, newKIT.textContent, COUNT_KIT_PROGRESS);
     //increasing the id counter.
     COUNT_KIT_PROGRESS++;
 
@@ -93,8 +90,7 @@ function addKIT(kit_type)
     commonPROJECTclearWORKSPACE();
 }
 
-function NameKit(kit_num)
-{
+function NameKit(kit_num) {
     //kit type instructions :
     //1 : label
     //2 : text
@@ -102,7 +98,7 @@ function NameKit(kit_num)
     //4 : Picture
     //5 : Timer
 
-    switch(kit_num){
+    switch (kit_num) {
         case 1:
             return element1;
         case 2:
@@ -117,9 +113,8 @@ function NameKit(kit_num)
 }
 
 
-
 //this function manages timeline properties, and it occur everytime original kit get pressed
-function timeline_properties(current_kit,current_details) {
+function timeline_properties(current_kit, current_details) {
 
     properties_value.value = current_details;
     properties_name.innerHTML = current_kit;
@@ -147,13 +142,13 @@ function timeline_properties(current_kit,current_details) {
     let alignmentText_Control = "text";//default is text, until some control change it.
 
     //checks if it's text or control, from the array list: CONTROLelements
-    if(CONTROLelements.includes(document.getElementById("active_kit" + current_kit).dataset.only))
+    if (CONTROLelements.includes(document.getElementById("active_kit" + current_kit).dataset.only))
         alignmentText_Control = "control";
 
     //text alignment
 
 
-console.log(alignmentText_Control);
+    console.log(alignmentText_Control);
 
     reSHOWINGcorrectAlign(document.getElementById("align" + current_alignment_status));
     //this line changes the <span id="mainAlignmentSPAN">Text Alignment :</span> data-alignment-Type when it's label or button
@@ -167,11 +162,11 @@ console.log(alignmentText_Control);
 
     let current_size = document.getElementById("active_kit" + current_kit).dataset.size;
     document.getElementById('FontSizeDropDown').disabled = true;
-    if(current_size == "custom") {
+    if (current_size == "custom") {
         document.getElementById('FontSizeDropDown').appendChild(customFontSizeOption);
-    }else {
-        let fontSizeCustom= document.getElementById("fontSizeCustom");
-        if(fontSizeCustom)
+    } else {
+        let fontSizeCustom = document.getElementById("fontSizeCustom");
+        if (fontSizeCustom)
             fontSizeCustom.remove();//removing the Custom font size
 
     }
@@ -247,165 +242,155 @@ console.log(alignmentText_Control);
 }
 
 
-function live_iframe_add(KITtype, KITcontent = "",kitID,change=false) {
+function live_iframe_add(KITtype, KITcontent = "", kitID, change = false) {
     const iframe = live_iframe;
     const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
 
-        if(change)
-            {
+    if (change) {
 
-                const newContent = iframeDoc.getElementById('updateME');
-                newContent.innerHTML = '<p>'+KITcontent+'</p>';
-            }
-            else{
-                var elementKITtype="span";//as default unknown type
-                let notTEXABLE=false;
-                //this to know if the kit can attach to events or no
-                let isFUNCTIONAL=false;
-                //this to know if the kit should be visible or hidden
-                let shouldBEhidden=false;
+        const newContent = iframeDoc.getElementById('updateME');
+        newContent.innerHTML = '<p>' + KITcontent + '</p>';
+    } else {
+        var elementKITtype = "span";//as default unknown type
+        let notTEXABLE = false;
+        //this to know if the kit can attach to events or no
+        let isFUNCTIONAL = false;
+        //this to know if the kit should be visible or hidden
+        let shouldBEhidden = false;
 
 
-                switch(KITtype){
-                    case 1:
-                        elementKITtype ="h3";
-                        break;
-                    case 2:
-                        elementKITtype ="p";
-                        break;
-                    case 3:
-                        elementKITtype ="button";
-                        isFUNCTIONAL=true;
-                        break;
-                    case 4:
-                        elementKITtype ="img";
-                        notTEXABLE=true;
-                        break;
-                    case 5:
-                        isFUNCTIONAL=true;
-                        shouldBEhidden=true;
-                        break;
-                }
-
-                const neWelement = document.createElement(elementKITtype);
-                neWelement.id="live" + kitID;
-                if(!notTEXABLE)
-                neWelement.textContent = KITcontent;
-                else
-                    {
-                        neWelement.alt = KITcontent;
-                        neWelement.style.maxWidth=GET_DOC_ID("active_kit",kitID).dataset.size;
-                    }
-
-                if(isFUNCTIONAL)
-                {//This Part Helps to manage the functional kit's
-
-                    Func_KIT(KITcontent,kitID,KITtype);
-                    if(shouldBEhidden)
-                    neWelement.style.display="none";
-                }
-
-
-                    neWelement.style.fontSize=GET_DOC_ID("active_kit",kitID).dataset.size;
-
-                // Append the new <p> element to the body or a specific element
-                iframeDoc.body.appendChild(neWelement); // This appends it to the body
-
-
-
-            }
-
-
-    }
-
-
-
-    function LIVE_select_kit(kitID)
-    {
-        const iframe = live_iframe;
-        const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
-
-        live_iframe.contentWindow.RemoveALLselected();
-
-        const elementToModify = iframeDoc.getElementById('live'+kitID);
-
-        if (elementToModify) {
-            // Add a class to the element
-            elementToModify.classList.add('MEselected'); // Replace 'myNewClass' with the desired class name
-        } else {
-            console.log('Element not found in the iframe ==>' + kitID);
+        switch (KITtype) {
+            case 1:
+                elementKITtype = "h3";
+                break;
+            case 2:
+                elementKITtype = "p";
+                break;
+            case 3:
+                elementKITtype = "button";
+                isFUNCTIONAL = true;
+                break;
+            case 4:
+                elementKITtype = "img";
+                notTEXABLE = true;
+                break;
+            case 5:
+                isFUNCTIONAL = true;
+                shouldBEhidden = true;
+                break;
         }
-        DELETEbtn.disabled = false;
-        //SAVEbtn.disabled = false;
 
-        ReFocus();
+        const neWelement = document.createElement(elementKITtype);
+        neWelement.id = "live" + kitID;
+        if (!notTEXABLE)
+            neWelement.textContent = KITcontent;
+        else {
+            neWelement.alt = KITcontent;
+            neWelement.style.maxWidth = GET_DOC_ID("active_kit", kitID).dataset.size;
+        }
+
+        if (isFUNCTIONAL) {//This Part Helps to manage the functional kit's
+
+            Func_KIT(KITcontent, kitID, KITtype);
+            if (shouldBEhidden)
+                neWelement.style.display = "none";
+        }
+
+
+        neWelement.style.fontSize = GET_DOC_ID("active_kit", kitID).dataset.size;
+
+        // Append the new <p> element to the body or a specific element
+        iframeDoc.body.appendChild(neWelement); // This appends it to the body
 
 
     }
 
+
+}
+
+
+function LIVE_select_kit(kitID) {
+    const iframe = live_iframe;
+    const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+
+    live_iframe.contentWindow.RemoveALLselected();
+
+    const elementToModify = iframeDoc.getElementById('live' + kitID);
+
+    if (elementToModify) {
+        // Add a class to the element
+        elementToModify.classList.add('MEselected'); // Replace 'myNewClass' with the desired class name
+    } else {
+        console.log('Element not found in the iframe ==>' + kitID);
+    }
+    DELETEbtn.disabled = false;
+    //SAVEbtn.disabled = false;
+
+    ReFocus();
+
+
+}
 
 
 //this function is used to unfocus the selected kit in project_timeline
-    function TimeLine_RemoveALLselected() {
-        // Use a single line to remove the class from all matching elements
-        document.querySelectorAll('.MEselected').forEach(element => element.classList.remove('MEselected'));
-    }
-
-
-function SAVINGtime(){
-        const current_kitID = hidden_kitID.value;
-        const UPDATEDcontent = document.getElementById('properties_value').value;
-        GET_DOC_ID('active_kit',current_kitID).innerHTML=UPDATEDcontent;
-
-        live_iframe.contentWindow.UPDATEcurrentCONTENT(current_kitID,UPDATEDcontent);
-
-        SAVEbtn.disabled = true;
-
-    }
-
-
-    function REMOVINGtime(){
-        const current_kitID = hidden_kitID.value;
-        active_kit = active_kit.filter(kit => kit[0] != current_kitID);
-
-        GET_DOC_ID('active_kit',current_kitID).remove();
-
-        live_iframe.contentWindow.REMOVEkit(current_kitID);
-
-
-        DELETEbtn.disabled = true;
-        SAVEbtn.disabled = true;
-        //to hide project_properties
-        unFocus();
-
-
-if(GET_DOC_ID("code",current_kitID))
-{
-    GET_DOC_ID("code",current_kitID).remove();
-    ACTIVEactions = ACTIVEactions.filter(action => !action.includes("code"+current_kitID+"."));
-
-    dynamicMap.forEach((_, key) => key.includes("code"+current_kitID+".") && dynamicMap.delete(key));
-
-    //the old way :
-    //Object.keys(dynamicBLOCKsize).forEach(key => key.includes("code"+current_kitID+".") && delete dynamicBLOCKsize[key]);
-
-    //the new way :
-    listOFevents.forEach(num => {
-        delete dynamicBLOCKsize[num+"code"+current_kitID+"."];
-    });
-
-    commonPROJECTclearWORKSPACE();
+function TimeLine_RemoveALLselected() {
+    // Use a single line to remove the class from all matching elements
+    document.querySelectorAll('.MEselected').forEach(element => element.classList.remove('MEselected'));
 }
+
+
+function SAVINGtime() {
+    const current_kitID = hidden_kitID.value;
+    const UPDATEDcontent = document.getElementById('properties_value').value;
+    GET_DOC_ID('active_kit', current_kitID).innerHTML = UPDATEDcontent;
+
+    live_iframe.contentWindow.UPDATEcurrentCONTENT(current_kitID, UPDATEDcontent);
+
+    SAVEbtn.disabled = true;
+
+}
+
+
+function REMOVINGtime() {
+    const current_kitID = hidden_kitID.value;
+    active_kit = active_kit.filter(kit => kit[0] != current_kitID);
+
+    GET_DOC_ID('active_kit', current_kitID).remove();
+
+    live_iframe.contentWindow.REMOVEkit(current_kitID);
+
+
+    DELETEbtn.disabled = true;
+    SAVEbtn.disabled = true;
+    //to hide project_properties
+    unFocus();
+
+
+    if (GET_DOC_ID("code", current_kitID)) {
+        GET_DOC_ID("code", current_kitID).remove();
+        ACTIVEactions = ACTIVEactions.filter(action => !action.includes("code" + current_kitID + "."));
+
+        dynamicMap.forEach((_, key) => key.includes("code" + current_kitID + ".") && dynamicMap.delete(key));
+
+        //the old way :
+        //Object.keys(dynamicBLOCKsize).forEach(key => key.includes("code"+current_kitID+".") && delete dynamicBLOCKsize[key]);
+
+        //the new way :
+        listOFevents.forEach(num => {
+            delete dynamicBLOCKsize[num + "code" + current_kitID + "."];
+        });
+
+        commonPROJECTclearWORKSPACE();
     }
+}
 
 
 //THIS function will clear the workspace area whenever ADDS or DELETES new kits.
-function commonPROJECTclearWORKSPACE()
-{
+function commonPROJECTclearWORKSPACE() {
     //clears the playground container
-    document.getElementById("playground_space_container").innerHTML="<p id='playground_text'></p>";
+    document.getElementById("playground_space_container").innerHTML = "<p id='playground_text'></p>";
     //to hide the action section
-    actions_space.style.display="none";
+    actions_space.style.display = "none";
 
     //to hide dialog if it's shown.
     hideDialog(true);
@@ -417,160 +402,143 @@ function commonPROJECTclearWORKSPACE()
 }
 
 
-    function unFocus()
-    {
-        document.getElementById("project_properties").style.display="none";
-               live_iframe.contentWindow.RemoveALLselected();//unselect all highlighted kits in LIVE
-               TimeLine_RemoveALLselected();//unselect all highlighted kits in TIME_LINE
+function unFocus() {
+    document.getElementById("project_properties").style.display = "none";
+    live_iframe.contentWindow.RemoveALLselected();//unselect all highlighted kits in LIVE
+    TimeLine_RemoveALLselected();//unselect all highlighted kits in TIME_LINE
+}
+
+function ReFocus() {
+    document.getElementById("project_properties").style.display = "inline-block";
+
+}
+
+
+function change_visibility() {
+    //1) changing visibility_status to ZERO.
+    //2) changing data-visible to ZERO.
+    //3) switch the button to red.
+    //4) hide the element from project_live only.
+    //5) replace visiblity emoji
+
+
+    //hidden_kit_visible
+    let kitID = hidden_kitID.value;
+    let visibility_status = GET_DOC_ID("active_kit", kitID).dataset.visible;
+
+    live_iframe.contentWindow.TOGGLEhiding(kitID);
+
+    if (visibility_status == "1")//in this case, it's visible, will be not visible in this code:
+        visibility_status = "0";
+    else
+        visibility_status = "1";
+
+    GET_DOC_ID("active_kit", kitID).setAttribute("data-visible", visibility_status);
+    GET_DOC_ID("active_kit", kitID).classList.toggle('not-visible-emoji');
+}
+
+
+//ALIGN TEXT or control
+//alignmentSTATES = "text" or "control"
+function alignTEXT(alignmentTYPE, alignmentSTATES, alignmentELEMENT) {
+    reSHOWINGcorrectAlign(alignmentELEMENT);
+    let kitID = hidden_kitID.value;
+
+    switch (alignmentTYPE) {
+        case 1://IT'S LEFT
+            GET_DOC_ID("active_kit", kitID).dataset.alignment = "1";
+            break;
+
+        case 2://IT'S CENTER
+            GET_DOC_ID("active_kit", kitID).dataset.alignment = "2";
+            break;
+
+        case 3://IT'S RIGHT
+            GET_DOC_ID("active_kit", kitID).dataset.alignment = "3";
+            break;
     }
 
-    function ReFocus()
-    {
-        document.getElementById("project_properties").style.display="inline-block";
-
-    }
+    let KITalignment = GET_DOC_ID("active_kit", kitID).dataset.alignment;
+    live_iframe.contentWindow.kitALIGNMENT(kitID, alignmentSTATES, KITalignment);
+}
 
 
-    function change_visibility()
-    {
-        //1) changing visibility_status to ZERO.
-        //2) changing data-visible to ZERO.
-        //3) switch the button to red.
-        //4) hide the element from project_live only.
-        //5) replace visiblity emoji
+function reSHOWINGcorrectAlign(alignmentELEMENT) {
+    const elements = document.querySelectorAll('.btn_alignment-SELECTED'); // Select all matching elements
+
+    elements.forEach(element => {
+        element.classList.remove('btn_alignment-SELECTED'); // Remove the class from each element
+    });
+    alignmentELEMENT.classList.toggle('btn_alignment-SELECTED');
+}
 
 
+function UpdateColor(colorElement) {
+    let NewColor = colorElement.value;
+    let kitID = hidden_kitID.value;
+    live_iframe.contentWindow.UpdateColor(kitID, NewColor);
 
-        //hidden_kit_visible
-        let kitID = hidden_kitID.value;
-        let visibility_status = GET_DOC_ID("active_kit",kitID).dataset.visible;
+    GET_DOC_ID("active_kit", kitID).dataset.color = NewColor;
+}
 
-        live_iframe.contentWindow.TOGGLEhiding(kitID);
+function UpdateFontSize(SizeElement) {
+    let NewSize = SizeElement.value;
+    let kitID = hidden_kitID.value;
 
-        if(visibility_status =="1")//in this case, it's visible, will be not visible in this code:
-                visibility_status ="0";
-            else
-                visibility_status ="1";
-
-            GET_DOC_ID("active_kit",kitID).setAttribute("data-visible",visibility_status);
-            GET_DOC_ID("active_kit",kitID).classList.toggle('not-visible-emoji');
-    }
-
-
-
-
-
-    //ALIGN TEXT or control
-    //alignmentSTATES = "text" or "control"
-    function alignTEXT(alignmentTYPE,alignmentSTATES,alignmentELEMENT)
-    {
-        reSHOWINGcorrectAlign(alignmentELEMENT);
-        let kitID = hidden_kitID.value;
-
-        switch(alignmentTYPE){
-            case 1://IT'S LEFT
-                GET_DOC_ID("active_kit",kitID).dataset.alignment ="1";
-                break;
-
-            case 2://IT'S CENTER
-                GET_DOC_ID("active_kit",kitID).dataset.alignment ="2";
-                break;
-
-            case 3://IT'S RIGHT
-                GET_DOC_ID("active_kit",kitID).dataset.alignment ="3";
-                break;
-        }
-
-        let KITalignment =  GET_DOC_ID("active_kit",kitID).dataset.alignment;
-        live_iframe.contentWindow.kitALIGNMENT(kitID,alignmentSTATES,KITalignment);
-    }
-
-
-
-    function reSHOWINGcorrectAlign(alignmentELEMENT){
-        const elements = document.querySelectorAll('.btn_alignment-SELECTED'); // Select all matching elements
-
-        elements.forEach(element => {
-          element.classList.remove('btn_alignment-SELECTED'); // Remove the class from each element
-        });
-        alignmentELEMENT.classList.toggle('btn_alignment-SELECTED');
-    }
-
-
-
-
-    function UpdateColor(colorElement)
-    {
-        let NewColor = colorElement.value;
-        let kitID = hidden_kitID.value;
-        live_iframe.contentWindow.UpdateColor(kitID,NewColor);
-
-        GET_DOC_ID("active_kit",kitID).dataset.color =NewColor;
-    }
-
-    function UpdateFontSize(SizeElement)
-    {
-        let NewSize = SizeElement.value;
-        let kitID = hidden_kitID.value;
-
-        let fontSizeCustom= document.getElementById("fontSizeCustom");
-        if(fontSizeCustom)
+    let fontSizeCustom = document.getElementById("fontSizeCustom");
+    if (fontSizeCustom)
         fontSizeCustom.remove();//removing the Custom font size
 
-        live_iframe.contentWindow.UpdateFontSize(kitID,NewSize);
+    live_iframe.contentWindow.UpdateFontSize(kitID, NewSize);
 
-        GET_DOC_ID("active_kit",kitID).dataset.size = NewSize;
-    }
+    GET_DOC_ID("active_kit", kitID).dataset.size = NewSize;
+}
 
-    function UpdateMargin(SizeElement)
-    {
-        let NewMargin = SizeElement.value;
-        let kitID = hidden_kitID.value;
-        live_iframe.contentWindow.UpdateMargin(kitID,NewMargin);
-        GET_DOC_ID("active_kit",kitID).dataset.margin =NewMargin;
-    }
+function UpdateMargin(SizeElement) {
+    let NewMargin = SizeElement.value;
+    let kitID = hidden_kitID.value;
+    live_iframe.contentWindow.UpdateMargin(kitID, NewMargin);
+    GET_DOC_ID("active_kit", kitID).dataset.margin = NewMargin;
+}
 
-    function UpdateImgSize(SizeElement)
-    {
-        let NewSize = SizeElement.value;
-        let kitID = hidden_kitID.value;
-        live_iframe.contentWindow.UpdateImgSize(kitID,NewSize);
-        GET_DOC_ID("active_kit",kitID).dataset.size =NewSize;
-    }
+function UpdateImgSize(SizeElement) {
+    let NewSize = SizeElement.value;
+    let kitID = hidden_kitID.value;
+    live_iframe.contentWindow.UpdateImgSize(kitID, NewSize);
+    GET_DOC_ID("active_kit", kitID).dataset.size = NewSize;
+}
 
 
-function showHINT(HINT){
-        infoParagraph.style.display="block";
-        infoParagraph.innerHTML=HINT;
-    }
-
-
+function showHINT(HINT) {
+    infoParagraph.style.display = "block";
+    infoParagraph.innerHTML = HINT;
+}
 
 
 function handleFileUpload(event) {
-        const file = event.target.files[0];
+    const file = event.target.files[0];
 
-        let kitID = hidden_kitID.value;
+    let kitID = hidden_kitID.value;
 
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = function(e) {
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
 
-                const iframe = live_iframe;
-                const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+            const iframe = live_iframe;
+            const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
 
 
-                const img = live_iframe.contentWindow.document.getElementById('live'+kitID);
-                img.src = e.target.result;
+            const img = live_iframe.contentWindow.document.getElementById('live' + kitID);
+            img.src = e.target.result;
 
-                //img.style.display = 'block'; // Show the image
-                //img.style.maxWidth  = '250px'; // Show the image
-            };
-            reader.readAsDataURL(file); // Read the file as a data URL
-            // Reset the input value to allow re-uploading the same file
-            event.target.value = '';
-        }
+            //img.style.display = 'block'; // Show the image
+            //img.style.maxWidth  = '250px'; // Show the image
+        };
+        reader.readAsDataURL(file); // Read the file as a data URL
+        // Reset the input value to allow re-uploading the same file
+        event.target.value = '';
     }
+}
 
 /*  Border Type [setting values]:
     - none :default. [this will be as default when the checkbox is false]
@@ -584,103 +552,109 @@ function handleFileUpload(event) {
     4) selecting the border style format.
 */
 
-function haveBORDER(borderVALUE,borderTYPE)
-{
+function haveBORDER(borderVALUE, borderTYPE) {
     let kitID = hidden_kitID.value;
     let NewborderVALUE = borderVALUE.value;
-    switch(borderTYPE)
-    {
+    switch (borderTYPE) {
         case 1:
 
-            GET_DOC_ID("active_kit",kitID).dataset.borderType = NewborderVALUE;
+            GET_DOC_ID("active_kit", kitID).dataset.borderType = NewborderVALUE;
 
             break;
         case 2:
-            GET_DOC_ID("active_kit",kitID).dataset.borderColor = NewborderVALUE;
+            GET_DOC_ID("active_kit", kitID).dataset.borderColor = NewborderVALUE;
             break;
         case 3:
-            GET_DOC_ID("active_kit",kitID).dataset.borderStyle = NewborderVALUE;
+            GET_DOC_ID("active_kit", kitID).dataset.borderStyle = NewborderVALUE;
             break;
         case 4:
-            GET_DOC_ID("active_kit",kitID).dataset.borderSize = NewborderVALUE;
+            GET_DOC_ID("active_kit", kitID).dataset.borderSize = NewborderVALUE;
             break;
     }
-let currentType = GET_DOC_ID("active_kit",kitID).dataset.borderType;
-let currentSize = GET_DOC_ID("active_kit",kitID).dataset.borderSize;
+    let currentType = GET_DOC_ID("active_kit", kitID).dataset.borderType;
+    let currentSize = GET_DOC_ID("active_kit", kitID).dataset.borderSize;
 
-let currentStyle = GET_DOC_ID("active_kit",kitID).dataset.borderStyle;
-let currentColor = GET_DOC_ID("active_kit",kitID).dataset.borderColor;
+    let currentStyle = GET_DOC_ID("active_kit", kitID).dataset.borderStyle;
+    let currentColor = GET_DOC_ID("active_kit", kitID).dataset.borderColor;
 
     const Final_Type_Size = currentType === "1" ? currentSize :
-                            currentType === "2" ? "0 0 "+currentSize :
-                            currentType === "3" ? "0 0 0 "+currentSize :
-                            currentSize;//default value
+        currentType === "2" ? "0 0 " + currentSize :
+            currentType === "3" ? "0 0 0 " + currentSize :
+                currentSize;//default value
 
     //border: 1px solid #000;
 
 
-        //+GET_DOC_ID("active_kit",kitID).dataset.borderType;
-    live_iframe.contentWindow.UPDATEborder(kitID,Final_Type_Size,currentStyle,currentColor);
+    //+GET_DOC_ID("active_kit",kitID).dataset.borderType;
+    live_iframe.contentWindow.UPDATEborder(kitID, Final_Type_Size, currentStyle, currentColor);
 }
 
 
-function EnableBorder(CurrentBorderStatus)
-{
+function EnableBorder(CurrentBorderStatus) {
     let kitID = hidden_kitID.value;
 
-    let currentType = GET_DOC_ID("active_kit",kitID).dataset.borderType;
-    let currentSize = GET_DOC_ID("active_kit",kitID).dataset.borderSize;
+    let currentType = GET_DOC_ID("active_kit", kitID).dataset.borderType;
+    let currentSize = GET_DOC_ID("active_kit", kitID).dataset.borderSize;
 
-    let currentStyle = GET_DOC_ID("active_kit",kitID).dataset.borderStyle;
-    let currentColor = GET_DOC_ID("active_kit",kitID).dataset.borderColor;
+    let currentStyle = GET_DOC_ID("active_kit", kitID).dataset.borderStyle;
+    let currentColor = GET_DOC_ID("active_kit", kitID).dataset.borderColor;
     const Final_Type_Size = currentType === "1" ? currentSize :
-                            currentType === "2" ? "0 0 "+currentSize :
-                            currentType === "3" ? "0 0 0 "+currentSize :
-                            currentSize;//default value
+        currentType === "2" ? "0 0 " + currentSize :
+            currentType === "3" ? "0 0 0 " + currentSize :
+                currentSize;//default value
 
 
-    if(CurrentBorderStatus)
-        {
-            bordersAll.style.display="block";
-            GET_DOC_ID("active_kit",kitID).dataset.border="1";
-            //haveBORDER(1,1);
-            live_iframe.contentWindow.UPDATEborder(kitID,
-                Final_Type_Size,
-                currentStyle,
-                currentColor);
-        }
-    else
-        {
-            bordersAll.style.display="none";
-            GET_DOC_ID("active_kit",kitID).dataset.border="0";
-            //haveBORDER(1,1);
-            live_iframe.contentWindow.UPDATEborder(kitID,"0","solid","black");
-        }
+    if (CurrentBorderStatus) {
+        bordersAll.style.display = "block";
+        GET_DOC_ID("active_kit", kitID).dataset.border = "1";
+        //haveBORDER(1,1);
+        live_iframe.contentWindow.UPDATEborder(kitID,
+            Final_Type_Size,
+            currentStyle,
+            currentColor);
+    } else {
+        bordersAll.style.display = "none";
+        GET_DOC_ID("active_kit", kitID).dataset.border = "0";
+        //haveBORDER(1,1);
+        live_iframe.contentWindow.UPDATEborder(kitID, "0", "solid", "black");
+    }
 }
 
 
-
-
-function ManageTimer()
-{
+function ManageTimer() {
     let currentkitID = hidden_kitID.value;
 
-    if(GET_DOC_ID("active_kit",currentkitID).dataset.timer=="true")//currently set to true and should be false
+    if (GET_DOC_ID("active_kit", currentkitID).dataset.timer == "true")//currently set to true and should be false
     {//STOP NOW :
         stopThisTimer(currentkitID);
-        GET_DOC_ID("active_kit",currentkitID).dataset.timer="false";
+        GET_DOC_ID("active_kit", currentkitID).dataset.timer = "false";
         TimerButton.classList.remove('TimerButtonENABLED');
 
-    }
-    else
-    {//WORK NOW :
+    } else {//WORK NOW :
 
-        live_iframe.contentWindow.startInterval(currentkitID, (rangerINPUT.value*1000));
-        GET_DOC_ID("active_kit",currentkitID).dataset.timer="true";
+        live_iframe.contentWindow.startInterval(currentkitID, (rangerINPUT.value * 1000));
+        GET_DOC_ID("active_kit", currentkitID).dataset.timer = "true";
         TimerButton.classList.add('TimerButtonENABLED');
     }
 }
-function stopThisTimer(kitID)
-{
+
+function stopThisTimer(kitID) {
     live_iframe.contentWindow.stopInterval(kitID);
 }
+
+
+
+//this function will help to update the clock TIME in the upper-left for smartphone mockup
+    function updateClock() {
+    const now = new Date();
+    const hours = String(now.getHours()).padStart(2, '0');
+    const minutes = String(now.getMinutes()).padStart(2, '0');
+    document.getElementById('clock').textContent = `${hours}:${minutes}`;
+}
+
+    // Update the clock every second
+    setInterval(updateClock, 1000);
+
+    // Initialize the clock when the page loads
+    updateClock();
+
