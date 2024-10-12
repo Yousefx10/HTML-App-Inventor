@@ -7,13 +7,15 @@
         <link rel="stylesheet" href="project/workspace.css"/>
     </head>
     <body>
+
+
 <!--This is the screen dialog and it's outside the container-->
     <div id="screensPAGE" class="screenPAGEhide">
         <button onclick="AddNewScreen();">Add Screen</button>
         <br/><hr/>
 
         <span style="color:red">X</span>
-        <select id="selectSCREEN">
+        <select id="selectSCREEN" onchange="SwitchTheScreen(this.value);">
             <option value="1">Screen1</option>
         </select>
     <span style="color:red">
@@ -21,6 +23,9 @@
     </span>
 
     </div>
+
+
+
 
 
 <div id='project_container' class="additionalProjectContainer">

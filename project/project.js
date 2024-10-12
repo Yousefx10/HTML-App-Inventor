@@ -750,3 +750,14 @@ function stopThisTimer(kitID) {
 
         } else alert("No name entered.");
     }
+
+        //this function will switch the current opened screen.
+    function SwitchTheScreen(NewSelectedScreen)
+    {
+        //1: Hide all screens have the class name "working-screen".
+        //2: Show The Selected Screen By it's value number.
+
+        LIVE_SCREEN=NewSelectedScreen;
+        live_iframe.contentWindow.HideAllScreens("screen"+LIVE_SCREEN);
+        screenBUTTON.textContent= namingSCREENS.find(CurrentName => CurrentName[0] === Number(LIVE_SCREEN))[1];
+    }

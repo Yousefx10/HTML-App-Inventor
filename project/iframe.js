@@ -127,6 +127,14 @@
             {
                 
             }
+            function HideAllScreens(ScreenToBeVisible)
+            {
+                    const elements = document.querySelectorAll(".working-screen");
+                    elements.forEach(function(element) {
+                        element.style.display = 'none';
+                    });
+                    document.getElementById(ScreenToBeVisible).style.display="block";
+            }
             </script>
             
             <script src="project/variables.js"></script>
