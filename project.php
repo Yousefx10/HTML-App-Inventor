@@ -16,7 +16,7 @@
     <!--<div class='project_div' id="project_properties" style="display:none">-->
     <div class='project_div' id="project_properties" style="display:none">
         <!--<p>project_properties</p>-->
-        <input type="text" id='properties_name' onchange="updateKITname(this.value);"/>
+        <input type="text" id='properties_name' onchange="if(this.value!='')updateKITname(this.value);"/>
         <br/><hr/>
         <div id="newParent">
 

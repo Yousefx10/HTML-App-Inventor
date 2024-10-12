@@ -79,4 +79,4 @@ maybe using this code in the future to replace the violation error related to do
 taking the design into new era :
 ### - add smartphone frame to live iframe.[DONE]
 ### - add RUN button to start or stop the actions like [button click] or [timer trick].[DONE]
-### - having the ability to naming the kits with a changable names.
+### - having the ability to naming the kits with a changable names.[DONE]

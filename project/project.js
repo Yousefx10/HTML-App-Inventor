@@ -681,6 +681,16 @@ function stopThisTimer(kitID) {
 
         // Check if the array is found
         if (result) {
+
+            if(active_kit.find(item => item[2] === newNAME))//this checks if the name is dublicated
+            {
+                alert("ERROR: THIS NAME IS ALREADY GIVEN TO OTHER KIT.");
+                properties_name.value = result[2];
+                return;
+            }
+
+
+
             //this updates the name value to the original array active_kit
             result[2] = newNAME;
             console.log("updating kit name is completed");
