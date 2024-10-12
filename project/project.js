@@ -736,10 +736,9 @@ function stopThisTimer(kitID) {
 
             const NewScreenDiv = document.createElement("div");
             NewScreenDiv.style.display="none";
-            NewScreenDiv.className ="working-screen";//adding a global class to control all the screen's there
 
             NewScreenDiv.id="screen"+totalSCREENS;
-
+            NewScreenDiv.className ="working-screen";//adding a global class to control all the screen's there
 
 
             const iframe = live_iframe;
@@ -748,7 +747,7 @@ function stopThisTimer(kitID) {
             iframeDoc.body.appendChild(NewScreenDiv);
 
 
-        } else alert("No name entered.");
+        }
     }
 
         //this function will switch the current opened screen.

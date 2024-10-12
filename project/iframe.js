@@ -17,10 +17,7 @@
              </style>
             </head>
             <body id="updateME">
-            <div id="screen1" class="working-screen"></div>
-
-
-
+<!--First Empty Place in body it now it will be empty-->
             <script>
             function RemoveALLselected()
             {
@@ -139,6 +136,10 @@
             
             <script src="project/variables.js"></script>
             <script src="project/actions.js"></script>
+            
+            
+<!--All Screen Starts From Here-->
+            <div id="screen1" class="working-screen"></div>
             </body>
           </html>
         `);
