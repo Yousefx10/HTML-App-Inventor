@@ -697,3 +697,17 @@ function stopThisTimer(kitID) {
 
         }
     }
+
+//this function is used to manage all screens,
+//like adding, removing, switching.
+//and currently only be called from the upper-right smartphone iframe.
+    function ScreensManager()
+    {
+        // Get button's position relative to the viewport
+        var buttonRect = screenBUTTON.getBoundingClientRect();
+
+        // Set the position of the dialog
+        screensPage.style.left = `${buttonRect.left }px`; // Align with the button's left
+        screensPage.style.top = `${buttonRect.bottom }px`; // Align just below the button
+        screensPage.style.display ="block";
+    }

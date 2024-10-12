@@ -19,7 +19,9 @@ let COUNT_KIT_PROGRESS =0;
 let project_timeline = document.getElementById('project_timeline'),
 
     properties_value = document.getElementById('properties_value'),
-    properties_name = document.getElementById('properties_name');
+    properties_name = document.getElementById('properties_name'),
+    screenBUTTON = document.getElementById('screenBUTTON'),
+    screensPage = document.getElementById("screensPAGE");
 
 
 //Variable For hidden_kitID [the hidden element that saves the current kit's ID]

@@ -7,6 +7,13 @@
         <link rel="stylesheet" href="project/workspace.css"/>
     </head>
     <body>
+<!--This is the screen dialog and it's outside the container-->
+    <div id="screensPAGE">
+        <p>screen content</p>
+        <p>screen content</p>
+        <p>screen content</p>
+    </div>
+
 
 <div id='project_container' class="additionalProjectContainer">
 
@@ -215,20 +222,25 @@
 
 
 
+
     <div class='project_div' id="project_live">
         <div style="text-align:center;width:17em">
         <button onclick="runTHEproject(this);" Style="width:50%;margin:auto" class="btn-active-start">Acts</button>
         </div>
 
-  <div class="status-bar">
+  <div class="status-bar" id="con">
     <div class="left" id="clock">00:00</div>
       <div class="" id="activeDOT"></div>
-    <div class="right">Welcome</div>
+    <div class="right" onclick="ScreensManager();" id="screenBUTTON">Screen1</div>
   </div>
 
 
 
-    <img src="media/mockup/iphone.png" alt="Smartphone Frame" class="smartphone-frame">
+    <img src="media/mockup/iphone.png" alt="Smartphone Frame" class="smartphone-frame"/>
+    <div>
+        <!--will use it to add informations later, maybe screen controls?-->
+        <p>---</p>
+    </div>
     <div class="iframe-container">
         <iframe frameborder="0" id="live_iframe" style="flex: 1;height:100%;width:100%;border:0;z-index: 1;"></iframe>
     </div>

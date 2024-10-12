@@ -80,3 +80,8 @@ taking the design into new era :
 ### - add smartphone frame to live iframe.[DONE]
 ### - add RUN button to start or stop the actions like [button click] or [timer trick].[DONE]
 ### - having the ability to naming the kits with a changable names.[DONE]
+### - adding more screens :
+### - option to add screen THEN GIVING IT NAME.
+### - option to remove SELECTED SCREEN.
+### - option to SWITCH BETWEEN SCREENS WHILE CODING IN MAIN SCREEN.
+### - option to SWITCH BETWEEN FROM ACTION BLOCK.
