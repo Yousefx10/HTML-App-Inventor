@@ -9,12 +9,12 @@
     <body>
 <!--This is the screen dialog and it's outside the container-->
     <div id="screensPAGE" class="screenPAGEhide">
-        <button>Add Screen</button>
+        <button onclick="AddNewScreen();">Add Screen</button>
         <br/><hr/>
 
         <span style="color:red">X</span>
-        <select>
-            <option>Screen1</option>
+        <select id="selectSCREEN">
+            <option value="1">Screen1</option>
         </select>
     <span style="color:red">
     🖋️

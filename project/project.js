@@ -709,7 +709,29 @@ function stopThisTimer(kitID) {
         // Set the position of the dialog
         screensPage.style.left = `${buttonRect.left  + window.scrollX}px`; // Align with the button's left
         screensPage.style.top = `${buttonRect.bottom}px`; // Align just below the button
+
+
+        //change the visibility
         screensPage.classList.toggle('screenPAGEshow');
         screensPage.classList.toggle('screenPAGEhide');
-        screensPage.style.transform = "translateY(0)";
+
+
+
+    }
+    function AddNewScreen()
+    {
+        let ScreenName = prompt("Please enter Screen Name:");
+
+        if (ScreenName !== null) {
+            totalSCREENS++;//increase how many screens there.
+            namingSCREENS.push([totalSCREENS,ScreenName]);
+
+            const newOption = document.createElement("option");
+            newOption.value = totalSCREENS; // Set the value attribute
+            newOption.textContent = ScreenName; // Set the text displayed to the user
+            selectSCREEN.appendChild(newOption);
+
+
+
+        } else alert("No name entered.");
     }

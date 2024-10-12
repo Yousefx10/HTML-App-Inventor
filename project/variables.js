@@ -23,6 +23,16 @@ let project_timeline = document.getElementById('project_timeline'),
     screenBUTTON = document.getElementById('screenBUTTON'),
     screensPage = document.getElementById("screensPAGE");
 
+// [START] SCREEN MANAGER AREA [START]
+
+let totalSCREENS=1;//never gets decreased
+let namingSCREENS=[[1,"Screen1"]];//adding the default screen by default
+
+//the select control.
+let selectSCREEN=document.getElementById('selectSCREEN');
+
+// [END] SCREEN MANAGER AREA [END]
+
 
 //Variable For hidden_kitID [the hidden element that saves the current kit's ID]
 let hidden_kitID = document.getElementById('hidden_kitID');
