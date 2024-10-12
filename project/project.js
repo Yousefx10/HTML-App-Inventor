@@ -658,3 +658,12 @@ function stopThisTimer(kitID) {
     // Initialize the clock when the page loads
     updateClock();
 
+
+    //this function will change ACTIVErun that will affect the runnable buttons and timers in the iframe
+    function runTHEproject(butt)
+    {
+        ACTIVErun=!ACTIVErun;
+        document.getElementById('activeDOT').classList.toggle('recording-dot');
+        butt.classList.toggle("btn-active-start"); // Toggle the stop class
+        butt.classList.toggle("btn-active-stop"); // Toggle the start class
+    }

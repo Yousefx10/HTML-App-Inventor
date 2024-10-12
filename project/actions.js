@@ -1,23 +1,25 @@
 //All Running Actions Will Be Stated Here.
 function global_onClick(kitID,prefix = "click"){
+    //this if statement will check if the ACTIVErun allows to start actions or no.
+    if(window.parent.ACTIVErun)
+    {
+        //first of all is defining variables.
+        let dynamicMap = window.parent.dynamicMap;
+        let ACTIVEactions = window.parent.ACTIVEactions;
+        let contains = 'code'+kitID+".";
 
-    //first of all is defining variables.
-    let dynamicMap = window.parent.dynamicMap;
-    let ACTIVEactions = window.parent.ACTIVEactions;
-    let contains = 'code'+kitID+".";
+        //then filtering the correct actions that are related to event
+        ACTIVEactions
+            .filter(blockID => blockID.startsWith(prefix) && blockID.includes(contains)) // Apply rules
+            .forEach(blockID => {
 
-    //then filtering the correct actions that are related to event
-    ACTIVEactions
-        .filter(blockID => blockID.startsWith(prefix) && blockID.includes(contains)) // Apply rules
-        .forEach(blockID => {
+                const COMMANDS = dynamicMap.get(blockID).split(ProjectDelimiter);
 
-            const COMMANDS = dynamicMap.get(blockID).split(ProjectDelimiter);
+                console.log(COMMANDS);
+                doJOBS(COMMANDS, do_property(COMMANDS[2]));
 
-            console.log(COMMANDS);
-            doJOBS(COMMANDS, do_property(COMMANDS[2]));
-
-        });
-
+            });
+    }
 
 }
 

@@ -196,7 +196,12 @@ z-index: 2; /* Screen 1 is above screen 2 initially */
     100% { opacity: 0; }
 }
 
-
+.btn-active-start::before{
+    content: "Start ";
+}
+.btn-active-stop::before{
+    content: "Stop ";
+}
 
 
 
