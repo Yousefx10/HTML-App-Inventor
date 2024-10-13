@@ -17,8 +17,8 @@ function GET_DOC_ID(prefix_name,kitID){
 let active_kit =[];
 let COUNT_KIT_PROGRESS =0;
 let project_timeline = document.getElementById('project_timeline'),
-    timelineTITLE = document.getElementById('timelineTITLE'),
-    screenSETTINGS = document.getElementById("screenSETTINGS"),//this one will add screen name in the title
+    timelineTITLE = document.getElementById('timelineTITLE'),//this one will add screen name in the title
+    screenSETTINGS = document.getElementById("screenSETTINGS"),
 
     properties_value = document.getElementById('properties_value'),
     properties_name = document.getElementById('properties_name'),

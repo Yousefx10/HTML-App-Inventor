@@ -293,10 +293,13 @@ function showScreenProperties()//this functions shows the screen settings in pro
 
 
 
-
-
-
-
+        //now do the following :
+        //1) add new array that will HOLD THE SCREENS SETTINGS like: background, and all this stuff.
+        //2) store every new screen created a place in that array.
+        //3) if screen got deleted remove it from the array.
+        //4) when screen is switched, all the data for selected screen will be copied into DATA-BACKGROUND for example.
+        //5) then be showed inside the properties box.
+        //6) IMPORTANT: after that, start to work on hiding all un needed properties like margin and this stuff.
 
 
 
@@ -304,11 +307,6 @@ function showScreenProperties()//this functions shows the screen settings in pro
 
 
     }
-
-
-
-
-
 
 
 
@@ -779,7 +777,7 @@ function stopThisTimer(kitID) {
         // Check if the array is found
         if (result) {
 
-            if(/^\d/.test(result))
+            if(/^\d/.test(newNAME))
             {
                 alert("ERROR:\nName Can't Start With Number.");
                 properties_name.value = result[2];
@@ -899,6 +897,7 @@ function stopThisTimer(kitID) {
 
         timelineTITLE.textContent=`project_timeline For [${screenBUTTON.textContent}]`;
 
+        screenSETTINGS.dataset.id = LIVE_SCREEN;//this updates the SCREEN PROPERTIES SETTINGS current active screen
         unFocus();
     }
 
