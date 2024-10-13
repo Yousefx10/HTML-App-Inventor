@@ -14,9 +14,9 @@
         <button onclick="AddNewScreen();">Add Screen</button>
         <br/><hr/>
 
-        <span style="color:red">X</span>
+        <button style="color:red" onclick="DeleteScreen();">X</button>
         <select id="selectSCREEN" onchange="SwitchTheScreen(this.value);">
-            <option value="1">Screen1</option>
+            <option value="1" id="optionScreen1">Screen1</option>
         </select>
     <span style="color:red">
     🖋️
@@ -216,7 +216,7 @@
         <div id="btns">
 
             <!--REMOVE BUTTON-->
-            <button id="Remove_button" onclick="REMOVINGtime();" title="Delete The Entire Kit" disabled>Remove</button>
+            <button id="Remove_button" onclick="REMOVINGtime({});" title="Delete The Entire Kit" disabled>Remove</button>
             <!--REMOVE BUTTON-->
 
 

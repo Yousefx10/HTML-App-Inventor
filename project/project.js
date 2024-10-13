@@ -357,18 +357,38 @@ function SAVINGtime() {
 }
 
 
-function REMOVINGtime() {
-    const current_kitID = hidden_kitID.value;
+function REMOVINGtime({multiKIT=false,kits,ISLOOPED=false,kitIDIDID}) {
+    var current_kitID;
+    if(ISLOOPED)     current_kitID = kitIDIDID;
+    else             current_kitID = hidden_kitID.value;
+    console.log(current_kitID);
+    if(multiKIT)//this it's loop to delete multiple kits duo to deleted screen.
+    {
+        console.log(kits);
+        unFocus();
+        kits.forEach((SHOULDkitID) => {
+            REMOVINGtime(
+                {ISLOOPED:true,kitIDIDID:SHOULDkitID}
+            );//Recursive function
+        });
+
+        return;//if finished then it's time to exit.
+
+    }
     active_kit = active_kit.filter(kit => kit[0] != current_kitID);
+
 
     GET_DOC_ID('active_kit', current_kitID).remove();
 
+    if(!ISLOOPED)//so the entire screen will automatically be deleted, no need to call this in GROUP OF DELETETION.
     live_iframe.contentWindow.REMOVEkit(current_kitID);
 
 
     DELETEbtn.disabled = true;
     SAVEbtn.disabled = true;
+
     //to hide project_properties
+    if(!ISLOOPED)//so the entire screen will automatically be deleted, no need to call this in GROUP OF DELETETION.
     unFocus();
 
 
@@ -733,6 +753,7 @@ function stopThisTimer(kitID) {
             const newOption = document.createElement("option");
             newOption.value = totalSCREENS; // Set the value attribute
             newOption.textContent = ScreenName; // Set the text displayed to the user
+            newOption.id = "optionScreen"+totalSCREENS; // Set the text displayed to the user
             selectSCREEN.appendChild(newOption);
 
             const NewScreenDiv = document.createElement("div");
@@ -780,4 +801,40 @@ function stopThisTimer(kitID) {
         document.getElementById("screen"+LIVE_SCREEN).style.display="block";
 
         timelineTITLE.textContent=`project_timeline For [${screenBUTTON.textContent}]`;
+    }
+
+    //this function is used to entirely delete the selected screen
+    function DeleteScreen()
+    {
+        let deletedSCREEN=Number(LIVE_SCREEN);
+        //delete from the array
+
+        let indexToDelete = namingSCREENS.findIndex(CurrentName => CurrentName[0] === deletedSCREEN);
+        if (indexToDelete !== -1) namingSCREENS.splice(indexToDelete, 1);
+
+        //remove the screen from the options list.
+        document.getElementById("optionScreen"+deletedSCREEN).remove();
+
+        //selecting all the kits inside timeline div
+        const goingTObeDELETED = document.querySelectorAll('#screen'+deletedSCREEN+ ' *');
+        const ids = [];
+
+        goingTObeDELETED.forEach(element => {
+            ids.push(
+                Number(element.id.replace("active_kit", ""))
+            ); // Add the id to the array
+
+        });
+
+
+        //time to delete all the selected kits, via calling the REMOVINGtime and set true to multikit
+        REMOVINGtime({multiKIT:true,kits:ids});
+        //now toggle to random available screen:
+        let randomIndex = Math.floor(Math.random() * namingSCREENS.length);
+        SwitchTheScreen(namingSCREENS[randomIndex][0]);
+
+        //delete the whole screen
+
+        live_iframe.contentWindow.deleteENTIREscreen(deletedSCREEN);
+
     }

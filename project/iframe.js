@@ -132,6 +132,11 @@
                     });
                     document.getElementById(ScreenToBeVisible).style.display="block";
             }
+            
+            function deleteENTIREscreen(screenID)
+            {
+                document.getElementById("screen"+screenID).remove();
+            }
             </script>
             
             <script src="project/variables.js"></script>
