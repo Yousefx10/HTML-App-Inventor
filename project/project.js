@@ -755,6 +755,7 @@ function stopThisTimer(kitID) {
         if(!resizeACTION)
         {
             //change the visibility
+            screenBUTTON.classList.toggle('clickableBlue');
             screensPage.classList.toggle('screenPAGEshow');
             screensPage.classList.toggle('screenPAGEhide');
         }

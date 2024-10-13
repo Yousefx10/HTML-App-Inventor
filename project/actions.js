@@ -66,6 +66,7 @@ function doJOBS(COMMANDS,FINALvalue){
 
         case "switchscreen":
 
+            //this statement checks if THE VALUE is directed screen ID or screen name.
             if (typeof variable === 'number' && !isNaN(variable))
                 FINALvalue="screen"+FINALvalue;
             else

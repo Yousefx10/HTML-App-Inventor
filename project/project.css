@@ -71,6 +71,9 @@ z-index: 2; /* Screen 1 is above screen 2 initially */
 .screenPAGEhide{
     display: none;
 }
+.clickableBlue{
+    color: darkblue;
+}
 
 
 
@@ -204,7 +207,7 @@ z-index: 2; /* Screen 1 is above screen 2 initially */
     border-radius: 50%;
     /*adjust the correct location*/
     position: absolute;
-    top: 6px;
+    top: 7px;
     left: 166px;
 
     /* Animation properties */
