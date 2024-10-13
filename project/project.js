@@ -364,8 +364,8 @@ function REMOVINGtime({multiKIT=false,kits,ISLOOPED=false,kitIDIDID}) {
     console.log(current_kitID);
     if(multiKIT)//this it's loop to delete multiple kits duo to deleted screen.
     {
-        console.log(kits);
-        unFocus();
+        unFocus();//close the properties box, only for one time.
+        commonPROJECTclearWORKSPACE();//clear the workspace, only for one time
         kits.forEach((SHOULDkitID) => {
             REMOVINGtime(
                 {ISLOOPED:true,kitIDIDID:SHOULDkitID}
@@ -405,7 +405,7 @@ function REMOVINGtime({multiKIT=false,kits,ISLOOPED=false,kitIDIDID}) {
         listOFevents.forEach(num => {
             delete dynamicBLOCKsize[num + "code" + current_kitID + "."];
         });
-
+        if(!ISLOOPED)//so the entire screen will automatically be deleted, no need to call this in GROUP OF DELETETION.
         commonPROJECTclearWORKSPACE();
     }
 }
