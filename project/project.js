@@ -751,6 +751,11 @@ function stopThisTimer(kitID) {
             newTIMELINE.id = "screen"+totalSCREENS;
             newTIMELINE.className = "timelineSCREEN";
             project_timeline.appendChild(newTIMELINE);
+
+            //finally, automatic switch to the new screen
+            SwitchTheScreen(totalSCREENS);
+            selectSCREEN.value=totalSCREENS;//update the <select> value for <option>
+            ScreensManager();//hide the dialog
         }
     }
 

@@ -13,7 +13,7 @@
              .hide{display:none;}
              .alignment-button-center{text-align:center;}
              .alignment-button-right{text-align:right;}
-             .working-screen{background: #cccccc}
+             .working-screen{}
              </style>
             </head>
             <body id="updateME">
