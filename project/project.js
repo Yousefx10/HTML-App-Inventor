@@ -82,7 +82,8 @@ function addKIT(kit_type) {
     //showing the current ARRAY that contains the kit's
     // console.log(active_kit);
     //finally, adding the kit to the timeline box.
-    project_timeline.appendChild(newKIT);
+    //project_timeline.appendChild(newKIT);
+    document.getElementById("screen"+LIVE_SCREEN).appendChild(newKIT);
     live_iframe_add(kit_type, newKIT.textContent, COUNT_KIT_PROGRESS);
     //increasing the id counter.
     COUNT_KIT_PROGRESS++;
@@ -746,7 +747,10 @@ function stopThisTimer(kitID) {
             // Append the new element to the selected screen.
             iframeDoc.body.appendChild(NewScreenDiv);
 
-
+            let newTIMELINE = document.createElement("div");
+            newTIMELINE.id = "screen"+totalSCREENS;
+            newTIMELINE.className = "timelineSCREEN";
+            project_timeline.appendChild(newTIMELINE);
         }
     }
 
@@ -759,5 +763,14 @@ function stopThisTimer(kitID) {
         LIVE_SCREEN=NewSelectedScreen;
         live_iframe.contentWindow.HideAllScreens("screen"+LIVE_SCREEN);
         screenBUTTON.textContent= namingSCREENS.find(CurrentName => CurrentName[0] === Number(LIVE_SCREEN))[1];
-        //everything is working now, continue later to make the (delete button) and (change screen name button) working
+
+
+
+        //to update timeline window
+        //so you only see kit's that's related to current screen only.
+        const elements = document.querySelectorAll(".timelineSCREEN");
+        elements.forEach(function(element) {
+            element.style.display = 'none';
+        });
+        document.getElementById("screen"+LIVE_SCREEN).style.display="block";
     }
