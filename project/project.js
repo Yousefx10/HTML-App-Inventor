@@ -9,8 +9,8 @@ window.onload = function () {
     elements.forEach(element => {
         element.dataset.hint = kit_HINTS[element.dataset.hint];
     });
-
 };
+//this adds the resize function to be called if screen get changed the size by zooming.
 window.addEventListener("resize", correctDialogSize);
 
 function correctDialogSize()
@@ -846,4 +846,24 @@ function stopThisTimer(kitID) {
 
         live_iframe.contentWindow.deleteENTIREscreen(deletedSCREEN);
 
+    }
+
+//this function is used to ReName the screen from ScreenManager.
+    function RenameScreen()
+    {
+        let ScreenNewName = prompt("Type The New Name:");
+
+        if (ScreenNewName !== '' && ScreenNewName!== null) {
+            let CurrentScreenToBeNamed=Number(LIVE_SCREEN);
+
+            //select the <option> then updating it's name
+            let UpdatedOption = document.getElementById("optionScreen"+CurrentScreenToBeNamed);
+            UpdatedOption.textContent = ScreenNewName; // Set the text displayed to the user
+            screenBUTTON.textContent=ScreenNewName;
+            timelineTITLE.textContent=`project_timeline For [${ScreenNewName}]`;
+
+            //updating the new name into names list
+            let UpdatedScreenList = namingSCREENS.find(screennn => screennn[0] === CurrentScreenToBeNamed);
+            UpdatedScreenList[1]=ScreenNewName;
+        }
     }

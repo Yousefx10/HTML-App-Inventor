@@ -19,9 +19,9 @@
         <select id="selectSCREEN" onchange="SwitchTheScreen(this.value);">
             <option value="1" id="optionScreen1">Screen1</option>
         </select>
-    <span style="color:red">
+    <button onclick="RenameScreen();" style="color:red;background:none;border:none;padding:0">
     🖋️
-    </span>
+    </button>
 
     </div>
 
