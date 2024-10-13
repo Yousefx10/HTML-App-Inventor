@@ -229,7 +229,7 @@
     </div>
 
 
-    <div class='project_div' id='project_timeline'><p>project_timeline</p>
+    <div class='project_div' id='project_timeline'><p id="timelineTITLE">project_timeline</p>
         <div id="screen1" class="timelineSCREEN">
 
         </div>

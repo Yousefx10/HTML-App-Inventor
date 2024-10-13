@@ -773,4 +773,6 @@ function stopThisTimer(kitID) {
             element.style.display = 'none';
         });
         document.getElementById("screen"+LIVE_SCREEN).style.display="block";
+
+        timelineTITLE.textContent=`project_timeline For [${screenBUTTON.textContent}]`;
     }
