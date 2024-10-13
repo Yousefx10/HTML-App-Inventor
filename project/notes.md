@@ -142,3 +142,17 @@ maybe using this code in the future to replace the violation error related to do
 
 # this code will be used later to fix dialog size when resizing
 `window.addEventListener("resize", setDialogPosition);`
+
+
+
+
+# [Next Instructions]
+
+<details>
+
+<summary>Click To View</summary>
+
+- Add Screen Properties To The Timeline.
+
+- Allow To Change Screen Properties Like Background Color.
+</details>

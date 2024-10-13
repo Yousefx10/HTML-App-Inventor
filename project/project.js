@@ -97,7 +97,7 @@ function addKIT(kit_type) {
     //finally, adding the kit to the timeline box.
     //project_timeline.appendChild(newKIT);
     document.getElementById("screen"+LIVE_SCREEN).appendChild(newKIT);
-    live_iframe_add(kit_type, newKIT.textContent, COUNT_KIT_PROGRESS);
+    live_iframe_add(kit_type, newKIT.textContent, COUNT_KIT_PROGRESS,tempNAME);
     //increasing the id counter.
     COUNT_KIT_PROGRESS++;
 
@@ -260,12 +260,12 @@ function timeline_properties(current_kit, current_details) {
 }
 
 //so this function add the kit to iframe.
-function live_iframe_add(KITtype, KITcontent = "", kitID, change = false) {
+function live_iframe_add(KITtype, KITcontent = "", kitID,kitNAME,change = false) {
     const iframe = live_iframe;
     const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
 
     if (change) {
-
+        console.log("i don't know the purpose of this line it's always false and it will never run.");
         const newContent = iframeDoc.getElementById('updateME');
         newContent.innerHTML = '<p>' + KITcontent + '</p>';
     } else {
@@ -309,7 +309,7 @@ function live_iframe_add(KITtype, KITcontent = "", kitID, change = false) {
 
         if (isFUNCTIONAL) {//This Part Helps to manage the functional kit's
 
-            Func_KIT(KITcontent, kitID, KITtype);
+            Func_KIT(kitNAME, kitID, KITtype);
             if (shouldBEhidden)
                 neWelement.style.display = "none";
         }
@@ -735,6 +735,8 @@ function stopThisTimer(kitID) {
 
             //this updates the name value to the original array active_kit
             result[2] = newNAME;
+
+            document.getElementById("code"+currentKITid).textContent=newNAME;//this should shows the updated name.
             console.log("updating kit name is completed");
 
         }
