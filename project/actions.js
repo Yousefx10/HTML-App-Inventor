@@ -65,7 +65,14 @@ function doJOBS(COMMANDS,FINALvalue){
             break;
 
         case "switchscreen":
-            HideAllScreens("screen"+FINALvalue);
+
+            if (typeof variable === 'number' && !isNaN(variable))
+                FINALvalue="screen"+FINALvalue;
+            else
+                FINALvalue="screen"+window.parent.namingSCREENS.find(selectedSCREENname => selectedSCREENname[1] === FINALvalue)[0];
+
+
+            HideAllScreens(FINALvalue);
 
             break;
     }

@@ -27,7 +27,8 @@ let project_timeline = document.getElementById('project_timeline'),
 // [START] SCREEN MANAGER AREA [START]
 
 let totalSCREENS=1;//never gets decreased
-let namingSCREENS =[[1,"Screen1"]];//adding the default screen by default
+//this one is now GLOBAL variable
+window. namingSCREENS =[[1,"Screen1"]];//adding the default screen by default
 let LIVE_SCREEN =1;//THE CURRENT OPENED SCREEN.
 //the select control.
 let selectSCREEN=document.getElementById('selectSCREEN');
