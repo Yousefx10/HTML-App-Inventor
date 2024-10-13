@@ -771,6 +771,13 @@ function stopThisTimer(kitID) {
         let ScreenName = prompt("Please enter Screen Name:");
 
         if (ScreenName !== '' && ScreenName!== null) {
+
+            if(/^\d/.test(ScreenName))//if the name starts with number don't continue
+            {
+                alert("Error ! \n Name Can't Start With A Number.")
+                return;
+            }
+
             totalSCREENS++;//increase how many screens there.
             namingSCREENS.push([totalSCREENS,ScreenName]);
 
@@ -805,13 +812,16 @@ function stopThisTimer(kitID) {
     }
 
         //this function will switch the current opened screen.
-    function SwitchTheScreen(NewSelectedScreen)
+    function SwitchTheScreen(NewSelectedScreen, fromACTION=false)
     {
+        LIVE_SCREEN=NewSelectedScreen;
+
         //1: Hide all screens have the class name "working-screen".
         //2: Show The Selected Screen By it's value number.
+        if(!fromACTION)//make sure this won't repeat when be called from actions.js
+            live_iframe.contentWindow.HideAllScreens("screen"+LIVE_SCREEN);
 
-        LIVE_SCREEN=NewSelectedScreen;
-        live_iframe.contentWindow.HideAllScreens("screen"+LIVE_SCREEN);
+
         screenBUTTON.textContent= namingSCREENS.find(CurrentName => CurrentName[0] === Number(LIVE_SCREEN))[1];
 
 

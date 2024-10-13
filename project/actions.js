@@ -67,13 +67,10 @@ function doJOBS(COMMANDS,FINALvalue){
         case "switchscreen":
 
             //this statement checks if THE VALUE is directed screen ID or screen name.
-            if (typeof variable === 'number' && !isNaN(variable))
-                FINALvalue="screen"+FINALvalue;
-            else
-                FINALvalue="screen"+window.parent.namingSCREENS.find(selectedSCREENname => selectedSCREENname[1] === FINALvalue)[0];
+            if (isNaN(FINALvalue - parseFloat(FINALvalue)))
+                FINALvalue= window.parent.namingSCREENS.find(selectedSCREENname => selectedSCREENname[1] === FINALvalue)[0];
 
-
-            HideAllScreens(FINALvalue);
+            HideAllScreens("screen"+FINALvalue);
 
             break;
     }
@@ -206,6 +203,10 @@ function generalUPDATE(updateTYPE,kitID,newVALUE)
                     break;
             }
 
+            break;
+
+        case"switchscreen":
+            SwitchTheScreen(newVALUE,true);
             break;
     }
 
