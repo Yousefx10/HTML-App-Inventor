@@ -63,6 +63,11 @@ function doJOBS(COMMANDS,FINALvalue){
 
             kitALIGNMENT(COMMANDS[1],kitTYPE,FINALvalue);
             break;
+
+        case "switchscreen":
+            HideAllScreens("screen"+FINALvalue);
+
+            break;
     }
 
     window.parent.generalUPDATE(COMMANDS[0],COMMANDS[1],FINALvalue);

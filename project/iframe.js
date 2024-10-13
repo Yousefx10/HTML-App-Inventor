@@ -124,7 +124,7 @@
             {
                 
             }
-            function HideAllScreens(ScreenToBeVisible)
+            function HideAllScreens(ScreenToBeVisible)//this function should be RE NAMED because it's switching screens not hiding them
             {
                     const elements = document.querySelectorAll(".working-screen");
                     elements.forEach(function(element) {

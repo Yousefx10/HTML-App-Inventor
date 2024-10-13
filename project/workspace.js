@@ -223,11 +223,11 @@ function ADDINGsingleBLOCK(words,FullBlockID)
     propertiesBlock.className = 'properties_block';
 
 
-    const kitSpan = document.createElement('span');
+    let kitSpan = document.createElement('span');
     kitSpan.textContent = 'Kit :';
 
 
-    const kitSelect = document.createElement('select');
+    let kitSelect = document.createElement('select');
     kitSelect.setAttribute('onchange', 'updateACTIONvalue(event,"kit",this.parentNode.parentNode.id);');
 
 //clear the kit_property dialog input
@@ -315,6 +315,24 @@ function ADDINGsingleBLOCK(words,FullBlockID)
 
             valueInput.setAttribute('onchange', 'updateACTIONvalue(event,"value",this.parentNode.parentNode.id);');
             break;
+
+        case "switchscreen"://should not have ANY KIT, because it's like ONLY METHOD.
+
+            var valueInput = document.createElement('select');
+            namingSCREENS.forEach(num => {
+                const option = document.createElement('option');
+                option.textContent = num[1];
+                option.value = num[0];
+                valueInput.appendChild(option);
+            });
+            valueInput.className = "original";
+            valueInput.value= words[2];
+
+            valueInput.setAttribute('onchange', 'updateACTIONvalue(event,"value",this.parentNode.parentNode.id);');
+
+            kitSpan=null;
+            kitSelect=null;
+            break;
     }
 
     //dialog properties
@@ -346,8 +364,11 @@ function ADDINGsingleBLOCK(words,FullBlockID)
     MoreProperties.textContent=">";
     MoreProperties.setAttribute("onclick","showDialog(this);");
 
+    if(kitSpan)//don't add if it's method, like switch screen
     propertiesBlock.appendChild(kitSpan);
+    if(kitSelect)//don't add if it's method, like switch screen
     propertiesBlock.appendChild(kitSelect);
+
     propertiesBlock.appendChild(valueSpan);
     propertiesBlock.appendChild(valueInput);
     propertiesBlock.appendChild(SetProperties);
@@ -552,6 +573,11 @@ function action_add(actionType)
 
             words = dynamicMap.get(tempLONGvalue).split(ProjectDelimiter);
 
+            break;
+        case "SwitchScreen":
+            dynamicMap.set(tempLONGvalue, 'switchscreen'+ProjectDelimiter+'0'+ProjectDelimiter+LIVE_SCREEN);//as default will be Medium
+
+            words = dynamicMap.get(tempLONGvalue).split(ProjectDelimiter);
             break;
     }
     if (!ACTIVEactions.includes(tempLONGvalue)) {
