@@ -261,7 +261,8 @@
     <img src="media/mockup/iphone.png" alt="Smartphone Frame" class="smartphone-frame"/>
     <div>
         <!--will use it to add informations later, maybe screen controls?-->
-        <p>---</p>
+        <!--i think maybe i will use it to add EXPORT button to save and download the project-->
+        <p style="font-size:10px">Version v.0.0.9</p>
     </div>
     <div class="iframe-container">
         <iframe frameborder="0" id="live_iframe" style="flex: 1;height:100%;width:100%;border:0;z-index: 1;"></iframe>
