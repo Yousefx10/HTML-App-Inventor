@@ -5,6 +5,7 @@
         <title>Build Up Your App</title>
         <link rel="stylesheet" href="project/project.css"/>
         <link rel="stylesheet" href="project/workspace.css"/>
+        <link rel="stylesheet" href="project/global.css"/>
     </head>
     <body>
 
@@ -246,7 +247,7 @@
   <div class="status-bar" id="con">
     <div class="left" id="clock">00:00</div>
       <div class="" id="activeDOT"></div>
-    <div class="right" onclick="ScreensManager();" id="screenBUTTON">Screen1</div>
+    <div class="right noselect" onclick="ScreensManager();" id="screenBUTTON" role="button" tabindex="0">Screen1</div>
   </div>
 
 
@@ -265,7 +266,7 @@
 
 
     <!--In Toolkit section, all the required tools will be here-->
-    <div class='project_div' id="project_toolkit" onmouseout="infoParagraph.style.display='none';"><p>project_toolkit</p>
+    <div class='project_div noselect' id="project_toolkit" onmouseout="infoParagraph.style.display='none';"><p>project_toolkit</p>
         <!--
         List of registered [elements] i'll add:
         -Label   [for short text].
