@@ -25,16 +25,26 @@ let project_timeline = document.getElementById('project_timeline'),
     screenBUTTON = document.getElementById('screenBUTTON'),
     screensPage = document.getElementById("screensPAGE");
 
+
+
 // [START] SCREEN MANAGER AREA [START]
 
-let totalSCREENS=1;//never gets decreased
+
 //this one is now GLOBAL variable
-window. namingSCREENS =[[1,"Screen1"]];//adding the default screen by default
+window. namingSCREENS      =[[1,"Screen1"]];//adding the default screen by default
+let screenPROPERTIES =[[1,"background:#f0f0f0"]];//storing each property, and then seperate it by ":"
+// for now, only background color.
+
+
+let totalSCREENS=1;//never gets decreased
+
 let LIVE_SCREEN =1;//THE CURRENT OPENED SCREEN.
-//the select control.
-let selectSCREEN=document.getElementById('selectSCREEN');
+
+let selectSCREEN=document.getElementById('selectSCREEN');//the select control.
 
 // [END] SCREEN MANAGER AREA [END]
+
+
 
 
 //Variable For hidden_kitID [the hidden element that saves the current kit's ID]

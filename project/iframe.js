@@ -133,6 +133,11 @@
             {
                 document.getElementById("screen"+screenID).remove();
             }
+            
+            function UpdateBackgroundColor(SelectedScreen,NewColor)
+            {
+                document.getElementById(SelectedScreen).style.backgroundColor=NewColor;
+            }
             </script>
             
             <script src="project/variables.js"></script>

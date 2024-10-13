@@ -84,6 +84,16 @@
 
             <div class="only-hide only-option" id="only-screen">
                 <span>[SCREEN AREA]</span>
+                <br/>
+                <label for="scBackground">Background Color :</label>
+                <select id="scBackground" onchange="updateSCREENproperties(this.value);">
+                  <option value="#f0f0f0">Default</option>
+                  <option value="white">White</option>
+                  <option value="green">Green</option>
+                  <option value="black">Black</option>
+                  <option value="gold">Yellow</option>
+                  <option value="red">Red</option>
+                </select>
                 <hr/>
             </div>
 
@@ -235,7 +245,7 @@
 
     <div class='project_div' id='project_timeline'><p id="timelineTITLE">project_timeline</p>
 
-                <p id="screenSETTINGS" onclick="showScreenProperties();" data-only="screen" data-id="1">Current Screen Settings Properties</p>
+                <p id="screenSETTINGS" onclick="showScreenProperties();" data-only="screen" data-id="1" data-background="#f0f0f0">Current Screen Settings Properties</p>
 
         <div id="screen1" class="timelineSCREEN">
 

@@ -291,14 +291,19 @@ function showScreenProperties()//this functions shows the screen settings in pro
 
         correctDialogSize();//and finally to correct the dialog location.
 
+        ReFocus();//Showing the project_properties.
+
+        //APPLYING TO SHOW CURRENT VALUES INSIDE THE project_properties
+        document.getElementById("scBackground").value=screenSETTINGS.dataset.background;
+
 
 
         //now do the following :
-        //1) add new array that will HOLD THE SCREENS SETTINGS like: background, and all this stuff.
-        //2) store every new screen created a place in that array.
-        //3) if screen got deleted remove it from the array.
-        //4) when screen is switched, all the data for selected screen will be copied into DATA-BACKGROUND for example.
-        //5) then be showed inside the properties box.
+        //1) add new array that will HOLD THE SCREENS SETTINGS like: background, and all this stuff.[OK]
+        //2) store every new screen created a place in that array.[OK]
+        //3) if screen got deleted remove it from the array.[OK]
+        //4) when screen is switched, all the data for selected screen will be copied into DATA-BACKGROUND for example.[OK]
+        //5) then be showing inside the properties box.[OK]
         //6) IMPORTANT: after that, start to work on hiding all un needed properties like margin and this stuff.
 
 
@@ -841,6 +846,7 @@ function stopThisTimer(kitID) {
 
             totalSCREENS++;//increase how many screens there.
             namingSCREENS.push([totalSCREENS,ScreenName]);
+            screenPROPERTIES.push([totalSCREENS,"background:#f0f0f0"]);//storing default SCREEN VALUES.
 
             const newOption = document.createElement("option");
             newOption.value = totalSCREENS; // Set the value attribute
@@ -875,7 +881,7 @@ function stopThisTimer(kitID) {
         //this function will switch the current opened screen.
     function SwitchTheScreen(NewSelectedScreen, fromACTION=false)
     {
-        LIVE_SCREEN=NewSelectedScreen;
+        LIVE_SCREEN=Number(NewSelectedScreen);
 
         //1: Hide all screens have the class name "working-screen".
         //2: Show The Selected Screen By it's value number.
@@ -898,6 +904,10 @@ function stopThisTimer(kitID) {
         timelineTITLE.textContent=`project_timeline For [${screenBUTTON.textContent}]`;
 
         screenSETTINGS.dataset.id = LIVE_SCREEN;//this updates the SCREEN PROPERTIES SETTINGS current active screen
+        screenSETTINGS.dataset.background= screenPROPERTIES.find(screennn => screennn[0] === LIVE_SCREEN)[1]
+            .split(":")[1];//spliting it because there's no need to store the property name "background" only it's value is important.
+
+
         unFocus();
     }
 
@@ -911,8 +921,10 @@ function stopThisTimer(kitID) {
         let deletedSCREEN=Number(LIVE_SCREEN);
         //delete from the array
 
+        //array deletetion process.
         let indexToDelete = namingSCREENS.findIndex(CurrentName => CurrentName[0] === deletedSCREEN);
         if (indexToDelete !== -1) namingSCREENS.splice(indexToDelete, 1);
+        if (indexToDelete !== -1) screenPROPERTIES.splice(indexToDelete, 1);
 
         //remove the screen from the options list.
         document.getElementById("optionScreen"+deletedSCREEN).remove();
@@ -960,3 +972,16 @@ function stopThisTimer(kitID) {
             UpdatedScreenList[1]=ScreenNewName;
         }
     }
+
+    //supposed to update everything related to screen settings properteis, starting from background color.
+function updateSCREENproperties(BgColorValue)
+{
+    let newUPDATE = screenPROPERTIES.find(screennn => screennn[0] === LIVE_SCREEN);
+    newUPDATE[1] ="background:"+BgColorValue;//updating the array property.
+    screenSETTINGS.dataset.background=BgColorValue;//updating the currently dataset.
+
+    //call the function inside IFRAME to do the work, updating the background color.
+    live_iframe.contentWindow.UpdateBackgroundColor("screen"+LIVE_SCREEN,BgColorValue);
+
+
+}
