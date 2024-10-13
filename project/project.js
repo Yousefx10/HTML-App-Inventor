@@ -138,7 +138,7 @@ function timeline_properties(current_kit, current_details) {
     //updating THE HIDDEN INPUT value for the currently selected kitID
     hidden_kitID.value = current_kit;
 
-    LIVE_select_kit(current_kit);
+    LIVE_select_kit(current_kit);//select the kit inside IFRAME to highlight it
 
     TimeLine_RemoveALLselected();//to remove current/previous selected timelineKIT
 
@@ -164,7 +164,7 @@ function timeline_properties(current_kit, current_details) {
     //text alignment
 
 
-    console.log(alignmentText_Control);
+
 
     reSHOWINGcorrectAlign(document.getElementById("align" + current_alignment_status));
     //this line changes the <span id="mainAlignmentSPAN">Text Alignment :</span> data-alignment-Type when it's label or button
@@ -258,6 +258,61 @@ function timeline_properties(current_kit, current_details) {
 
     correctDialogSize();
 }
+
+
+
+
+
+function showScreenProperties()//this functions shows the screen settings in properties box.
+    {
+        TimeLine_RemoveALLselected();//first things : remove all the selected.
+
+        screenSETTINGS.classList.toggle('screenSETTINGS-ACTIVE');//to highlight itself.
+
+
+        /*//short example of getting CURRENT SCREEN DATA.
+        let current_visible_status = GET_DOC_ID("active_kit", current_kit).dataset.visible;
+        if (current_visible_status == 1)
+            document.getElementById("btn_visible").classList.remove('btn_unvisible');
+        else
+            document.getElementById("btn_visible").classList.add('btn_unvisible');
+            */
+
+
+        //THIS LOOP IS TO HIDE ALL PROPERTIES THAT "MIGHT BE ONLY GOOD WITH SPECIFIC KIT".
+        const elements = document.querySelectorAll('.only-option');
+        elements.forEach(element => {
+            element.classList.add("only-hide");
+        });
+
+        //THIS LINE HELPS TO ONLY SHOW THE "PROPERTIES" THAT'S ONLY GOOD FOR INDIVIDUAL KIT.
+        document.getElementById("only-" + screenSETTINGS.dataset.only)
+            .classList.remove("only-hide");
+
+        correctDialogSize();//and finally to correct the dialog location.
+
+
+
+
+
+
+
+
+
+
+
+
+
+    }
+
+
+
+
+
+
+
+
+
 
 //so this function add the kit to iframe.
 function live_iframe_add(KITtype, KITcontent = "", kitID,kitNAME,change = false) {
@@ -827,7 +882,7 @@ function stopThisTimer(kitID) {
         //1: Hide all screens have the class name "working-screen".
         //2: Show The Selected Screen By it's value number.
         if(!fromACTION)//make sure this won't repeat when be called from actions.js
-            live_iframe.contentWindow.HideAllScreens("screen"+LIVE_SCREEN);
+            live_iframe.contentWindow.SwitchCurrentScreen("screen"+LIVE_SCREEN);
 
 
         screenBUTTON.textContent= namingSCREENS.find(CurrentName => CurrentName[0] === Number(LIVE_SCREEN))[1];

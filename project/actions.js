@@ -70,7 +70,7 @@ function doJOBS(COMMANDS,FINALvalue){
             if (isNaN(FINALvalue - parseFloat(FINALvalue)))
                 FINALvalue= window.parent.namingSCREENS.find(selectedSCREENname => selectedSCREENname[1] === FINALvalue)[0];
 
-            HideAllScreens("screen"+FINALvalue);
+            SwitchCurrentScreen("screen"+FINALvalue);
 
             break;
     }

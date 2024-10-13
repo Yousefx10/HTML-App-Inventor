@@ -147,6 +147,20 @@ z-index: 2; /* Screen 1 is above screen 2 initially */
     color: black;               /* Bullet color */
 }
 
+#screenSETTINGS{
+background-color: antiquewhite;
+    padding: 10px;
+    cursor: pointer;
+}
+.screenSETTINGS-ACTIVE{
+    color:green;
+    font-weight: bold;
+}
+#screenSETTINGS:hover{
+    text-decoration: underline;
+}
+
+
 .not-visible-emoji::before{
     content: "[🚫]" !important;
 }

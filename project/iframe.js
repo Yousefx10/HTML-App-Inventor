@@ -13,7 +13,7 @@
              .hide{display:none;}
              .alignment-button-center{text-align:center;}
              .alignment-button-right{text-align:right;}
-             .working-screen{}
+             .working-screen{height:100%}/*this means it will take the full screen in case background color applied*/
              </style>
             </head>
             <body id="updateME">
@@ -119,12 +119,8 @@
             }
             
             
-            
-            function AddNewScreen(screenID,screenName)
-            {
-                
-            }
-            function HideAllScreens(ScreenToBeVisible)//this function should be RE NAMED because it's switching screens not hiding them
+            //replace name FROM HideAllScreens TO "SwitchCurrentScreen"
+            function SwitchCurrentScreen(ScreenToBeVisible)
             {
                     const elements = document.querySelectorAll(".working-screen");
                     elements.forEach(function(element) {

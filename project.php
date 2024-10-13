@@ -82,7 +82,10 @@
 
 
 
-
+            <div class="only-hide only-option" id="only-screen">
+                <span>[SCREEN AREA]</span>
+                <hr/>
+            </div>
 
             <div class="only-hide only-option" id="only-text">
                 <span>[Text Section]</span>
@@ -231,6 +234,9 @@
 
 
     <div class='project_div' id='project_timeline'><p id="timelineTITLE">project_timeline</p>
+
+                <p id="screenSETTINGS" onclick="showScreenProperties();" data-only="screen">Current Screen Settings Properties</p>
+
         <div id="screen1" class="timelineSCREEN">
 
         </div>
