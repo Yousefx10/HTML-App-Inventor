@@ -724,9 +724,17 @@ function stopThisTimer(kitID) {
         // Check if the array is found
         if (result) {
 
+            if(/^\d/.test(result))
+            {
+                alert("ERROR:\nName Can't Start With Number.");
+                properties_name.value = result[2];
+                return;
+            }
+
+
             if(active_kit.find(item => item[2] === newNAME))//this checks if the name is dublicated
             {
-                alert("ERROR: THIS NAME IS ALREADY GIVEN TO OTHER KIT.");
+                alert("ERROR:\nTHIS NAME IS ALREADY GIVEN TO OTHER KIT.");
                 properties_name.value = result[2];
                 return;
             }
@@ -774,7 +782,7 @@ function stopThisTimer(kitID) {
 
             if(/^\d/.test(ScreenName))//if the name starts with number don't continue
             {
-                alert("Error ! \n Name Can't Start With A Number.")
+                alert("Error:\n Name Can't Start With A Number.");
                 return;
             }
 
@@ -835,6 +843,8 @@ function stopThisTimer(kitID) {
         document.getElementById("screen"+LIVE_SCREEN).style.display="block";
 
         timelineTITLE.textContent=`project_timeline For [${screenBUTTON.textContent}]`;
+
+        unFocus();
     }
 
     //this function is used to entirely delete the selected screen
