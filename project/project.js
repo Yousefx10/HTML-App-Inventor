@@ -827,6 +827,10 @@ function stopThisTimer(kitID) {
     //this function is used to entirely delete the selected screen
     function DeleteScreen()
     {
+        let numberOfArrays = namingSCREENS.filter(Array.isArray).length;
+        if(numberOfArrays==1)//denieding delete the LAST and ONLY SCREEN
+            return;
+
         let deletedSCREEN=Number(LIVE_SCREEN);
         //delete from the array
 
