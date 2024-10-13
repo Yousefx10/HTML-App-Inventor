@@ -10,6 +10,8 @@ window.onload = function () {
         element.dataset.hint = kit_HINTS[element.dataset.hint];
     });
 };
+
+
 //this adds the resize function to be called if screen get changed the size by zooming.
 window.addEventListener("resize", correctDialogSize);
 
@@ -19,6 +21,11 @@ function correctDialogSize()
     if(currentDIALOGbutton!=null)
         showDialog(currentDIALOGbutton,true);
 }
+
+
+
+
+
 //[FUNCTIONS] Area
 //this function runs when a new kit got born.
 function addKIT(kit_type) {
@@ -248,6 +255,8 @@ function timeline_properties(current_kit, current_details) {
         document.getElementById("only-general")
             .classList.remove("only-hide");
     }
+
+    correctDialogSize();
 }
 
 //so this function add the kit to iframe.
@@ -438,6 +447,9 @@ function unFocus() {
     document.getElementById("project_properties").style.display = "none";
     live_iframe.contentWindow.RemoveALLselected();//unselect all highlighted kits in LIVE
     TimeLine_RemoveALLselected();//unselect all highlighted kits in TIME_LINE
+
+    //so dialog location be corrected.
+    correctDialogSize();
 }
 
 function ReFocus() {
