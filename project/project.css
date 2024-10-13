@@ -193,9 +193,9 @@ background-color: antiquewhite;
     top: 60px; /* Adjust to align with the screen area of the phone */
     left: 15px; /* Adjust to align with the screen area of the phone */
     width: 15.7em; /* Adjust to the width of the phone screen */
-    height: 32em; /* Adjust to the height of the phone screen */
+    height: 32.5em; /* Adjust to the height of the phone screen */
     overflow: hidden;
-    border-radius: 0 0 27px 23px;
+    border-radius: 0 0 28px 27px;
 }
 
 .status-bar {

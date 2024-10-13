@@ -152,9 +152,9 @@ maybe using this code in the future to replace the violation error related to do
 
 <summary>Click To View</summary>
 
-- Add Screen Properties To The Timeline.
+- Add Screen Properties To The Timeline.[DONE]
 
-- Allow To Change Screen Properties Like Background Color.
+- Allow To Change Screen Properties Like Background Color.[DONE]
 
 - Add text in kit_space to know the selected kit is related to which screen.
 

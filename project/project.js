@@ -298,12 +298,7 @@ function showScreenProperties()//this functions shows the screen settings in pro
 
 
 
-        //now do the following :
-        //1) add new array that will HOLD THE SCREENS SETTINGS like: background, and all this stuff.[OK]
-        //2) store every new screen created a place in that array.[OK]
-        //3) if screen got deleted remove it from the array.[OK]
-        //4) when screen is switched, all the data for selected screen will be copied into DATA-BACKGROUND for example.[OK]
-        //5) then be showing inside the properties box.[OK]
+
         //6) IMPORTANT: after that, start to work on hiding all un needed properties like margin and this stuff.
 
 
