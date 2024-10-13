@@ -33,7 +33,7 @@ font-size: 1.5em;
 #CodeWorkspace {
     background-color: #e74c3c; /* Light red */
     transform: translateY(100%); /* Start off-screen below */
-    z-index: 1; /* Screen 2 is below screen 1 */
+    z-index: 5; /* Screen 2 is below screen 1 */
     width: 100%;
     height: 100vh; /* Full height of the viewport */
 }

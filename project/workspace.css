@@ -133,7 +133,7 @@ content: "*";
     border: 1px solid #ccc;
     padding: 10px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-    z-index: 1000; /* Make sure it's on top */
+    z-index: 100; /* Make sure it's on top */
 }
 #dialog p{
     display: inline;

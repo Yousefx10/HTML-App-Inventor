@@ -380,7 +380,7 @@ function changePROPERTIES(currentvalue)
 
 }
 
-function showDialog(button) {
+function showDialog(button,resizeACTION=false) {
 //properties_dialog
 
     // Get the button's position
@@ -391,6 +391,10 @@ function showDialog(button) {
     properties_dialog.style.top = `${buttonRect.bottom + window.scrollY}px`; // Align just below the button
     properties_dialog.style.display = 'block'; // Show the dialog
 
+
+    if(resizeACTION) return; // this will stop the code if it's only called to update the dialog location duo to resize action.
+
+    currentDIALOGbutton = button;
     currentOPENED_dialog = button.parentNode.parentNode.id;
 
     //checks for the default :
@@ -407,6 +411,7 @@ function showDialog(button) {
 
 function hideDialog(justHIDE=false) {
 properties_dialog.style.display="none";
+    currentDIALOGbutton = null;
 if(justHIDE)
 {
     changePROPERTIES("own_value");

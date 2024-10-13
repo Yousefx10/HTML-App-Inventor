@@ -94,6 +94,7 @@ let event_TRICK = document.getElementById("event_TRICK");
 //this variable will save the current full id
 let currentOPENED_dialog="";
 const properties_dialog = document.getElementById('dialog');
+let currentDIALOGbutton;//this will used to define the current button that have opened the dialog so i can resize it.
 
 //Choose kit <select>
 const advance_kit_property= document.getElementById('chooseKITproperties');

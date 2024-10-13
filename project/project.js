@@ -11,8 +11,14 @@ window.onload = function () {
     });
 
 };
+window.addEventListener("resize", correctDialogSize);
 
-
+function correctDialogSize()
+{
+    ScreensManager(true);
+    if(currentDIALOGbutton!=null)
+        showDialog(currentDIALOGbutton,true);
+}
 //[FUNCTIONS] Area
 //this function runs when a new kit got born.
 function addKIT(kit_type) {
@@ -725,7 +731,7 @@ function stopThisTimer(kitID) {
 //this function is used to manage all screens,
 //like adding, removing, switching.
 //and currently only be called from the upper-right smartphone iframe.
-    function ScreensManager()
+    function ScreensManager(resizeACTION=false)
     {
         // Get button's position relative to the viewport
         var buttonRect = screenBUTTON.getBoundingClientRect();
@@ -734,10 +740,13 @@ function stopThisTimer(kitID) {
         screensPage.style.left = `${buttonRect.left  + window.scrollX}px`; // Align with the button's left
         screensPage.style.top = `${buttonRect.bottom}px`; // Align just below the button
 
+        if(!resizeACTION)
+        {
+            //change the visibility
+            screensPage.classList.toggle('screenPAGEshow');
+            screensPage.classList.toggle('screenPAGEhide');
+        }
 
-        //change the visibility
-        screensPage.classList.toggle('screenPAGEshow');
-        screensPage.classList.toggle('screenPAGEhide');
 
 
 
