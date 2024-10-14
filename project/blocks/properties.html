@@ -15,28 +15,44 @@
     <input type="hidden" value="" id="hidden_kitID"/>
 
 
+<!--
+list of all properties and special parts.
+[all seperate properties]:
+propertiesVisibility
+propertiesALIGNMENT
+propertiesMARGIN
+propertiesBORDER
+propertiesCOLOR
+propertiesSIZE
+
+[all special parts]:
+only-screen
+only-text
+only-button
+only-img
+only-timer
+[only-general]
+-->
 
 
 
 
-    <hr/>
-    <span>Kit's Visibility :</span>
-    <button id="btn_visible" onclick="change_visibility();this.classList.toggle('btn_unvisible');" title="show or hide the kit">Visible</button>
-    <hr/>
-
-    <span id="mainAlignmentSPAN">Text Alignment :</span>
-    <span class='btn_alignment btn_alignment-SELECTED' onclick="alignTEXT(1,mainAlignmentSPAN.dataset.alignmentType,this)"id="align1">Left</span>
-    <span class='btn_alignment'                        onclick="alignTEXT(2,mainAlignmentSPAN.dataset.alignmentType,this)"id="align2">Center</span>
-    <span class='btn_alignment'                        onclick="alignTEXT(3,mainAlignmentSPAN.dataset.alignmentType,this)"id="align3">Right</span>
-    <hr/>
+    <div id="propertiesVisibility">
+        <hr/>
+        <span>Kit's Visibility :</span>
+        <button id="btn_visible" onclick="change_visibility();this.classList.toggle('btn_unvisible');" title="show or hide the kit">Visible</button>
+        <hr/>
+    </div>
 
 
 
-
-
-
-
-
+    <div id="propertiesALIGNMENT">
+        <span id="mainAlignmentSPAN">Text Alignment :</span>
+        <span class='btn_alignment btn_alignment-SELECTED' onclick="alignTEXT(1,mainAlignmentSPAN.dataset.alignmentType,this)"id="align1">Left</span>
+        <span class='btn_alignment'                        onclick="alignTEXT(2,mainAlignmentSPAN.dataset.alignmentType,this)"id="align2">Center</span>
+        <span class='btn_alignment'                        onclick="alignTEXT(3,mainAlignmentSPAN.dataset.alignmentType,this)"id="align3">Right</span>
+        <hr/>
+    </div>
 
 
 
@@ -56,10 +72,14 @@
         <hr/>
     </div>
 
+
+
     <div class="only-hide only-option" id="only-text">
         <span>[Text Section]</span>
         <hr/>
     </div>
+
+
     <div class="only-hide only-option" id="only-button">
 
         <span>[Button Section]</span>
@@ -67,8 +87,8 @@
         <hr/>
     </div>
 
-    <div class="only-hide only-option" id="only-img">
 
+    <div class="only-hide only-option" id="only-img">
 
         <span>[Image Section]</span>
 
@@ -90,9 +110,9 @@
 
         <hr/>
 
-
-
     </div>
+
+
     <div class="only-hide only-option" id="only-timer">
         <span>Timer Settings :</span>
         <button onclick="ManageTimer();" id="TimerButton">Timer</button>
@@ -103,7 +123,15 @@
         <span id="spanRanger">1</span><span>SEC</span>
         <hr/>
     </div>
+
+
     <div class="only-hide only-option" id="only-general">
+        <!--only-general-->
+    </div>
+
+
+    <!--propertiesCOLOR-->
+    <div id="propertiesCOLOR">
         <label for="ColorDropDown">Kit's Color:</label>
         <select id="ColorDropDown" onchange="UpdateColor(this)">
             <option value="black">Black</option>
@@ -113,6 +141,9 @@
             <option value="LawnGreen">Green</option>
         </select>
         <hr/>
+    </div>
+<!--propertiesSIZE-->
+    <div id="propertiesSIZE">
         <label for="FontSizeDropDown">Font Size :</label>
         <select id="FontSizeDropDown" onchange="UpdateFontSize(this)">
             <option value="x-large">Huge</option>
@@ -124,17 +155,23 @@
         </select>
         <hr/>
     </div>
+    <!--propertiesSIZE-->
 
-    <label for="MarginDropDown">Margin :</label>
-    <select id="MarginDropDown" onchange="UpdateMargin(this)">
-        <option value="20">Large</option>
-        <option value="10">Medium</option>
-        <option value="5" >Small</option>
-        <option value="0" selected>None</option>
-    </select>
-    <hr/>
+    <!--propertiesMARGIN-->
+    <div id="propertiesMARGIN">
+        <label for="MarginDropDown">Margin :</label>
+        <select id="MarginDropDown" onchange="UpdateMargin(this)">
+            <option value="20">Large</option>
+            <option value="10">Medium</option>
+            <option value="5" >Small</option>
+            <option value="0" selected>None</option>
+        </select>
+        <hr/>
+    </div>
+    <!--propertiesMARGIN-->
 
-    <div>
+    <!--propertiesBORDER-->
+    <div id="propertiesBORDER">
         <label>
 
             Add Border
@@ -183,5 +220,6 @@
             <hr/>
         </div>
     </div>
+    <!--propertiesBORDER-->
 
 </div>

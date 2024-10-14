@@ -41,7 +41,7 @@ function addKIT(kit_type) {
     newKIT.setAttribute("data-color", "black");
     newKIT.setAttribute("data-size", "medium");
     newKIT.setAttribute("data-margin", "0");
-    newKIT.setAttribute("data-only", "text");
+    newKIT.setAttribute("data-only", "text");//standard value, until changed.
 
     newKIT.setAttribute("data-border", "0");
     newKIT.setAttribute("data-border-type", "1");
@@ -57,30 +57,24 @@ function addKIT(kit_type) {
     switch (kit_type) {
 
         case 1:
-            //active_kit.push([COUNT_KIT_PROGRESS,NameKit(kit_type)]);
 
 
             newKIT.textContent = phrase1 + element1;
             newKIT.setAttribute("data-size", "large");//specific font size for the label
             break;
-
         case 2:
-            //active_kit.push([COUNT_KIT_PROGRESS,NameKit(kit_type)]);
             newKIT.textContent = phrase1 + element2;
             break;
         case 3:
-            //active_kit.push([COUNT_KIT_PROGRESS,NameKit(kit_type)]);
             newKIT.textContent = phrase2;
             newKIT.setAttribute("data-only", "button");
             break;
         case 4:
-            //active_kit.push([COUNT_KIT_PROGRESS,NameKit(kit_type)]);
             newKIT.textContent = phrase3;
             newKIT.setAttribute("data-only", "img");
             newKIT.setAttribute("data-size", "100%");
             break;
         case 5:
-            //active_kit.push([COUNT_KIT_PROGRESS,NameKit(kit_type)]);
             newKIT.setAttribute("data-only", "timer");
             newKIT.setAttribute("data-duration", "1");
             newKIT.setAttribute("data-timer", "false");
