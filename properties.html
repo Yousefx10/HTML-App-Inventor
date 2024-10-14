@@ -1,0 +1,187 @@
+<div id="newParent">
+
+
+
+
+
+    <button id="unselect" onclick="unFocus();" title="close this window">X</button>
+    <label>
+        Kit's Value :
+    </label>
+    <input title="Write A New Value" type="text" oninput="SAVEbtn.disabled=false;" id='properties_value' placeholder='selected_element_text'/>
+    <br/>
+
+    <!--hidden element can save current kit's id-->
+    <input type="hidden" value="" id="hidden_kitID"/>
+
+
+
+
+
+
+    <hr/>
+    <span>Kit's Visibility :</span>
+    <button id="btn_visible" onclick="change_visibility();this.classList.toggle('btn_unvisible');" title="show or hide the kit">Visible</button>
+    <hr/>
+
+    <span id="mainAlignmentSPAN">Text Alignment :</span>
+    <span class='btn_alignment btn_alignment-SELECTED' onclick="alignTEXT(1,mainAlignmentSPAN.dataset.alignmentType,this)"id="align1">Left</span>
+    <span class='btn_alignment'                        onclick="alignTEXT(2,mainAlignmentSPAN.dataset.alignmentType,this)"id="align2">Center</span>
+    <span class='btn_alignment'                        onclick="alignTEXT(3,mainAlignmentSPAN.dataset.alignmentType,this)"id="align3">Right</span>
+    <hr/>
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="only-hide only-option" id="only-screen">
+        <span>[SCREEN AREA]</span>
+        <br/>
+        <label for="scBackground">Background Color :</label>
+        <select id="scBackground" onchange="updateSCREENproperties(this.value);">
+            <option value="#f0f0f0">Default</option>
+            <option value="white">White</option>
+            <option value="green">Green</option>
+            <option value="black">Black</option>
+            <option value="gold">Yellow</option>
+            <option value="red">Red</option>
+        </select>
+        <hr/>
+    </div>
+
+    <div class="only-hide only-option" id="only-text">
+        <span>[Text Section]</span>
+        <hr/>
+    </div>
+    <div class="only-hide only-option" id="only-button">
+
+        <span>[Button Section]</span>
+
+        <hr/>
+    </div>
+
+    <div class="only-hide only-option" id="only-img">
+
+
+        <span>[Image Section]</span>
+
+        <hr/>
+
+        <label class="upload-btn">
+            Upload Picture
+            <input type="file" accept="image/*" onchange="handleFileUpload(event)">
+        </label>
+
+        <hr/>
+
+        <label for="ImageSize">Image Size :</label>
+        <select id="ImageSize" onchange="UpdateImgSize(this)">
+            <option value="100%">100% Size</option>
+            <option value="50%">50% Size</option>
+            <option value="200px">Fixed Size</option>
+        </select>
+
+        <hr/>
+
+
+
+    </div>
+    <div class="only-hide only-option" id="only-timer">
+        <span>Timer Settings :</span>
+        <button onclick="ManageTimer();" id="TimerButton">Timer</button>
+        <br/>
+        <label for="timerDuration">Interval:</label>
+        <input id="timerDuration"type="range" min="1" max="100" value="1"
+               oninput="spanRanger.textContent = this.value;GET_DOC_ID('active_kit',hidden_kitID.value).dataset.duration=this.value"/>
+        <span id="spanRanger">1</span><span>SEC</span>
+        <hr/>
+    </div>
+    <div class="only-hide only-option" id="only-general">
+        <label for="ColorDropDown">Kit's Color:</label>
+        <select id="ColorDropDown" onchange="UpdateColor(this)">
+            <option value="black">Black</option>
+            <option value="red">Red</option>
+            <option value="blue">Blue</option>
+            <option value="Gold">Yellow</option>
+            <option value="LawnGreen">Green</option>
+        </select>
+        <hr/>
+        <label for="FontSizeDropDown">Font Size :</label>
+        <select id="FontSizeDropDown" onchange="UpdateFontSize(this)">
+            <option value="x-large">Huge</option>
+            <option value="large">Large</option>
+            <option value="medium" selected>Medium</option>
+            <option value="small">Small</option>
+            <option value="x-small">Tiny</option>
+            <!-- <option value="custom" id="custom_fontsize">Custom</option>-->
+        </select>
+        <hr/>
+    </div>
+
+    <label for="MarginDropDown">Margin :</label>
+    <select id="MarginDropDown" onchange="UpdateMargin(this)">
+        <option value="20">Large</option>
+        <option value="10">Medium</option>
+        <option value="5" >Small</option>
+        <option value="0" selected>None</option>
+    </select>
+    <hr/>
+
+    <div>
+        <label>
+
+            Add Border
+            <input type="checkbox" id="border_checkBox" onchange="EnableBorder(this.checked);">
+        </label>
+
+        <br/>
+        <div id="bordersAll" style="display:none">
+
+
+            <label for="theBorderType">Border Type :</label>
+            <select id="theBorderType" onchange="haveBORDER(this,1)">
+                <option value="1" selected>Full</option>
+                <option value="2">Underline</option>
+                <option value="3" >Side</option>
+            </select>
+
+            <hr/>
+
+            <label for="theBorderColor">Border Color :</label>
+            <select id="theBorderColor" onchange="haveBORDER(this,2)">
+                <option value="black" selected>Black</option>
+                <option value="red">Red</option>
+                <option value="blue" >Blue</option>
+                <option value="yellow" >Yellow</option>
+            </select>
+
+            <hr/>
+
+            <label for="theBorderStyle">Border Style :</label>
+            <select id="theBorderStyle" onchange="haveBORDER(this,3)">
+                <option value="solid" selected>Solid</option>
+                <option value="double">Double</option>
+                <option value="ridge" >Ridge</option>
+                <option value="dashed" >Dashed</option>
+            </select>
+            <hr/>
+
+            <label for="theBorderSize">Border Size :</label>
+            <select id="theBorderSize" onchange="haveBORDER(this,4)">
+                <option value="20px">Huge</option>
+                <option value="10px">Large</option>
+                <option value="5px" selected>Medium</option>
+                <option value="2px" >Small</option>
+            </select>
+            <hr/>
+        </div>
+    </div>
+
+</div>
