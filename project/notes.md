@@ -158,5 +158,5 @@ maybe using this code in the future to replace the violation error related to do
 
 - Add text in kit_space to know the selected kit is related to which screen.[DONE]
 
-- also add filter button in kit_space to display the kits that's related to specific screen only.
+- also add filter button in kit_space to display the kits that's related to specific screen only.[DONE]
 </details>

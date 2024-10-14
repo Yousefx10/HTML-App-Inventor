@@ -140,3 +140,12 @@ content: "*";
     cursor: pointer;
     color: red;
 }
+
+#screenFilter{
+    width: 100%;
+    padding: 10px;
+    padding-left: 0;
+}
+.filterSPAN{
+    color: goldenrod;
+}
