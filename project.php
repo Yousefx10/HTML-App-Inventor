@@ -40,6 +40,10 @@
         <input type="text" id='properties_name' onchange="if(this.value!='')updateKITname(this.value);"/>
         <br/><hr/>
 
+<?php
+    include('project/blocks/properties.html');
+?>
+
 
         <div id="btns">
 
