@@ -1045,7 +1045,16 @@ function stopThisTimer(kitID) {
             });
 
 
-
+            // Select all elements with the class 'kit_space_element'
+            const spanELEMENT = document.querySelectorAll('.filterSPAN');
+            // Loop through each element
+            spanELEMENT.forEach(element => {
+                // Check if the element has the class 'plus'
+                if (element.textContent.includes(OLDname)) {
+                    // Replace 'plus' with 'okay'
+                    element.textContent = "["+ScreenNewName+"] ";
+                }
+            });
 
 
 

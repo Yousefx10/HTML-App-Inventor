@@ -1,20 +1,31 @@
 //This Function is used to add the functional kit's to appear on screen
 function Func_KIT(kit_name,kitID,KITtype,CurrentScreenName)
 {
+    const justPARENT =   document.createElement("div");
     const NewFuncKIT =   document.createElement("p");
+    const screenFILTER =   document.createElement("span");
 
     //this one will hold the SCREEN information
     NewFuncKIT.id="code" + kitID;
+
+
     //NewFuncKIT.className  ="kit_space_element";
     NewFuncKIT.classList.add('kit_space_element', screenDelimiter+CurrentScreenName);
+    screenFILTER.classList.add('filterSPAN');
 
-    NewFuncKIT.textContent ="["+CurrentScreenName+"] "+ kit_name;
+    screenFILTER.textContent =  "["+CurrentScreenName+"] ";
+    NewFuncKIT.appendChild(screenFILTER);
 
+    NewFuncKIT.appendChild(document.createTextNode(kit_name));
 
     NewFuncKIT.onclick = () => show_Event_KIT(kitID,KITtype);
 
 
-    kit_space.appendChild(NewFuncKIT);
+
+
+    justPARENT.appendChild(NewFuncKIT);
+    kit_space.appendChild(justPARENT);
+
 }
 
 
