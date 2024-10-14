@@ -82,7 +82,7 @@ function addKIT(kit_type) {
             newKIT.textContent = phrase4 + element5 + currentkitID;
             break;
     }
-    let tempNAME = COUNT_KIT_PROGRESS+NameKit(kit_type);//the first KIT-NAME will added, until it changes.
+    let tempNAME = NameKit(kit_type)+COUNT_KIT_PROGRESS;//the first KIT-NAME will added, until it changes.
     active_kit.push([COUNT_KIT_PROGRESS, NameKit(kit_type),tempNAME]);
     //failed try to convert two dimension array to dynamic map
     //active_kit.set(COUNT_KIT_PROGRESS, NameKit(kit_type));
