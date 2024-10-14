@@ -841,8 +841,10 @@ function stopThisTimer(kitID) {
 
             //this updates the name value to the original array active_kit
             result[2] = newNAME;
-
-            document.getElementById("code"+currentKITid).textContent=newNAME;//this should shows the updated name.
+            let currentSCREENname = namingSCREENS.find(scr => scr[0] === LIVE_SCREEN)[1];
+            //this should shows the updated name.
+            document.getElementById("code"+currentKITid).textContent=
+                "["+ currentSCREENname +"] "+newNAME;
             console.log("updating kit name is completed");
 
         }
