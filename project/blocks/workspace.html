@@ -9,7 +9,7 @@
             <br/>
 
             <label>
-                <input type="radio" id="ownvalue"                         name="properties" value="own_value" checked onchange="changePROPERTIES(this.value);"> My Own Value
+                <input type="radio" id="ownvalue" name="properties" value="own_value" checked onchange="changePROPERTIES(this.value);"> My Own Value
             </label><br>
             <label>
                 <input type="radio" id="allowCHANGEproperties" name="properties" value="kit_value" onchange="changePROPERTIES(this.value);"> Choose Kit's Value
@@ -42,7 +42,16 @@
 
 <!--List Of Kit's Bar-->
       <div class="workspaceDIV" id="kit_space">
+
         <div id="kit_space_container">
+            <div>
+                <select id="screenFilter" onchange="filterScreens(this.value);">
+                    <!-- Adding @@ so being sure there's no screen have @@all name-->
+                    <option value="@@all">Show All</option>
+                    <option value="Screen1" id="search-1">Screen1</option>
+
+                </select>
+            </div>
         <input type="hidden" id="EVENTcurrentkitID" value="0"/>
         </div>
       </div>

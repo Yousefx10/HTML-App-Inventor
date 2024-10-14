@@ -5,7 +5,8 @@ function Func_KIT(kit_name,kitID,KITtype,CurrentScreenName)
 
     //this one will hold the SCREEN information
     NewFuncKIT.id="code" + kitID;
-    NewFuncKIT.className  ="kit_space_element";
+    //NewFuncKIT.className  ="kit_space_element";
+    NewFuncKIT.classList.add('kit_space_element', screenDelimiter+CurrentScreenName);
 
     NewFuncKIT.textContent ="["+CurrentScreenName+"] "+ kit_name;
 
@@ -655,4 +656,29 @@ function updateACTIONvalue(event,updateTYPE,fullID)
 
     dynamicMap.set(fullID, newkitID_VALUE);//adding ZERO as default value.
 
+}
+
+
+
+
+
+
+function filterScreens(filterValue) {
+
+// Get all paragraphs with the class 'item'
+    const paragraphs = document.querySelectorAll('.kit_space_element');
+
+    // Loop through each paragraph
+    paragraphs.forEach(paragraph => {
+        // If "all" is selected, display all paragraphs
+        if (filterValue === '@@all') {
+            paragraph.style.display = 'block';
+        }
+        // Otherwise, display only paragraphs with the selected class
+        else if (paragraph.classList.contains(screenDelimiter+filterValue)) {
+            paragraph.style.display = 'block';
+        } else {
+            paragraph.style.display = 'none';
+        }
+    });
 }

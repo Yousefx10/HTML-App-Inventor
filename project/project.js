@@ -917,6 +917,17 @@ function stopThisTimer(kitID) {
             SwitchTheScreen(totalSCREENS);
             selectSCREEN.value=totalSCREENS;//update the <select> value for <option>
             ScreensManager();//hide the dialog
+
+
+        const NewSearchFilterScreen = document.createElement('option');
+
+            // Set the value and text of the new option
+            NewSearchFilterScreen.value = ScreenName;
+            NewSearchFilterScreen.text = ScreenName;
+            NewSearchFilterScreen.id = "search-"+totalSCREENS;
+
+            //adding the new screen to the Filter drop menu
+            screenFilter.appendChild(NewSearchFilterScreen);
         }
     }
 
@@ -989,6 +1000,8 @@ function stopThisTimer(kitID) {
         let randomIndex = Math.floor(Math.random() * namingSCREENS.length);
         SwitchTheScreen(namingSCREENS[randomIndex][0]);
 
+        document.getElementById("search-"+deletedSCREEN).remove();
+
         //delete the whole screen
 
         live_iframe.contentWindow.deleteENTIREscreen(deletedSCREEN);
@@ -1002,16 +1015,40 @@ function stopThisTimer(kitID) {
 
         if (ScreenNewName !== '' && ScreenNewName!== null) {
             let CurrentScreenToBeNamed=Number(LIVE_SCREEN);
-
+            let OLDname;
             //select the <option> then updating it's name
             let UpdatedOption = document.getElementById("optionScreen"+CurrentScreenToBeNamed);
             UpdatedOption.textContent = ScreenNewName; // Set the text displayed to the user
-            screenBUTTON.textContent=ScreenNewName;
-            timelineTITLE.textContent=`project_timeline For [${ScreenNewName}]`;
+            OLDname           =screenBUTTON.textContent;
+            screenBUTTON.textContent    =ScreenNewName;
+            timelineTITLE.textContent   =`project_timeline For [${ScreenNewName}]`;
 
             //updating the new name into names list
             let UpdatedScreenList = namingSCREENS.find(screennn => screennn[0] === CurrentScreenToBeNamed);
             UpdatedScreenList[1]=ScreenNewName;
+
+
+
+            //update the name in WORKSPACE kits and search filter
+            document.getElementById("search-"+CurrentScreenToBeNamed).value=ScreenNewName;
+            document.getElementById("search-"+CurrentScreenToBeNamed).text=ScreenNewName;
+
+            // Select all elements with the class 'kit_space_element'
+            const elements = document.querySelectorAll('.kit_space_element');
+            // Loop through each element
+            elements.forEach(element => {
+                // Check if the element has the class 'plus'
+                if (element.classList.contains(screenDelimiter+OLDname)) {
+                    // Replace 'plus' with 'okay'
+                    element.classList.replace(screenDelimiter+OLDname, screenDelimiter+ScreenNewName);
+                }
+            });
+
+
+
+
+
+
         }
     }
 

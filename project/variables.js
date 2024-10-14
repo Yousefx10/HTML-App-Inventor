@@ -49,6 +49,9 @@ let totalSCREENS=1;//never gets decreased
 let LIVE_SCREEN =1;//THE CURRENT OPENED SCREEN.
 
 let selectSCREEN=document.getElementById('selectSCREEN');//the select control.
+let screenFilter=document.getElementById('screenFilter');//search Screen Filter in workspace.
+// THE SCREEN Delimiter to filter.
+let screenDelimiter="SCR-_";
 
 // [END] SCREEN MANAGER AREA [END]
 
