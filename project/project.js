@@ -822,9 +822,9 @@ function stopThisTimer(kitID) {
         // Check if the array is found
         if (result) {
 
-            if(/^\d/.test(newNAME))
+            if(/^\d|\s/.test(newNAME))
             {
-                alert("ERROR:\nName Can't Start With Number.");
+                alert("ERROR:\nName Can't Start With Number Or Contains Space.");
                 properties_name.value = result[2];
                 return;
             }
@@ -843,8 +843,23 @@ function stopThisTimer(kitID) {
             result[2] = newNAME;
             let currentSCREENname = namingSCREENS.find(scr => scr[0] === LIVE_SCREEN)[1];
             //this should shows the updated name.
-            document.getElementById("code"+currentKITid).textContent=
-                "["+ currentSCREENname +"] "+newNAME;
+
+            if(document.getElementById("code"+currentKITid))
+            {
+                let tempSelected =  document.getElementById("code"+currentKITid);
+                let spanElement = tempSelected.querySelector('span').cloneNode(true);
+                spanElement.textContent="["+ currentSCREENname +"] ";
+                const newTextNode = document.createTextNode(newNAME)
+                tempSelected.innerHTML="";
+                tempSelected.appendChild(spanElement);
+                tempSelected.appendChild(newTextNode);
+            }
+
+
+
+
+
+
             console.log("updating kit name is completed");
 
         }
@@ -880,9 +895,9 @@ function stopThisTimer(kitID) {
 
         if (ScreenName !== '' && ScreenName!== null) {
 
-            if(/^\d/.test(ScreenName))//if the name starts with number don't continue
+            if(/^\d|\s/.test(ScreenName))//if the name starts with number don't continue
             {
-                alert("Error:\n Name Can't Start With A Number.");
+                alert("Error:\n Name Can't Start With A Number Or Contain Space.");
                 return;
             }
 
