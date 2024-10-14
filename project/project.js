@@ -187,10 +187,9 @@ function choosePROPERTIEScorrect(KITtype,KITid)
             break;
         case "timer":
             propertiesVISIBILITY.style.display="none";
-            propertiesVISIBILITY.style.display="none";
             break;
         case "screen":
-
+            propertiesVISIBILITY.style.display="none";
             break;
     }
 
@@ -408,7 +407,7 @@ function live_iframe_add(KITtype, KITcontent = "", kitID,kitNAME,change = false)
 
         if (isFUNCTIONAL) {//This Part Helps to manage the functional kit's
 
-            Func_KIT(kitNAME, kitID, KITtype);
+            Func_KIT(kitNAME, kitID, KITtype,screenBUTTON.textContent);
             if (shouldBEhidden)
                 neWelement.style.display = "none";
         }

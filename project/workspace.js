@@ -1,13 +1,17 @@
 //This Function is used to add the functional kit's to appear on screen
-function Func_KIT(kit_name,kitID,KITtype)
+function Func_KIT(kit_name,kitID,KITtype,CurrentScreenName)
 {
-    const NewFuncKIT = document.createElement("p");
+    const NewFuncKIT =   document.createElement("p");
+
+    //this one will hold the SCREEN information
     NewFuncKIT.id="code" + kitID;
     NewFuncKIT.className  ="kit_space_element";
-    NewFuncKIT.textContent = kit_name;
+
+    NewFuncKIT.textContent ="["+CurrentScreenName+"] "+ kit_name;
 
 
     NewFuncKIT.onclick = () => show_Event_KIT(kitID,KITtype);
+
 
     kit_space.appendChild(NewFuncKIT);
 }

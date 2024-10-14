@@ -156,7 +156,7 @@ maybe using this code in the future to replace the violation error related to do
 
 - Allow To Change Screen Properties Like Background Color.[DONE]
 
-- Add text in kit_space to know the selected kit is related to which screen.
+- Add text in kit_space to know the selected kit is related to which screen.[DONE]
 
 - also add filter button in kit_space to display the kits that's related to specific screen only.
 </details>
