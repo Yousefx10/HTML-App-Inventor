@@ -26,6 +26,14 @@ let project_timeline = document.getElementById('project_timeline'),
     screensPage = document.getElementById("screensPAGE");
 
 
+let
+    propertiesVISIBILITY = document.getElementById('propertiesVISIBILITY'),
+    propertiesALIGNMENT = document.getElementById('propertiesALIGNMENT'),
+    propertiesMARGIN = document.getElementById('propertiesMARGIN'),
+    propertiesBORDER = document.getElementById('propertiesBORDER'),
+    propertiesCOLOR = document.getElementById('propertiesCOLOR'),
+    propertiesSIZE = document.getElementById('propertiesSIZE');
+
 
 // [START] SCREEN MANAGER AREA [START]
 

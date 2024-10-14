@@ -49,8 +49,9 @@ function addKIT(kit_type) {
     newKIT.setAttribute("data-border-style", "solid");
     newKIT.setAttribute("data-border-size", "2px");
 
+
     //this i can pass parameters without EXECUTE the function FROM FIRST TIME.
-    newKIT.onclick = () => timeline_properties(currentkitID, newKIT.innerHTML);
+    newKIT.onclick = () => timeline_properties(currentkitID, newKIT.innerHTML,NameKit(kit_type).toLowerCase());
 
 
     //Naming the kit before adding it to the timeline box.
@@ -86,8 +87,7 @@ function addKIT(kit_type) {
     //failed try to convert two dimension array to dynamic map
     //active_kit.set(COUNT_KIT_PROGRESS, NameKit(kit_type));
 
-    //showing the current ARRAY that contains the kit's
-    // console.log(active_kit);
+
     //finally, adding the kit to the timeline box.
     //project_timeline.appendChild(newKIT);
     document.getElementById("screen"+LIVE_SCREEN).appendChild(newKIT);
@@ -121,9 +121,92 @@ function NameKit(kit_num) {
     }
 }
 
+//this function is USED to SHOW the needed properties and HIDE the UnNeeded.
+function choosePROPERTIEScorrect(KITtype,KITid)
+{
+
+    //THIS LOOP IS TO HIDE ALL PROPERTIES THAT "MIGHT BE ONLY GOOD WITH SPECIFIC KIT".
+    const elements = document.querySelectorAll('.only-option');
+    elements.forEach(element => {
+        element.classList.add("only-hide");
+    });
+
+
+    let currentSELECTED;
+    if(KITtype=='screen')   currentSELECTED=KITid;
+    else currentSELECTED =  GET_DOC_ID("active_kit", KITid);
+
+    console.log(currentSELECTED.dataset.only);
+    //THIS LINE HELPS TO ONLY SHOW THE "PROPERTIES" THAT'S ONLY GOOD FOR INDIVIDUAL KIT.
+    document.getElementById("only-" +  currentSELECTED.dataset.only)
+        .classList.remove("only-hide");
+
+
+
+    //by default, all will be hidden again.
+    // propertiesVISIBILITY.style.display="none";
+    propertiesALIGNMENT.style.display="none";
+    propertiesMARGIN.style.display="none";
+    propertiesBORDER.style.display="none";
+    propertiesCOLOR.style.display="none";
+    propertiesSIZE.style.display="none";
+
+
+
+    //visibility is all needed.
+    propertiesVISIBILITY.style.display="block";
+
+    //showing the needed properties ONLY
+    switch (KITtype)
+    {
+        case "label":
+        case "text":
+            //this line is made only to check whether the "general" properties are needed for the current kit
+            document.getElementById("only-general").classList.remove("only-hide");
+
+            propertiesALIGNMENT.style.display="block";
+            propertiesMARGIN.style.display="block";
+            propertiesBORDER.style.display="block";
+            propertiesCOLOR.style.display="block";
+            propertiesSIZE.style.display="block";
+            break;
+        case "button":
+            //this line is made only to check whether the "general" properties are needed for the current kit
+            document.getElementById("only-general").classList.remove("only-hide");
+
+            propertiesALIGNMENT.style.display="block";
+            propertiesMARGIN.style.display="block";
+            propertiesBORDER.style.display="block";
+            propertiesCOLOR.style.display="block";
+            propertiesSIZE.style.display="block";
+            break;
+        case "picture"://img or picture.
+            propertiesALIGNMENT.style.display="block";
+            propertiesMARGIN.style.display="block";
+            propertiesBORDER.style.display="block";
+            break;
+        case "timer":
+            propertiesVISIBILITY.style.display="none";
+            propertiesVISIBILITY.style.display="none";
+            break;
+        case "screen":
+
+            break;
+    }
+
+
+
+
+}
+
+
+
+
+
+
 
 //this function manages timeline properties, and it occur everytime original kit get pressed
-function timeline_properties(current_kit, current_details) {
+function timeline_properties(current_kit, current_details,KITtype) {
 
     properties_value.value = current_details;
     let result = active_kit.find(item => item[0] === current_kit);
@@ -234,22 +317,10 @@ function timeline_properties(current_kit, current_details) {
     document.getElementById('theBorderSize').value = current_BorderSize;
     document.getElementById('theBorderSize').disabled = false;
 
-//THIS LOOP IS TO HIDE ALL PROPERTIES THAT "MIGHT BE ONLY GOOD WITH SPECIFIC KIT".
-    const elements = document.querySelectorAll('.only-option');
-    elements.forEach(element => {
-        element.classList.add("only-hide");
-    });
-//THIS LINE HELPS TO ONLY SHOW THE "PROPERTIES" THAT'S ONLY GOOD FOR INDIVIDUAL KIT.
-    document.getElementById("only-" + GET_DOC_ID("active_kit", current_kit).dataset.only)
-        .classList.remove("only-hide");
 
-    //this line is made only to check whether the "general" properties like [font-size AND color] are needed for the current kit
-    let checkGENERAL_only_value = GET_DOC_ID("active_kit", current_kit).dataset.only;
-    if (checkGENERAL_only_value == "text" || checkGENERAL_only_value == "button") {
-        document.getElementById("only-general")
-            .classList.remove("only-hide");
-    }
-
+    //this SHOWS the only needed property.
+    choosePROPERTIEScorrect(KITtype,current_kit);
+    //Fixes the current Dialog Location
     correctDialogSize();
 }
 
@@ -262,7 +333,7 @@ function showScreenProperties()//this functions shows the screen settings in pro
         TimeLine_RemoveALLselected();//first things : remove all the selected.
 
         screenSETTINGS.classList.toggle('screenSETTINGS-ACTIVE');//to highlight itself.
-
+        choosePROPERTIEScorrect('screen',screenSETTINGS);
 
         /*//short example of getting CURRENT SCREEN DATA.
         let current_visible_status = GET_DOC_ID("active_kit", current_kit).dataset.visible;
@@ -273,31 +344,12 @@ function showScreenProperties()//this functions shows the screen settings in pro
             */
 
 
-        //THIS LOOP IS TO HIDE ALL PROPERTIES THAT "MIGHT BE ONLY GOOD WITH SPECIFIC KIT".
-        const elements = document.querySelectorAll('.only-option');
-        elements.forEach(element => {
-            element.classList.add("only-hide");
-        });
-
-        //THIS LINE HELPS TO ONLY SHOW THE "PROPERTIES" THAT'S ONLY GOOD FOR INDIVIDUAL KIT.
-        document.getElementById("only-" + screenSETTINGS.dataset.only)
-            .classList.remove("only-hide");
-
         correctDialogSize();//and finally to correct the dialog location.
 
         ReFocus();//Showing the project_properties.
 
         //APPLYING TO SHOW CURRENT VALUES INSIDE THE project_properties
         document.getElementById("scBackground").value=screenSETTINGS.dataset.background;
-
-
-
-
-        //6) IMPORTANT: after that, start to work on hiding all un needed properties like margin and this stuff.
-
-
-
-
 
 
     }
