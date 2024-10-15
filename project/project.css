@@ -207,11 +207,11 @@ background-color: antiquewhite;
 }
 
 .status-bar .left {
-    padding-left: 30px; /* leaves room for camera hole */
+    padding-left: 13%; /* leaves room for camera hole */
 }
 
 .status-bar .right {
-    padding-right: 30px; /* leaves room for camera hole */
+    padding-right: 13%; /* leaves room for camera hole */
 }
 
 .recording-dot {
