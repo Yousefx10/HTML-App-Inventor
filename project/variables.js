@@ -79,8 +79,9 @@ let bordersAll = document.getElementById("bordersAll");
 let bordersCHECKbox = document.getElementById("border_checkBox");
 
 
+let TIMEtoSHOWhints=false;
 //HINT SECTION
-const kit_HINTS = ["",
+let kit_HINTS = ["",//all being removed once it's loaded in the page.
     "This is a label which makes you to print out something",    //for Label (1)
     "This is a text which helps you to display a longer texts",  //for Text  (2)
     "This is a button which enables you to click on it and run some functions",  //for Button  (3)

@@ -9,6 +9,8 @@ window.onload = function () {
     elements.forEach(element => {
         element.dataset.hint = kit_HINTS[element.dataset.hint];
     });
+    kit_HINTS=null;//no need to store it anymore.
+    TIMEtoSHOWhints=true;
 };
 
 
@@ -778,6 +780,23 @@ function ManageTimer() {
         GET_DOC_ID("active_kit", currentkitID).dataset.timer = "true";
         TimerButton.classList.add('TimerButtonENABLED');
     }
+}
+
+function updateTIMERduration(newVALUEduration)
+{
+    spanRanger.textContent = newVALUEduration;
+    GET_DOC_ID('active_kit',hidden_kitID.value).dataset.duration=newVALUEduration;
+
+    // EVERY TIME SPECIFIC INTERVAL GET'S A NEW DURATION, ALL OTHER INTERVALS SHOULD RE STARTING AGAIN!!
+    //TO INSURE THE CORRECT LOGIC THAT ALL WILL WORK TOGETHER AND ALL WILL STOP TOGETHER
+    const timers = active_kit.filter(row => row[1] === "Timer");
+// Step 2: Iterate over the filtered rows
+    timers.forEach(row => {
+        //console.log(`ID: ${row[0]}, Type: ${row[1]}, Duration: ${row[2]}`);
+        live_iframe.contentWindow.
+        ACTresetINTERVAL(row[0],document.getElementById("active_kit"+row[0]).dataset.duration*1000);
+    });
+
 }
 
 function stopThisTimer(kitID) {
