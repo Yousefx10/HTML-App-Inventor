@@ -250,12 +250,12 @@ function timeline_properties(current_kit, current_details,KITtype) {
 
 
     let current_color = document.getElementById("active_kit" + current_kit).dataset.color;
-    document.getElementById('ColorDropDown').disabled = true;
+    // document.getElementById('ColorDropDown').disabled = true;
     document.getElementById('ColorDropDown').value = current_color;
-    document.getElementById('ColorDropDown').disabled = false;
+    // document.getElementById('ColorDropDown').disabled = false;
 
     let current_size = document.getElementById("active_kit" + current_kit).dataset.size;
-    document.getElementById('FontSizeDropDown').disabled = true;
+    // document.getElementById('FontSizeDropDown').disabled = true;
     if (current_size == "custom") {
         document.getElementById('FontSizeDropDown').appendChild(customFontSizeOption);
     } else {
@@ -265,17 +265,17 @@ function timeline_properties(current_kit, current_details,KITtype) {
 
     }
     document.getElementById('FontSizeDropDown').value = current_size;
-    document.getElementById('FontSizeDropDown').disabled = false;
+    // document.getElementById('FontSizeDropDown').disabled = false;
 
     let current_img_size = document.getElementById("active_kit" + current_kit).dataset.size;
-    document.getElementById('ImageSize').disabled = true;
+    // document.getElementById('ImageSize').disabled = true;
     document.getElementById('ImageSize').value = current_img_size;
-    document.getElementById('ImageSize').disabled = false;
+    // document.getElementById('ImageSize').disabled = false;
 
     let current_margin = document.getElementById("active_kit" + current_kit).dataset.margin;
-    document.getElementById('MarginDropDown').disabled = true;
+    // document.getElementById('MarginDropDown').disabled = true;
     document.getElementById('MarginDropDown').value = current_margin;
-    document.getElementById('MarginDropDown').disabled = false;
+    // document.getElementById('MarginDropDown').disabled = false;
 
     let current_timerSTATUS = document.getElementById("active_kit" + current_kit).dataset.timer;
     if (current_timerSTATUS == "true") {
@@ -298,25 +298,25 @@ function timeline_properties(current_kit, current_details,KITtype) {
 
 
     let current_BorderType = document.getElementById("active_kit" + current_kit).dataset.borderType;
-    document.getElementById('theBorderType').disabled = true;
+    // document.getElementById('theBorderType').disabled = true;
     document.getElementById('theBorderType').value = current_BorderType;
-    document.getElementById('theBorderType').disabled = false;
+    // document.getElementById('theBorderType').disabled = false;
 
     let current_BorderColor = document.getElementById("active_kit" + current_kit).dataset.borderColor;
-    document.getElementById('theBorderColor').disabled = true;
+    // document.getElementById('theBorderColor').disabled = true;
     document.getElementById('theBorderColor').value = current_BorderColor;
-    document.getElementById('theBorderColor').disabled = false;
+    // document.getElementById('theBorderColor').disabled = false;
 
     let current_BorderStyle = document.getElementById("active_kit" + current_kit).dataset.borderStyle;
-    document.getElementById('theBorderStyle').disabled = true;
+    // document.getElementById('theBorderStyle').disabled = true;
     document.getElementById('theBorderStyle').value = current_BorderStyle;
-    document.getElementById('theBorderStyle').disabled = false;
+    // document.getElementById('theBorderStyle').disabled = false;
 
 
     let current_BorderSize = document.getElementById("active_kit" + current_kit).dataset.borderSize;
-    document.getElementById('theBorderSize').disabled = true;
+    // document.getElementById('theBorderSize').disabled = true;
     document.getElementById('theBorderSize').value = current_BorderSize;
-    document.getElementById('theBorderSize').disabled = false;
+    // document.getElementById('theBorderSize').disabled = false;
 
 
     //this SHOWS the only needed property.
