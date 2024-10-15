@@ -139,12 +139,13 @@ function switchScreen()
     const screen2 = document.getElementById('CodeWorkspace');
 
     // Toggle classes to switch screens
-    if (screen1.style.transform === 'translateY(-100%)') {
+    if (screen1.style.transform === 'translateY(-100%)') {//SHOWS PROJECT screen
         screen1.style.transform = 'translateY(0)'; // Move screen 1 back
         screen2.style.transform = 'translateY(100%)'; // Move screen 2 off screen
-    } else {
+    } else {//SHOWS WORKSPACE screen
         screen1.style.transform = 'translateY(-100%)'; // Move screen 1 up
         screen2.style.transform = 'translateY(0)'; // Move screen 2 into view
+        ScreensManager(false,true);
     }
 }
 </script>

@@ -900,8 +900,18 @@ function stopThisTimer(kitID) {
 //this function is used to manage all screens,
 //like adding, removing, switching.
 //and currently only be called from the upper-right smartphone iframe.
-    function ScreensManager(resizeACTION=false)
+    function ScreensManager(resizeACTION=false,onlyHIDE=false)
     {
+
+        if(onlyHIDE)
+        {// it will be hidden, only
+            screenBUTTON.classList.remove('clickableBlue');
+            screensPage.classList.remove('screenPAGEshow');
+            screensPage.classList.add('screenPAGEhide');
+            return;
+        }
+
+
         // Get button's position relative to the viewport
         var buttonRect = screenBUTTON.getBoundingClientRect();
 
@@ -989,6 +999,7 @@ function stopThisTimer(kitID) {
         //2: Show The Selected Screen By it's value number.
         if(!fromACTION)//make sure this won't repeat when be called from actions.js
             live_iframe.contentWindow.SwitchCurrentScreen("screen"+LIVE_SCREEN);
+        else selectSCREEN.value=NewSelectedScreen;//so if it's from actions.js THEN update the DropDownMenu text value.
 
 
         screenBUTTON.textContent= namingSCREENS.find(CurrentName => CurrentName[0] === Number(LIVE_SCREEN))[1];
@@ -1013,6 +1024,8 @@ function stopThisTimer(kitID) {
         unFocus();
         screenFilter.value=screenBUTTON.textContent;//automatically switch the "kit event" in workspace
         filterScreens(screenFilter.value);//automatically switch the "kit event" in workspace
+
+
     }
 
     //this function is used to entirely delete the selected screen
