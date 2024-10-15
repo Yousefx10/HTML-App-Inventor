@@ -808,6 +808,19 @@ function stopThisTimer(kitID) {
         document.getElementById('activeDOT').classList.toggle('recording-dot');
         butt.classList.toggle("btn-active-start"); // Toggle the stop class
         butt.classList.toggle("btn-active-stop"); // Toggle the start class
+
+        if(ACTIVErun)
+        {
+            const timers = active_kit.filter(row => row[1] === "Timer");
+
+// Step 2: Iterate over the filtered rows
+            timers.forEach(row => {
+                //console.log(`ID: ${row[0]}, Type: ${row[1]}, Duration: ${row[2]}`);
+                live_iframe.contentWindow.
+                ACTresetINTERVAL(row[0],document.getElementById("active_kit"+row[0]).dataset.duration*1000);
+            });//i believe it works? now focus when changing the duration it still won't affect.
+        }
+
     }
 
     //this function will used to update the name of the selected KIT

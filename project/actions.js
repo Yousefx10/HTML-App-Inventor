@@ -288,6 +288,14 @@ function stopInterval(kitID) {
     }
 }
 
+//this function is triggered when ACT= is on
+function ACTresetINTERVAL(kitID,intervalTime)
+{
+        clearInterval(intervals[kitID]);
+        delete intervals[kitID];
+        intervals[kitID] = setInterval(()=>global_onClick(kitID, "trick"), intervalTime);
+}
+
 // Example usage:
 // Start an interval
  // starts an interval for kitID 'kit1'
