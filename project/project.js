@@ -975,6 +975,8 @@ function stopThisTimer(kitID) {
 
             //adding the new screen to the Filter drop menu
             screenFilter.appendChild(NewSearchFilterScreen);
+            screenFilter.value=screenBUTTON.textContent;//automatically switch the "kit event" in workspace
+            filterScreens(screenFilter.value);//automatically switch the "kit event" in workspace
         }
     }
 
@@ -1009,6 +1011,8 @@ function stopThisTimer(kitID) {
 
 
         unFocus();
+        screenFilter.value=screenBUTTON.textContent;//automatically switch the "kit event" in workspace
+        filterScreens(screenFilter.value);//automatically switch the "kit event" in workspace
     }
 
     //this function is used to entirely delete the selected screen
