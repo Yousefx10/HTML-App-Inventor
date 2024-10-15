@@ -160,3 +160,27 @@ maybe using this code in the future to replace the violation error related to do
 
 - also add filter button in kit_space to display the kits that's related to specific screen only.[DONE]
 </details>
+<details>
+
+<summary>More Tasks</summary>
+
+- [add new action] Changing The Background color via workspace.
+
+- Having The Ability To Change kit's order and arranging them. 
+
+- Adding The Ability To Drag And Drop From Toolkit box into live view box.
+</details>
+
+<details>
+
+<summary>General Notes [not for now]</summary>
+
+- Adding Splash Screen. 
+
+- Adding Media Assest Manager, so photos or media are included can be ReUsed without reuploading them again.
+
+- Writting The Engine That Will Convert The Whole Output into a real final result template that can be used only and directly.
+
+- Temp View via QR code, saves the project into REAL LIVE PREVIEW so i can scan it from my smartphone, after that automatic deletes the file.
+
+</details>
