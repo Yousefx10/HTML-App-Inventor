@@ -117,8 +117,8 @@ z-index: 2; /* Screen 1 is above screen 2 initially */
     background:green;
     color:white;
 }
-.kit .kit_right{float:right;width:45%;cursor:pointer;}
-.kit .kit_left{float:left;width:45%;}
+.kit .kit_right{float:right;width:40%;cursor:pointer;}
+.kit .kit_left{float:left;width:55%;}
 
 .kit::after {
     content: "";
