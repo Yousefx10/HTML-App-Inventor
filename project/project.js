@@ -1149,6 +1149,7 @@ function updateSCREENproperties(BgColorValue)
 //drag and drop EVENTS
 
 //project_live
+let currentTarget = null; // Track the current target element
 
 draggables.forEach(draggable => {
     draggable.addEventListener('dragstart', (event) => {
@@ -1158,17 +1159,47 @@ draggables.forEach(draggable => {
         // Enable overlay for drag operation
         overlay.style.pointerEvents = 'auto'; // Capture drag events
 
+        // Show drop indicator on drag start
+        dropIndicator.style.display = 'block';
+
     });
 
     draggable.addEventListener('dragend', () => {
         // Disable overlay after drag operation
         overlay.style.pointerEvents = 'none'; // Allow interaction with iframe
+
+        // Hide drop indicator
+        dropIndicator.style.display = 'none';
+
+        currentTarget = null; // Reset the current target
+
     });
 });
 
 overlay.addEventListener('dragover', (event) => {
     event.preventDefault(); // Allow drop by preventing default behavior
     event.dataTransfer.dropEffect = 'copy'; // Indicate copy action
+
+
+
+//dropIndicator
+
+    // Get the target element to position the drop indicator
+    const targetElement = event.target.closest('.project_timeline_kit');
+    if (targetElement) {
+        // Show the drop indicator before or after the target element
+        const rect = targetElement.getBoundingClientRect();
+        const offsetY = event.clientY - rect.top; // Mouse position relative to the target element
+
+        if (offsetY < rect.height / 2) {
+            // If above the middle, insert before
+            overlay.insertBefore(dropIndicator, targetElement);
+        } else {
+            // If below the middle, insert after
+            overlay.insertBefore(dropIndicator, targetElement.nextSibling);
+        }
+        currentTarget = targetElement; // Update the current target
+    }
 });
 
 overlay.addEventListener('drop', (event) => {
@@ -1183,6 +1214,10 @@ overlay.addEventListener('drop', (event) => {
         console.log("added");
         addKIT(Number(id.replace('drag', '')));
         //console.log(id.replace('drag', ''));
+
+        // Hide drop indicator after drop
+        dropIndicator.style.display = 'none';
+
     }
 });
 

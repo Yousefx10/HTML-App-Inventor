@@ -378,3 +378,11 @@ color:mediumseagreen;
     z-index: 1; /* On top of the iframe */
     pointer-events: none;
 }
+#drop-indicator{
+    height: 2px;
+    background-color: blue;
+    width: 80%;
+}
+.timelineSCREEN{
+    height: 80%;
+}

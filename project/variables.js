@@ -16,7 +16,7 @@ function GET_DOC_ID(prefix_name,kitID){
 //Basic array list for active added elements to the project time_line and project_live
 let dropzone  = document.getElementById('target');
 const overlay = document.getElementById('overlay');
-
+const dropIndicator = document.getElementById('drop-indicator');
 
 let active_kit =[];
 let COUNT_KIT_PROGRESS =0;
