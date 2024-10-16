@@ -1150,6 +1150,7 @@ function updateSCREENproperties(BgColorValue)
 
 //project_live
 let currentTarget = null; // Track the current target element
+const dropZones = document.querySelectorAll('.drop-zone'); // Select both drop zones
 
 draggables.forEach(draggable => {
     draggable.addEventListener('dragstart', (event) => {
@@ -1176,48 +1177,57 @@ draggables.forEach(draggable => {
     });
 });
 
-overlay.addEventListener('dragover', (event) => {
-    event.preventDefault(); // Allow drop by preventing default behavior
-    event.dataTransfer.dropEffect = 'copy'; // Indicate copy action
+dropZones.forEach(dropZone => {
+
+    dropZone.addEventListener('dragover', (event) => {
+        event.preventDefault(); // Allow drop by preventing default behavior
+        event.dataTransfer.dropEffect = 'copy'; // Indicate copy action
 
 
 
 //dropIndicator
 
-    // Get the target element to position the drop indicator
-    const targetElement = event.target.closest('.project_timeline_kit');
-    if (targetElement) {
-        // Show the drop indicator before or after the target element
-        const rect = targetElement.getBoundingClientRect();
-        const offsetY = event.clientY - rect.top; // Mouse position relative to the target element
+        // Get the target element to position the drop indicator
+        const targetElement = event.target.closest('.project_timeline_kit');
+        if (targetElement) {
+            // Show the drop indicator before or after the target element
+            const rect = targetElement.getBoundingClientRect();
+            const offsetY = event.clientY - rect.top; // Mouse position relative to the target element
 
-        if (offsetY < rect.height / 2) {
-            // If above the middle, insert before
-            overlay.insertBefore(dropIndicator, targetElement);
-        } else {
-            // If below the middle, insert after
-            overlay.insertBefore(dropIndicator, targetElement.nextSibling);
+            if (offsetY < rect.height / 2) {
+                // If above the middle, insert before
+                dropZone.insertBefore(dropIndicator, targetElement);
+            } else {
+                // If below the middle, insert after
+                dropZone.insertBefore(dropIndicator, targetElement.nextSibling);
+            }
+            currentTarget = targetElement; // Update the current target
         }
-        currentTarget = targetElement; // Update the current target
-    }
+
+
+    });
+
+    dropZone.addEventListener('drop', (event) => {
+        event.preventDefault();
+        const id = event.dataTransfer.getData('text');
+        const original = document.getElementById(id);
+        if (original) {
+            const clone = original.cloneNode(true);
+            clone.id = `clone-${id}-${new Date().getTime()}`; // Unique ID for the clone
+
+            // Optional: Manipulate the iframe here if needed
+            console.log("added");
+            addKIT(Number(id.replace('drag', '')));
+            //console.log(id.replace('drag', ''));
+
+            // Hide drop indicator after drop
+            dropIndicator.style.display = 'none';
+
+        }
+    });
+
+
 });
 
-overlay.addEventListener('drop', (event) => {
-    event.preventDefault();
-    const id = event.dataTransfer.getData('text');
-    const original = document.getElementById(id);
-    if (original) {
-        const clone = original.cloneNode(true);
-        clone.id = `clone-${id}-${new Date().getTime()}`; // Unique ID for the clone
 
-        // Optional: Manipulate the iframe here if needed
-        console.log("added");
-        addKIT(Number(id.replace('drag', '')));
-        //console.log(id.replace('drag', ''));
-
-        // Hide drop indicator after drop
-        dropIndicator.style.display = 'none';
-
-    }
-});
 
