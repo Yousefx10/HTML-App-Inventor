@@ -92,8 +92,9 @@
         <!--i think maybe i will use it to add EXPORT button to save and download the project-->
         <p style="font-size:10px">Version v.0.1.1</p>
     </div>
-    <div class="iframe-container">
+    <div class="iframe-container" id="target">
         <iframe frameborder="0" id="live_iframe" style="flex: 1;height:100%;width:100%;border:0;z-index: 1;"></iframe>
+        <div id="overlay"></div> <!-- Overlay for drag-and-drop -->
     </div>
 
 

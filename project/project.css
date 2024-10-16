@@ -366,3 +366,15 @@ color:mediumseagreen;
     content: "Disable" !important;
     color: orange !important;
 }
+
+#overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0); /* Transparent */
+
+    z-index: 1; /* On top of the iframe */
+    pointer-events: none;
+}

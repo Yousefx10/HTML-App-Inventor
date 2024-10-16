@@ -14,6 +14,10 @@ function GET_DOC_ID(prefix_name,kitID){
 
 
 //Basic array list for active added elements to the project time_line and project_live
+let dropzone  = document.getElementById('target');
+const overlay = document.getElementById('overlay');
+
+
 let active_kit =[];
 let COUNT_KIT_PROGRESS =0;
 let project_timeline = document.getElementById('project_timeline'),
@@ -55,7 +59,8 @@ let screenDelimiter="SCR-_";
 
 // [END] SCREEN MANAGER AREA [END]
 
-
+//the kits that can be draged and droped
+const draggables = document.querySelectorAll('.draggable');
 
 
 //Variable For hidden_kitID [the hidden element that saves the current kit's ID]

@@ -1137,3 +1137,52 @@ function updateSCREENproperties(BgColorValue)
 
 
 }
+
+
+
+
+
+
+
+
+
+//drag and drop EVENTS
+
+//project_live
+
+draggables.forEach(draggable => {
+    draggable.addEventListener('dragstart', (event) => {
+        event.dataTransfer.setData('text', event.target.id);
+        event.dataTransfer.effectAllowed = 'copy';
+
+        // Enable overlay for drag operation
+        overlay.style.pointerEvents = 'auto'; // Capture drag events
+
+    });
+
+    draggable.addEventListener('dragend', () => {
+        // Disable overlay after drag operation
+        overlay.style.pointerEvents = 'none'; // Allow interaction with iframe
+    });
+});
+
+overlay.addEventListener('dragover', (event) => {
+    event.preventDefault(); // Allow drop by preventing default behavior
+    event.dataTransfer.dropEffect = 'copy'; // Indicate copy action
+});
+
+overlay.addEventListener('drop', (event) => {
+    event.preventDefault();
+    const id = event.dataTransfer.getData('text');
+    const original = document.getElementById(id);
+    if (original) {
+        const clone = original.cloneNode(true);
+        clone.id = `clone-${id}-${new Date().getTime()}`; // Unique ID for the clone
+
+        // Optional: Manipulate the iframe here if needed
+        console.log("added");
+        addKIT(Number(id.replace('drag', '')));
+        //console.log(id.replace('drag', ''));
+    }
+});
+
