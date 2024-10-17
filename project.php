@@ -114,7 +114,7 @@
         -switch   [for creating a switcher on and off].
 
         List of registered [functions] i'll add:
-        -Switch Page
+        -Switch Page[Done]
         -Storage
         -->
 

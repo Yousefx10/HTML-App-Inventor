@@ -168,7 +168,7 @@ maybe using this code in the future to replace the violation error related to do
 
 - Having The Ability To Change kit's order and arranging them. 
 
-- Adding The Ability To Drag And Drop From Toolkit box into live view box.
+- Adding The Ability To Drag And Drop From Toolkit box into live view box.[DONE]
 </details>
 
 <details>
