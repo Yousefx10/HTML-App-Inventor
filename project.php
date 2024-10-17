@@ -68,7 +68,9 @@
         <div id="screen1" class="timelineSCREEN">
 
         </div>
-    <div id="drop-indicator" style="display: none;"></div>
+    <div id="drop-indicator" style="display: none;">
+        <div></div>
+    </div>
     </div>
 
 

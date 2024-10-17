@@ -1173,6 +1173,7 @@ draggables.forEach(draggable => {
 
         // Hide drop indicator
         dropIndicator.style.display = 'none';
+        live_iframe.contentWindow.hideIndicator();
 
         currentTarget = null; // Reset the current target
 
@@ -1199,15 +1200,23 @@ Zones.forEach(ZoneDrop => {
             // Show the drop indicator before or after the target element
             const rect = targetElement.getBoundingClientRect();
             const offsetY = event.clientY - rect.top; // Mouse position relative to the target element
+            // Calculate the middle of the target element
+            const middleY = rect.height / 2;
 
-            if (offsetY < rect.height / 2) {
+            if (offsetY < middleY) {
                 // If above the middle, insert before
                 document.getElementById("screen"+LIVE_SCREEN).insertBefore(dropIndicator, targetElement);
+                live_iframe.contentWindow.showIndicator(LIVE_SCREEN,targetElement.id.replace("active_kit",""),true);
+
             } else {
                 // If below the middle, insert after
                 document.getElementById("screen"+LIVE_SCREEN).insertBefore(dropIndicator, targetElement.nextSibling);
+                live_iframe.contentWindow.showIndicator(LIVE_SCREEN,targetElement.id.replace("active_kit",""));
+
             }
             currentTarget = targetElement; // Update the current target
+            //console.log(targetElement);
+
         }
 
 
@@ -1221,8 +1230,8 @@ const handleDragLeave = (event) => {
     if(currentIDtemp=="project_timeline" || currentIDtemp=="screen"+LIVE_SCREEN)
     {
         dropIndicator.style.display = 'none'; // Hide drop indicator when leaving the drop zone entirely
+        live_iframe.contentWindow.hideIndicator();
     }
-    console.log('Drag left the element', event.target.id);
   };
 
     ZoneDrop.addEventListener('drop', (event) => {
@@ -1234,12 +1243,12 @@ const handleDragLeave = (event) => {
             
             // Optional: Manipulate the iframe here if needed
             console.log("added");
-            console.log(id);
             addKIT(Number(id.replace('drag', '')));
 
 
             // Hide drop indicator after drop
             dropIndicator.style.display = 'none';
+            live_iframe.contentWindow.hideIndicator();
 
         }
     });

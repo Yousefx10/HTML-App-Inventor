@@ -14,10 +14,12 @@
              .alignment-button-center{text-align:center;}
              .alignment-button-right{text-align:right;}
              .working-screen{height:100%}/*this means it will take the full screen in case background color applied*/
+             #dropIndicator{box-shadow: 0 10px 15px rgba(0, 0, 0, 0.5), 0 -10px 15px rgba(0, 0, 0, 0.5);}
              </style>
             </head>
             <body id="updateME">
-<!--First Empty Place in body it now it will be empty-->
+                <div style='display:none;height:3px;background:red;' id='dropIndicator'></div>
+<!--Upper is empty, everything moved to bottom.-->
             <script>
             function RemoveALLselected()
             {
@@ -138,12 +140,28 @@
             {
                 document.getElementById(SelectedScreen).style.backgroundColor=NewColor;
             }
+
+            const IFRAMEdropIndicator = document.getElementById("dropIndicator");
+            function showIndicator(selectedSCREEN,selectedID,StatusAction=false)
+            {
+            IFRAMEdropIndicator.style.display="block";
+            
+            if(StatusAction)
+                document.getElementById("screen"+selectedSCREEN).insertBefore(IFRAMEdropIndicator, document.getElementById("live"+selectedID));
+            else
+               document.getElementById("screen"+selectedSCREEN).insertBefore(IFRAMEdropIndicator, document.getElementById("live"+selectedID).nextSibling);
+            
+               }
+            function hideIndicator(selectedSCREEN,selectedID,StatusAction=false)
+            {
+                IFRAMEdropIndicator.style.display="none";
+            }
             </script>
             
             <script src="project/variables.js"></script>
             <script src="project/actions.js"></script>
             
-            
+
 <!--All Screen Starts From Here-->
             <div id="screen1" class="working-screen"></div>
             </body>
