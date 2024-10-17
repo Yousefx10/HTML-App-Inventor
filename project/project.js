@@ -1148,11 +1148,12 @@ function updateSCREENproperties(BgColorValue)
 
 //drag and drop EVENTS
 
-//project_live
 let currentTarget = null; // Track the current target element
-const dropZones = document.querySelectorAll('.drop-zone'); // Select both drop zones
+let Zones = [document.getElementById('project_timeline'), document.getElementById('overlay')];
+
 
 draggables.forEach(draggable => {
+    //THE START OF DRAGGING LIFE.
     draggable.addEventListener('dragstart', (event) => {
         event.dataTransfer.setData('text', event.target.id);
         event.dataTransfer.effectAllowed = 'copy';
@@ -1161,10 +1162,11 @@ draggables.forEach(draggable => {
         overlay.style.pointerEvents = 'auto'; // Capture drag events
 
         // Show drop indicator on drag start
-        dropIndicator.style.display = 'block';
+        //dropIndicator.style.display = 'block';
 
     });
 
+    //THE END OF DRAGGING LIFE.
     draggable.addEventListener('dragend', () => {
         // Disable overlay after drag operation
         overlay.style.pointerEvents = 'none'; // Allow interaction with iframe
@@ -1177,13 +1179,17 @@ draggables.forEach(draggable => {
     });
 });
 
-dropZones.forEach(dropZone => {
 
-    dropZone.addEventListener('dragover', (event) => {
+//THIS CODE IS FOR BOTH LIVE PREVIEW 'which is overlay" and TIMELINE.
+Zones.forEach(ZoneDrop => {
+
+
+    ZoneDrop.addEventListener('dragover', (event) => {
         event.preventDefault(); // Allow drop by preventing default behavior
         event.dataTransfer.dropEffect = 'copy'; // Indicate copy action
 
-
+        if(event.target.id!="overlay")
+            dropIndicator.style.display = 'block';
 
 //dropIndicator
 
@@ -1196,10 +1202,10 @@ dropZones.forEach(dropZone => {
 
             if (offsetY < rect.height / 2) {
                 // If above the middle, insert before
-                dropZone.insertBefore(dropIndicator, targetElement);
+                document.getElementById("screen"+LIVE_SCREEN).insertBefore(dropIndicator, targetElement);
             } else {
                 // If below the middle, insert after
-                dropZone.insertBefore(dropIndicator, targetElement.nextSibling);
+                document.getElementById("screen"+LIVE_SCREEN).insertBefore(dropIndicator, targetElement.nextSibling);
             }
             currentTarget = targetElement; // Update the current target
         }
@@ -1207,18 +1213,30 @@ dropZones.forEach(dropZone => {
 
     });
 
-    dropZone.addEventListener('drop', (event) => {
+
+// Shared event handler for dragleave
+const handleDragLeave = (event) => {
+    // Your dragleave logic here
+    let currentIDtemp =event.target.id;
+    if(currentIDtemp=="project_timeline" || currentIDtemp=="screen"+LIVE_SCREEN)
+    {
+        dropIndicator.style.display = 'none'; // Hide drop indicator when leaving the drop zone entirely
+    }
+    console.log('Drag left the element', event.target.id);
+  };
+
+    ZoneDrop.addEventListener('drop', (event) => {
         event.preventDefault();
         const id = event.dataTransfer.getData('text');
         const original = document.getElementById(id);
         if (original) {
             const clone = original.cloneNode(true);
-            clone.id = `clone-${id}-${new Date().getTime()}`; // Unique ID for the clone
-
+            
             // Optional: Manipulate the iframe here if needed
             console.log("added");
+            console.log(id);
             addKIT(Number(id.replace('drag', '')));
-            //console.log(id.replace('drag', ''));
+
 
             // Hide drop indicator after drop
             dropIndicator.style.display = 'none';
@@ -1226,8 +1244,8 @@ dropZones.forEach(dropZone => {
         }
     });
 
+      // dragleave event
+      ZoneDrop.addEventListener('dragleave', handleDragLeave);
+
 
 });
-
-
-

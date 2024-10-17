@@ -65,7 +65,7 @@
 
                 <p id="screenSETTINGS" onclick="showScreenProperties();" data-only="screen" data-id="1" data-background="#f0f0f0">Current Screen Settings Properties</p>
 
-        <div id="screen1" class="timelineSCREEN drop-zone">
+        <div id="screen1" class="timelineSCREEN">
 
         </div>
     <div id="drop-indicator" style="display: none;"></div>
@@ -93,9 +93,9 @@
         <!--i think maybe i will use it to add EXPORT button to save and download the project-->
         <p style="font-size:10px">Version v.0.1.1</p>
     </div>
-    <div class="iframe-container" id="target">
+    <div class="iframe-container">
         <iframe frameborder="0" id="live_iframe" style="flex: 1;height:100%;width:100%;border:0;z-index: 1;"></iframe>
-        <div id="overlay" class="drop-zone"></div> <!-- Overlay for drag-and-drop -->
+        <div id="overlay" ></div> <!-- Overlay for drag-and-drop -->
     </div>
 
 
