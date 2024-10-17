@@ -973,7 +973,7 @@ function stopThisTimer(kitID) {
             //finally, automatic switch to the new screen
             SwitchTheScreen(totalSCREENS);
             selectSCREEN.value=totalSCREENS;//update the <select> value for <option>
-            ScreensManager();//hide the dialog
+            ScreensManager(false,true);//hide the dialog
 
 
         const NewSearchFilterScreen = document.createElement('option');
@@ -1025,7 +1025,8 @@ function stopThisTimer(kitID) {
         screenFilter.value=screenBUTTON.textContent;//automatically switch the "kit event" in workspace
         filterScreens(screenFilter.value);//automatically switch the "kit event" in workspace
 
-
+        document.getElementById("screen"+LIVE_SCREEN).appendChild(dropIndicator);
+        ScreensManager(false,true);//hide the dialog after switching
     }
 
     //this function is used to entirely delete the selected screen
@@ -1210,7 +1211,9 @@ Zones.forEach(ZoneDrop => {
             const offsetY = event.clientY - rect.top; // Mouse position relative to the target element
             // Calculate the middle of the target element
             const middleY = rect.height / 2;
-
+            if(event.target.id=="screen"+LIVE_SCREEN) //show it in the end if not hovering in the top
+                document.getElementById("screen"+LIVE_SCREEN).appendChild(dropIndicator);
+            else
             if (offsetY < middleY) {
                 // If above the middle, insert before
                 document.getElementById("screen"+LIVE_SCREEN).insertBefore(dropIndicator, targetElement);

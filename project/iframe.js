@@ -129,6 +129,7 @@
                         element.style.display = 'none';
                     });
                     document.getElementById(ScreenToBeVisible).style.display="block";
+                    startLoad(ScreenToBeVisible);
             }
             
             function deleteENTIREscreen(screenID)
@@ -164,6 +165,7 @@
             function MoveArrange(ScreenNumber,SelectedKIT)//will be used to move place of kits
             {
                 SelectedKIT = document.getElementById("live"+SelectedKIT);
+                if(SelectedKIT)//so if it's the first element, it will not through an error
                 document.getElementById("screen"+ScreenNumber).insertBefore(SelectedKIT, IFRAMEdropIndicator);
             }
             </script>
@@ -174,6 +176,14 @@
 
 <!--All Screen Starts From Here-->
             <div id="screen1" class="working-screen"></div>
+
+            <script>
+            function startLoad(currentPage)
+            {
+                document.getElementById(currentPage).appendChild(IFRAMEdropIndicator);
+            }
+            startLoad("screen1");//when loading the page, the IFRAMEdropIndicator will move to be inside the screen1
+            </script>
             </body>
           </html>
         `);
