@@ -1138,8 +1138,16 @@ function updateSCREENproperties(BgColorValue)
 
 }
 
+//so this function should reArrange Kits
+function ArrangeKITS(SelectedKIT)
+{
+    live_iframe.contentWindow.MoveArrange(LIVE_SCREEN,SelectedKIT);
+    
+    SelectedKIT = document.getElementById("active_kit"+SelectedKIT);
+    document.getElementById("screen"+LIVE_SCREEN).insertBefore(SelectedKIT, dropIndicator);
 
 
+}
 
 
 
@@ -1240,16 +1248,23 @@ const handleDragLeave = (event) => {
         const original = document.getElementById(id);
         if (original) {
             const clone = original.cloneNode(true);
-            
-            // Optional: Manipulate the iframe here if needed
-            console.log("added");
+
+
             addKIT(Number(id.replace('drag', '')));
+            console.log("added");
+
 
 
             // Hide drop indicator after drop
             dropIndicator.style.display = 'none';
             live_iframe.contentWindow.hideIndicator();
 
+
+
+            //finally, put it in the correct place
+            //attention: maybe it will throuh error if it's empty or it's last element or it's array is eppty, never tested
+            let theLastAddedElement = active_kit[active_kit.length - 1];
+            ArrangeKITS(theLastAddedElement[0]);
         }
     });
 

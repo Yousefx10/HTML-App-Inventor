@@ -141,7 +141,10 @@
                 document.getElementById(SelectedScreen).style.backgroundColor=NewColor;
             }
 
+
+
             const IFRAMEdropIndicator = document.getElementById("dropIndicator");
+
             function showIndicator(selectedSCREEN,selectedID,StatusAction=false)
             {
             IFRAMEdropIndicator.style.display="block";
@@ -149,12 +152,19 @@
             if(StatusAction)
                 document.getElementById("screen"+selectedSCREEN).insertBefore(IFRAMEdropIndicator, document.getElementById("live"+selectedID));
             else
-               document.getElementById("screen"+selectedSCREEN).insertBefore(IFRAMEdropIndicator, document.getElementById("live"+selectedID).nextSibling);
-            
-               }
-            function hideIndicator(selectedSCREEN,selectedID,StatusAction=false)
+               document.getElementById("screen"+selectedSCREEN).insertBefore(IFRAMEdropIndicator, document.getElementById("live"+selectedID).nextSibling);  
+            }
+
+            function hideIndicator()
             {
                 IFRAMEdropIndicator.style.display="none";
+            }
+
+
+            function MoveArrange(ScreenNumber,SelectedKIT)//will be used to move place of kits
+            {
+                SelectedKIT = document.getElementById("live"+SelectedKIT);
+                document.getElementById("screen"+ScreenNumber).insertBefore(SelectedKIT, IFRAMEdropIndicator);
             }
             </script>
             
