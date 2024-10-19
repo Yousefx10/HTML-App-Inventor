@@ -63,7 +63,7 @@
 
     <div class='project_div' id='project_timeline'><p id="timelineTITLE">project_timeline</p>
 
-                <p id="screenSETTINGS" onclick="showScreenProperties();" data-only="screen" data-id="1" data-background="#f0f0f0">Current Screen Settings Properties</p>
+                <p id="screenSETTINGS" onclick="showScreenProperties();" data-only="screen" data-id="1" data-name="Screen1" data-background="#f0f0f0">Current Screen Settings Properties</p>
 
         <div id="screen1" class="timelineSCREEN">
         <div id="drop-indicator" style="display: none;">

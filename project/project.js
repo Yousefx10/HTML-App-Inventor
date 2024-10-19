@@ -367,7 +367,8 @@ function showScreenProperties()//this functions shows the screen settings in pro
         //APPLYING TO SHOW CURRENT VALUES INSIDE THE project_properties
         document.getElementById("scBackground").value=screenSETTINGS.dataset.background;
 
-
+        properties_name.value=screenSETTINGS.dataset.name;
+        hidden_kitID.value="@@screen";
     }
 
 
@@ -860,6 +861,12 @@ function stopThisTimer(kitID) {
     //this function will used to update the name of the selected KIT
     function updateKITname(newNAME)
     {
+        if(hidden_kitID.value=="@@screen")
+        {
+            RenameScreen(false,newNAME);
+            return;
+        }
+        console.log("--"+hidden_kitID.value);
 
         let currentKITid = Number(hidden_kitID.value);
 
@@ -1032,6 +1039,8 @@ function stopThisTimer(kitID) {
         timelineTITLE.textContent=`project_timeline For [${screenBUTTON.textContent}]`;
 
         screenSETTINGS.dataset.id = LIVE_SCREEN;//this updates the SCREEN PROPERTIES SETTINGS current active screen
+        screenSETTINGS.dataset.name = screenBUTTON.textContent;
+        hidden_kitID.value="@@screen";//so this will enable the changes of the screen name.
         screenSETTINGS.dataset.background= screenPROPERTIES.find(screennn => screennn[0] === LIVE_SCREEN)[1]
             .split(":")[1];//spliting it because there's no need to store the property name "background" only it's value is important.
 
@@ -1089,9 +1098,11 @@ function stopThisTimer(kitID) {
     }
 
 //this function is used to ReName the screen from ScreenManager.
-    function RenameScreen()
+    function RenameScreen(noPrompt=true,WhatPrompet)
     {
-        let ScreenNewName = prompt("Type The New Name:");
+        var ScreenNewName = WhatPrompet;
+        if(noPrompt)
+         ScreenNewName = prompt("Type The New Name:");
 
         if (ScreenNewName !== '' && ScreenNewName!== null) {
             let CurrentScreenToBeNamed=Number(LIVE_SCREEN);
@@ -1102,6 +1113,7 @@ function stopThisTimer(kitID) {
             OLDname           =screenBUTTON.textContent;
             screenBUTTON.textContent    =ScreenNewName;
             timelineTITLE.textContent   =`project_timeline For [${ScreenNewName}]`;
+            screenSETTINGS.dataset.name = ScreenNewName;
 
             //updating the new name into names list
             let UpdatedScreenList = namingSCREENS.find(screennn => screennn[0] === CurrentScreenToBeNamed);
@@ -1136,7 +1148,7 @@ function stopThisTimer(kitID) {
                 }
             });
 
-
+            
 
         }
     }
