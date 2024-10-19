@@ -1104,7 +1104,7 @@ function stopThisTimer(kitID) {
         if(noPrompt)
          ScreenNewName = prompt("Type The New Name:");
 
-        if (ScreenNewName !== '' && ScreenNewName!== null) {
+        if (ScreenNewName !== '' && ScreenNewName!== null && !/^\d|\s/.test(ScreenNewName)) {
             let CurrentScreenToBeNamed=Number(LIVE_SCREEN);
             let OLDname;
             //select the <option> then updating it's name

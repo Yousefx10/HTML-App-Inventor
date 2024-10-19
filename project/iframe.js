@@ -168,6 +168,11 @@
                 if(SelectedKIT)//so if it's the first element, it will not through an error
                 document.getElementById("screen"+ScreenNumber).insertBefore(SelectedKIT, IFRAMEdropIndicator);
             }
+
+            function ChangeBackground(kitID,NewColor)
+            {
+                document.getElementById("live"+kitID).style.backgroundColor=NewColor;
+            }
             </script>
             
             <script src="project/variables.js"></script>

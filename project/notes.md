@@ -166,7 +166,7 @@ maybe using this code in the future to replace the violation error related to do
 
 - [add new action] Changing The Background color via workspace.
 
-- Having The Ability To Change kit's order and arranging them. 
+- Having The Ability To Change kit's order and arranging them. [DONE]
 
 - Adding The Ability To Drag And Drop From Toolkit box into live view box.[DONE]
 </details>

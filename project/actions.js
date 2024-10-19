@@ -63,7 +63,10 @@ function doJOBS(COMMANDS,FINALvalue){
 
             kitALIGNMENT(COMMANDS[1],kitTYPE,FINALvalue);
             break;
-
+            case "changebackground":
+                //document.getElementById("live"+COMMANDS[1]).style.fontSize=COMMANDS[2];
+                ChangeBackground(COMMANDS[1],FINALvalue);
+                break;
         case "switchscreen":
 
             //this statement checks if THE VALUE is directed screen ID or screen name.
@@ -101,8 +104,10 @@ function do_property(wholeVALUE)
                 break;
             case "fontSize":
                 wholeVALUE=currentKITstyle.fontSize;
-
                 break;
+            case "background":
+                    //Still Will Work on it later
+                    break;
             case "alignment":
 
                 wholeVALUE= currentKITstyle.textAlign;
@@ -204,7 +209,8 @@ function generalUPDATE(updateTYPE,kitID,newVALUE)
             }
 
             break;
-
+        case "changebackground":
+                break;
         case"switchscreen":
             SwitchTheScreen(newVALUE,true);
             break;

@@ -331,7 +331,19 @@ function ADDINGsingleBLOCK(words,FullBlockID)
 
             valueInput.setAttribute('onchange', 'updateACTIONvalue(event,"value",this.parentNode.parentNode.id);');
             break;
-
+            case "changebackground":
+                var valueInput = document.createElement('select');
+                ["White","Green","Black","Red"].forEach(num => {
+                    const option = document.createElement('option');
+                    option.textContent = num;
+                    option.value = num;
+                    valueInput.appendChild(option);
+                });
+                valueInput.className = "original";
+                valueInput.value= words[2];
+    
+                valueInput.setAttribute('onchange', 'updateACTIONvalue(event,"value",this.parentNode.parentNode.id);');
+                break;
         case "switchscreen"://should not have ANY KIT, because it's like ONLY METHOD.
 
             var valueInput = document.createElement('select');
@@ -590,6 +602,12 @@ function action_add(actionType)
             words = dynamicMap.get(tempLONGvalue).split(ProjectDelimiter);
 
             break;
+            case "ChangeBackground":
+                dynamicMap.set(tempLONGvalue, 'changebackground'+ProjectDelimiter+'0'+ProjectDelimiter+'White');//as default will be White
+    
+                words = dynamicMap.get(tempLONGvalue).split(ProjectDelimiter);
+    
+                break;
         case "SwitchScreen":
             dynamicMap.set(tempLONGvalue, 'switchscreen'+ProjectDelimiter+'0'+ProjectDelimiter+LIVE_SCREEN);//as default will be Medium
 
