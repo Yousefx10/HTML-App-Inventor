@@ -35,6 +35,7 @@ function addKIT(kit_type) {
     let newKIT = document.createElement('p');
     newKIT.classList.add('project_timeline_kit');
     newKIT.id = 'active_kit' + COUNT_KIT_PROGRESS;
+    newKIT.setAttribute("draggable", "true");//adding the option to drag it so it can be arranged later.
     let currentkitID = COUNT_KIT_PROGRESS;
     //[END] Main element that will have the content for the new added element.
 
@@ -54,6 +55,20 @@ function addKIT(kit_type) {
 
     //this i can pass parameters without EXECUTE the function FROM FIRST TIME.
     newKIT.onclick = () => timeline_properties(currentkitID, newKIT.innerHTML,NameKit(kit_type).toLowerCase());
+
+    //Arrange The Items :
+
+    //THE START OF DRAGGING LIFE.
+    newKIT.addEventListener('dragstart', (event) => {
+        event.dataTransfer.setData('text', event.target.id);
+        event.dataTransfer.effectAllowed = 'copy';
+
+    });
+
+    //THE END OF DRAGGING LIFE.
+    newKIT.addEventListener('dragend', () => {
+
+    });
 
 
     //Naming the kit before adding it to the timeline box.
@@ -1250,24 +1265,23 @@ const handleDragLeave = (event) => {
         const id = event.dataTransfer.getData('text');
         const original = document.getElementById(id);
         if (original) {
-            const clone = original.cloneNode(true);
 
+            if(id.includes("drag"))//this for making sure it's being draged and droped from adding kit menu
+            {
+                addKIT(Number(id.replace('drag', '')));
+                console.log("added");
 
-            addKIT(Number(id.replace('drag', '')));
-            console.log("added");
-
-
+            }
 
             // Hide drop indicator after drop
             dropIndicator.style.display = 'none';
             live_iframe.contentWindow.hideIndicator();
 
-
-
             //finally, put it in the correct place
             //attention: maybe it will throuh error if it's empty or it's last element or it's array is eppty, never tested
             let theLastAddedElement = active_kit[active_kit.length - 1];
             ArrangeKITS(theLastAddedElement[0]);
+            console.log("Arranged !!!");
         }
     });
 
