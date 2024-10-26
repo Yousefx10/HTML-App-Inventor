@@ -1158,6 +1158,26 @@ function stopThisTimer(kitID) {
         }
     }
 
+    //so this is used to update the value of background color, if it was SCREEN so it will move to updateSCREENproperties()
+    function UPDATEbackgroundVALUE(BgColorValue)
+    {
+        if(hidden_kitID.value=="@@screen")
+        {
+            updateSCREENproperties(BgColorValue);
+            return;
+        }
+
+        let NewColorValue = BgColorValue;
+        let kitID = hidden_kitID.value;
+        live_iframe.contentWindow.ChangeBackground(kitID, NewColorValue);
+        GET_DOC_ID("active_kit", kitID).dataset.background = NewColorValue;
+
+    }
+
+
+
+
+
     //supposed to update everything related to screen settings properteis, starting from background color.
 function updateSCREENproperties(BgColorValue)
 {
