@@ -44,6 +44,7 @@ function addKIT(kit_type) {
     newKIT.setAttribute("data-color", "black");
     newKIT.setAttribute("data-size", "medium");
     newKIT.setAttribute("data-margin", "0");
+    newKIT.setAttribute("data-background", "#f0f0f0");
     newKIT.setAttribute("data-only", "text");//standard value, until changed.
 
     newKIT.setAttribute("data-border", "0");
@@ -296,6 +297,10 @@ function timeline_properties(current_kit, current_details,KITtype) {
     // document.getElementById('MarginDropDown').disabled = true;
     document.getElementById('MarginDropDown').value = current_margin;
     // document.getElementById('MarginDropDown').disabled = false;
+
+    let current_background = document.getElementById("active_kit" + current_kit).dataset.background;
+    document.getElementById('scBackground').value = current_background;
+
 
     let current_timerSTATUS = document.getElementById("active_kit" + current_kit).dataset.timer;
     if (current_timerSTATUS == "true") {
@@ -1167,10 +1172,9 @@ function stopThisTimer(kitID) {
             return;
         }
 
-        let NewColorValue = BgColorValue;
         let kitID = hidden_kitID.value;
-        live_iframe.contentWindow.ChangeBackground(kitID, NewColorValue);
-        GET_DOC_ID("active_kit", kitID).dataset.background = NewColorValue;
+        live_iframe.contentWindow.ChangeBackground(kitID, BgColorValue);
+        GET_DOC_ID("active_kit", kitID).dataset.background = BgColorValue;
 
     }
 

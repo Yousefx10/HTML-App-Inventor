@@ -106,7 +106,7 @@ function do_property(wholeVALUE)
                 wholeVALUE=currentKITstyle.fontSize;
                 break;
             case "background":
-                    //Still Will Work on it later
+                wholeVALUE = currentKITstyle.backgroundColor;
                     break;
             case "alignment":
 
@@ -210,6 +210,7 @@ function generalUPDATE(updateTYPE,kitID,newVALUE)
 
             break;
         case "changebackground":
+            GET_DOC_ID("active_kit",kitID).dataset.background =newVALUE;
                 break;
         case"switchscreen":
             SwitchTheScreen(newVALUE,true);

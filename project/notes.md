@@ -164,7 +164,7 @@ maybe using this code in the future to replace the violation error related to do
 
 <summary>More Tasks</summary>
 
-- [add new action] Changing The Background color via workspace.
+- [add new action] Changing The Background color via workspace.[DONE]
 
 - Having The Ability To Change kit's order and arranging them. [DONE]
 
