@@ -35,8 +35,8 @@ let
     propertiesMARGIN = document.getElementById('propertiesMARGIN'),
     propertiesBORDER = document.getElementById('propertiesBORDER'),
     propertiesCOLOR = document.getElementById('propertiesCOLOR'),
-    propertiesSIZE = document.getElementById('propertiesSIZE');
-
+    propertiesSIZE = document.getElementById('propertiesSIZE'),
+    propertiesBACKGROUND = document.getElementById("propertiesBACKGROUND");
 
 // [START] SCREEN MANAGER AREA [START]
 

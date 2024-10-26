@@ -167,6 +167,7 @@ function choosePROPERTIEScorrect(KITtype,KITid)
     propertiesBORDER.style.display="none";
     propertiesCOLOR.style.display="none";
     propertiesSIZE.style.display="none";
+    propertiesBACKGROUND.style.display="none";
 
 
 
@@ -186,6 +187,7 @@ function choosePROPERTIEScorrect(KITtype,KITid)
             propertiesBORDER.style.display="block";
             propertiesCOLOR.style.display="block";
             propertiesSIZE.style.display="block";
+            propertiesBACKGROUND.style.display="block";
             break;
         case "button":
             //this line is made only to check whether the "general" properties are needed for the current kit
@@ -196,17 +198,20 @@ function choosePROPERTIEScorrect(KITtype,KITid)
             propertiesBORDER.style.display="block";
             propertiesCOLOR.style.display="block";
             propertiesSIZE.style.display="block";
+            propertiesBACKGROUND.style.display="block";
             break;
         case "picture"://img or picture.
             propertiesALIGNMENT.style.display="block";
             propertiesMARGIN.style.display="block";
             propertiesBORDER.style.display="block";
+            propertiesBACKGROUND.style.display="block";
             break;
         case "timer":
             propertiesVISIBILITY.style.display="none";
             break;
         case "screen":
             propertiesVISIBILITY.style.display="none";
+            propertiesBACKGROUND.style.display="block";
             break;
     }
 

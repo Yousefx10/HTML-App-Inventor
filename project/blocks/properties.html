@@ -24,6 +24,8 @@ propertiesMARGIN
 propertiesBORDER
 propertiesCOLOR
 propertiesSIZE
+propertiesBACKGROUND
+
 
 [all special parts]:
 only-screen
@@ -63,15 +65,7 @@ only-timer
 
         <span>[SCREEN AREA]</span>
         <br/>
-        <label for="scBackground">Background Color :</label>
-        <select id="scBackground" onchange="updateSCREENproperties(this.value);">
-            <option value="#f0f0f0">Default</option>
-            <option value="white">White</option>
-            <option value="green">Green</option>
-            <option value="black">Black</option>
-            <option value="gold">Yellow</option>
-            <option value="red">Red</option>
-        </select>
+
         <hr/>
     </div>
 
@@ -161,6 +155,24 @@ only-timer
         <hr/>
     </div>
     <!--propertiesSIZE-->
+
+
+    <!--propertiesBACKGROUND-->
+    <div id="propertiesBACKGROUND">
+        <label for="scBackground">Background Color :</label>
+        <select id="scBackground" onchange="updateSCREENproperties(this.value);">
+            <option value="#f0f0f0">Default</option>
+            <option value="white">White</option>
+            <option value="green">Green</option>
+            <option value="black">Black</option>
+            <option value="gold">Yellow</option>
+            <option value="red">Red</option>
+        </select>
+        <hr/>
+
+    </div>
+    <!--propertiesBACKGROUND-->
+
 
     <!--propertiesMARGIN-->
     <div id="propertiesMARGIN">
