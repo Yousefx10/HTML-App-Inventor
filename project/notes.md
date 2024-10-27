@@ -173,6 +173,24 @@ maybe using this code in the future to replace the violation error related to do
 
 <details>
 
+<summary>Next Goals</summary>
+
+- Confirm Alert Before Deleting An Kit.
+
+- Working On Enhancing The Error BAR.
+
+- Showing Only The Related Kit's To The Action Arrow.
+
+- Adding Special Action For Added Kits like controlling Timer Duration or start it or stop it.
+
+
+</details>
+
+
+
+
+<details>
+
 <summary>General Notes [not for now]</summary>
 
 - Adding Splash Screen. 

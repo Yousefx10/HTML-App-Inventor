@@ -84,6 +84,15 @@ let bordersCHECKbox = document.getElementById("border_checkBox");
 
 
 let TIMEtoSHOWhints=false;
+
+//so the purpose of this array if to check for kits that won't be added into the ACTION ARROW,
+// like Timer For Example it does not have any Properties like text or background etx.
+const notAllowedKTIS =[
+    "Timer"
+];
+
+
+
 //HINT SECTION
 let kit_HINTS = ["",//all being removed once it's loaded in the page.
     "This is a label which makes you to print out something",    //for Label (1)

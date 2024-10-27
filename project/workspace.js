@@ -250,6 +250,8 @@ function ADDINGsingleBLOCK(words,FullBlockID)
     advance_kit_property.innerHTML="";
 
     active_kit.forEach(num => {
+        if (notAllowedKTIS.includes(num[1])) return; // Skip this KIT if it's not needed to be included here.
+
         const option = document.createElement('option');
         option.textContent = num[2];//shows the NAME that is giving to the kit
         option.value = num[0];
