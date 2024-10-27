@@ -179,11 +179,11 @@ maybe using this code in the future to replace the violation error related to do
 
 - Adding timer along side with Red Dot.
 
-- Adding speciall Dialog alert instead of the browser dialog
+- Adding special Dialog alert instead of the browser dialog
 
-- Adding Media Assest Manager, so photos or media are included can be ReUsed without reuploading them again.
+- Adding Media Asset Manager, so photos or media are included can be ReUsed without reuploading them again.
 
-- Writting The Engine That Will Convert The Whole Output into a real final result template that can be used only and directly.
+- Writing The Engine That Will Convert The Whole Output into a real final result template that can be used only and directly.
 
 - Temp View via QR code, saves the project into REAL LIVE PREVIEW so i can scan it from my smartphone, after that automatic deletes the file.
 

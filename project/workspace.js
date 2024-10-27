@@ -263,7 +263,25 @@ function ADDINGsingleBLOCK(words,FullBlockID)
         advance_kit_property.appendChild(kit_property_option);
     });
 
-    //SO I WILL STOP HERE, I WILL FOCUS ON CONVERTING THIS ARRAY TO MAP ARRAY.
+    let AddScreenAsKIT=false;
+    if(words[0]=="changebackground")    AddScreenAsKIT = true;
+
+    if(AddScreenAsKIT)
+    {   //I'VE STOPPED HERE, so first i've to make something like tag to know if selected kit is actually SCREEN
+                            //then i've to change the action.js code if it starts with @@ then it's screen and treats deffirent.
+        namingSCREENS.forEach(num => {
+            const option = document.createElement('option');
+            option.textContent = num[1];
+            option.value = "@@"+num[0];
+            console.log(option.value +"<");
+            kitSelect.appendChild(option);
+
+            const kit_property_option = document.createElement('option');
+            kit_property_option.textContent = num[1];//shows the NAME that is giving to the kit
+            kit_property_option.value = "@@"+num[0];
+            advance_kit_property.appendChild(kit_property_option);
+        });
+    }
     kitSelect.value= words[1];
 
 
@@ -379,7 +397,7 @@ function ADDINGsingleBLOCK(words,FullBlockID)
             <span style="color:green">${words[2].split("//")[2]}</span></span>`
 
         SetProperties.style.display = 'inline';
-    }//you have stopped here, you have to manage it
+    }
 
 
 
@@ -484,9 +502,13 @@ if(allowCHANGEproperties.checked)
 
     //originalINPUT.value         =wholeVALUE;
     //originalINPUT.placeholder   =wholeVALUE;
-    var result = active_kit.find(item => item[0] === Number(advance_kit_property.value));
-    child.innerHTML =
-        `<span style="color:blue">${result[2]}
+    if(advance_kit_property.value.startsWith("@@"))//checks if it's SCREEN, if yes, remove @@
+        var result = namingSCREENS.find(item => item[0] === Number(advance_kit_property.value.slice(2)));
+    else
+        var result = active_kit.find(item => item[0] === Number(advance_kit_property.value));
+
+    child.innerHTML =//if kit show kit list, if screen show screen list
+        `<span style="color:blue">${result[2] !== undefined ? result[2] : result[1]}
          <span style="color:green">${advance_value_property.value}</span></span>`;
 
 
@@ -661,7 +683,10 @@ function updateACTIONvalue(event,updateTYPE,fullID)
 {
     //const selectedValue = event.target.value || event;
     const selectedValue = typeof event === 'string' ? event : event.target.value;
-    let getkitIDfromSTRING = parseInt(selectedValue, 10);
+
+    let getkitIDfromSTRING=selectedValue;
+    if(!selectedValue.startsWith("@@"))
+        getkitIDfromSTRING = parseInt(selectedValue, 10);
     let newkitID_VALUE;
     switch (updateTYPE)
     {
@@ -684,6 +709,7 @@ function updateACTIONvalue(event,updateTYPE,fullID)
 
 
     dynamicMap.set(fullID, newkitID_VALUE);//adding ZERO as default value.
+    console.log(newkitID_VALUE);
 
 }
 

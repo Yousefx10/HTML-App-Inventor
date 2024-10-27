@@ -65,7 +65,10 @@ function doJOBS(COMMANDS,FINALvalue){
             break;
             case "changebackground":
                 //document.getElementById("live"+COMMANDS[1]).style.fontSize=COMMANDS[2];
-                ChangeBackground(COMMANDS[1],FINALvalue);
+                if(COMMANDS[1].startsWith("@@"))
+                    UpdateBackgroundColor("screen"+COMMANDS[1].slice(2),FINALvalue);
+                else
+                    ChangeBackground(COMMANDS[1],FINALvalue);
                 break;
         case "switchscreen":
 
@@ -89,7 +92,10 @@ function do_property(wholeVALUE)
         //[0] is always empty.
         //[1] is selected kit.
         //[2] is command to get.
-        const currentKIT="live"+wholeVALUE[1];
+        let currentKIT;
+        if(wholeVALUE[1].startsWith("@@")) currentKIT="screen"+wholeVALUE[1].slice(2);
+        else  currentKIT="live"+wholeVALUE[1];
+
         const currentKITstyle=window.getComputedStyle(document.getElementById(currentKIT));
         switch (wholeVALUE[2])//text
         {
@@ -210,7 +216,15 @@ function generalUPDATE(updateTYPE,kitID,newVALUE)
 
             break;
         case "changebackground":
-            GET_DOC_ID("active_kit",kitID).dataset.background =newVALUE;
+            if(kitID.startsWith("@@"))//if the selected is SCREEN
+                {
+                    //then update the SELECTED SCREEN new value.
+                    const foundRow = screenPROPERTIES.find(row => row[0] === kitID.slice(2));
+                    if (foundRow) foundRow[1] = "background:"+newVALUE;
+
+                }
+            else
+                GET_DOC_ID("active_kit",kitID).dataset.background =newVALUE;
                 break;
         case"switchscreen":
             SwitchTheScreen(newVALUE,true);
