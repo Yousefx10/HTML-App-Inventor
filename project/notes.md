@@ -179,7 +179,7 @@ maybe using this code in the future to replace the violation error related to do
 
 - Working On Enhancing The Error BAR.
 
-- Showing Only The Related Kit's To The Action Arrow.
+- Showing Only The Related Kit's To The Action Arrow.[DONE]
 
 - Adding Special Action For Added Kits like controlling Timer Duration or start it or stop it.
 
