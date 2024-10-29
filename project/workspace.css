@@ -27,6 +27,28 @@
     width: 100%;
     min-height: 10%;
     max-height: 15%;
+
+
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers items horizontally */
+    position: relative;
+
+}
+#status_Warning {
+    align-self: flex-start; /* Keeps it horizontally aligned to the start */
+    margin-top: auto;
+    margin-bottom: auto; /* Centers it vertically only */
+    margin-left: 5px;
+}
+
+
+#status_Info{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Centers both vertically and horizontally */
+
 }
 
 .workspaceDIV{
