@@ -50,6 +50,12 @@
     transform: translate(-50%, -50%); /* Centers both vertically and horizontally */
 
 }
+#status_Info p{ margin:0; }
+#status_Info #status_Title{
+    text-align: center;
+    font-weight: bolder;
+    font-size: x-large;
+}
 
 .workspaceDIV{
     overflow: auto;
