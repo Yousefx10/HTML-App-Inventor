@@ -63,14 +63,24 @@ function caseDetectError(kitGotAffected)
     
     console.log(`Number of values with ~|x~| [OR] //x//: ${Nowcount}`);
     
-    
-    
-    
-    
-    
-    
-    
+  
     
     Bugs+=Nowcount;
+    caseShowResult();
+}
 
+
+function caseShowResult()
+{
+    if(Bugs>0)//There's An Errors.
+    {
+        status_Title.innerText="Errors !!!";
+        status_Description.innerText="You Have About: "+Bugs+" Errors !";
+        status_Warning.style.display="block";
+    }
+    else{//Great, No Error Found.
+        status_Title.innerText="Perfect";
+        status_Description.innerText="Free Of Errors.";
+        status_Warning.style.display="none";
+    }
 }
