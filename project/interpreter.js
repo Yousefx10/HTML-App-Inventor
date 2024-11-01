@@ -23,6 +23,8 @@ const status_Title       =      document.getElementById("status_Title");
 const status_Description =      document.getElementById("status_Description");
 const status_Warning     =      document.getElementById("status_Warning");
 
+const BugsContent     =      document.getElementById("BugsContent");
+
 
 
 //so basically this function will be called if there's an error.
@@ -77,10 +79,43 @@ function caseShowResult()
         status_Title.innerText="Errors !!!";
         status_Description.innerText="You Have About: "+Bugs+" Errors !";
         status_Warning.style.display="block";
+
+
+
+        ListOfBugs.forEach((value, key) => {
+            if (Array.isArray(value)) {
+                value.forEach(item => {
+                    //console.log(`${key}: ${item}`);
+                    CreateDialogDOM(key,item);
+                });
+            } else {
+                //console.log(`${key}: ${value}`);
+                CreateDialogDOM(key,value);
+            }
+
+
+            
+        });
+
+        
     }
     else{//Great, No Error Found.
         status_Title.innerText="Perfect";
         status_Description.innerText="Free Of Errors.";
         status_Warning.style.display="none";
     }
+}
+
+
+function CreateDialogDOM(ActionID,ErrorDescription)
+{
+
+// Create a new <p> element
+const newParagraph = document.createElement("p");
+
+// Set the content of the <p> element
+newParagraph.textContent = ErrorDescription + `[ ${ActionID} ]`;
+// Add the <p> element to the target div
+BugsContent.appendChild(newParagraph);
+
 }
