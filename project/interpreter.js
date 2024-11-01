@@ -109,13 +109,10 @@ function caseShowResult()
         ListOfBugs.forEach((key, value) => {
             if (Array.isArray(value)) {
                 value.forEach(item => {
-                    //console.log(`${key}: ${item}`);
                     addRowToTable(key,item);
                 });
-            } else {
-                //console.log(`${key}: ${value}`);
-                addRowToTable(key,value);
-            }
+            } 
+            else addRowToTable(key,value);
 
 
             
@@ -142,9 +139,6 @@ function NavigateBug(ActionID)
     // Extract the number before "."
     let numberBeforeDot = ActionID.split('.')[0].replace(/[^0-9]*$/, '').slice(-1);
 
-console.log(ActionID);
-console.log(wordBeforeCode);
-console.log(numberBeforeDot);
     //STEP ONE : navigate to the main kit and act as i've tried to open it:
     const OpenMe = new Event('click'); // Create a new click event
     document.getElementById('code'+numberBeforeDot).dispatchEvent(OpenMe); // Dispatch the event
@@ -179,7 +173,6 @@ function addRowToTable(key,value) {
 
         row.appendChild(cell);
         row.appendChild(cell2);
-
 
 
     // Append the row to the table body

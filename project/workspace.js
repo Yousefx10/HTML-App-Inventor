@@ -393,10 +393,11 @@ function ADDINGsingleBLOCK(words,FullBlockID)
     {
         valueInput.style.display = 'none';
         var result = active_kit.find(item => item[0] === Number(words[2].split("//")[1]));
+        if(result)
         SetProperties.innerHTML =
             `<span style="color:blue">${result[2]}
 
-            <span style="color:green">${words[2].split("//")[2]}</span></span>`
+            <span style="color:green">${words[2].split("//")[2]}</span></span>`;
 
         SetProperties.style.display = 'inline';
     }
