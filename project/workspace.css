@@ -177,3 +177,29 @@ content: "*";
 .filterSPAN{
     color: goldenrod;
 }
+
+
+
+
+
+/* Bug's Dialog */
+dialog {
+    border: solid 1px #ccc;
+    border-radius: 8px;
+    padding: 20px;
+    width: 80%; /* Set width */
+    max-width: 400px; /* Maximum width */
+    position: fixed; /* Use fixed positioning */
+    top: 25%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Center using transform */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Optional: Add shadow for better visibility */
+    background-color: #fff; /* Background color for the dialog */
+
+    margin: 0;
+}
+
+/* Optional: Styles for the backdrop */
+dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent backdrop */
+}
