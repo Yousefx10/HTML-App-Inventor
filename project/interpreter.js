@@ -16,6 +16,8 @@ Duo To Ensure Focus And Task Performance
 
 //POINT TO START :
 let Bugs=0; //This Referes To Current Errors, Default as zero.
+let ListOfBugs = new Map(); //Contains The List Of Each Bug's And It's Description.
+
 
 const status_Title       =      document.getElementById("status_Title");
 const status_Description =      document.getElementById("status_Description");
@@ -38,9 +40,25 @@ function caseDetectError(kitGotAffected)
     //This Method Works, and it's telling me how count of errors is there.
     let Nowcount = 0;
     
-    dynamicMap.forEach(value => {
-        if (value.includes('~|'+kitGotAffected+'~|'))             Nowcount++;
-        if (value.includes('//'+kitGotAffected+'//'))             Nowcount++; //Reminder : Should improve the //1// soonly and using another indicator.
+    dynamicMap.forEach((value,key) => {
+        let noBugs=false;
+        let NowBugs=[];
+
+        if (value.includes('~|'+kitGotAffected+'~|'))
+        {
+            Nowcount++;
+            NowBugs.push("Issue With Missing KIT.");
+            noBugs=true;
+        }
+        if (value.includes('//'+kitGotAffected+'//'))//Reminder : Should improve the //1// soonly and using another indicator.      
+        {
+            Nowcount++;
+            NowBugs.push("Can't Get The Value For Missed KIT.");
+            noBugs=true;
+        }
+        
+        console.log(NowBugs);
+        if(noBugs)ListOfBugs.set(key, NowBugs);
     });
     
     console.log(`Number of values with ~|x~| [OR] //x//: ${Nowcount}`);
