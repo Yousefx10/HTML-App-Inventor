@@ -106,15 +106,15 @@ function caseShowResult()
         BugsContent.appendChild(table);
 
 
-        ListOfBugs.forEach((value, key) => {
+        ListOfBugs.forEach((key, value) => {
             if (Array.isArray(value)) {
                 value.forEach(item => {
                     //console.log(`${key}: ${item}`);
-                    addRowToTable([key, `[ ${item} ]`]);
+                    addRowToTable(key,item);
                 });
             } else {
                 //console.log(`${key}: ${value}`);
-                addRowToTable([key, `[ ${value} ]`]);
+                addRowToTable(key,value);
             }
 
 
@@ -132,24 +132,55 @@ function caseShowResult()
 
 
 
+function NavigateBug(ActionID)
+{
+    myDialog.close(); // Close the dialog
+
+    // Extract the word before "code"
+    let wordBeforeCode = ActionID.split('code')[0];
+
+    // Extract the number before "."
+    let numberBeforeDot = ActionID.split('.')[0].replace(/[^0-9]*$/, '').slice(-1);
+
+console.log(ActionID);
+console.log(wordBeforeCode);
+console.log(numberBeforeDot);
+    //STEP ONE : navigate to the main kit and act as i've tried to open it:
+    const OpenMe = new Event('click'); // Create a new click event
+    document.getElementById('code'+numberBeforeDot).dispatchEvent(OpenMe); // Dispatch the event
+
+    //STEP TWO : Select The desired event :
+    document.getElementById('event_'+wordBeforeCode.toUpperCase()).dispatchEvent(OpenMe); // Dispatch the event
+
+    document.getElementById(ActionID).style.background="blue";
+}
+
+
+
 
 
 // Function to add a row to the table with specified cell values
-function addRowToTable(cellValues) {
+function addRowToTable(key,value) {
     const row = document.createElement("tr");
 
-    let secondTD=false;
-    // Loop over cell values to create and append <td> for each cell
-    cellValues.forEach(value => {
+
         const cell = document.createElement("td");
-        cell.textContent = value;
-        if(secondTD)
-        cell.classList.add("special_td");
+        cell.textContent = key;
+
+        const cell2 = document.createElement("td");
+        cell2.textContent = value;
+        cell2.classList.add("special_td");
+
+
+            cell2.addEventListener('click', function() {     
+                NavigateBug(value);
+               });
+
 
         row.appendChild(cell);
+        row.appendChild(cell2);
 
-        secondTD=true;
-    });
+
 
     // Append the row to the table body
     tableBody.appendChild(row);
