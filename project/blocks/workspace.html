@@ -9,7 +9,7 @@
             </div>
 
             <div id="status_Info">
-                <p id="status_Title">Nice Work</p>
+                <p id="status_Title" onclick="DisplayDialog();">Nice Work</p>
                 <p id="status_Description">Everything Looks Great</p>
             </div>
 
@@ -20,30 +20,6 @@
             
                 <button id="closeDialog">Close</button>
             </dialog>
-            <script>/* 
-                //This Part Of Code is going to be activated soon.
-                const openDialogButton = document.getElementById('openDialog');
-                const closeDialogButton = document.getElementById('closeDialog');
-                const myDialog = document.getElementById('myDialog');
-        
-                // Open the dialog
-                openDialogButton.addEventListener('click', function() {
-                    myDialog.showModal(); // Open the dialog as modal
-                });
-        
-                // Close the dialog when the close button is clicked
-                closeDialogButton.addEventListener('click', function() {
-                    myDialog.close(); // Close the dialog
-                });
-        
-                // Close the dialog when clicking outside of it (on backdrop)
-                myDialog.addEventListener('click', function(event) {
-                    if (event.target === myDialog) {
-                        myDialog.close(); // Close the dialog
-                    }
-                });
-                */
-            </script>
 
 
 

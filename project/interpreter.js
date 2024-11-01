@@ -25,6 +25,12 @@ const status_Warning     =      document.getElementById("status_Warning");
 
 const BugsContent     =      document.getElementById("BugsContent");
 
+// Create a <table> element and a <tbody> (for rows)
+const table = document.createElement("table");
+const tableBody = document.createElement("tbody");
+
+
+
 
 
 //so basically this function will be called if there's an error.
@@ -34,11 +40,6 @@ function caseDetectError(kitGotAffected)
     //First Step is to check if the deleted kit have affected any action process.
     //First Of First step is to check for [ACTIVEactions array].
 
-    // const filteredActions = ACTIVEactions.filter(action => action.includes('.'+kitGotAffected));
-    //if (filteredActions.length > 0)         console.log(`Number of items with .x: ${filteredActions.length}`);
-    //else                                    console.log("No items with .x found in the array.");
-
-    
     //This Method Works, and it's telling me how count of errors is there.
     let Nowcount = 0;
     
@@ -71,7 +72,7 @@ function caseDetectError(kitGotAffected)
     caseShowResult();
 }
 
-
+//So This Function Displays Error Title And Shows The Table
 function caseShowResult()
 {
     if(Bugs>0)//There's An Errors.
@@ -81,16 +82,39 @@ function caseShowResult()
         status_Warning.style.display="block";
 
 
+        // Append the tbody to the table
+        table.appendChild(tableBody);
+        table.setAttribute("border", "1");
+        table.style.width="100%";
+
+        const row = document.createElement("tr");
+        const cell = document.createElement("th");
+        const cell2 = document.createElement("th");
+
+        cell.textContent = "Description";
+        row.appendChild(cell);
+        cell2.textContent = "Navigate";
+        row.appendChild(cell2);
+
+        tableBody.appendChild(row);
+
+
+
+        BugsContent.innerHTML="";//so it will be clear, for next use.
+
+        // Append the table to the target div
+        BugsContent.appendChild(table);
+
 
         ListOfBugs.forEach((value, key) => {
             if (Array.isArray(value)) {
                 value.forEach(item => {
                     //console.log(`${key}: ${item}`);
-                    CreateDialogDOM(key,item);
+                    addRowToTable([key, `[ ${item} ]`]);
                 });
             } else {
                 //console.log(`${key}: ${value}`);
-                CreateDialogDOM(key,value);
+                addRowToTable([key, `[ ${value} ]`]);
             }
 
 
@@ -107,15 +131,44 @@ function caseShowResult()
 }
 
 
-function CreateDialogDOM(ActionID,ErrorDescription)
-{
 
-// Create a new <p> element
-const newParagraph = document.createElement("p");
 
-// Set the content of the <p> element
-newParagraph.textContent = ErrorDescription + `[ ${ActionID} ]`;
-// Add the <p> element to the target div
-BugsContent.appendChild(newParagraph);
 
+// Function to add a row to the table with specified cell values
+function addRowToTable(cellValues) {
+    const row = document.createElement("tr");
+
+    let secondTD=false;
+    // Loop over cell values to create and append <td> for each cell
+    cellValues.forEach(value => {
+        const cell = document.createElement("td");
+        cell.textContent = value;
+        if(secondTD)
+        cell.classList.add("special_td");
+
+        row.appendChild(cell);
+
+        secondTD=true;
+    });
+
+    // Append the row to the table body
+    tableBody.appendChild(row);
 }
+
+
+
+
+
+
+//This Part Of Code is going to be activated soon.
+const closeDialogButton = document.getElementById('closeDialog');
+const myDialog = document.getElementById('myDialog');
+
+function DisplayDialog()
+{
+    myDialog.showModal();
+}
+// Close the dialog when the close button is clicked
+closeDialogButton.addEventListener('click', function() {
+    myDialog.close(); // Close the dialog
+});
