@@ -29,9 +29,8 @@ function caseDetectError(kitGotAffected)
 {
     //First Step is to check if the deleted kit have affected any action process.
     //First Of First step is to check for [ACTIVEactions array].
-    console.log('.'+kitGotAffected);
-   // const filteredActions = ACTIVEactions.filter(action => action.includes('.'+kitGotAffected));
 
+    // const filteredActions = ACTIVEactions.filter(action => action.includes('.'+kitGotAffected));
     //if (filteredActions.length > 0)         console.log(`Number of items with .x: ${filteredActions.length}`);
     //else                                    console.log("No items with .x found in the array.");
 
@@ -40,12 +39,11 @@ function caseDetectError(kitGotAffected)
     let Nowcount = 0;
     
     dynamicMap.forEach(value => {
-        if (value.includes('~|'+kitGotAffected+'~|')) {
-            Nowcount++;
-        }
+        if (value.includes('~|'+kitGotAffected+'~|'))             Nowcount++;
+        if (value.includes('//'+kitGotAffected+'//'))             Nowcount++; //Reminder : Should improve the //1// soonly and using another indicator.
     });
     
-    console.log(`Number of values with ~|1~|: ${Nowcount}`);
+    console.log(`Number of values with ~|x~| [OR] //x//: ${Nowcount}`);
     
     
     
