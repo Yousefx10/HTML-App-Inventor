@@ -195,27 +195,41 @@ function addRowToTable(key,value) {
 //this function tries to detect if any changes is related to fix old/past bugs.
 function CaseResolve(FullActionBlockID,CaseOfUpdate)
 {
-
-
+//NOTE: this function minus only one bug for every time it's called, NOT A GROUP OF BUGS TOGETHER,
+//>>>EXCEPT THE WHOLE ACTION GOT DELETED.<<<
     if(ListOfBugs.has(FullActionBlockID))
     {
         let RemovedErrorCode;
-        if(CaseOfUpdate=="kit"){
-            //error code : ERRkit
+                    
 
-            // Use filter to create a new array without the value to remove
-            RemovedErrorCode= ListOfBugs.get(FullActionBlockID).filter(value => value !== "ERRkit");
-        }
-        else{//so it's "mixed"
-            //error code : ERRvalue
-            RemovedErrorCode = ListOfBugs.get(FullActionBlockID).filter(value => value !== "ERRvalue");
+        if(CaseOfUpdate=="kit")        RemovedErrorCode = ListOfBugs.get(FullActionBlockID).filter(value => value !== "ERRkit");//error code : ERRkit
+        else if(CaseOfUpdate=="mixed") RemovedErrorCode = ListOfBugs.get(FullActionBlockID).filter(value => value !== "ERRvalue");//error code : ERRvalue
+        //else: DELETED
+        else {
+            //this means the whole action got deleted, will be called twice.
+            //Did Not Works:
+            //RemovedErrorCode = ListOfBugs.get(FullActionBlockID).filter(value => value !== "ERRkit" && value !== "ERRvalue");
+            //CaseResolve(FullActionBlockID,"kit");
+            //CaseResolve(FullActionBlockID,"mixed");
 
+            
+            if(ListOfBugs.get(FullActionBlockID).length>1) Bugs-=2;
+            else Bugs--;
+
+            delete ListOfBugs.FullActionBlockID;
+            caseShowResult();
+            return;
         }
 
         // Update the map with the new array
-        ListOfBugs.set(FullActionBlockID, RemovedErrorCode);
-        Bugs--;
-        caseShowResult();
+        if(RemovedErrorCode)
+        {
+            ListOfBugs.set(FullActionBlockID, RemovedErrorCode);
+            Bugs--;
+
+            caseShowResult();
+        }
+
     }
 
 }

@@ -563,6 +563,8 @@ function deleteblock(FullBlockID)
 
         dynamicBLOCKsize[CURRENTcountofActions+"."] = 0;
     }
+
+    CaseResolve(FullBlockID,"DELETED");
 }
 
 
