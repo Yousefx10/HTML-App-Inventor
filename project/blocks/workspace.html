@@ -4,12 +4,16 @@
     <div id="workspaceContainer">
 <!--Status Bar-->
         <div id="statusBAR">
-            <div id="status_Warning" style="display: none;">
+
+            <div id="status_Warning" style="display: none;" onclick="DisplayDialog();">
                 <img src="media/svg/warning.svg" style="height:40px"/>
+                <span id="bug_count" style="text-decoration: underline;">
+                        0
+                </span>
             </div>
 
             <div id="status_Info">
-                <p id="status_Title" onclick="DisplayDialog();">Nice Work</p>
+                <p id="status_Title">Nice Work</p>
                 <p id="status_Description">Everything Looks Great</p>
             </div>
 

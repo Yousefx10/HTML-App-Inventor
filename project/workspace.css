@@ -22,6 +22,10 @@
 }
 
 
+
+
+
+
 #statusBAR{
     background: #0090ff;
     width: 100%;
@@ -30,32 +34,42 @@
 
 
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center; /* Centers items horizontally */
     position: relative;
 
 }
-#status_Warning {
-    align-self: flex-start; /* Keeps it horizontally aligned to the start */
-    margin-top: auto;
-    margin-bottom: auto; /* Centers it vertically only */
-    margin-left: 5px;
+
+#status_Warning{
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
 }
-
-
+#status_Warning:hover{
+    background-color: #0001da30;
+}
 #status_Info{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%); /* Centers both vertically and horizontally */
+    box-sizing: border-box;
+    width: 25%;
+    display: flex; /* Use Flexbox for the right content */
+    flex-direction: column; /* Stack paragraphs vertically */
+    justify-content: center; /* Center the paragraphs vertically within the right content */
+    text-align: center; /* Center text within the right content */
+
 
 }
+
 #status_Info p{ margin:0; }
 #status_Info #status_Title{
     text-align: center;
     font-weight: bolder;
     font-size: x-large;
 }
+
+
+
+
 
 .workspaceDIV{
     overflow: auto;
@@ -208,8 +222,9 @@ dialog::backdrop {
 .special_td{
     text-align: center;
     cursor: pointer;
+    text-decoration: underline;
+    color: blue;
 }
 .special_td:hover{
-    color: blue;
-    text-decoration: underline;
+    color: blueviolet;
 }

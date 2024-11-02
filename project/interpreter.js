@@ -22,6 +22,7 @@ let ListOfBugs = new Map(); //Contains The List Of Each Bug's And It's Descripti
 const status_Title       =      document.getElementById("status_Title");
 const status_Description =      document.getElementById("status_Description");
 const status_Warning     =      document.getElementById("status_Warning");
+const bug_count          =      document.getElementById("bug_count");
 
 const BugsContent        =      document.getElementById("BugsContent");
 
@@ -91,8 +92,8 @@ function caseShowResult()
     {
         status_Title.innerText="Errors !!!";
         status_Description.innerText="You Have About: "+Bugs+" Errors !";
-        status_Warning.style.display="block";
-
+        status_Warning.style.display="flex";
+        bug_count.textContent=Bugs;
 
         const row = document.createElement("tr");
         const cell = document.createElement("th");
@@ -166,7 +167,7 @@ function addRowToTable(key,value) {
 
 
         const cellKEY = document.createElement("td");
-        cellKEY.textContent = key;
+        cellKEY.textContent = "Jump In";
         cellKEY.classList.add("special_td");
 
         const cellVALUE = document.createElement("td");
@@ -217,6 +218,7 @@ function CaseResolve(FullActionBlockID,CaseOfUpdate)
         // Update the map with the new array
         if(RemovedErrorCode)
         {
+            console.log("so it's >>" +RemovedErrorCode);
             ListOfBugs.set(FullActionBlockID, RemovedErrorCode);
             Bugs--;
 
