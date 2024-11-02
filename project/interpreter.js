@@ -203,8 +203,18 @@ function CaseResolve(FullActionBlockID,CaseOfUpdate)
         let RemovedErrorCode;
                     
 
-        if(CaseOfUpdate=="kit")        RemovedErrorCode = ListOfBugs.get(FullActionBlockID).filter(value => value !== "ERRkit");//error code : ERRkit
-        else if(CaseOfUpdate=="mixed") RemovedErrorCode = ListOfBugs.get(FullActionBlockID).filter(value => value !== "ERRvalue");//error code : ERRvalue
+        if(CaseOfUpdate=="kit")
+        {
+            if(ListOfBugs.get(FullActionBlockID).includes("ERRkit"))
+            RemovedErrorCode = ListOfBugs.get(FullActionBlockID).filter(value => value !== "ERRkit");//error code : ERRkit
+            else return;
+        }
+        else if(CaseOfUpdate=="mixed") 
+        {
+            if(ListOfBugs.get(FullActionBlockID).includes("ERRvalue"))
+            RemovedErrorCode = ListOfBugs.get(FullActionBlockID).filter(value => value !== "ERRvalue");//error code : ERRvalue
+            else return;
+        }
         //else: DELETED
         else {
             if(ListOfBugs.get(FullActionBlockID).length>1) Bugs-=2;
@@ -216,14 +226,12 @@ function CaseResolve(FullActionBlockID,CaseOfUpdate)
         }
 
         // Update the map with the new array
-        if(RemovedErrorCode)
-        {
-            console.log("so it's >>" +RemovedErrorCode);
-            ListOfBugs.set(FullActionBlockID, RemovedErrorCode);
+
+            if(RemovedErrorCode.length === 0)   ListOfBugs.delete(FullActionBlockID);
+            else                                ListOfBugs.set(FullActionBlockID, RemovedErrorCode);
             Bugs--;
 
             caseShowResult();
-        }
 
     }
 
