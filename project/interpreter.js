@@ -90,8 +90,8 @@ function caseShowResult()
     tableBody.innerHTML="";
     if(Bugs>0)//There's An Errors.
     {
-        status_Title.innerText="Errors !!!";
-        status_Description.innerText="You Have About: "+Bugs+" Errors !";
+        status_Title.innerText="Hold On !";
+        status_Description.innerText="We encountered some problems.";
         status_Warning.style.display="flex";
         bug_count.textContent=Bugs;
 

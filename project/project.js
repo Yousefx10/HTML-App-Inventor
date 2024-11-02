@@ -855,6 +855,11 @@ function stopThisTimer(kitID) {
     //this function will change ACTIVErun that will affect the runnable buttons and timers in the iframe
     function runTHEproject(butt)
     {
+        if(Bugs>0)
+        {
+            alert("You Can't Run Without Clearing All The Errors Inside Your Code Logic.");
+            return;
+        }
         ACTIVErun=!ACTIVErun;
         document.getElementById('activeDOT').classList.toggle('recording-dot');
         butt.classList.toggle("btn-active-start"); // Toggle the stop class
