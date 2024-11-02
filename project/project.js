@@ -537,8 +537,8 @@ function REMOVINGtime({multiKIT=false,kits,ISLOOPED=false,kitIDIDID}) {
         GET_DOC_ID("code", current_kitID).remove();
         ACTIVEactions = ACTIVEactions.filter(action => !action.includes("code" + current_kitID + "."));
 
-        dynamicMap.forEach((_, key) => key.includes("code" + current_kitID + ".") && dynamicMap.delete(key));
-
+        dynamicMap.forEach((_, key) => key.includes("code" + current_kitID + ".") && dynamicMap.delete(key) && CaseResolve(key,"DELETED"));
+        
         //the old way :
         //Object.keys(dynamicBLOCKsize).forEach(key => key.includes("code"+current_kitID+".") && delete dynamicBLOCKsize[key]);
 
