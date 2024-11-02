@@ -4,7 +4,7 @@
 
     Version : 0.0;
 */
-const Build_Version='24/10/28';//YY/MM/DD.
+const Build_Version='24/11/02';//YY/MM/DD.
 
 /*
 Big Note:
@@ -23,12 +23,23 @@ const status_Title       =      document.getElementById("status_Title");
 const status_Description =      document.getElementById("status_Description");
 const status_Warning     =      document.getElementById("status_Warning");
 
-const BugsContent     =      document.getElementById("BugsContent");
+const BugsContent        =      document.getElementById("BugsContent");
+
+//this code is important, i'll store a code for each type of proplem, and then it will refers to it's description also
+const BugsCodes          =      new Map([
+                                ["ERRkit", "Issue With Missing KIT."],
+                                ["ERRvalue", "Can't Get The Value For Missed KIT."]
+                            ]);
+
+
 
 // Create a <table> element and a <tbody> (for rows)
 const table = document.createElement("table");
 const tableBody = document.createElement("tbody");
-
+        // Append the tbody to the table
+        table.appendChild(tableBody);
+        table.setAttribute("border", "1");
+        table.style.width="100%";
 
 
 
@@ -44,24 +55,24 @@ function caseDetectError(kitGotAffected)
     let Nowcount = 0;
     
     dynamicMap.forEach((value,key) => {
-        let noBugs=false;
+        let noBugs=true;
         let NowBugs=[];
 
         if (value.includes('~|'+kitGotAffected+'~|'))
         {
             Nowcount++;
-            NowBugs.push("Issue With Missing KIT.");
-            noBugs=true;
+            NowBugs.push("ERRkit");//referes to the error type i've created in the dynamic map.
+            noBugs=false;
         }
-        if (value.includes('//'+kitGotAffected+'//'))//Reminder : Should improve the //1// soonly and using another indicator.      
+        if (value.includes('//'+kitGotAffected+'//'))//BIG Reminder : Should improve the //1// soonly and using another indicator.      
         {
             Nowcount++;
-            NowBugs.push("Can't Get The Value For Missed KIT.");
-            noBugs=true;
+            NowBugs.push("ERRvalue");//referes to the error type i've created in the dynamic map.
+            noBugs=false;
         }
         
         console.log(NowBugs);
-        if(noBugs)ListOfBugs.set(key, NowBugs);
+        if(!noBugs)ListOfBugs.set(key, NowBugs);
     });
     
     console.log(`Number of values with ~|x~| [OR] //x//: ${Nowcount}`);
@@ -75,17 +86,13 @@ function caseDetectError(kitGotAffected)
 //So This Function Displays Error Title And Shows The Table
 function caseShowResult()
 {
+    tableBody.innerHTML="";
     if(Bugs>0)//There's An Errors.
     {
         status_Title.innerText="Errors !!!";
         status_Description.innerText="You Have About: "+Bugs+" Errors !";
         status_Warning.style.display="block";
 
-
-        // Append the tbody to the table
-        table.appendChild(tableBody);
-        table.setAttribute("border", "1");
-        table.style.width="100%";
 
         const row = document.createElement("tr");
         const cell = document.createElement("th");
@@ -106,13 +113,13 @@ function caseShowResult()
         BugsContent.appendChild(table);
 
 
-        ListOfBugs.forEach((key, value) => {
+        ListOfBugs.forEach((value,key) => {
             if (Array.isArray(value)) {
                 value.forEach(item => {
-                    addRowToTable(key,item);
+                    addRowToTable(key,BugsCodes.get(item));
                 });
             } 
-            else addRowToTable(key,value);
+            else addRowToTable(key,BugsCodes.get(value));
 
 
             
@@ -158,26 +165,73 @@ function addRowToTable(key,value) {
     const row = document.createElement("tr");
 
 
-        const cell = document.createElement("td");
-        cell.textContent = key;
+        const cellKEY = document.createElement("td");
+        cellKEY.textContent = key;
+        cellKEY.classList.add("special_td");
 
-        const cell2 = document.createElement("td");
-        cell2.textContent = value;
-        cell2.classList.add("special_td");
+        const cellVALUE = document.createElement("td");
+        cellVALUE.textContent = value;
 
 
-            cell2.addEventListener('click', function() {     
-                NavigateBug(value);
+        cellKEY.addEventListener('click', function() {     
+                NavigateBug(key);
                });
 
+        row.appendChild(cellVALUE);//value is first. [ description ]
+        row.appendChild(cellKEY);//then key is last. [refer to navigate]
 
-        row.appendChild(cell);
-        row.appendChild(cell2);
+
+
 
 
     // Append the row to the table body
     tableBody.appendChild(row);
 }
+
+
+
+
+
+//this function tries to detect if any changes is related to fix old/past bugs.
+function CaseResolve(FullActionBlockID,CaseOfUpdate)
+{
+
+
+    if(ListOfBugs.has(FullActionBlockID))
+    {
+        let RemovedErrorCode;
+        if(CaseOfUpdate=="kit"){
+            //error code : ERRkit
+
+            // Use filter to create a new array without the value to remove
+            RemovedErrorCode= ListOfBugs.get(FullActionBlockID).filter(value => value !== "ERRkit");
+        }
+        else{//so it's "mixed"
+            //error code : ERRvalue
+            RemovedErrorCode = ListOfBugs.get(FullActionBlockID).filter(value => value !== "ERRvalue");
+
+        }
+
+        // Update the map with the new array
+        ListOfBugs.set(FullActionBlockID, RemovedErrorCode);
+        Bugs--;
+        caseShowResult();
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

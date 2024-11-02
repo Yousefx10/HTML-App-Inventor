@@ -714,6 +714,8 @@ function updateACTIONvalue(event,updateTYPE,fullID)
     dynamicMap.set(fullID, newkitID_VALUE);//adding ZERO as default value.
     console.log(newkitID_VALUE);
 
+
+    CaseResolve(fullID,updateTYPE);
 }
 
 

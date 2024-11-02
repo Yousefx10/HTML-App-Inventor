@@ -553,6 +553,8 @@ function REMOVINGtime({multiKIT=false,kits,ISLOOPED=false,kitIDIDID}) {
     //this will be called to give the interpreter a notification about the deleted kit if it will affect something.
     caseDetectError(current_kitID);
     //current_kitID will refer to currently deleted kit, even if it's from DELETING LOOP LIKE DELETED SCREEN.
+
+    commonPROJECTclearWORKSPACE();// no matter what got deleted, workspace should be clean now.
 }
 
 
