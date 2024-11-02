@@ -228,3 +228,8 @@ dialog::backdrop {
 .special_td:hover{
     color: blueviolet;
 }
+
+#BugsContent{
+    max-height: 210px;
+    overflow: auto;
+}

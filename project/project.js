@@ -519,6 +519,7 @@ function REMOVINGtime({multiKIT=false,kits,ISLOOPED=false,kitIDIDID}) {
     active_kit = active_kit.filter(kit => kit[0] != current_kitID);
 
 
+    if(!ISLOOPED)//this line is so important, so won't through an error if multi kit is trying to be removed.
     GET_DOC_ID('active_kit', current_kitID).remove();
 
     if(!ISLOOPED)//so the entire screen will automatically be deleted, no need to call this in GROUP OF DELETETION.
@@ -555,6 +556,12 @@ function REMOVINGtime({multiKIT=false,kits,ISLOOPED=false,kitIDIDID}) {
     //current_kitID will refer to currently deleted kit, even if it's from DELETING LOOP LIKE DELETED SCREEN.
 
     commonPROJECTclearWORKSPACE();// no matter what got deleted, workspace should be clean now.
+
+    if(ACTIVErun)
+        if(Bugs>0)
+        {
+            runTHEproject(document.getElementById("RunButton"),true);
+        }
 }
 
 
@@ -853,13 +860,25 @@ function stopThisTimer(kitID) {
 
 
     //this function will change ACTIVErun that will affect the runnable buttons and timers in the iframe
-    function runTHEproject(butt)
+    function runTHEproject(butt,ForeClose)
     {
+        if(ForeClose)
+        {
+            ACTIVErun=false;
+            butt.classList.add("btn-active-start");         // Toggle the stop class
+            butt.classList.remove("btn-active-stop");       // Toggle the start class
+            document.getElementById('activeDOT').classList.remove('recording-dot');
+            return;
+        }
         if(Bugs>0)
         {
             alert("You Can't Run Without Clearing All The Errors Inside Your Code Logic.");
             return;
         }
+
+
+
+        //Normal As Switching From [on to off]:
         ACTIVErun=!ACTIVErun;
         document.getElementById('activeDOT').classList.toggle('recording-dot');
         butt.classList.toggle("btn-active-start"); // Toggle the stop class

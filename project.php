@@ -78,7 +78,7 @@
 
     <div class='project_div' id="project_live">
         <div style="text-align:center;width:17em">
-        <button onclick="runTHEproject(this);" Style="width:50%;margin:auto" class="btn-active-start">Acts</button>
+        <button id="RunButton" onclick="runTHEproject(this);" Style="width:50%;margin:auto" class="btn-active-start">Acts</button>
         </div>
 
   <div class="status-bar" id="con">
