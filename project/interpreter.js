@@ -206,17 +206,10 @@ function CaseResolve(FullActionBlockID,CaseOfUpdate)
         else if(CaseOfUpdate=="mixed") RemovedErrorCode = ListOfBugs.get(FullActionBlockID).filter(value => value !== "ERRvalue");//error code : ERRvalue
         //else: DELETED
         else {
-            //this means the whole action got deleted, will be called twice.
-            //Did Not Works:
-            //RemovedErrorCode = ListOfBugs.get(FullActionBlockID).filter(value => value !== "ERRkit" && value !== "ERRvalue");
-            //CaseResolve(FullActionBlockID,"kit");
-            //CaseResolve(FullActionBlockID,"mixed");
-
-            
             if(ListOfBugs.get(FullActionBlockID).length>1) Bugs-=2;
             else Bugs--;
 
-            delete ListOfBugs.FullActionBlockID;
+            ListOfBugs.delete(FullActionBlockID);
             caseShowResult();
             return;
         }
