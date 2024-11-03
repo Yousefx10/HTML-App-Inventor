@@ -29,7 +29,8 @@ const BugsContent        =      document.getElementById("BugsContent");
 //this code is important, i'll store a code for each type of proplem, and then it will refers to it's description also
 const BugsCodes          =      new Map([
                                 ["ERRkit", "Issue With Missing KIT."],
-                                ["ERRvalue", "Can't Get The Value For Missed KIT."]
+                                ["ERRvalue", "Can't Get The Value For Missed KIT."],
+                                ["ERRscreen", "No Founded Or Missed Screen."]
                             ]);
 
 
@@ -58,18 +59,28 @@ function caseDetectError(kitGotAffected)
     dynamicMap.forEach((value,key) => {
         let noBugs=true;
         let NowBugs=[];
-
-        if (value.includes('~|'+kitGotAffected+'~|'))
+        if(kitGotAffected.startsWith('@@'))//if it's SCREEN.
         {
-            Nowcount++;
-            NowBugs.push("ERRkit");//referes to the error type i've created in the dynamic map.
-            noBugs=false;
+            if(value.split('~|')[2] ==  kitGotAffected.slice(2))//if actiong leads to delete screen, and screen was founded in the action list, throw an error :)
+            {
+                Nowcount++;
+                NowBugs.push("ERRscreen");//referes to the error type i've created in the dynamic map.
+                noBugs=false;
+            }
         }
-        if (value.includes('//'+kitGotAffected+'//'))//BIG Reminder : Should improve the //1// soonly and using another indicator.      
-        {
-            Nowcount++;
-            NowBugs.push("ERRvalue");//referes to the error type i've created in the dynamic map.
-            noBugs=false;
+        else{//if it's normal kit but not SCREEN.
+            if (value.includes('~|'+kitGotAffected+'~|'))
+                {
+                    Nowcount++;
+                    NowBugs.push("ERRkit");//referes to the error type i've created in the dynamic map.
+                    noBugs=false;
+                }
+                if (value.includes('//'+kitGotAffected+'//'))//BIG Reminder : Should improve the //1// soonly and using another indicator.      
+                {
+                    Nowcount++;
+                    NowBugs.push("ERRvalue");//referes to the error type i've created in the dynamic map.
+                    noBugs=false;
+                }
         }
         
         console.log(NowBugs);
@@ -205,20 +216,20 @@ function CaseResolve(FullActionBlockID,CaseOfUpdate)
 
         if(CaseOfUpdate=="kit")
         {
-            if(ListOfBugs.get(FullActionBlockID).includes("ERRkit"))
-            RemovedErrorCode = ListOfBugs.get(FullActionBlockID).filter(value => value !== "ERRkit");//error code : ERRkit
+            if(["ERRkit", "ERRscreen"].some(word => ListOfBugs.get(FullActionBlockID).includes(word)))
+            RemovedErrorCode = ListOfBugs.get(FullActionBlockID).filter(value => value !== "ERRkit");//error code : ERRkit OR ERRscreen
             else return;
         }
         else if(CaseOfUpdate=="mixed") 
         {
-            if(ListOfBugs.get(FullActionBlockID).includes("ERRvalue"))
-            RemovedErrorCode = ListOfBugs.get(FullActionBlockID).filter(value => value !== "ERRvalue");//error code : ERRvalue
+            if(["ERRvalue", "ERRscreen"].some(word => ListOfBugs.get(FullActionBlockID).includes(word)))
+            RemovedErrorCode = ListOfBugs.get(FullActionBlockID).filter(value => value !== "ERRvalue");//error code : ERRvalue OR ERRscreen
             else return;
         }
         //else: DELETED
         else {
             if(ListOfBugs.get(FullActionBlockID).length>1) Bugs-=2;
-            else {console.log("A"+Bugs);Bugs--;console.log("B"+Bugs);}
+            else Bugs--;
 
             ListOfBugs.delete(FullActionBlockID);
             caseShowResult();

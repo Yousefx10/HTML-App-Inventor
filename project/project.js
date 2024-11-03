@@ -1138,6 +1138,8 @@ function stopThisTimer(kitID) {
 
         live_iframe.contentWindow.deleteENTIREscreen(deletedSCREEN);
 
+        caseDetectError("@@"+deletedSCREEN);//checks for error will happen if the screen got deleted.
+
     }
 
 //this function is used to ReName the screen from ScreenManager.
