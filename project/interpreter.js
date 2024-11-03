@@ -61,7 +61,7 @@ function caseDetectError(kitGotAffected)
         let NowBugs=[];
         if(kitGotAffected.startsWith('@@'))//if it's SCREEN.
         {
-            if(value.split('~|')[2] ==  kitGotAffected.slice(2))//if actiong leads to delete screen, and screen was founded in the action list, throw an error :)
+            if(value.split(ProjectDelimiter)[2] ==  kitGotAffected.slice(2))//if actiong leads to delete screen, and screen was founded in the action list, throw an error :)
             {
                 Nowcount++;
                 NowBugs.push("ERRscreen");//referes to the error type i've created in the dynamic map.
@@ -69,7 +69,7 @@ function caseDetectError(kitGotAffected)
             }
         }
         else{//if it's normal kit but not SCREEN.
-            if (value.includes('~|'+kitGotAffected+'~|'))
+            if (value.includes(ProjectDelimiter+kitGotAffected+ProjectDelimiter))
                 {
                     Nowcount++;
                     NowBugs.push("ERRkit");//referes to the error type i've created in the dynamic map.
@@ -87,7 +87,6 @@ function caseDetectError(kitGotAffected)
         if(!noBugs)ListOfBugs.set(key, NowBugs);
     });
     
-    console.log(`Number of values with ~|x~| [OR] //x//: ${Nowcount}`);
     
   
     
@@ -217,17 +216,17 @@ function CaseResolve(FullActionBlockID,CaseOfUpdate)
         if(CaseOfUpdate=="kit")
         {
             if(["ERRkit", "ERRscreen"].some(word => ListOfBugs.get(FullActionBlockID).includes(word)))
-            RemovedErrorCode = ListOfBugs.get(FullActionBlockID).filter(value => value !== "ERRkit");//error code : ERRkit OR ERRscreen
+            RemovedErrorCode = ListOfBugs.get(FullActionBlockID).filter(value => value !== "ERRkit");//error code : (ERRkit) OR (ERRscreen)
             else return;
         }
         else if(CaseOfUpdate=="mixed") 
         {
             if(["ERRvalue", "ERRscreen"].some(word => ListOfBugs.get(FullActionBlockID).includes(word)))
-            RemovedErrorCode = ListOfBugs.get(FullActionBlockID).filter(value => value !== "ERRvalue");//error code : ERRvalue OR ERRscreen
+            RemovedErrorCode = ListOfBugs.get(FullActionBlockID).filter(value => value !== "ERRvalue");//error code : (ERRvalue) OR (ERRscreen)
             else return;
         }
         //else: DELETED
-        else {
+        else if(CaseOfUpdate=="DELETED"){
             if(ListOfBugs.get(FullActionBlockID).length>1) Bugs-=2;
             else Bugs--;
 
