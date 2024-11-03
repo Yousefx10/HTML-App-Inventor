@@ -2,9 +2,9 @@
     THIS FILE CHECKS FOR ERRORS COULD HAPPEN.
     THEN ALERTING THE ERRORS BEFORE STARTING / DEBUGGING THE PROGRAM.
 
-    Version : 0.0;
+    Version : 0.1;
 */
-const Build_Version='24/11/02';//YY/MM/DD.
+const Build_Version='24/11/03';//YY/MM/DD.
 
 /*
 Big Note:

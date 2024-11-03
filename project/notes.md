@@ -177,7 +177,7 @@ maybe using this code in the future to replace the violation error related to do
 
 - Confirm Alert Before Deleting An Kit.
 
-- Working On Enhancing The Error BAR.
+- Working On Enhancing The Error BAR.[DONE]
 
 - Showing Only The Related Kit's To The Action Arrow.[DONE]
 
