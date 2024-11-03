@@ -218,7 +218,7 @@ function CaseResolve(FullActionBlockID,CaseOfUpdate)
         //else: DELETED
         else {
             if(ListOfBugs.get(FullActionBlockID).length>1) Bugs-=2;
-            else Bugs--;
+            else {console.log("A"+Bugs);Bugs--;console.log("B"+Bugs);}
 
             ListOfBugs.delete(FullActionBlockID);
             caseShowResult();

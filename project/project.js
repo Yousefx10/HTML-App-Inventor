@@ -562,7 +562,7 @@ function REMOVINGtime({multiKIT=false,kits,ISLOOPED=false,kitIDIDID}) {
     if(ACTIVErun)
         if(Bugs>0)
         {
-            runTHEproject(document.getElementById("RunButton"),true);
+            runTHEproject(document.getElementById("RunButton"),true);//force stop.
         }
 }
 
@@ -1114,7 +1114,8 @@ function stopThisTimer(kitID) {
         document.getElementById("optionScreen"+deletedSCREEN).remove();
 
         //selecting all the kits inside timeline div
-        const goingTObeDELETED = document.querySelectorAll('#screen'+deletedSCREEN+ ' *');
+        const SelectedContainerForKits = document.getElementById('screen'+deletedSCREEN);
+        const goingTObeDELETED = SelectedContainerForKits.querySelectorAll(".project_timeline_kit");
         const ids = [];
 
         goingTObeDELETED.forEach(element => {
