@@ -580,7 +580,7 @@ function REMOVINGtime({multiKIT=false,kits,ISLOOPED=false,kitIDIDID}) {
     if(ACTIVErun)
         if(Bugs>0)
         {
-            runTHEproject(true);//force stop.
+            runTHEproject(true);//Force stop.
         }
 }
 
@@ -880,14 +880,12 @@ function stopThisTimer(kitID) {
 
 
     //this function will change ACTIVErun that will affect the runnable buttons and timers in the iframe
-    function runTHEproject(ForeClose)
+    function runTHEproject(ForceClose)
     {
-        if(ForeClose)
+        if(ForceClose)
         {
             ACTIVErun=false;
-            //RunButton.classList.add("btn-active-start");         // Toggle the stop class
-            //RunButton.classList.remove("btn-active-stop");       // Toggle the start class
-            RunButton.src="media/svg/pause.svg";
+            RunButton.src="media/svg/warning2.svg";
             document.getElementById('activeDOT').classList.remove('recording-dot');
             return;
         }
@@ -902,8 +900,6 @@ function stopThisTimer(kitID) {
         //Normal As Switching From [on to off]:
         ACTIVErun=!ACTIVErun;
         document.getElementById('activeDOT').classList.toggle('recording-dot');
-        //RunButton.classList.toggle("btn-active-start"); // Toggle the stop class
-        //RunButton.classList.toggle("btn-active-stop"); // Toggle the start class
         if(ACTIVErun)   RunButton.src="media/svg/pause.svg";
         else            RunButton.src="media/svg/play.svg";
         

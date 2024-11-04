@@ -136,7 +136,7 @@ function caseShowResult()
             
         });
 
-        
+        runTHEproject(true);//Prevent User From Running App.
     }
     else{//Great, No Error Found.
         status_Title.innerText="Perfect";
