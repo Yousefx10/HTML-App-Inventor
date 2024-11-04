@@ -499,8 +499,6 @@ function SAVINGtime() {
 
 
 function REMOVINGtime({multiKIT=false,kits,ISLOOPED=false,kitIDIDID}) {
-    //YOU have issue related to deleting the whole screen, manage it then look for improving the error bar with screens.
-
     var current_kitID;
     if(ISLOOPED)     current_kitID = kitIDIDID;
     else             current_kitID = hidden_kitID.value;

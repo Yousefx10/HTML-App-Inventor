@@ -596,47 +596,47 @@ function action_add(actionType)
     //i've correct this code by replacing the zero with real numbers
     var words;
     var tempLONGvalue = currentACTIVEevent+'code'+CurrentkitID+"."+temp_dynamicBLOCKsize;
-
+    var DefaultFirstKit= active_kit[0][0];
     switch (actionType)
     {
         case "ChangeText":
-            dynamicMap.set(tempLONGvalue, 'changetext'+ProjectDelimiter+'0'+ProjectDelimiter+'This Is New Value');//adding ZERO as default value.
+            dynamicMap.set(tempLONGvalue, 'changetext'+ProjectDelimiter+DefaultFirstKit+ProjectDelimiter+'This Is New Value');//adding ZERO as default value.
 
              words = dynamicMap.get(tempLONGvalue).split(ProjectDelimiter);
 
             break;
         case "ChangeColor":
-            dynamicMap.set(tempLONGvalue, 'changecolor'+ProjectDelimiter+'0'+ProjectDelimiter+'blue');//adding ZERO as default kitID value.
+            dynamicMap.set(tempLONGvalue, 'changecolor'+ProjectDelimiter+DefaultFirstKit+ProjectDelimiter+'blue');//adding ZERO as default kitID value.
 
             words = dynamicMap.get(tempLONGvalue).split(ProjectDelimiter);
 
             break;
         case "ChangeVisibility":
-            dynamicMap.set(tempLONGvalue, 'changevisibility'+ProjectDelimiter+'0'+ProjectDelimiter+'Hidden');//as default will be hidden
+            dynamicMap.set(tempLONGvalue, 'changevisibility'+ProjectDelimiter+DefaultFirstKit+ProjectDelimiter+'Hidden');//as default will be hidden
 
             words = dynamicMap.get(tempLONGvalue).split(ProjectDelimiter);
 
             break;
         case "ChangeFontSize":
-            dynamicMap.set(tempLONGvalue, 'changefontsize'+ProjectDelimiter+'0'+ProjectDelimiter+'medium');//as default will be Medium
+            dynamicMap.set(tempLONGvalue, 'changefontsize'+ProjectDelimiter+DefaultFirstKit+ProjectDelimiter+'medium');//as default will be Medium
 
             words = dynamicMap.get(tempLONGvalue).split(ProjectDelimiter);
 
             break;
         case "ChangeAlignment":
-            dynamicMap.set(tempLONGvalue, 'changealignment'+ProjectDelimiter+'0'+ProjectDelimiter+'Left');//as default will be Medium
+            dynamicMap.set(tempLONGvalue, 'changealignment'+ProjectDelimiter+DefaultFirstKit+ProjectDelimiter+'Left');//as default will be Medium
 
             words = dynamicMap.get(tempLONGvalue).split(ProjectDelimiter);
 
             break;
             case "ChangeBackground":
-                dynamicMap.set(tempLONGvalue, 'changebackground'+ProjectDelimiter+'0'+ProjectDelimiter+'White');//as default will be White
+                dynamicMap.set(tempLONGvalue, 'changebackground'+ProjectDelimiter+DefaultFirstKit+ProjectDelimiter+'White');//as default will be White
     
                 words = dynamicMap.get(tempLONGvalue).split(ProjectDelimiter);
     
                 break;
         case "SwitchScreen":
-            dynamicMap.set(tempLONGvalue, 'switchscreen'+ProjectDelimiter+'0'+ProjectDelimiter+LIVE_SCREEN);//as default will be Medium
+            dynamicMap.set(tempLONGvalue, 'switchscreen'+ProjectDelimiter+DefaultFirstKit+ProjectDelimiter+LIVE_SCREEN);//as default will be Medium
 
             words = dynamicMap.get(tempLONGvalue).split(ProjectDelimiter);
             break;
