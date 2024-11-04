@@ -24,6 +24,7 @@
     </button>
 
     </div>
+
     <div style="text-align:center;position:absolute;z-index:1;">
         <button id="RunButton" onclick="runTHEproject();" Style="width:50%;margin:auto" class="btn-active-start">Acts</button>
     </div>
@@ -152,6 +153,9 @@ function switchScreen()
         screen2.style.transform = 'translateY(0)'; // Move screen 2 into view
         ScreensManager(false,true);
     }
+
+    //Hiding, Or Showing The Act Button, maybe will need better enhance in the future to remove the animation.
+    RunButton.parentElement.classList.toggle("ToggleLikeSwitchScreen");
 }
 </script>
 

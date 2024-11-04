@@ -596,7 +596,9 @@ function action_add(actionType)
     //i've correct this code by replacing the zero with real numbers
     var words;
     var tempLONGvalue = currentACTIVEevent+'code'+CurrentkitID+"."+temp_dynamicBLOCKsize;
-    var DefaultFirstKit= active_kit[0][0];
+
+    var DefaultFirstKit= active_kit.find(row => !notAllowedKTIS.includes(row[1]))?.[0] || "0";//gets the first kit THAT IT'S NOT OF DENIED LIST.
+    console.log('[[['+DefaultFirstKit);
     switch (actionType)
     {
         case "ChangeText":

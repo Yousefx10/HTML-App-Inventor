@@ -5,3 +5,9 @@
     -webkit-user-select: none; /* For Safari */
     -moz-user-select: none;    /* For Firefox */
 }
+
+/* this is used to toggle the view once screen is changed from project to workspace,
+i've add it here instead of project.css  because maybe i'll use it again with another element */
+.ToggleLikeSwitchScreen{
+    z-index: 1 !important;
+}

@@ -21,7 +21,6 @@ function correctDialogSize()
 {
     //to resize location of the Run Acts Button
     positionACTbutton();
-
     ScreensManager(true);
     if(currentDIALOGbutton!=null)
         showDialog(currentDIALOGbutton,true);
