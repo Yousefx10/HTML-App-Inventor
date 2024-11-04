@@ -4,7 +4,7 @@
 
     Version : 0.1;
 */
-const Build_Version='24/11/04';//YY/MM/DD.
+const Build_Version='24/11/05';//YY/MM/DD.
 
 /*
 Big Note:
@@ -152,6 +152,7 @@ function caseShowResult()
 function NavigateBug(ActionID)
 {
     myDialog.close(); // Close the dialog
+    if (!(screen1.style.transform === 'translateY(-100%)')) switchScreen();//Move From Project Screen To Workspace Screen.
 
     // Extract the word before "code"
     let wordBeforeCode = ActionID.split('code')[0];

@@ -140,18 +140,17 @@ Code Workspace⬇️
 <?php include "project/blocks/workspace.html"?>
 
 <script>
+        const screen1 = document.getElementById('project_container');
+        const screen2 = document.getElementById('CodeWorkspace');
 function switchScreen()
 {
-    const screen1 = document.getElementById('project_container');
-    const screen2 = document.getElementById('CodeWorkspace');
-
     // Toggle classes to switch screens
     if (screen1.style.transform === 'translateY(-100%)') {//SHOWS PROJECT screen
-        screen1.style.transform = 'translateY(0)'; // Move screen 1 back
-        screen2.style.transform = 'translateY(100%)'; // Move screen 2 off screen
+        screen1.style.transform = 'translateY(0)'; // Show Screen1.
+        screen2.style.transform = 'translateY(100%)'; //Hide Screen2.
     } else {//SHOWS WORKSPACE screen
-        screen1.style.transform = 'translateY(-100%)'; // Move screen 1 up
-        screen2.style.transform = 'translateY(0)'; // Move screen 2 into view
+        screen1.style.transform = 'translateY(-100%)';//Hide Screen1.
+        screen2.style.transform = 'translateY(0)'; // Show Screen2.
         ScreensManager(false,true);
     }
 

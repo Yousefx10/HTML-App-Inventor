@@ -901,7 +901,7 @@ function stopThisTimer(kitID) {
         }
         if(Bugs>0)
         {
-            alert("You Can't Run Without Clearing All The Errors Inside Your Code Logic.");
+            DisplayDialog();
             return;
         }
 
