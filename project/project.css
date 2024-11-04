@@ -134,6 +134,7 @@ z-index: 2; /* Screen 1 is above screen 2 initially */
     background:lightcoral;
     color:white;
     cursor:pointer;
+    height: 25px;
 }
 .project_timeline_kit:hover{
     background:navy;

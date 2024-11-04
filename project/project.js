@@ -477,14 +477,8 @@ function live_iframe_add(KITtype, KITcontent = "", kitID,kitNAME,change = false)
             ArrangeKITS(theLastAddedElement[0]);
             console.log("Arranged !!!");
         }
-        else//Check's If it's the first kit, then put the indicator in the end.
-        {
-            dropIndicator.parentElement.append(dropIndicator);
-            live_iframe.contentWindow.MoveIndicatorToEnd();
-        }
-
-
-
+        dropIndicator.parentElement.append(dropIndicator);
+        live_iframe.contentWindow.MoveIndicatorToEnd();
 
     }
 
@@ -1362,16 +1356,7 @@ Zones.forEach(ZoneDrop => {
     });
 
 
-// Shared event handler for dragleave
-const handleDragLeave = (event) => {
-    // Your dragleave logic here
-    let currentIDtemp =event.target.id;
-    if(currentIDtemp=="project_timeline" || currentIDtemp=="screen"+LIVE_SCREEN)
-    {
-        dropIndicator.style.display = 'none'; // Hide drop indicator when leaving the drop zone entirely
-        live_iframe.contentWindow.hideIndicator();
-    }
-  };
+
 
     ZoneDrop.addEventListener('drop', (event) => {
         event.preventDefault();
@@ -1399,9 +1384,5 @@ const handleDragLeave = (event) => {
 
         }
     });
-
-      // dragleave event
-      ZoneDrop.addEventListener('dragleave', handleDragLeave);
-
 
 });
