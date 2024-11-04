@@ -35,8 +35,8 @@ function positionACTbutton() {
     const rect = target.getBoundingClientRect();
 
     // Position the absolute element
-    absoluteElement.style.top  = `${rect.top + window.scrollY}px`; // Aligns with the top of the target
-    absoluteElement.style.left = `${(rect.right + window.scrollX - absoluteElement.offsetWidth)+50}px`; // Aligns with the right of the target
+    absoluteElement.style.top  = `${rect.top + window.scrollY+20}px`; // Aligns with the top of the target
+    absoluteElement.style.left = `${(rect.right + window.scrollX - absoluteElement.offsetWidth)+20}px`; // Aligns with the right of the target
 
 }
 
@@ -885,8 +885,9 @@ function stopThisTimer(kitID) {
         if(ForeClose)
         {
             ACTIVErun=false;
-            RunButton.classList.add("btn-active-start");         // Toggle the stop class
-            RunButton.classList.remove("btn-active-stop");       // Toggle the start class
+            //RunButton.classList.add("btn-active-start");         // Toggle the stop class
+            //RunButton.classList.remove("btn-active-stop");       // Toggle the start class
+            RunButton.src="media/svg/pause.svg";
             document.getElementById('activeDOT').classList.remove('recording-dot');
             return;
         }
@@ -901,9 +902,11 @@ function stopThisTimer(kitID) {
         //Normal As Switching From [on to off]:
         ACTIVErun=!ACTIVErun;
         document.getElementById('activeDOT').classList.toggle('recording-dot');
-        RunButton.classList.toggle("btn-active-start"); // Toggle the stop class
-        RunButton.classList.toggle("btn-active-stop"); // Toggle the start class
-
+        //RunButton.classList.toggle("btn-active-start"); // Toggle the stop class
+        //RunButton.classList.toggle("btn-active-stop"); // Toggle the start class
+        if(ACTIVErun)   RunButton.src="media/svg/pause.svg";
+        else            RunButton.src="media/svg/play.svg";
+        
         if(ACTIVErun)
         {
             const timers = active_kit.filter(row => row[1] === "Timer");

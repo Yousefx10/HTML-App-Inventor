@@ -234,14 +234,6 @@ background-color: antiquewhite;
     100% { opacity: 0; }
 }
 
-.btn-active-start::before{
-    content: "Start ";
-}
-.btn-active-stop::before{
-    content: "Stop ";
-}
-
-
 
 
 #btns{

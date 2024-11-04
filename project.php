@@ -25,8 +25,8 @@
 
     </div>
 
-    <div style="text-align:center;position:absolute;z-index:1;">
-        <button id="RunButton" onclick="runTHEproject();" Style="width:50%;margin:auto" class="btn-active-start">Acts</button>
+    <div style="position:absolute;z-index:1;cursor:pointer">
+        <img id="RunButton" onclick="runTHEproject();" class="btn-active-start" src="media/svg/play.svg" width="30px" alt="ActButton"/>
     </div>
 
 
