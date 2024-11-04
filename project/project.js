@@ -469,11 +469,22 @@ function live_iframe_add(KITtype, KITcontent = "", kitID,kitNAME,change = false)
 
         //iframeDoc.body.appendChild(neWelement); // This appends it to the body
 
-        if(active_kit.length==0)
+        if(active_kit.length>1)
+        {
+            //finally, put it in the correct place
+            //attention: maybe it will throuh error if it's empty or it's last element or it's array is eppty, never tested
+            let theLastAddedElement = active_kit[active_kit.length - 1];
+            ArrangeKITS(theLastAddedElement[0]);
+            console.log("Arranged !!!");
+        }
+        else//Check's If it's the first kit, then put the indicator in the end.
         {
             dropIndicator.parentElement.append(dropIndicator);
             live_iframe.contentWindow.MoveIndicatorToEnd();
         }
+
+
+
 
     }
 
@@ -1328,9 +1339,9 @@ Zones.forEach(ZoneDrop => {
             const offsetY = event.clientY - rect.top; // Mouse position relative to the target element
             // Calculate the middle of the target element
             const middleY = rect.height / 2;
-            if(event.target.id=="screen"+LIVE_SCREEN) //show it in the end if not hovering in the top
-                document.getElementById("screen"+LIVE_SCREEN).appendChild(dropIndicator);
-            else
+            //if(event.target.id=="screen"+LIVE_SCREEN) //show it in the end if not hovering in the top
+                //document.getElementById("screen"+LIVE_SCREEN).appendChild(dropIndicator);
+            //else
             if (offsetY < middleY) {
                 // If above the middle, insert before
                 document.getElementById("screen"+LIVE_SCREEN).insertBefore(dropIndicator, targetElement);
@@ -1374,16 +1385,18 @@ const handleDragLeave = (event) => {
                 console.log("added");
 
             }
+            else//then, it's just re arrange not adding new kit.
+            {
+                ArrangeKITS(id.replace("active_kit",""));
+            }
 
             // Hide drop indicator after drop
             dropIndicator.style.display = 'none';
             live_iframe.contentWindow.hideIndicator();
 
-            //finally, put it in the correct place
-            //attention: maybe it will throuh error if it's empty or it's last element or it's array is eppty, never tested
-            let theLastAddedElement = active_kit[active_kit.length - 1];
-            ArrangeKITS(theLastAddedElement[0]);
-            console.log("Arranged !!!");
+
+
+
         }
     });
 
