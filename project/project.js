@@ -469,6 +469,11 @@ function live_iframe_add(KITtype, KITcontent = "", kitID,kitNAME,change = false)
 
         //iframeDoc.body.appendChild(neWelement); // This appends it to the body
 
+        if(active_kit.length==0)
+        {
+            dropIndicator.parentElement.append(dropIndicator);
+            live_iframe.contentWindow.MoveIndicatorToEnd();
+        }
 
     }
 
@@ -1254,7 +1259,8 @@ function ArrangeKITS(SelectedKIT)
     
     SelectedKIT = document.getElementById("active_kit"+SelectedKIT);
     document.getElementById("screen"+LIVE_SCREEN).insertBefore(SelectedKIT, dropIndicator);
-
+    //dropIndicator.parentElement.append(dropIndicator);
+    
 
 }
 
@@ -1291,6 +1297,9 @@ draggables.forEach(draggable => {
         // Hide drop indicator
         dropIndicator.style.display = 'none';
         live_iframe.contentWindow.hideIndicator();
+
+        //dropIndicator.parentElement.append(dropIndicator);
+        //live_iframe.contentWindow.MoveIndicatorToEnd();
 
         currentTarget = null; // Reset the current target
 

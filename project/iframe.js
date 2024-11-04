@@ -160,6 +160,10 @@
             {
                 IFRAMEdropIndicator.style.display="none";
             }
+            function MoveIndicatorToEnd()
+            {
+                IFRAMEdropIndicator.parentElement.append(IFRAMEdropIndicator);
+            }
 
 
             function MoveArrange(ScreenNumber,SelectedKIT)//will be used to move place of kits
@@ -167,6 +171,8 @@
                 SelectedKIT = document.getElementById("live"+SelectedKIT);
                 if(SelectedKIT)//so if it's the first element, it will not through an error
                 document.getElementById("screen"+ScreenNumber).insertBefore(SelectedKIT, IFRAMEdropIndicator);
+
+                MoveIndicatorToEnd();
             }
 
             function ChangeBackground(kitID,NewColor)

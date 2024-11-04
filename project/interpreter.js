@@ -142,6 +142,8 @@ function caseShowResult()
         status_Title.innerText="Perfect";
         status_Description.innerText="Free Of Errors.";
         status_Warning.style.display="none";
+
+        RunButton.src="media/svg/play.svg";
     }
 }
 
