@@ -190,7 +190,7 @@ background-color: antiquewhite;
 }
 .iframe-container {
     position: absolute;
-    top: 60px; /* Adjust to align with the screen area of the phone */
+    top: 39px; /* Adjust to align with the screen area of the phone */
     left: 15px; /* Adjust to align with the screen area of the phone */
     width: 15.7em; /* Adjust to the width of the phone screen */
     height: 32.5em; /* Adjust to the height of the phone screen */
@@ -202,7 +202,7 @@ background-color: antiquewhite;
     display: flex;
     justify-content: space-between;
     position: absolute;
-    top: 36px;
+    top: 15px;
     width: 18em;
 }
 

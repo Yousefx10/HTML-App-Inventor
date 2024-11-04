@@ -19,11 +19,32 @@ window.addEventListener("resize", correctDialogSize);
 
 function correctDialogSize()
 {
+    //to resize location of the Run Acts Button
+    positionACTbutton();
+
     ScreensManager(true);
     if(currentDIALOGbutton!=null)
         showDialog(currentDIALOGbutton,true);
 }
 
+
+function positionACTbutton() {
+    const target = document.getElementById("smartphone");
+    const absoluteElement = RunButton.parentElement;
+
+    // Get the bounding rectangle of the target element
+    const rect = target.getBoundingClientRect();
+
+    // Position the absolute element
+    absoluteElement.style.top  = `${rect.top + window.scrollY}px`; // Aligns with the top of the target
+    absoluteElement.style.left = `${(rect.right + window.scrollX - absoluteElement.offsetWidth)+50}px`; // Aligns with the right of the target
+
+}
+
+// Initial positioning for Act Button,
+//basically it's not visible because the z-index is set to 1, but after the correct location have been set, it becomes in the TOPPEST.
+positionACTbutton();
+RunButton.parentElement.style.zIndex="15";
 
 
 
@@ -560,7 +581,7 @@ function REMOVINGtime({multiKIT=false,kits,ISLOOPED=false,kitIDIDID}) {
     if(ACTIVErun)
         if(Bugs>0)
         {
-            runTHEproject(document.getElementById("RunButton"),true);//force stop.
+            runTHEproject(true);//force stop.
         }
 }
 
@@ -860,13 +881,13 @@ function stopThisTimer(kitID) {
 
 
     //this function will change ACTIVErun that will affect the runnable buttons and timers in the iframe
-    function runTHEproject(butt,ForeClose)
+    function runTHEproject(ForeClose)
     {
         if(ForeClose)
         {
             ACTIVErun=false;
-            butt.classList.add("btn-active-start");         // Toggle the stop class
-            butt.classList.remove("btn-active-stop");       // Toggle the start class
+            RunButton.classList.add("btn-active-start");         // Toggle the stop class
+            RunButton.classList.remove("btn-active-stop");       // Toggle the start class
             document.getElementById('activeDOT').classList.remove('recording-dot');
             return;
         }
@@ -881,8 +902,8 @@ function stopThisTimer(kitID) {
         //Normal As Switching From [on to off]:
         ACTIVErun=!ACTIVErun;
         document.getElementById('activeDOT').classList.toggle('recording-dot');
-        butt.classList.toggle("btn-active-start"); // Toggle the stop class
-        butt.classList.toggle("btn-active-stop"); // Toggle the start class
+        RunButton.classList.toggle("btn-active-start"); // Toggle the stop class
+        RunButton.classList.toggle("btn-active-stop"); // Toggle the start class
 
         if(ACTIVErun)
         {

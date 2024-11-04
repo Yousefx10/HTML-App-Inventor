@@ -24,6 +24,9 @@
     </button>
 
     </div>
+    <div style="text-align:center;position:absolute;z-index:1;">
+        <button id="RunButton" onclick="runTHEproject();" Style="width:50%;margin:auto" class="btn-active-start">Acts</button>
+    </div>
 
 
 
@@ -77,9 +80,7 @@
 
 
     <div class='project_div' id="project_live">
-        <div style="text-align:center;width:17em">
-        <button id="RunButton" onclick="runTHEproject(this);" Style="width:50%;margin:auto" class="btn-active-start">Acts</button>
-        </div>
+
 
   <div class="status-bar" id="con">
     <div class="left" id="clock">00:00</div>
@@ -89,7 +90,7 @@
 
 
 
-    <img src="media/mockup/iphone.png" alt="Smartphone Frame" class="smartphone-frame"/>
+    <img src="media/mockup/iphone.png" alt="Smartphone Frame" class="smartphone-frame" id="smartphone"/>
     <div style="width:17.5em;">
         <!--will use it to add informations later, maybe screen controls?-->
         <!--i think maybe i will use it to add EXPORT button to save and download the project-->
