@@ -70,9 +70,10 @@
                 <p id="screenSETTINGS" onclick="showScreenProperties();" data-only="screen" data-id="1" data-name="Screen1" data-background="#f0f0f0">Current Screen Settings Properties</p>
 
         <div id="screen1" class="timelineSCREEN">
-        <div id="drop-indicator" style="display: none;">
-        <div></div>
-    </div>
+            <div id="drop-indicator" style="display: none;">
+                <div></div>
+                <!-- Having Small Issue With indicator for the first time.  -->
+            </div>
         </div>
 
     </div>
