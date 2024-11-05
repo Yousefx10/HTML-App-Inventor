@@ -116,14 +116,19 @@ z-index: 2; /* Screen 1 is above screen 2 initially */
     cursor:default;
 }
 .kit .kit_add{
-    padding:10px;
+
     text-align:center;
     background:green;
     color:white;
+
+    width: 30px;
 }
 .kit .kit_right{
     width:40%;
     cursor:pointer;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
 }
 
 .kit .kit_left{
@@ -335,6 +340,7 @@ color:mediumseagreen;
 
 .hint{
     cursor:help;
+    width: 20px;
 }
 
 
