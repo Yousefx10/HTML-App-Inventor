@@ -29,8 +29,9 @@
         <img id="RunButton" onclick="runTHEproject();" class="btn-active-start" src="media/svg/play.svg" width="30px" alt="ActButton"/>
     </div>
 
-
-
+    <div style="position:absolute;z-index:1;cursor:pointer">
+        <img id="Screenshot" onclick="ScreenshotNow();" src="media/svg/screenshot.svg" width="30px" alt="Screenshot"/>
+    </div>
 
 
 <div id='project_container' class="additionalProjectContainer">
@@ -156,6 +157,7 @@ function switchScreen()
 
     //Hiding, Or Showing The Act Button, maybe will need better enhance in the future to remove the animation.
     RunButton.parentElement.classList.toggle("ToggleLikeSwitchScreen");
+    ScreenshotButton.parentElement.classList.toggle("ToggleLikeSwitchScreen");
 }
 </script>
 

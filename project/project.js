@@ -30,13 +30,17 @@ function correctDialogSize()
 function positionACTbutton() {
     const target = document.getElementById("smartphone");
     const absoluteElement = RunButton.parentElement;
+    const absoluteElement2 = ScreenshotButton.parentElement;
 
     // Get the bounding rectangle of the target element
     const rect = target.getBoundingClientRect();
 
     // Position the absolute element
-    absoluteElement.style.top  = `${rect.top + window.scrollY+20}px`; // Aligns with the top of the target
-    absoluteElement.style.left = `${(rect.right + window.scrollX - absoluteElement.offsetWidth)+20}px`; // Aligns with the right of the target
+    absoluteElement.style.top   = `${rect.top + window.scrollY+20}px`; // Aligns with the top of the target
+    absoluteElement2.style.top  = `${rect.top + window.scrollY+60}px`; // Aligns with the top of the target
+
+    absoluteElement.style.left  = `${(rect.right + window.scrollX - absoluteElement2.offsetWidth)+20}px`; // Aligns with the right of the target
+    absoluteElement2.style.left = `${(rect.right + window.scrollX - absoluteElement2.offsetWidth)+20}px`; // Aligns with the right of the target
 
 }
 
@@ -44,6 +48,7 @@ function positionACTbutton() {
 //basically it's not visible because the z-index is set to 1, but after the correct location have been set, it becomes in the TOPPEST.
 positionACTbutton();
 RunButton.parentElement.style.zIndex="15";
+ScreenshotButton.parentElement.style.zIndex="15";
 
 
 
@@ -290,7 +295,7 @@ function showScreenProperties()//this functions shows the screen settings in pro
 
         //Fixes the current Dialog Location
         correctDialogSize();
-        
+
         //APPLYING TO SHOW CURRENT VALUES INSIDE THE project_properties
         document.getElementById("scBackground").value=screenSETTINGS.dataset.background;
 
@@ -1090,6 +1095,11 @@ function ArrangeKITS(SelectedKIT)
 
 
 
+
+function ScreenshotNow()
+{
+
+}
 
 
 
