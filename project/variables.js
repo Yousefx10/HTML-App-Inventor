@@ -28,7 +28,8 @@ let project_timeline = document.getElementById('project_timeline'),
     screenBUTTON = document.getElementById('screenBUTTON'),
     screensPage = document.getElementById("screensPAGE"),
     RunButton = document.getElementById("RunButton"),
-    ScreenshotButton = document.getElementById("Screenshot");
+    ScreenshotButton = document.getElementById("Screenshot"),
+    ScreenshotResult = document.getElementById("ScreenshotResult");
 
 
 let

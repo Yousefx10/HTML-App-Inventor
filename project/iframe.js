@@ -19,6 +19,7 @@
             </head>
             <body id="updateME">
                 <div style='display:none;height:3px;background:red;' id='dropIndicator'></div>
+                <img alt="screenshot OUTPUT" src="" style="display:none;" id="ScreenshotOutput"/>
 <!--Upper is empty, everything moved to bottom.-->
             <script>
             function RemoveALLselected()
@@ -195,6 +196,28 @@
             }
             startLoad("screen1");//when loading the page, the IFRAMEdropIndicator will move to be inside the screen1
             </script>
+
+
+
+            <script>
+                function ScreenshotIt(ScreenID)
+                {
+
+                html2canvas(document.querySelector("#screen"+ScreenID)).then(canvas => {
+                
+                
+                // Convert canvas to a data URL (base64-encoded PNG image)
+                
+                const dataURL = canvas.toDataURL("image/png");
+
+                parent.ScreenshotResult.src = dataURL;
+
+                parent.ScreenshotNow(true);
+            });
+
+                }
+            </script>
+            <script src="libraries/html2canvas.js"></script>
             </body>
           </html>
         `);

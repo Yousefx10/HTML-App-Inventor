@@ -1096,8 +1096,32 @@ function ArrangeKITS(SelectedKIT)
 
 
 
-function ScreenshotNow()
+function ScreenshotNow(ShotItNow)
 {
+
+
+    if(ShotItNow)
+    {
+        ScreenshotResult.style.visibility="visible";
+        html2canvas(document.querySelector("#project_live")).then(canvas => {
+            // Convert the canvas to a data URL
+            let dataURL = canvas.toDataURL("image/png");
+            ScreenshotResult.style.visibility="hidden";
+            // Create a link element
+            let link = document.createElement("a");
+            link.href = dataURL;
+        
+            // Set the download attribute with a filename
+            link.download = "Screenshot"+clock.textContent.replace(":", "")+".png";
+        
+            // Trigger the download by simulating a click
+            link.click();
+            ScreenshotResult.src="";
+        });
+    }
+
+    else     live_iframe.contentWindow.ScreenshotIt(LIVE_SCREEN);
+
 
 }
 
