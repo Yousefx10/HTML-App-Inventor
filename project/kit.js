@@ -5,10 +5,11 @@
 /*
 ===================================================
 project.js : function choosePROPERTIEScorrect >>> used to define the required properties for every kit.
-project.js : function timeline_properties >>> manage what happen when alive kit got pressed.
-project.js : function LIVE_select_kit >>> to highlight the selected kit.
-
-[TO BE CONTINUED].
+project.js : function timeline_properties     >>> manage what happen when alive kit got pressed.
+project.js : function LIVE_select_kit         >>> to highlight the selected kit.
+project.js : function SAVINGtime              >>> that saves the NEW VALUE like text.
+project.js : function REMOVINGtime            >>> Deletes The kit/group of kits.
+project.js : function updateKITname           >>> Updates The Name for the kit.
 
 ===================================================
  */
