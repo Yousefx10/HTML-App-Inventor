@@ -54,10 +54,7 @@ function addKIT(kit_type) {
 
     });
 
-    //THE END OF DRAGGING LIFE.
-    newKIT.addEventListener('dragend', () => {
 
-    });
 
 
     //Naming the kit before adding it to the timeline box.

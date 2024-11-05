@@ -288,6 +288,9 @@ function showScreenProperties()//this functions shows the screen settings in pro
 
         ReFocus();//Showing the project_properties.
 
+        //Fixes the current Dialog Location
+        correctDialogSize();
+        
         //APPLYING TO SHOW CURRENT VALUES INSIDE THE project_properties
         document.getElementById("scBackground").value=screenSETTINGS.dataset.background;
 

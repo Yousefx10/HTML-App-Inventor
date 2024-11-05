@@ -113,7 +113,6 @@ z-index: 2; /* Screen 1 is above screen 2 initially */
     display:inline;
     padding:0;
     margin:0;
-    cursor:default;
 }
 .kit .kit_add{
 
@@ -123,6 +122,10 @@ z-index: 2; /* Screen 1 is above screen 2 initially */
 
     width: 30px;
 }
+.kit .kit_add:hover{
+background-color: rgb(164, 20, 20);
+}
+
 .kit .kit_right{
     width:40%;
     cursor:pointer;
@@ -137,6 +140,8 @@ z-index: 2; /* Screen 1 is above screen 2 initially */
     width:55%;
     padding: 5px;
     margin-left:2px;
+    font-weight: bold;
+    cursor: grab;
 }
 .kit .kit_left span::before{
     content: " ";
@@ -341,6 +346,11 @@ color:mediumseagreen;
 .hint{
     cursor:help;
     width: 20px;
+    border-radius: 50%;
+}
+
+.hint:hover{
+    background-color: white;
 }
 
 
