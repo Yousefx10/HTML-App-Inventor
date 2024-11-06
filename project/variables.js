@@ -164,7 +164,7 @@ window.dynamicMap = new Map();
 //WINDOW. this means that the variable has been created and got globally, no need to var,let,const etc.
 window.ACTIVEactions=[];
 
-const ActionBlockComments=[];//will holds the USER TYPED COMMENTS
+let ActionBlockComments=[];//will holds the USER TYPED COMMENTS
 
 let FontSizesNAMES =[
     ["Tiny", "x-small"],

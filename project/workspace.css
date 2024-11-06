@@ -243,3 +243,6 @@ dialog::backdrop {
     display: block;
     text-align: center;
 }
+.CommentBTN{
+    background-color: aquamarine;
+}

@@ -391,6 +391,7 @@ function REMOVINGtime({multiKIT=false,kits,ISLOOPED=false,kitIDIDID}) {
     if (GET_DOC_ID("code", current_kitID)) {
         GET_DOC_ID("code", current_kitID).remove();
         ACTIVEactions = ACTIVEactions.filter(action => !action.includes("code" + current_kitID + "."));
+        ActionBlockComments = ActionBlockComments.filter(action => !action.includes("code" + current_kitID + "."));
 
         dynamicMap.forEach((_, key) => key.includes("code" + current_kitID + ".") && dynamicMap.delete(key) && CaseResolve(key,"DELETED"));
         
@@ -399,7 +400,9 @@ function REMOVINGtime({multiKIT=false,kits,ISLOOPED=false,kitIDIDID}) {
 
         //the new way :
         listOFevents.forEach(num => {
-            delete dynamicBLOCKsize[num + "code" + current_kitID + "."];
+            let TempFullBlock = num + "code" + current_kitID + ".";
+            delete dynamicBLOCKsize[TempFullBlock];
+            
         });
         if(!ISLOOPED)//so the entire screen will automatically be deleted, no need to call this in GROUP OF DELETETION.
         commonPROJECTclearWORKSPACE();

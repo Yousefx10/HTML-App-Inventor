@@ -222,15 +222,22 @@ function ADDINGsingleBLOCK(words,FullBlockID)
     //adding blank element for COMMENT area
     const CommentBlock = document.createElement('span');
     CommentBlock.classList.add('CommentBlock','ToggleLikeSwitchScreen');
-    CommentBlock.textContent ="......";
     CommentBlock.setAttribute("contenteditable","true");
 
+    CommentBlock.textContent="__";
+
+    if(ActionBlockComments[FullBlockID])//Displaying The Comment, if exist.
+    CommentBlock.textContent=ActionBlockComments[FullBlockID];
+    
     CommentBlock.addEventListener('blur', (event) => {
         //console.log('Content changed on blur:', event.target.innerText);
-        if(event.target.innerText == "\n")
+        if(event.target.textContent == "")
+        {
             delete ActionBlockComments[FullBlockID];
+            CommentBlock.textContent="__";
+        }
         else
-        ActionBlockComments[FullBlockID]=event.target.innerText;
+        ActionBlockComments[FullBlockID]=event.target.textContent;
     });
 
 
@@ -431,7 +438,10 @@ function ADDINGsingleBLOCK(words,FullBlockID)
     const CommentButton = document.createElement('button');
     CommentButton.textContent="?";
     CommentButton.setAttribute("onclick",`ShowComment("${FullBlockID}");`);
-
+    
+    if(ActionBlockComments[FullBlockID])
+        CommentButton.className="CommentBTN";
+    
 
     if(kitSpan)//don't add if it's method, like switch screen
     propertiesBlock.appendChild(kitSpan);
@@ -595,6 +605,9 @@ function deleteblock(FullBlockID)
 
         dynamicBLOCKsize[CURRENTcountofActions+"."] = 0;
     }
+
+    if(ActionBlockComments[FullBlockID])//DELETE THE COMMENT IF EXIST
+    delete ActionBlockComments[FullBlockID];
 
     CaseResolve(FullBlockID,"DELETED");
 }
