@@ -1120,7 +1120,13 @@ function ScreenshotNow(ShotItNow)
         });
     }
 
-    else     live_iframe.contentWindow.ScreenshotIt(LIVE_SCREEN);
+    else  {
+        const iframeDocument = live_iframe.contentWindow.document;
+
+        const scrollY = iframeDocument.documentElement.scrollTop || iframeDocument.body.scrollTop;
+            console.log('scroooool is '+scrollY);
+        live_iframe.contentWindow.ScreenshotIt(LIVE_SCREEN,scrollY);
+    }   
 
 
 }

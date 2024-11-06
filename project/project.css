@@ -201,12 +201,9 @@ background-color: antiquewhite;
     display: flex; /* Make parent a flex container */
     flex-direction: column; /* Align children in a column */
     padding:0; /* TO INSURE THE IFRAME SHOWS THE CONTENT EXACTLY INSIDE IT*/
-
+    min-width: 280px !important;
 
 /*new smartphone mockup section*/
-/*    position: relative;*/
-    /*width: 360px; !* Adjust to your image size *!*/
-    /*height: 640px; !* Adjust to your image size *!*/
     overflow: hidden;
     border:none;
 }

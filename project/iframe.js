@@ -200,11 +200,23 @@
 
 
             <script>
-                function ScreenshotIt(ScreenID)
+                function ScreenshotIt(ScreenID,scrollY)
                 {
+                    //document.getElementById("screen"+ScreenID).scrollTop=scrollY;
 
-                html2canvas(document.querySelector("#screen"+ScreenID)).then(canvas => {
-                
+                //document.getElementById("screen"+ScreenID).scrollIntoView();
+
+                var currentScreen = document.getElementById("screen"+ScreenID);
+                const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+                const scrollLeft = document.documentElement.scrollLeft || document.body.scrollLeft;
+
+
+                html2canvas(currentScreen,{
+                 x: scrollLeft, 
+                y: scrollTop,
+                width: currentScreen.offsetWidth,
+                height: currentScreen.offsetHeight
+    }).then(canvas => {
                 
                 // Convert canvas to a data URL (base64-encoded PNG image)
                 
