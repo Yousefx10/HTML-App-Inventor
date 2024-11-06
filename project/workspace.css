@@ -247,6 +247,7 @@ dialog::backdrop {
     border-top: 2px dotted black;
     border-right: 2px dotted black;
     border-left: 2px dotted black;
+    border-radius: 15px 15px 1px 1px;
 }
 /* Style for the placeholder effect */
 .CommentBlock:empty:before {
@@ -272,4 +273,12 @@ dialog::backdrop {
 }
 .CommentBTN{
     background-color: aquamarine;
+}
+
+
+.NumricLine{
+    display: inline-block;
+    text-align: left;
+    width: 25px;
+    color: slategrey;
 }

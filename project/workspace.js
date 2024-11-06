@@ -134,6 +134,7 @@ function Event_KIT(CurrentEvent)
 //This Function Will Display The Current PlayGround
 function StartPlayGround(kitID,EventCase)
 {
+    NumricLineNumber=0;
     hideDialog(true);//forcing to hide dialog
     document.getElementById("playground_space_container").innerHTML="";
     actions_space.style.display="block";
@@ -209,7 +210,7 @@ function StartPlayGround(kitID,EventCase)
 }
 
 
-
+let NumricLineNumber=0;
 //The Purpose of this function is to create a only one SINGLE block and add it to the workspace
 function ADDINGsingleBLOCK(words,FullBlockID)
 {
@@ -227,7 +228,7 @@ function ADDINGsingleBLOCK(words,FullBlockID)
 
     if(ActionBlockComments[FullBlockID])//Displaying The Comment, if exist.
     CommentBlock.innerText=ActionBlockComments[FullBlockID];
-    
+
     CommentBlock.addEventListener('blur', (event) => {
         //console.log('Content changed on blur:', event.target.innerText);
         const lastPropertiesBlock = document.querySelector(`[id="${FullBlockID}"] .properties_block`).lastElementChild;
@@ -242,6 +243,11 @@ function ADDINGsingleBLOCK(words,FullBlockID)
         }
     });
 
+    //Numric Line
+    const NumricLine = document.createElement('span');
+    NumricLine.className = 'NumricLine';
+    NumricLine.textContent =++NumricLineNumber;
+
 
     //new line that adds the X to REMOVE blocks
     const DeleteBlock = document.createElement('span');
@@ -250,7 +256,7 @@ function ADDINGsingleBLOCK(words,FullBlockID)
     DeleteBlock.onclick = function() {
         //the code to remove the block correctly will be called here
         deleteblock(FullBlockID);
-
+        NavigateBug(FullBlockID,true);
 
     };
 
@@ -385,7 +391,7 @@ function ADDINGsingleBLOCK(words,FullBlockID)
                 });
                 valueInput.className = "original";
                 valueInput.value= words[2];
-    
+
                 valueInput.setAttribute('onchange', 'updateACTIONvalue(event,"value",this.parentNode.parentNode.id);');
                 break;
         case "switchscreen"://should not have ANY KIT, because it's like ONLY METHOD.
@@ -441,10 +447,10 @@ function ADDINGsingleBLOCK(words,FullBlockID)
     CommentButton.src="media/svg/comment.svg";
     CommentButton.classList.add('CommentIMG');
     CommentButton.setAttribute("onclick",`ShowComment("${FullBlockID}");`);
-    
+
     if(ActionBlockComments[FullBlockID])
     CommentButton.classList.add('CommentBTN');
-    
+
 
     if(kitSpan)//don't add if it's method, like switch screen
     propertiesBlock.appendChild(kitSpan);
@@ -458,6 +464,7 @@ function ADDINGsingleBLOCK(words,FullBlockID)
     propertiesBlock.appendChild(CommentButton);
 
     FullBlock.appendChild(CommentBlock);
+    FullBlock.appendChild(NumricLine);
     FullBlock.appendChild(DeleteBlock);
     FullBlock.appendChild(actionParagraph);
     FullBlock.appendChild(propertiesBlock);
@@ -683,9 +690,9 @@ function action_add(actionType)
             break;
             case "ChangeBackground":
                 dynamicMap.set(tempLONGvalue, 'changebackground'+ProjectDelimiter+DefaultFirstKit+ProjectDelimiter+'White');//as default will be White
-    
+
                 words = dynamicMap.get(tempLONGvalue).split(ProjectDelimiter);
-    
+
                 break;
         case "SwitchScreen":
             dynamicMap.set(tempLONGvalue, 'switchscreen'+ProjectDelimiter+DefaultFirstKit+ProjectDelimiter+LIVE_SCREEN);//as default will be Medium

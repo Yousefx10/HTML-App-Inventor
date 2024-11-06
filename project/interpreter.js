@@ -149,7 +149,7 @@ function caseShowResult()
 
 
 
-function NavigateBug(ActionID)
+function NavigateBug(ActionID,justNavigate=false)
 {
     myDialog.close(); // Close the dialog
     if (!(screen1.style.transform === 'translateY(-100%)')) switchScreen();//Move From Project Screen To Workspace Screen.
@@ -166,7 +166,7 @@ function NavigateBug(ActionID)
 
     //STEP TWO : Select The desired event :
     document.getElementById('event_'+wordBeforeCode.toUpperCase()).dispatchEvent(OpenMe); // Dispatch the event
-
+    if(!justNavigate)
     document.getElementById(ActionID).style.background="blue";
 }
 
