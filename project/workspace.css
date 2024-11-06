@@ -242,6 +242,11 @@ dialog::backdrop {
 .CommentBlock{
     display: block;
     text-align: center;
+    margin: auto;
+    max-width: 450px;
+    border-top: 2px dotted black;
+    border-right: 2px dotted black;
+    border-left: 2px dotted black;
 }
 /* Style for the placeholder effect */
 .CommentBlock:empty:before {

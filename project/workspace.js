@@ -230,10 +230,16 @@ function ADDINGsingleBLOCK(words,FullBlockID)
     
     CommentBlock.addEventListener('blur', (event) => {
         //console.log('Content changed on blur:', event.target.innerText);
-        if(event.target.textContent == "")
+        const lastPropertiesBlock = document.querySelector(`[id="${FullBlockID}"] .properties_block`).lastElementChild;
+        if(event.target.textContent == ""){
             delete ActionBlockComments[FullBlockID];
-        else
+            lastPropertiesBlock.classList.remove("CommentBTN");
+        }
+
+        else {
             ActionBlockComments[FullBlockID]=event.target.innerText;
+            lastPropertiesBlock.classList.add("CommentBTN");
+        }
     });
 
 
