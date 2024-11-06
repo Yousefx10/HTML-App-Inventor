@@ -1098,15 +1098,13 @@ function ArrangeKITS(SelectedKIT)
 
 function ScreenshotNow(ShotItNow)
 {
-
-
     if(ShotItNow)
     {
         ScreenshotResult.style.visibility="visible";
         html2canvas(document.querySelector("#project_live")).then(canvas => {
+            ScreenshotResult.style.visibility="hidden";
             // Convert the canvas to a data URL
             let dataURL = canvas.toDataURL("image/png");
-            ScreenshotResult.style.visibility="hidden";
             // Create a link element
             let link = document.createElement("a");
             link.href = dataURL;
@@ -1120,13 +1118,7 @@ function ScreenshotNow(ShotItNow)
         });
     }
 
-    else  {
-        const iframeDocument = live_iframe.contentWindow.document;
-
-        const scrollY = iframeDocument.documentElement.scrollTop || iframeDocument.body.scrollTop;
-            console.log('scroooool is '+scrollY);
-        live_iframe.contentWindow.ScreenshotIt(LIVE_SCREEN,scrollY);
-    }   
+    else live_iframe.contentWindow.ScreenshotIt(LIVE_SCREEN);
 
 
 }
