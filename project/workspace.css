@@ -243,6 +243,12 @@ dialog::backdrop {
     display: block;
     text-align: center;
 }
+.CommentIMG{
+    width: 20px;
+    margin: 5px;
+    vertical-align: middle;
+    padding:2px;
+}
 .CommentBTN{
     background-color: aquamarine;
 }

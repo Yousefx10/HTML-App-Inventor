@@ -435,12 +435,13 @@ function ADDINGsingleBLOCK(words,FullBlockID)
     MoreProperties.textContent=">";
     MoreProperties.setAttribute("onclick","showDialog(this);");
 
-    const CommentButton = document.createElement('button');
-    CommentButton.textContent="?";
+    const CommentButton = document.createElement('img');
+    CommentButton.src="media/svg/comment.svg";
+    CommentButton.classList.add('CommentIMG');
     CommentButton.setAttribute("onclick",`ShowComment("${FullBlockID}");`);
     
     if(ActionBlockComments[FullBlockID])
-        CommentButton.className="CommentBTN";
+    CommentButton.classList.add('CommentBTN');
     
 
     if(kitSpan)//don't add if it's method, like switch screen
