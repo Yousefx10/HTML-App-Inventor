@@ -243,11 +243,27 @@ dialog::backdrop {
     display: block;
     text-align: center;
 }
+/* Style for the placeholder effect */
+.CommentBlock:empty:before {
+    content: "Type Your Preferred Comment Here"; /* Display the placeholder text */
+    color: #888; /* Placeholder text color */
+}
+
+/* Remove placeholder style when focused */
+.CommentBlock:focus:before {
+    content: ''; /* Clear placeholder content on focus */
+}
+
+.commentHIDDEN{
+    visibility: hidden;
+    height: 10px;
+}
 .CommentIMG{
     width: 20px;
     margin: 5px;
     vertical-align: middle;
     padding:2px;
+    cursor: pointer;
 }
 .CommentBTN{
     background-color: aquamarine;

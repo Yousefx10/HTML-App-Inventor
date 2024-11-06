@@ -221,23 +221,19 @@ function ADDINGsingleBLOCK(words,FullBlockID)
 
     //adding blank element for COMMENT area
     const CommentBlock = document.createElement('span');
-    CommentBlock.classList.add('CommentBlock','ToggleLikeSwitchScreen');
+    CommentBlock.classList.add('CommentBlock','commentHIDDEN');
     CommentBlock.setAttribute("contenteditable","true");
 
-    CommentBlock.textContent="__";
 
     if(ActionBlockComments[FullBlockID])//Displaying The Comment, if exist.
-    CommentBlock.textContent=ActionBlockComments[FullBlockID];
+    CommentBlock.innerText=ActionBlockComments[FullBlockID];
     
     CommentBlock.addEventListener('blur', (event) => {
         //console.log('Content changed on blur:', event.target.innerText);
         if(event.target.textContent == "")
-        {
             delete ActionBlockComments[FullBlockID];
-            CommentBlock.textContent="__";
-        }
         else
-        ActionBlockComments[FullBlockID]=event.target.textContent;
+            ActionBlockComments[FullBlockID]=event.target.innerText;
     });
 
 
@@ -469,7 +465,9 @@ function ADDINGsingleBLOCK(words,FullBlockID)
 
 function ShowComment(FullBlockID)
 {
-document.querySelector(`[id="${FullBlockID}"] .CommentBlock`).classList.toggle("ToggleLikeSwitchScreen");
+    let SelectedComment = document.querySelector(`[id="${FullBlockID}"] .CommentBlock`);
+    //SelectedComment.classList.toggle("ToggleLikeSwitchScreen");
+    SelectedComment.classList.toggle("commentHIDDEN");
 }
 
 
