@@ -219,6 +219,21 @@ function ADDINGsingleBLOCK(words,FullBlockID)
     actionParagraph.className = 'action_block';
     actionParagraph.textContent =words[0];
 
+    //adding blank element for COMMENT area
+    const CommentBlock = document.createElement('span');
+    CommentBlock.classList.add('CommentBlock','ToggleLikeSwitchScreen');
+    CommentBlock.textContent ="......";
+    CommentBlock.setAttribute("contenteditable","true");
+
+    CommentBlock.addEventListener('blur', (event) => {
+        //console.log('Content changed on blur:', event.target.innerText);
+        if(event.target.innerText == "\n")
+            delete ActionBlockComments[FullBlockID];
+        else
+        ActionBlockComments[FullBlockID]=event.target.innerText;
+    });
+
+
     //new line that adds the X to REMOVE blocks
     const DeleteBlock = document.createElement('span');
     DeleteBlock.className = 'DeleteBlock';
@@ -413,6 +428,11 @@ function ADDINGsingleBLOCK(words,FullBlockID)
     MoreProperties.textContent=">";
     MoreProperties.setAttribute("onclick","showDialog(this);");
 
+    const CommentButton = document.createElement('button');
+    CommentButton.textContent="?";
+    CommentButton.setAttribute("onclick",`ShowComment("${FullBlockID}");`);
+
+
     if(kitSpan)//don't add if it's method, like switch screen
     propertiesBlock.appendChild(kitSpan);
     if(kitSelect)//don't add if it's method, like switch screen
@@ -422,7 +442,9 @@ function ADDINGsingleBLOCK(words,FullBlockID)
     propertiesBlock.appendChild(valueInput);
     propertiesBlock.appendChild(SetProperties);
     propertiesBlock.appendChild(MoreProperties);
+    propertiesBlock.appendChild(CommentButton);
 
+    FullBlock.appendChild(CommentBlock);
     FullBlock.appendChild(DeleteBlock);
     FullBlock.appendChild(actionParagraph);
     FullBlock.appendChild(propertiesBlock);
@@ -432,6 +454,16 @@ function ADDINGsingleBLOCK(words,FullBlockID)
 
 
 }
+
+
+function ShowComment(FullBlockID)
+{
+document.querySelector(`[id="${FullBlockID}"] .CommentBlock`).classList.toggle("ToggleLikeSwitchScreen");
+}
+
+
+
+
 
 //the purpose of this function is to[Hide] and [Show] the two elements [Choose kit,Choose Value]
 function changePROPERTIES(currentvalue)
