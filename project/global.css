@@ -11,3 +11,12 @@ i've add it here instead of project.css  because maybe i'll use it again with an
 .ToggleLikeSwitchScreen{
     visibility: hidden;
 }
+
+
+
+#imgDIALOG{
+    display: none;
+    z-index: 20;
+    background-color: slategrey;
+    height: 200px;
+}

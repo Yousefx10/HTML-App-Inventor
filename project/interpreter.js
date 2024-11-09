@@ -251,18 +251,18 @@ function CaseResolve(FullActionBlockID,CaseOfUpdate)
 }
 
 
+let imgDIALOG = document.getElementById('imgDIALOG');
+//this function will be used to show/hide the main DIALOG for CHOOSING and UPLOADING images.
+function showImgDialog()
+{
+
+    imgDIALOG.style.display="block";
 
 
 
 
 
-
-
-
-
-
-
-
+}
 
 
 

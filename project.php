@@ -35,6 +35,23 @@
     </div>
 
 
+
+    <div id="imgDIALOG">
+        <p>
+            Choose From The Menu The Picture You Want To Select
+            <br/>
+            Or Upload A New One.
+        </p>
+        <label class="upload-btn">
+            Upload Picture
+            <input type="file" accept="image/*" onchange="handleFileUpload(event)">
+        </label>
+
+     </div>
+
+
+
+
 <div id='project_container' class="additionalProjectContainer">
 
 
