@@ -27,10 +27,31 @@ function uploadData(file, UserName,UserID, ProcessName) {
         method: "POST",
         body: formData
     })
+
         .then(response => response.json())
+
         .then(data => {
-            //document.getElementById('message').textContent = data.message;
-            console.log(data.message);
+            console.log('you passed here');
+            if (data.error) {
+                console.error("Error:", data.error);
+                return;
+            }
+            if(ProcessName=="getting_assets")
+                {
+                    // Loop through the image paths and display them
+                    let imageContainer = document.getElementById('imgArea');
+                    imageContainer.innerHTML = '<b>test</b><br/>'; // Clear any existing images
+
+                    data.forEach(image => {
+                        let imgElement = document.createElement('img');
+                        imgElement.src = image.assets_name;  // Assuming 'assets_name' is the column storing the image paths
+                        imgElement.alt = "Uploaded Image";
+                        imgElement.style.width = '200px';  // Set the image size as needed
+
+                        imageContainer.appendChild(imgElement); // Append the image to the container
+                    });
+                }
+
         })
         .catch(error => {
            // console.error("Error:", error);

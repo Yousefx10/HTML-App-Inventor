@@ -593,6 +593,7 @@ function handleFileUpload(event) {
         // Reset the input value to allow re-uploading the same file
 
         uploadData(file,"default","1","upload_assets");
+        showImgDialog(true);
         event.target.value = '';
     }
 }

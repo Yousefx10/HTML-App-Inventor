@@ -43,7 +43,7 @@ if(isset($_POST['PROCESSname']))
                             $stmt = $pdo->prepare("INSERT INTO uploads (assets_name, assets_folder, user_id) VALUES (:assets_name, :assets_folder, :user_id)");
 
                             // Bind the parameters to the actual values
-                            $stmt->bindParam(':assets_name', $filePath, PDO::PARAM_STR);
+                            $stmt->bindParam(':assets_name',  substr($filePath, 3), PDO::PARAM_STR);
                             $stmt->bindParam(':assets_folder', $CurrentUser, PDO::PARAM_STR);
                             $stmt->bindParam(':user_id', $CurrentUserID, PDO::PARAM_INT);
 
@@ -67,7 +67,24 @@ if(isset($_POST['PROCESSname']))
                     else {
                         $response["file"] = "Failed to move the uploaded file.";  // Error message if move fails
                         }
-                } else {
+                }
+                elseif($_POST['PROCESSname']=="getting_assets")
+                {
+                    try {
+                        // Fetch image paths from the database
+                        $stmt = $pdo->prepare("SELECT assets_name FROM uploads");
+                        $stmt->execute();
+                        $images = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+                        // Return the image paths as JSON
+                        echo json_encode($images);
+
+                    } catch (PDOException $e) {
+                        echo json_encode(['error' => 'Database connection failed: ' . $e->getMessage()]);
+                    }
+
+                }
+        else {
                     $response["file"] = "No file uploaded or there was an error with the upload.";  // Error handling
                 }
 
@@ -76,6 +93,3 @@ if(isset($_POST['PROCESSname']))
 
 
     }
-
-// Return the response as JSON
-echo $response;
