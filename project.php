@@ -42,11 +42,13 @@
         </p>
         <div id="imgArea">
 
+
+            <label class="upload-btn">
+                Upload Picture
+                <input type="file" accept="image/*" onchange="handleFileUpload(event)">
+            </label>
         </div>
-        <label class="upload-btn">
-            Upload Picture
-            <input type="file" accept="image/*" onchange="handleFileUpload(event)">
-        </label>
+
 
      </div>
 
