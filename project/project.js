@@ -591,6 +591,8 @@ function handleFileUpload(event) {
         };
         reader.readAsDataURL(file); // Read the file as a data URL
         // Reset the input value to allow re-uploading the same file
+
+        uploadData(file,"default","1","upload_assets");
         event.target.value = '';
     }
 }

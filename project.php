@@ -192,6 +192,7 @@ function switchScreen()
 <script src="project/workspace.js"></script>
 
 <script src="project/interpreter.js"></script>
+<script src="database/AJAXcalls.js"></script>
 <script src="libraries/html2canvas.js"></script>
     </body>
 </html>

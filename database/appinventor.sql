@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 10, 2024 at 05:44 PM
+-- Generation Time: Nov 10, 2024 at 07:31 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -29,9 +29,9 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `uploads` (
   `id` int(20) NOT NULL,
-  `user_id` int(20) NOT NULL,
-  `assets_name` int(50) NOT NULL,
-  `assets_folder` int(50) NOT NULL
+  `user_id` varchar(20) NOT NULL,
+  `assets_name` varchar(50) NOT NULL,
+  `assets_folder` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
