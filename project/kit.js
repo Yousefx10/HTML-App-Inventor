@@ -77,6 +77,7 @@ function addKIT(kit_type) {
             newKIT.textContent = phrase3;
             newKIT.setAttribute("data-only", "img");
             newKIT.setAttribute("data-size", "100%");
+            newKIT.setAttribute("data-src", "none");
             break;
         case 5:
             newKIT.setAttribute("data-only", "timer");

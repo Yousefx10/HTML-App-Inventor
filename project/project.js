@@ -225,6 +225,8 @@ function timeline_properties(current_kit, current_details,KITtype) {
     let current_img_size = document.getElementById("active_kit" + current_kit).dataset.size;
     // document.getElementById('ImageSize').disabled = true;
     document.getElementById('ImageSize').value = current_img_size;
+    let current_img_src = document.getElementById("active_kit" + current_kit).dataset.src;
+    SelectedPicture.textContent = current_img_src;
     // document.getElementById('ImageSize').disabled = false;
 
     let current_margin = document.getElementById("active_kit" + current_kit).dataset.margin;
@@ -461,6 +463,7 @@ function unFocus() {
 
     //so dialog location be corrected.
     correctDialogSize();
+    showImgDialog(true);
 }
 
 function ReFocus() {
@@ -594,6 +597,8 @@ function handleFileUpload(event) {
 
         uploadData(file,"default","1","upload_assets");
         showImgDialog(true);
+        GET_DOC_ID("active_kit",kitID).setAttribute("data-src", file.name);
+        SelectedPicture.textContent = file.name;
         event.target.value = '';
     }
 }

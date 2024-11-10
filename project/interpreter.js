@@ -284,6 +284,7 @@ function PreviewIMG(SHOULDimg)
 
     const img = live_iframe.contentWindow.document.getElementById('live' + CurrentHiddenKITID);
     img.src = SHOULDimg.src;
+    GET_DOC_ID("active_kit",CurrentHiddenKITID).setAttribute("data-src", SHOULDimg.alt);
 }
 
 
