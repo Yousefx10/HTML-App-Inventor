@@ -22,10 +22,21 @@ i've add it here instead of project.css  because maybe i'll use it again with an
     position: absolute;
     width: 250px;
     overflow: hidden;
+    text-align:center;
 }
 
 #imgDIALOG #imgArea
 {
     overflow: auto;
-    height: 95%;
+    height: 70%;
+}
+
+.DivContainer{
+    border: dotted 3px black;
+    margin-top: 10px;
+    display: flex;
+    cursor: pointer;
+}
+.DivContainer :last-child{
+    width: 150px;
 }

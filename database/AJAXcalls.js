@@ -39,16 +39,23 @@ function uploadData(file, UserName,UserID, ProcessName) {
             if(ProcessName=="getting_assets")
                 {
                     // Loop through the image paths and display them
-                    let imageContainer = document.getElementById('imgArea');
-                    imageContainer.innerHTML = '<b>test</b><br/>'; // Clear any existing images
+                    imageContainer.innerHTML = ''; // Clear any existing images
 
                     data.forEach(image => {
+                        let DivContainer = document.createElement("div");
+                        DivContainer.className="DivContainer";
+                        let iconIMG = document.createElement('img');
+                        iconIMG.src="media/svg/trash.svg";
+                        iconIMG.style.width="30px";
+
                         let imgElement = document.createElement('img');
                         imgElement.src = image.assets_name;  // Assuming 'assets_name' is the column storing the image paths
-                        imgElement.alt = "Uploaded Image";
-                        imgElement.style.width = '200px';  // Set the image size as needed
+                        imgElement.alt = image.assets_name.split("/")[2];
+                        imgElement.setAttribute("onclick", `PreviewIMG(this);`);
 
-                        imageContainer.appendChild(imgElement); // Append the image to the container
+                        DivContainer.appendChild(iconIMG); // Append the image to the container
+                        DivContainer.appendChild(imgElement); // Append the image to the container
+                        imageContainer.appendChild(DivContainer); // Append the Container To The Main DIV
                     });
                 }
 

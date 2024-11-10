@@ -252,6 +252,8 @@ function CaseResolve(FullActionBlockID,CaseOfUpdate)
 
 
 let imgDIALOG = document.getElementById('imgDIALOG');
+let imageContainer = document.getElementById('imgArea');
+let SelectedPicture = document.getElementById('SelectedPicture');
 //this function will be used to show/hide the main DIALOG for CHOOSING and UPLOADING images.
 function showImgDialog(hide=false)
 {
@@ -266,6 +268,22 @@ function showImgDialog(hide=false)
 
 
 
+}
+
+//promise i'll move this function to another file.
+function PreviewIMG(SHOULDimg)
+{
+    SelectedPicture.textContent=SHOULDimg.alt;
+    showImgDialog(true);
+
+
+    const iframe = live_iframe;
+    const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+
+    let CurrentHiddenKITID =hidden_kitID.value;
+
+    const img = live_iframe.contentWindow.document.getElementById('live' + CurrentHiddenKITID);
+    img.src = SHOULDimg.src;
 }
 
 
