@@ -38,10 +38,11 @@
 
     <div id="imgDIALOG">
         <p>
-            Choose From The Menu The Picture You Want To Select
-            <br/>
-            Or Upload A New One.
+            Choose Picture Or Upload New One.
         </p>
+        <div id="imgArea">
+
+        </div>
         <label class="upload-btn">
             Upload Picture
             <input type="file" accept="image/*" onchange="handleFileUpload(event)">
