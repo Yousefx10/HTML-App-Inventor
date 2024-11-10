@@ -257,7 +257,7 @@ function showImgDialog()
 {
 
     imgDIALOG.style.display="block";
-
+    CorrectImgDialog();
 
 
 

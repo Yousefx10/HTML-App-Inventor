@@ -24,6 +24,7 @@ function correctDialogSize()
     ScreensManager(true);
     if(currentDIALOGbutton!=null)
         showDialog(currentDIALOGbutton,true);
+    CorrectImgDialog();
 }
 
 
@@ -52,6 +53,20 @@ ScreenshotButton.parentElement.style.zIndex="15";
 
 
 
+function CorrectImgDialog() {
+
+    const elementToBeSticked = document.getElementById("imgDIALOG");
+    const StickTo = document.getElementById("only-img");
+
+    // Get the bounding rectangle of the target element
+    const rect = StickTo.getBoundingClientRect();
+
+    // Position the absolute element
+    elementToBeSticked.style.top   = `${rect.top + window.scrollY+20}px`; // Aligns with the top of the target
+
+    elementToBeSticked.style.left  = `${(rect.right + window.scrollX )+20}px`;
+
+}
 
 //[FUNCTIONS] Area
 
