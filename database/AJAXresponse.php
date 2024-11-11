@@ -46,7 +46,8 @@ if(isset($_POST['PROCESSname']))
                             $stmt = $pdo->prepare("INSERT INTO uploads (assets_name, assets_folder, user_id) VALUES (:assets_name, :assets_folder, :user_id)");
 
                             // Bind the parameters to the actual values
-                            $stmt->bindParam(':assets_name',  substr($filePath, 3), PDO::PARAM_STR);
+                            $filePath= substr($filePath, 3);
+                            $stmt->bindParam(':assets_name', $filePath , PDO::PARAM_STR);
                             $stmt->bindParam(':assets_folder', $CurrentUser, PDO::PARAM_STR);
                             $stmt->bindParam(':user_id', $CurrentUserID, PDO::PARAM_INT);
 

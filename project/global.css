@@ -36,7 +36,14 @@ i've add it here instead of project.css  because maybe i'll use it again with an
     margin-top: 10px;
     display: flex;
     cursor: pointer;
+    align-items: center;
 }
-.DivContainer :last-child{
+.DivContainer .DialogImages{
     width: 150px;
+}
+
+.DivContainer .FileName{
+    /*transform: rotate(-90deg);*/
+    /*overflow: hidden;*/
+    writing-mode: vertical-lr;
 }
