@@ -4,7 +4,10 @@
 
 Require "DBconnection.php";
 
-
+// Log errors to a file
+ini_set('log_errors', 1);
+ini_set('error_log', 'ERRRRlogs.txt');
+error_reporting(E_ALL);
 
 
 $response = array();  // Initialize response array
@@ -72,16 +75,79 @@ if(isset($_POST['PROCESSname']))
                 {
                     try {
                         // Fetch image paths from the database
-                        $stmt = $pdo->prepare("SELECT assets_name FROM uploads");
+                        $stmt = $pdo->prepare("SELECT id, assets_name FROM uploads");
                         $stmt->execute();
                         $images = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
                         // Return the image paths as JSON
                         echo json_encode($images);
 
-                    } catch (PDOException $e) {
-                        echo json_encode(['error' => 'Database connection failed: ' . $e->getMessage()]);
+                    } catch (PDOException $e) {echo json_encode(['error' => 'Database connection failed: ' . $e->getMessage()]);}
+
+                }
+                elseif($_POST['PROCESSname']=="DeletsImg")
+                {
+                    // Set the ID of the row to delete
+                    $imgID  = $_POST['Informations'];
+
+                    $stmt = $pdo->prepare("SELECT assets_name FROM uploads WHERE id = :id");
+                    $stmt->bindParam(":id", $imgID, PDO::PARAM_INT);
+                    $stmt->execute();
+                    $ValueToDelete = $stmt->fetch(PDO::FETCH_ASSOC);
+
+                    if ($ValueToDelete) {
+
+                        try {
+
+
+                            // Prepare the DELETE statement
+                            $sql = "DELETE FROM uploads WHERE id = :id";
+                            $stmt = $pdo->prepare($sql);
+
+                            // Bind the parameter
+                            $stmt->bindParam(":id", $imgID, PDO::PARAM_INT);
+
+                            // Execute the statement
+                            if ($stmt->execute()) {
+                                //echo "Record deleted successfully.";
+                            } else {
+                               // echo "Error deleting record.";
+                            }
+
+
+
+                            $UserName  = $_POST['UserName'];
+                            $ValueToDelete = basename($ValueToDelete["assets_name"]);
+                            $file = "../uploads/".$UserName."/" . $ValueToDelete;
+
+
+
+                            // Check if the file exists before attempting to delete it
+                            if (file_exists($file)) {
+                                // Delete the file
+                                if (unlink($file)) {
+                                    //echo "File deleted successfully.";
+                                } else {
+                                    //echo "Error: Unable to delete the file.";
+                                }
+                            }
+
+
+                        } catch (PDOException $e) {
+                            //echo "Error: " . $e->getMessage();
+                        }
+
+
                     }
+
+
+
+
+
+
+
+                    // Close the connection
+                    $pdo = null;
 
                 }
         else {

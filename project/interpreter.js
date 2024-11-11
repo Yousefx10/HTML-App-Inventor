@@ -271,22 +271,40 @@ function showImgDialog(hide=false)
 }
 
 //promise i'll move this function to another file.
-function PreviewIMG(SHOULDimg)
+function PreviewIMG(SHOULDimg,RemoveIMG=false)
 {
-    SelectedPicture.textContent=SHOULDimg.alt;
-    showImgDialog(true);
-
-
     const iframe = live_iframe;
     const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
 
     let CurrentHiddenKITID =hidden_kitID.value;
 
     const img = live_iframe.contentWindow.document.getElementById('live' + CurrentHiddenKITID);
+    showImgDialog(true);//Hides The select img dialog.
+
+
+    if(RemoveIMG)//if only should remove selected img.
+    {
+        SelectedPicture.textContent="...";
+        img.src = "";
+        GET_DOC_ID("active_kit",CurrentHiddenKITID).setAttribute("data-src", "");
+        return;
+    }
+
+
+    SelectedPicture.textContent=SHOULDimg.alt;
+
+
     img.src = SHOULDimg.src;
     GET_DOC_ID("active_kit",CurrentHiddenKITID).setAttribute("data-src", SHOULDimg.alt);
 }
 
+function DeleteUploadedIMG(SelectedDeleteIcon)
+{
+    SelectedDeleteIcon.parentElement.remove();
+
+    uploadData(null,"default","1","DeletsImg",SelectedDeleteIcon.dataset.details);
+    PreviewIMG(null,true);//remove selected img.
+}
 
 
 
