@@ -1218,7 +1218,12 @@ function DeleteUploadedIMG(SelectedDeleteIcon)
 //this function try to rename the uploaded img file-name.
 function RenameUploadedIMG(clickedNAME)
 {
+    const forbiddenChars = /[\\/:*?"<>|!@#$%]/;
     let newName = prompt("Type The New IMG file name.");
+
+
+    // Test the file name against the regex
+    if(forbiddenChars.test(newName)) return
     if(newName == null) return;
 
 

@@ -6,7 +6,7 @@ Require "DBconnection.php";
 
 // Log errors to a file
 ini_set('log_errors', 1);
-ini_set('error_log', 'ERRRRlogs.txt');
+ini_set('error_log', 'ErrorLOGS.txt');
 error_reporting(E_ALL);
 
 
