@@ -64,6 +64,7 @@ function uploadData(file, UserName,UserID, ProcessName,Informations,anotherInfor
                         let iconIMG = document.createElement('img');
                         iconIMG.src="media/svg/trash.svg";
                         iconIMG.style.width="30px";
+                        iconIMG.alt = image.assets_name.split("/")[2];
                         iconIMG.dataset.details=image.id;//directly stores the ID of the uploaded image.
                         iconIMG.setAttribute("onclick", `DeleteUploadedIMG(this);`);
 

@@ -1190,9 +1190,13 @@ function PreviewIMG(SHOULDimg,RemoveIMG=false)
 
     if(RemoveIMG)//if only should remove selected img.
     {
-        SelectedPicture.textContent="none";
-        img.src = "";
-        GET_DOC_ID("active_kit",CurrentHiddenKITID).setAttribute("data-src", "");
+        if(GET_DOC_ID("active_kit",CurrentHiddenKITID).dataset.src === SHOULDimg.alt)
+        {
+            SelectedPicture.textContent="none";
+            img.src = "";
+            GET_DOC_ID("active_kit",CurrentHiddenKITID).setAttribute("data-src", "");
+        }
+
         UnselectIMG.style.display="none";
         return;
     }
@@ -1206,14 +1210,30 @@ function PreviewIMG(SHOULDimg,RemoveIMG=false)
     UnselectIMG.style.display="inline";
 }
 
-function DeleteUploadedIMG(SelectedDeleteIcon)
-{
+function DeleteUploadedIMG(SelectedDeleteIcon) {
     SelectedDeleteIcon.parentElement.remove();
 
-    uploadData(null,"default","1","DeletsImg",SelectedDeleteIcon.dataset.details);
-    PreviewIMG(null,true);//remove selected img.
-}
+    uploadData(null, "default", "1", "DeletsImg", SelectedDeleteIcon.dataset.details);
+    PreviewIMG(SelectedDeleteIcon.alt, true);//remove selected img.
 
+
+    const CheckForAffectedIMGs = active_kit.filter(row => row[1] === "Picture").map(row => row[0]);
+    const iframe = live_iframe;
+    const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+
+
+
+    CheckForAffectedIMGs.forEach(value => {
+        if(document.getElementById("active_kit"+value)){
+            if(document.getElementById("active_kit"+value).dataset.src==SelectedDeleteIcon.alt){
+                document.getElementById("active_kit"+value).dataset.src="none";
+                let img = live_iframe.contentWindow.document.getElementById('live' + value);
+                img.src="";
+            }
+        }
+    });
+
+}
 
 //this function try to rename the uploaded img file-name.
 function RenameUploadedIMG(clickedNAME)
