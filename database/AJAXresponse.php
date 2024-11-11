@@ -10,8 +10,6 @@ ini_set('error_log', 'ErrorLOGS.txt');
 error_reporting(E_ALL);
 
 
-$response = array();  // Initialize response array
-
 // Define the directory where files will be uploaded
 
 $CurrentUser = "default";
@@ -39,7 +37,6 @@ if(isset($_POST['PROCESSname']))
 
                     // Move the uploaded file to the 'uploads' directory
                     if (move_uploaded_file($_FILES['file']['tmp_name'], $filePath)) {
-                        $response["file"] = "File uploaded successfully: " . $fileName;  // Success message
 
                         try {
                             // Prepare the SQL query to insert the file path into the database
@@ -52,25 +49,12 @@ if(isset($_POST['PROCESSname']))
                             $stmt->bindParam(':user_id', $CurrentUserID, PDO::PARAM_INT);
 
                             // Execute the query
-                            if ($stmt->execute()) {
-                                $response["message"] = "File uploaded and saved to the database successfully.";
-                            } else {
-                                $response["message"] = "Database error: Could not save the file path.";
-                            }
+                            if ($stmt->execute()) {}
 
-                        } catch (PDOException $e) {
-                            // If an error occurs (PDO exception)
-                            $response["message"] = "Database connection error: " . $e->getMessage();
+                        } catch (PDOException $e) {}
+
                         }
-
-                        // PDO does not require closing the connection manually, but you can do it if needed
-                        //$pdo = null;
                     }
-                }
-
-                    else {
-                        $response["file"] = "Failed to move the uploaded file.";  // Error message if move fails
-                        }
                 }
                 elseif($_POST['PROCESSname']=="getting_assets")
                 {
@@ -109,11 +93,7 @@ if(isset($_POST['PROCESSname']))
                             $stmt->bindParam(":id", $imgID, PDO::PARAM_INT);
 
                             // Execute the statement
-                            if ($stmt->execute()) {
-                                //echo "Record deleted successfully.";
-                            } else {
-                               // echo "Error deleting record.";
-                            }
+                            if ($stmt->execute()) {}
 
 
 
@@ -125,24 +105,15 @@ if(isset($_POST['PROCESSname']))
 
                             // Check if the file exists before attempting to delete it
                             if (file_exists($file)) {
-                                // Delete the file
-                                if (unlink($file)) {
-                                    //echo "File deleted successfully.";
-                                } else {
-                                    //echo "Error: Unable to delete the file.";
-                                }
+                                if (unlink($file)) {}// Delete the file
                             }
 
 
-                        } catch (PDOException $e) {
-                            //echo "Error: " . $e->getMessage();
-                        }
+                        } catch (PDOException $e) {}
 
 
                     }
 
-                    // Close the connection
-                    $pdo = null;
 
                 }
                 elseif($_POST['PROCESSname']=="RenameIMG")
@@ -175,21 +146,10 @@ if(isset($_POST['PROCESSname']))
 
                          }
 
-
-
-
-
-
-
-
-
                 }
-        else {
-                    $response["file"] = "No file uploaded or there was an error with the upload.";  // Error handling
-                }
-
-
-
 
 
     }
+
+// Close the connection
+$pdo = null;
