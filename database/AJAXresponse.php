@@ -141,14 +141,47 @@ if(isset($_POST['PROCESSname']))
 
                     }
 
-
-
-
-
-
-
                     // Close the connection
                     $pdo = null;
+
+                }
+                elseif($_POST['PROCESSname']=="RenameIMG")
+                {
+
+
+
+                        $Informations  = $_POST['anotherInformations'];
+                        $imgID  = $_POST['Informations'];
+                        $UserName  = $_POST['UserName'];
+                        $newFilePath ="uploads/" . $UserName . "/" . $Informations;
+
+
+                        $stmt = $pdo->prepare("SELECT assets_name FROM uploads WHERE id = :id");
+                        $stmt->bindParam(":id", $imgID, PDO::PARAM_INT);
+                        $stmt->execute();
+                        $ValueToDelete = $stmt->fetch(PDO::FETCH_ASSOC);
+
+                        if ($ValueToDelete) {
+                            rename("../".$ValueToDelete["assets_name"],"../". $newFilePath);
+
+                            $sql = "UPDATE uploads SET assets_name = :assets_name WHERE id = :id";
+
+                            $stmt = $pdo->prepare($sql);
+
+                            $stmt->bindParam(':assets_name', $newFilePath);
+                            $stmt->bindParam(':id', $imgID);
+
+                            $stmt->execute();
+
+                         }
+
+
+
+
+
+
+
+
 
                 }
         else {

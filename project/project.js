@@ -1215,8 +1215,21 @@ function DeleteUploadedIMG(SelectedDeleteIcon)
 }
 
 
+//this function try to rename the uploaded img file-name.
+function RenameUploadedIMG(clickedNAME)
+{
+    let newName = prompt("Type The New IMG file name.");
+    if(newName == null) return;
 
 
+    if(newName !== "")
+    {
+        newName+= "." + clickedNAME.textContent.split('.').pop().toLowerCase();
+        uploadData(null,"default","1","RenameIMG",clickedNAME.dataset.details,newName);
+        clickedNAME.textContent=newName;
+    }
+
+}
 
 
 

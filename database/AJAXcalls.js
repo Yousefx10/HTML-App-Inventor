@@ -1,7 +1,7 @@
 //This File Will Connect And Calls The Database Directly Through PHP.
 //Ajax File.
 
-function uploadData(file, UserName,UserID, ProcessName,Informations) {
+function uploadData(file, UserName,UserID, ProcessName,Informations,anotherInformations) {
     const formData = new FormData();
 
     // If a file is passed, append it to the FormData object
@@ -20,6 +20,9 @@ function uploadData(file, UserName,UserID, ProcessName,Informations) {
 
     if (Informations) {
         formData.append("Informations", Informations);
+    }
+    if (anotherInformations) {
+        formData.append("anotherInformations", anotherInformations);
     }
 
     if (ProcessName !== undefined) {  // Check to make sure it's not undefined
@@ -54,8 +57,9 @@ function uploadData(file, UserName,UserID, ProcessName,Informations) {
 
                         let FileNameP = document.createElement("p");
                         FileNameP.classList.add("FileName");
-                        FileNameP.textContent="hello.gif";
-
+                        FileNameP.textContent=image.assets_name.split("/")[2];
+                        FileNameP.setAttribute("onclick", `RenameUploadedIMG(this);`);
+                        FileNameP.dataset.details=image.id;//directly stores the ID of the uploaded image.
 
                         let iconIMG = document.createElement('img');
                         iconIMG.src="media/svg/trash.svg";

@@ -42,8 +42,14 @@ i've add it here instead of project.css  because maybe i'll use it again with an
     width: 150px;
 }
 
-.DivContainer .FileName{
-    /*transform: rotate(-90deg);*/
-    /*overflow: hidden;*/
-    writing-mode: vertical-lr;
+.DivContainer .FileName {
+    /* transform: rotate(-90deg); */
+    writing-mode: vertical-rl;
+    max-height: 15%;
+    transform: rotate(180deg);
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.DivContainer .FileName:hover{
+    background-color: #4CAF50;
 }
