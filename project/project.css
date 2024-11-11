@@ -408,3 +408,15 @@ color:mediumseagreen;
 .timelineSCREEN{
     height: 80%;
 }
+
+
+
+#UnselectIMG{
+    color:red;
+    font-size:small;
+    cursor:pointer;
+    display: none;
+}
+#UnselectIMG:hover{
+    background-color: bisque;
+}

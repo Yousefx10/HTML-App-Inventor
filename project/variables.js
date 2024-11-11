@@ -41,6 +41,17 @@ let
     propertiesSIZE = document.getElementById('propertiesSIZE'),
     propertiesBACKGROUND = document.getElementById("propertiesBACKGROUND");
 
+
+let
+    UnselectIMG = document.getElementById("UnselectIMG"),
+    imgDIALOG = document.getElementById('imgDIALOG'),
+    imageContainer = document.getElementById('imgArea'),
+    SelectedPicture = document.getElementById('SelectedPicture');
+
+
+
+
+
 // [START] SCREEN MANAGER AREA [START]
 
 

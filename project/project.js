@@ -227,6 +227,8 @@ function timeline_properties(current_kit, current_details,KITtype) {
     document.getElementById('ImageSize').value = current_img_size;
     let current_img_src = document.getElementById("active_kit" + current_kit).dataset.src;
     SelectedPicture.textContent = current_img_src;
+    if(current_img_src=="none") UnselectIMG.style.display="none";
+    else                        UnselectIMG.style.display="inline";
     // document.getElementById('ImageSize').disabled = false;
 
     let current_margin = document.getElementById("active_kit" + current_kit).dataset.margin;
@@ -1148,6 +1150,82 @@ function ScreenshotNow(ShotItNow)
 
 
 }
+
+
+
+
+
+
+
+
+
+
+//this function will be used to show/hide the main DIALOG for CHOOSING and UPLOADING images.
+function showImgDialog(hide=false)
+{
+    if(hide)
+    {
+        imgDIALOG.style.display="none";
+        return;
+    }
+    imgDIALOG.style.display="block";
+    CorrectImgDialog();
+    uploadData(null,null,null,"getting_assets");
+
+
+
+}
+
+//promise i'll move this function to another file.
+function PreviewIMG(SHOULDimg,RemoveIMG=false)
+{
+    const iframe = live_iframe;
+    const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+
+    let CurrentHiddenKITID =hidden_kitID.value;
+
+    const img = live_iframe.contentWindow.document.getElementById('live' + CurrentHiddenKITID);
+    showImgDialog(true);//Hides The select img dialog.
+
+
+    if(RemoveIMG)//if only should remove selected img.
+    {
+        SelectedPicture.textContent="none";
+        img.src = "";
+        GET_DOC_ID("active_kit",CurrentHiddenKITID).setAttribute("data-src", "");
+        UnselectIMG.style.display="none";
+        return;
+    }
+
+
+    SelectedPicture.textContent=SHOULDimg.alt;
+
+
+    img.src = SHOULDimg.src;
+    GET_DOC_ID("active_kit",CurrentHiddenKITID).setAttribute("data-src", SHOULDimg.alt);
+    UnselectIMG.style.display="inline";
+}
+
+function DeleteUploadedIMG(SelectedDeleteIcon)
+{
+    SelectedDeleteIcon.parentElement.remove();
+
+    uploadData(null,"default","1","DeletsImg",SelectedDeleteIcon.dataset.details);
+    PreviewIMG(null,true);//remove selected img.
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
