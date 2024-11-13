@@ -475,6 +475,45 @@ function ADDINGsingleBLOCK(words,FullBlockID)
 
 }
 
+function HideUnwantedVALUES(CurrentCase)
+{
+    //const hiddenOptions = advance_value_property.querySelectorAll('option[hidden]');
+    advance_value_property.value="";
+    const hiddenOptions = advance_value_property.querySelectorAll('option');
+    hiddenOptions.forEach(option => option.setAttribute('hidden', ''));
+    let options="";
+    switch (CurrentCase)
+    {
+        case "changetext":
+
+            //hiddenOptions.forEach(option => option.removeAttribute('hidden'));
+            //return;
+            options = hiddenOptions;
+            break;
+        case "changecolor":
+            options = advance_value_property.querySelectorAll('option[value="text"], option[value="color"], option[value="background"]');
+            break;
+        case "changevisibility":
+            options = advance_value_property.querySelectorAll('option[value="text"], option[value="visibility"]');
+            break;
+        case "changefontsize":
+            options = advance_value_property.querySelectorAll('option[value="text"], option[value="fontSize"]');
+            break;
+        case "changealignment":
+            options = advance_value_property.querySelectorAll('option[value="text"], option[value="alignment"]');
+            break;
+        case "changebackground":
+            options = advance_value_property.querySelectorAll('option[value="text"], option[value="color"], option[value="background"]');
+            break;
+        case "switchscreen":
+            options = advance_value_property.querySelectorAll('option[value="text"]');
+            break;
+    }
+
+    options.forEach(option => {
+        option.removeAttribute('hidden');
+    });
+}
 
 function ShowComment(FullBlockID)
 {
@@ -519,7 +558,9 @@ function showDialog(button,resizeACTION=false) {
     if(resizeACTION) return; // this will stop the code if it's only called to update the dialog location duo to resize action.
 
     currentDIALOGbutton = button;
-    currentOPENED_dialog = button.parentNode.parentNode.id;
+    currentOPENED_dialog = button.parentNode.parentNode;
+    HideUnwantedVALUES(currentOPENED_dialog.querySelector('.action_block').textContent);
+    currentOPENED_dialog = currentOPENED_dialog.id;
 
     //checks for the default :
     const child = document.getElementById(currentOPENED_dialog).querySelector('.child');
@@ -549,7 +590,7 @@ if(justHIDE)
     const child = document.getElementById(currentOPENED_dialog).querySelector('.child');
     const originalINPUT = document.getElementById(currentOPENED_dialog).querySelector('.original');
 
-if(allowCHANGEproperties.checked)
+if(allowCHANGEproperties.checked && advance_value_property.value!=="")
 {
     let wholeVALUE="//"+advance_kit_property.value + "//"+ advance_value_property.value;
 
@@ -576,6 +617,7 @@ if(allowCHANGEproperties.checked)
     changePROPERTIES("own_value");
 }
 else {
+    /*
     let wholeVALUE="Enter Your New Value";
 
     updateACTIONvalue(wholeVALUE,'value',currentOPENED_dialog);
@@ -589,6 +631,8 @@ else {
     originalINPUT.value         =wholeVALUE;
     originalINPUT.placeholder   =wholeVALUE;
     originalINPUT.style.display="inline";
+
+     */
 }
 
 
