@@ -18,7 +18,7 @@
 
         <button style="color:red" onclick="DeleteScreen();">X</button>
         <select id="selectSCREEN" onchange="SwitchTheScreen(this.value);">
-            <option value="1" id="optionScreen1">Screen1</option>
+            <option value="1" id="optionScreen1">screen1</option>
         </select>
     <button onclick="RenameScreen();" style="color:red;background:none;border:none;padding:0">
     🖋️
@@ -108,7 +108,7 @@
   <div class="status-bar" id="con">
     <div class="left" id="clock">00:00</div>
       <div class="" id="activeDOT"></div>
-    <div class="right noselect" onclick="ScreensManager();" id="screenBUTTON" role="button" tabindex="0">Screen1</div>
+    <div class="right noselect" onclick="ScreensManager();" id="screenBUTTON" role="button" tabindex="0">screen1</div>
   </div>
 
 

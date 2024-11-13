@@ -876,7 +876,7 @@ function stopThisTimer(kitID) {
     }
     function AddNewScreen()
     {
-        let ScreenName = prompt("Please enter Screen Name:").toLowerCase();
+        let ScreenName = prompt("Please enter Screen Name:");
 
         if (ScreenName !== '' && ScreenName!== null) {
 
@@ -885,7 +885,7 @@ function stopThisTimer(kitID) {
                 alert("Error:\n Name Can't Start With A Number Or Contain Space.");
                 return;
             }
-
+            ScreenName=ScreenName.toLowerCase();
             //so won't duplicate the screen name.
             if (namingSCREENS.some(subArray => subArray.includes(ScreenName)) )return;
 
