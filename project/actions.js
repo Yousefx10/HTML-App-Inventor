@@ -85,10 +85,30 @@ function doJOBS(COMMANDS,FINALvalue){
                     ChangeBackground(COMMANDS[1],FINALvalue);
                 break;
         case "switchscreen":
-
             //this statement checks if THE VALUE is directed screen ID or screen name.
             if (isNaN(FINALvalue - parseFloat(FINALvalue)))
-                FINALvalue= window.parent.namingSCREENS.find(selectedSCREENname => selectedSCREENname[1] === FINALvalue)[0];
+            {
+                FINALvalue=FINALvalue.toLowerCase();//I SHOULD MAKE ALL SCREEN NAMES IN LOWER CASE FOR THIS SITUATION.
+                //FINALvalue= window.parent.namingSCREENS.find(selectedSCREENname => selectedSCREENname[1] === FINALvalue)[0];
+                const match = window.parent.namingSCREENS.find(selectedSCREENname => selectedSCREENname[1] === FINALvalue);
+
+                if (match)
+                    FINALvalue = match[0];// If a match is found, assign the corresponding screen ID to FINALvalue
+                else
+                {
+                    window.parent.ThroughWARNING();
+                    return;
+                }
+
+            }else{
+                const match = window.parent.namingSCREENS.find(selectedSCREENname => selectedSCREENname[0] == FINALvalue);
+                if (!match)
+                {
+                    window.parent.ThroughWARNING();
+                    return;
+                }
+            }
+
 
             SwitchCurrentScreen("screen"+FINALvalue);
 
