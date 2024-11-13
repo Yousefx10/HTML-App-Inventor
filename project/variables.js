@@ -56,7 +56,7 @@ let
 
 
 //this one is now GLOBAL variable
-window. namingSCREENS      =[[1,"Screen1"]];//adding the default screen by default
+window. namingSCREENS      =[[1,"screen1"]];//adding the default screen by default
 let screenPROPERTIES =[[1,"background:#f0f0f0"]];//storing each property, and then seperate it by ":"
 // for now, only background color.
 
