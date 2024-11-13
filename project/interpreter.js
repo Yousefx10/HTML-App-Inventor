@@ -167,7 +167,11 @@ function NavigateBug(ActionID,justNavigate=false)
     //STEP TWO : Select The desired event :
     document.getElementById('event_'+wordBeforeCode.toUpperCase()).dispatchEvent(OpenMe); // Dispatch the event
     if(!justNavigate)
-    document.getElementById(ActionID).style.background="blue";
+    {
+        document.getElementById(ActionID).style.background="salmon";
+        document.getElementById(ActionID).style.paddingBottom="10px";
+    }
+
 }
 
 
@@ -251,10 +255,35 @@ function CaseResolve(FullActionBlockID,CaseOfUpdate)
 }
 
 //for RunTime Errors, For Example if kit color is set to "hi"
-function ThroughWARNING()
+function ThroughWARNING(gettingValue)
 {
     runTHEproject(true);
     console.log("==[Through WARNING]==");
+
+
+
+
+    const row = document.createElement("tr");
+    const cell = document.createElement("th");
+    const cell2 = document.createElement("th");
+
+    cell.textContent = "Description";
+    row.appendChild(cell);
+    cell2.textContent = "Navigate";
+    row.appendChild(cell2);
+
+    tableBody.appendChild(row);
+
+
+
+    BugsContent.innerHTML="";//so it will be clear, for next use.
+
+    // Append the table to the target div
+    BugsContent.appendChild(table);
+
+    addRowToTable(gettingValue,"Run Time Error: UnExpected Value...");
+    console.log(gettingValue);
+    DisplayDialog();
 }
 
 

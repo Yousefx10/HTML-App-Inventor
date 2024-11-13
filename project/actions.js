@@ -15,8 +15,7 @@ function global_onClick(kitID,prefix = "click"){
 
                 const COMMANDS = dynamicMap.get(blockID).split(ProjectDelimiter);
 
-                console.log(COMMANDS);
-                doJOBS(COMMANDS, do_property(COMMANDS[2]));
+                doJOBS(COMMANDS, do_property(COMMANDS[2]),blockID);
 
             });
     }
@@ -25,7 +24,7 @@ function global_onClick(kitID,prefix = "click"){
 
 
 //so this function starts to apply changes, refered to Do The Action....
-function doJOBS(COMMANDS,FINALvalue){
+function doJOBS(COMMANDS,FINALvalue,ReferBlockID){
     switch (COMMANDS[0]) {
         case "changetext":
             //document.getElementById("live"+COMMANDS[1]).textContent=COMMANDS[2];
@@ -35,7 +34,7 @@ function doJOBS(COMMANDS,FINALvalue){
             //document.getElementById("live"+COMMANDS[1]).style.color=COMMANDS[2];
             if(CheckValidProperty("color",FINALvalue))
                 UpdateColor(COMMANDS[1],FINALvalue);
-            else window.parent.ThroughWARNING();
+            else window.parent.ThroughWARNING(ReferBlockID);
             break;
         case "changevisibility":
 
@@ -46,7 +45,7 @@ function doJOBS(COMMANDS,FINALvalue){
                         document.getElementById("live"+COMMANDS[1]).classList.remove("hide");
                     else
                         document.getElementById("live"+COMMANDS[1]).classList.add("hide");
-            else window.parent.ThroughWARNING();
+            else window.parent.ThroughWARNING(ReferBlockID);
                 //document.getElementById("live"+COMMANDS[1]).style.display=(FINALvalue === "Visible") ? "block" : "none";
 
             break;
@@ -54,7 +53,7 @@ function doJOBS(COMMANDS,FINALvalue){
             //document.getElementById("live"+COMMANDS[1]).style.fontSize=COMMANDS[2];
             if(CheckValidProperty("font-size",FINALvalue))
                 UpdateFontSize(COMMANDS[1],FINALvalue);
-            else window.parent.ThroughWARNING();
+            else window.parent.ThroughWARNING(ReferBlockID);
             break;
         case "changealignment":
             //document.getElementById("live"+COMMANDS[1]).style.color=COMMANDS[2];
@@ -66,7 +65,7 @@ function doJOBS(COMMANDS,FINALvalue){
 
             if (!["left", "center", "right","start"].includes(FINALvalue.toLowerCase()))
             {
-                window.parent.ThroughWARNING();
+                window.parent.ThroughWARNING(ReferBlockID);
                 return;
             }
 
@@ -92,7 +91,7 @@ function doJOBS(COMMANDS,FINALvalue){
                         ChangeBackground(COMMANDS[1],FINALvalue);
                 }
                 else{
-                    window.parent.ThroughWARNING();
+                    window.parent.ThroughWARNING(ReferBlockID);
                     return;
                 }
 
@@ -109,7 +108,7 @@ function doJOBS(COMMANDS,FINALvalue){
                     FINALvalue = match[0];// If a match is found, assign the corresponding screen ID to FINALvalue
                 else
                 {
-                    window.parent.ThroughWARNING();
+                    window.parent.ThroughWARNING(ReferBlockID);
                     return;
                 }
 
@@ -117,7 +116,7 @@ function doJOBS(COMMANDS,FINALvalue){
                 const match = window.parent.namingSCREENS.find(selectedSCREENname => selectedSCREENname[0] == FINALvalue);
                 if (!match)
                 {
-                    window.parent.ThroughWARNING();
+                    window.parent.ThroughWARNING(ReferBlockID);
                     return;
                 }
             }
