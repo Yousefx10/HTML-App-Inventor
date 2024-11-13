@@ -336,6 +336,9 @@ function ADDINGsingleBLOCK(words,FullBlockID)
                 option.value = num;
                 valueInput.appendChild(option);
             });
+            //The Default OPTION to be selected always in case of changed value.
+            valueInput.appendChild(CreateDefaultOPTION("black"));
+
             valueInput.className = "original";
             valueInput.value= words[2];
 
@@ -349,6 +352,9 @@ function ADDINGsingleBLOCK(words,FullBlockID)
                 option.value = num;
                 valueInput.appendChild(option);
             });
+            //The Default OPTION to be selected always in case of changed value.
+            valueInput.appendChild(CreateDefaultOPTION("Hidden"));
+
             valueInput.className = "original";
             valueInput.value= words[2];
 
@@ -362,6 +368,9 @@ function ADDINGsingleBLOCK(words,FullBlockID)
                 option.value = num[1];
                 valueInput.appendChild(option);
             });
+            //The Default OPTION to be selected always in case of changed value.
+            valueInput.appendChild(CreateDefaultOPTION("medium"));
+
             valueInput.className = "original";
             valueInput.value= words[2];
 
@@ -376,6 +385,9 @@ function ADDINGsingleBLOCK(words,FullBlockID)
                 option.value = num;
                 valueInput.appendChild(option);
             });
+            //The Default OPTION to be selected always in case of changed value.
+            valueInput.appendChild(CreateDefaultOPTION("Left"));
+
             valueInput.className = "original";
             valueInput.value= words[2];
 
@@ -389,6 +401,9 @@ function ADDINGsingleBLOCK(words,FullBlockID)
                     option.value = num;
                     valueInput.appendChild(option);
                 });
+                //The Default OPTION to be selected always in case of changed value.
+                valueInput.appendChild(CreateDefaultOPTION("White"));
+
                 valueInput.className = "original";
                 valueInput.value= words[2];
 
@@ -403,6 +418,9 @@ function ADDINGsingleBLOCK(words,FullBlockID)
                 option.value = num[0];
                 valueInput.appendChild(option);
             });
+            //The Default OPTION to be selected always in case of changed value.
+            valueInput.appendChild(CreateDefaultOPTION(namingSCREENS[0][0]));
+
             valueInput.className = "original";
             valueInput.value= words[2];
 
@@ -474,7 +492,15 @@ function ADDINGsingleBLOCK(words,FullBlockID)
 
 
 }
-
+function CreateDefaultOPTION(value)
+{
+    //The Default OPTION to be selected always in case of changed value.
+    const defaultOPTION = document.createElement('option');
+    defaultOPTION.value = value;
+    defaultOPTION.setAttribute('hidden','');
+    defaultOPTION.classList.add("defaultValue");
+    return defaultOPTION
+}
 function HideUnwantedVALUES(CurrentCase)
 {
     //const hiddenOptions = advance_value_property.querySelectorAll('option[hidden]');
@@ -617,8 +643,11 @@ if(allowCHANGEproperties.checked && advance_value_property.value!=="")
     changePROPERTIES("own_value");
 }
 else {
-    /*
-    let wholeVALUE="Enter Your New Value";
+
+    //let wholeVALUE= originalINPUT.querySelector('option[value="default"]').textContent;
+    let wholeVALUE="This Is New Value";
+    if(originalINPUT.querySelector('.defaultValue'))
+         wholeVALUE= originalINPUT.querySelector('.defaultValue').value;
 
     updateACTIONvalue(wholeVALUE,'value',currentOPENED_dialog);
 
@@ -632,10 +661,10 @@ else {
     originalINPUT.placeholder   =wholeVALUE;
     originalINPUT.style.display="inline";
 
-     */
+
 }
 
-
+    changePROPERTIES("own_value");
 }
 
 function deleteblock(FullBlockID)
