@@ -65,7 +65,11 @@ function doJOBS(COMMANDS,FINALvalue){
             //const controlTags = ['button', 'img'];
 
             if (!["left", "center", "right","start"].includes(FINALvalue.toLowerCase()))
+            {
                 window.parent.ThroughWARNING();
+                return;
+            }
+
 
             const targetElement = document.getElementById("live"+COMMANDS[1]);
 
@@ -79,10 +83,19 @@ function doJOBS(COMMANDS,FINALvalue){
             break;
             case "changebackground":
                 //document.getElementById("live"+COMMANDS[1]).style.fontSize=COMMANDS[2];
-                if(COMMANDS[1].startsWith("@@"))
-                    UpdateBackgroundColor("screen"+COMMANDS[1].slice(2),FINALvalue);
-                else
-                    ChangeBackground(COMMANDS[1],FINALvalue);
+
+                if(CheckValidProperty("background-color",FINALvalue))
+                {
+                    if(COMMANDS[1].startsWith("@@"))
+                        UpdateBackgroundColor("screen"+COMMANDS[1].slice(2),FINALvalue);
+                    else
+                        ChangeBackground(COMMANDS[1],FINALvalue);
+                }
+                else{
+                    window.parent.ThroughWARNING();
+                    return;
+                }
+
                 break;
         case "switchscreen":
             //this statement checks if THE VALUE is directed screen ID or screen name.
