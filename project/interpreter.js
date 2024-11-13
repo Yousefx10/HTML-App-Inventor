@@ -4,7 +4,7 @@
 
     Version : 0.1;
 */
-const Build_Version='24/11/11';//YY/MM/DD.
+const Build_Version='24/11/13';//YY/MM/DD.
 
 /*
 Big Note:
@@ -253,7 +253,8 @@ function CaseResolve(FullActionBlockID,CaseOfUpdate)
 //for RunTime Errors, For Example if kit color is set to "hi"
 function ThroughWARNING()
 {
-    console.log("Through WARNING");
+    runTHEproject(true);
+    console.log("==[Through WARNING]==");
 }
 
 

@@ -199,7 +199,7 @@ maybe using this code in the future to replace the violation error related to do
 
 - Adding special Dialog alert instead of the browser dialog
 
-- Adding Media Asset Manager, so photos or media are included can be ReUsed without reuploading them again.
+- Adding Media Asset Manager, so photos or media are included can be ReUsed without reuploading them again.[DONE]
 
 - Writing The Engine That Will Convert The Whole Output into a real final result template that can be used only and directly.
 
