@@ -155,9 +155,9 @@
 
 
 </div>
-
 <button class="functionBTN" onclick="switchScreen();">
 Code Workspace⬇️
+<div class="tooltip">ALT + 1</div>
 </button>
 
 <?php include "project/blocks/workspace.html"?>

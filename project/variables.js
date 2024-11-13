@@ -10,6 +10,14 @@ function GET_DOC_ID(prefix_name,kitID){
     return document.getElementById(prefix_name+kitID);
 }
 
+document.addEventListener('keydown', function(event) {
+    // Check if the Alt key and the '1' key are pressed
+    if (event.altKey && event.key === '1') {
+        event.preventDefault();  // Prevent default behavior if needed
+        switchScreen();
+    }
+});
+
 
 
 
