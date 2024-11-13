@@ -259,7 +259,7 @@ function ThroughWARNING(gettingValue)
 {
     runTHEproject(true);
     console.log("==[Through WARNING]==");
-
+    BugsContent.innerHTML="";//removing old/previous warnings.
 
 
 
@@ -281,7 +281,7 @@ function ThroughWARNING(gettingValue)
     // Append the table to the target div
     BugsContent.appendChild(table);
 
-    addRowToTable(gettingValue,"Run Time Error: UnExpected Value...");
+    addRowToTable(gettingValue,"Run Time Warning: UN-EXPECTED Value..");
     console.log(gettingValue);
     DisplayDialog();
 }
