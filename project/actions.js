@@ -38,7 +38,7 @@ function doJOBS(COMMANDS,FINALvalue){
             else window.parent.ThroughWARNING();
             break;
         case "changevisibility":
-            console.log(FINALvalue);
+
             if(FINALvalue=="Toggle")
                 TOGGLEhiding(COMMANDS[1]);
             else if(FINALvalue == "Visible" || FINALvalue == "Hidden")
@@ -52,7 +52,9 @@ function doJOBS(COMMANDS,FINALvalue){
             break;
         case "changefontsize":
             //document.getElementById("live"+COMMANDS[1]).style.fontSize=COMMANDS[2];
-            UpdateFontSize(COMMANDS[1],FINALvalue);
+            if(CheckValidProperty("font-size",FINALvalue))
+                UpdateFontSize(COMMANDS[1],FINALvalue);
+            else window.parent.ThroughWARNING();
             break;
         case "changealignment":
             //document.getElementById("live"+COMMANDS[1]).style.color=COMMANDS[2];
@@ -62,13 +64,18 @@ function doJOBS(COMMANDS,FINALvalue){
             //const controlTags = ['BUTTON', 'IMG' ,'INPUT', 'SELECT', 'TEXTAREA'];
             //const controlTags = ['button', 'img'];
 
+            if (!["left", "center", "right","start"].includes(FINALvalue.toLowerCase()))
+                window.parent.ThroughWARNING();
+
             const targetElement = document.getElementById("live"+COMMANDS[1]);
 
             let kitTYPE = 'text';
 
-            if (CONTROLelements.includes(targetElement.tagName.toLowerCase())) kitTYPE = 'control';
+            if (CONTROLelements.includes(targetElement.tagName.toLowerCase()))
+                kitTYPE = 'control';
 
             kitALIGNMENT(COMMANDS[1],kitTYPE,FINALvalue);
+
             break;
             case "changebackground":
                 //document.getElementById("live"+COMMANDS[1]).style.fontSize=COMMANDS[2];
@@ -125,6 +132,7 @@ function do_property(wholeVALUE)
 
                 wholeVALUE= currentKITstyle.textAlign;
 
+                if (wholeVALUE =="start") wholeVALUE="left";
 
                 let ele = document.getElementById(currentKIT);
 
