@@ -250,8 +250,11 @@ function CaseResolve(FullActionBlockID,CaseOfUpdate)
 
 }
 
-
-
+//for RunTime Errors, For Example if kit color is set to "hi"
+function ThroughWARNING()
+{
+    console.log("Through WARNING");
+}
 
 
 

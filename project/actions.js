@@ -24,7 +24,7 @@ function global_onClick(kitID,prefix = "click"){
 }
 
 
-
+//so this function starts to apply changes, refered to Do The Action....
 function doJOBS(COMMANDS,FINALvalue){
     switch (COMMANDS[0]) {
         case "changetext":
@@ -33,14 +33,21 @@ function doJOBS(COMMANDS,FINALvalue){
             break;
         case "changecolor":
             //document.getElementById("live"+COMMANDS[1]).style.color=COMMANDS[2];
-            UpdateColor(COMMANDS[1],FINALvalue);
+            if(CheckValidProperty("color",FINALvalue))
+                UpdateColor(COMMANDS[1],FINALvalue);
+            else window.parent.ThroughWARNING();
             break;
         case "changevisibility":
-
+            console.log(FINALvalue);
             if(FINALvalue=="Toggle")
                 TOGGLEhiding(COMMANDS[1]);
-            else
-                document.getElementById("live"+COMMANDS[1]).style.display=(FINALvalue === "Visible") ? "block" : "none";
+            else if(FINALvalue == "Visible" || FINALvalue == "Hidden")
+                    if((FINALvalue === "Visible"))
+                        document.getElementById("live"+COMMANDS[1]).classList.remove("hide");
+                    else
+                        document.getElementById("live"+COMMANDS[1]).classList.add("hide");
+            else window.parent.ThroughWARNING();
+                //document.getElementById("live"+COMMANDS[1]).style.display=(FINALvalue === "Visible") ? "block" : "none";
 
             break;
         case "changefontsize":
@@ -262,6 +269,41 @@ function startPress(elementEVENT,kitID) {
 function cancelPress(elementEVENT) {
     clearTimeout(elementEVENT.pressTimer);
 }
+
+
+
+
+
+function CheckValidProperty(property, value) {
+    const testElement = document.createElement("div");
+    testElement.style[property] = value;
+    return testElement.style[property] !== "";
+}
+
+/*
+// true, since "green" is invalid for font-size
+console.log(CheckInvalidProperty("font-size", "green"));
+// false, since "green" is valid for color
+console.log(CheckInvalidProperty("color", "green"));
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
