@@ -3,7 +3,7 @@
 $host = 'localhost';
 $dbname = 'appinventor';
 $username = 'root';
-$password = '';
+$password = 'root';
 
 try {
     $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
