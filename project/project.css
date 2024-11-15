@@ -180,7 +180,8 @@ background-color: rgb(164, 20, 20);
     padding: 5px;
     margin-left:2px;
     font-weight: bold;
-    cursor: grab;
+    /* cursor: grab; */
+    cursor: none;
 }
 .kit .kit_left span::before{
     content: " ";

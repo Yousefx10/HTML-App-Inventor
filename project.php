@@ -9,7 +9,54 @@
     </head>
     <body>
 
-    
+    <div class="custom-cursor" style="z-index: 100;"></div>
+    <script>
+        const cursor = document.querySelector('.custom-cursor');
+        let isDragging = false;
+
+        // Show cursor on first movement and remove listener
+        const onFirstMouseMove = (e) => {
+            cursor.style.opacity = 1;
+            updateCursorPosition(e);
+            document.removeEventListener('mousemove', onFirstMouseMove);
+        };
+
+        // Update cursor position
+        const updateCursorPosition = (e) => {
+            cursor.style.left = `${e.clientX - cursor.offsetWidth / 2}px`;
+            cursor.style.top = `${e.clientY - cursor.offsetHeight / 2}px`;
+        };
+
+        // Initialize with one-time listener to show the cursor on first movement
+        document.addEventListener('mousemove', onFirstMouseMove);
+
+        // Listen for mouse movement to update position
+        document.addEventListener('mousemove', updateCursorPosition);
+
+        // Add or remove 'hovered' class based on hovering over .hover-effect elements
+        document.addEventListener('mouseover', (e) => {
+            if (e.target.classList.contains('hover-effect')) {
+                cursor.classList.add('hovered');
+            }
+        });
+
+        document.addEventListener('mouseout', (e) => {
+            if (e.target.classList.contains('hover-effect')) {
+                cursor.classList.remove('hovered');
+            }
+        });
+
+    // While dragging, move the cursor with the mouse
+    document.addEventListener('dragover', (e) => {
+        if (isDragging) {
+            document.body.style.cursor = 'none'; // Hide default cursor
+            updateCursorPosition(e); // Ensure the custom cursor follows the mouse during dragging
+        }
+    });
+
+
+    </script>
+
 
 <!--This is the screen dialog and it's outside the container-->
     <div id="screensPAGE" class="screenPAGEhide">

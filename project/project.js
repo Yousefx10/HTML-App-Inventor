@@ -1279,16 +1279,24 @@ let Zones = [document.getElementById('project_timeline'), document.getElementByI
 draggables.forEach(draggable => {
     //THE START OF DRAGGING LIFE.
     draggable.addEventListener('dragstart', (event) => {
+        document.body.style.cursor = 'none'; // Hide default cursor
+        /*
         event.dataTransfer.setData('text', event.target.id);
         event.dataTransfer.effectAllowed = 'copy';
 
         // Enable overlay for drag operation
         overlay.style.pointerEvents = 'auto'; // Capture drag events
+        
+        isDragging = true;
+        cursor.style.backgroundColor = 'green'; // Change the cursor color when dragging
 
         // Show drop indicator on drag start
         //dropIndicator.style.display = 'block';
 
+*/
     });
+
+
 
     //THE END OF DRAGGING LIFE.
     draggable.addEventListener('dragend', () => {
@@ -1303,6 +1311,10 @@ draggables.forEach(draggable => {
         //live_iframe.contentWindow.MoveIndicatorToEnd();
 
         currentTarget = null; // Reset the current target
+        
+        // After drag ends, reset cursor appearance
+        //isDragging = false;
+        cursor.style.backgroundColor = '#ff00ff'; // Reset the cursor background color after dragging
 
     });
 });
