@@ -114,3 +114,8 @@ html, body { /* Hide the default mouse cursor */}
     z-index: 90;
 
 }
+.clone {
+    position: absolute;
+    pointer-events: none; /* Disable interaction with the clone */
+    opacity: 0.5;
+}

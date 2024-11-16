@@ -1275,66 +1275,178 @@ function RenameUploadedIMG(clickedNAME)
 let currentTarget = null; // Track the current target element
 let Zones = [document.getElementById('project_timeline'), document.getElementById('overlay')];
 
+let clone = null;//this stores a temp clone of draged element....
+let draggableElement;//referes to current dragged element...
+let isDragging = false;//status if current drag is active...
+let CurrentDraggedID;//this will saves the ID of dragged element.
+
+//when drag is active, add this :
+//document.addEventListener('mouseover', handleMouseOver);
+
+//when drag ends, run this :
+//document.removeEventListener('mouseover', handleMouseOver);
+
 
 draggables.forEach(draggable => {
     //THE START OF DRAGGING LIFE.
     draggable.addEventListener('dragstart', (event) => {
+
+
+
+        event.preventDefault(); // Prevent the default drag behavior (native)
         document.body.style.cursor = 'none'; // Hide default cursor
-        /*
+
+        CurrentDraggedID = event.target.id;
         event.dataTransfer.setData('text', event.target.id);
         event.dataTransfer.effectAllowed = 'copy';
 
+        draggableElement = document.getElementById(CurrentDraggedID);
+        
         // Enable overlay for drag operation
         overlay.style.pointerEvents = 'auto'; // Capture drag events
         
         isDragging = true;
         cursor.style.backgroundColor = 'green'; // Change the cursor color when dragging
 
-        // Show drop indicator on drag start
-        //dropIndicator.style.display = 'block';
 
-*/
+        // Clone the element
+        clone = draggableElement.cloneNode(true);
+        clone.classList.add("clone");
+        document.body.appendChild(clone);
+
+        // Initially position the clone at the drag start point
+        clone.style.left = `${event.pageX - draggableElement.offsetWidth / 2}px`;
+        clone.style.top = `${event.pageY - draggableElement.offsetHeight / 2}px`;
+
+        // Keep the original element in its place and make it invisible
+        event.dataTransfer.setDragImage(new Image(), 0, 0); // Disable native drag image
+
+        // Listen for mousemove to update the position of the clone
+        document.addEventListener("mousemove", moveClone);
+
+        //add this instead of dragOver:
+        document.addEventListener('mouseover', handleMouseOver);
     });
+
+    // Function to update the position of the clone
+    function moveClone(event) {
+        if (clone && isDragging) {
+            clone.style.left = `${event.pageX - draggableElement.offsetWidth / 2}px`;
+            clone.style.top = `${event.pageY - draggableElement.offsetHeight / 2}px`;
+        }
+    }
+
+    // When mouse is released, handle the drop logic
+    document.addEventListener("mouseup", (e) => {
+        if (isDragging) {
+            handleDrop(e);
+        }
+    });
+
+    // Custom drop logic with elementFromPoint
+    function handleDrop(event) {
+        // Get the mouse position (relative to the document)
+        //const mouseX = event.pageX;
+        //const mouseY = event.pageY;
+
+        // Use elementFromPoint to get the topmost element under the mouse
+        //const elementUnderMouse = document.elementFromPoint(mouseX, mouseY);
+        const elementUnderMouse = event.target;
+
+        // Check if the element under the mouse is a valid drop area (check for its ID or class)
+        //if (elementUnderMouse && elementUnderMouse.id === "overlay") {
+            console.log(elementUnderMouse.id);
+        if ( elementUnderMouse.id === "overlay" || elementUnderMouse.id.includes('screen')) {
+            // Append the clone to the drop area
+          //  alert("should be draged :)");
+
+          if(CurrentDraggedID.includes("drag"))//this for making sure it's being draged and droped from adding kit menu
+          {
+              addKIT(Number(CurrentDraggedID.replace('drag', '')));
+              console.log("added");
+
+          }
+          else//then, it's just re arrange not adding new kit.
+          {
+              ArrangeKITS(id.replace("active_kit",""));
+          }
+
+            // Hide drop indicator after drop
+            dropIndicator.style.display = 'none';
+            live_iframe.contentWindow.hideIndicator();
+
+
+        } 
+        /*
+        else if( elementUnderMouse.id === "overlay"){
+            
+            }
+        */
+        clone.remove();//should be removed, in both cases
+        // Clean up after the drag ends
+        resetClone();
+    }
+
+    // Reset the clone's position and cleanup listeners
+    function resetClone() {
+        isDragging = false;
+
+        // Remove the moveClone listener and cleanup the clone
+        document.removeEventListener("mousemove", moveClone);
+
+        // Remove the original element's visibility
+        draggableElement.style.visibility = 'visible';
+
+        // Nullify the clone after the operation
+        clone = null;
+        //run this so no need for mouseOver:(dragover).
+        document.removeEventListener('mouseover', handleMouseOver);
+
+
+
+
+         // Disable overlay after drag operation
+         overlay.style.pointerEvents = 'none'; // Allow interaction with iframe
+
+         // Hide drop indicator
+         dropIndicator.style.display = 'none';
+         live_iframe.contentWindow.hideIndicator();
+ 
+         //dropIndicator.parentElement.append(dropIndicator);
+         //live_iframe.contentWindow.MoveIndicatorToEnd();
+ 
+         currentTarget = null; // Reset the current target
+         
+         // After drag ends, reset cursor appearance
+         //isDragging = false;
+         cursor.style.backgroundColor = '#ff00ff'; // Reset the cursor background color after dragging
+    }
 
 
 
     //THE END OF DRAGGING LIFE.
     draggable.addEventListener('dragend', () => {
-        // Disable overlay after drag operation
-        overlay.style.pointerEvents = 'none'; // Allow interaction with iframe
-
-        // Hide drop indicator
-        dropIndicator.style.display = 'none';
-        live_iframe.contentWindow.hideIndicator();
-
-        //dropIndicator.parentElement.append(dropIndicator);
-        //live_iframe.contentWindow.MoveIndicatorToEnd();
-
-        currentTarget = null; // Reset the current target
+       
         
-        // After drag ends, reset cursor appearance
-        //isDragging = false;
-        cursor.style.backgroundColor = '#ff00ff'; // Reset the cursor background color after dragging
-
     });
 });
 
 
-//THIS CODE IS FOR BOTH LIVE PREVIEW 'which is overlay" and TIMELINE.
-Zones.forEach(ZoneDrop => {
+//Newst function of mouse over "replaces the dragover":
+// Define the mouseover handler function
+function handleMouseOver(event) {
+    const hoveredElement = event.target; // Get the element being hovered over
+    const elementId = hoveredElement.id; // Get the ID of the element
 
+    
 
-    ZoneDrop.addEventListener('dragover', (event) => {
-        event.preventDefault(); // Allow drop by preventing default behavior
-        event.dataTransfer.dropEffect = 'copy'; // Indicate copy action
-
-        if(event.target.id!="overlay")
-            dropIndicator.style.display = 'block';
+    if(elementId!="overlay")
+        dropIndicator.style.display = 'block';
 
 //dropIndicator
 
         // Get the target element to position the drop indicator
-        const targetElement = event.target.closest('.project_timeline_kit');
+        const targetElement = hoveredElement.closest('.project_timeline_kit');
         if (targetElement) {
             // Show the drop indicator before or after the target element
             const rect = targetElement.getBoundingClientRect();
@@ -1361,36 +1473,36 @@ Zones.forEach(ZoneDrop => {
         }
 
 
+}
+
+
+//THIS CODE IS FOR BOTH LIVE PREVIEW 'which is overlay" and TIMELINE.
+
+/*
+    ZoneDrop.addEventListener('dragover', (event) => {
+        event.preventDefault(); // Allow drop by preventing default behavior
+        event.dataTransfer.dropEffect = 'copy'; // Indicate copy action
+
+        if(event.target.id!="overlay")
+            dropIndicator.style.display = 'block';
+
+
+
+
     });
+*/
 
 
-
+/*
+getting rid of drop function :
 
     ZoneDrop.addEventListener('drop', (event) => {
         event.preventDefault();
         const id = event.dataTransfer.getData('text');
         const original = document.getElementById(id);
-        if (original) {
-
-            if(id.includes("drag"))//this for making sure it's being draged and droped from adding kit menu
+        if (original) 
             {
-                addKIT(Number(id.replace('drag', '')));
-                console.log("added");
 
-            }
-            else//then, it's just re arrange not adding new kit.
-            {
-                ArrangeKITS(id.replace("active_kit",""));
-            }
-
-            // Hide drop indicator after drop
-            dropIndicator.style.display = 'none';
-            live_iframe.contentWindow.hideIndicator();
-
-
-
-
-        }
+             }
     });
-
-});
+    */

@@ -12,7 +12,6 @@
     <div class="custom-cursor" style="z-index: 100;"></div>
     <script>
         const cursor = document.querySelector('.custom-cursor');
-        let isDragging = false;
 
         // Show cursor on first movement and remove listener
         const onFirstMouseMove = (e) => {
@@ -46,13 +45,6 @@
             }
         });
 
-    // While dragging, move the cursor with the mouse
-    document.addEventListener('dragover', (e) => {
-        if (isDragging) {
-            document.body.style.cursor = 'none'; // Hide default cursor
-            updateCursorPosition(e); // Ensure the custom cursor follows the mouse during dragging
-        }
-    });
 
 
     </script>
