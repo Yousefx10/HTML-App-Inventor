@@ -229,14 +229,31 @@ function switchScreen()
 
         // Add or remove 'hovered' class based on hovering over .hover-effect elements
         document.addEventListener('mouseover', (e) => {
+        // Check if the hovered element or any of its parents has the 'hover-effect' class
+        const targetElement = e.target;
+        const parentWithHoverEffect = targetElement.closest('.hover-effect');
+
+        if (parentWithHoverEffect) {
+        // Apply the 'hovered' class to the cursor when hovering over the element or its children
+        cursor.classList.add('hovered');
+    } 
             if (e.target.classList.contains('hover-effect')) {
-                cursor.classList.add('hovered');
+                
             }
         });
 
         document.addEventListener('mouseout', (e) => {
+
+        // Check if the hovered element or any of its parents has the 'hover-effect' class
+        const targetElement = e.target;
+        const parentWithHoverEffect = targetElement.closest('.hover-effect');
+
+        if (parentWithHoverEffect) {
+        // Apply the 'hovered' class to the cursor when hovering over the element or its children
+        cursor.classList.remove('hovered');
+    } 
             if (e.target.classList.contains('hover-effect')) {
-                cursor.classList.remove('hovered');
+                
             }
         });
 
