@@ -18,7 +18,7 @@ font-size: 1.5em;
 
     padding: 10px;
     border: none;
-    cursor: pointer;
+    /* cursor: pointer; */
 
 }
 .functionBTN:hover{
@@ -167,7 +167,7 @@ background-color: rgb(164, 20, 20);
 
 .kit .kit_right{
     width:40%;
-    cursor:pointer;
+    /* cursor:pointer; */
     display: flex;
     justify-content: space-evenly;
     align-items: center;
@@ -198,7 +198,7 @@ background-color: rgb(164, 20, 20);
 
     background:lightcoral;
     color:white;
-    cursor:pointer;
+    /* cursor:pointer; */
     height: 25px;
 }
 .project_timeline_kit:hover{
@@ -216,7 +216,7 @@ background-color: rgb(164, 20, 20);
 #screenSETTINGS{
 background-color: antiquewhite;
     padding: 10px;
-    cursor: pointer;
+    /* cursor: pointer; */
 }
 .screenSETTINGS-ACTIVE{
     color:green;
@@ -308,7 +308,7 @@ background-color: antiquewhite;
     padding:10px;
     margin:5px;
     width:80%;
-    cursor:pointer;
+    /* cursor:pointer; */
 }
 #newParent{
     height: 70%;
@@ -331,14 +331,14 @@ background-color: antiquewhite;
 
     color:white;
     background-color:red;
-    cursor:pointer;
+    /* cursor:pointer; */
 }
 
 
 #btn_visible{
     padding:10px;
     border:none;
-    cursor:pointer;
+    /* cursor:pointer; */
     background-color:palegreen;
     font-weight:bolder;
 }
@@ -352,7 +352,7 @@ background-color: antiquewhite;
 
 
 .btn_alignment{
-    cursor:pointer;
+    /* cursor:pointer; */
 }
 .btn_alignment:hover{
 color:mediumseagreen;
@@ -408,7 +408,7 @@ color:mediumseagreen;
             color: white;
             border: none;
             border-radius: 5px;
-            cursor: pointer;
+            /* cursor: pointer; */
             font-size: 16px;
         }
 
@@ -454,7 +454,7 @@ color:mediumseagreen;
 #UnselectIMG{
     color:red;
     font-size:small;
-    cursor:pointer;
+    /* cursor:pointer; */
     display: none;
 }
 #UnselectIMG:hover{

@@ -9,45 +9,7 @@
     </head>
     <body>
 
-    <div class="custom-cursor" style="z-index: 100;"></div>
-    <script>
-        const cursor = document.querySelector('.custom-cursor');
-
-        // Show cursor on first movement and remove listener
-        const onFirstMouseMove = (e) => {
-            cursor.style.opacity = 1;
-            updateCursorPosition(e);
-            document.removeEventListener('mousemove', onFirstMouseMove);
-        };
-
-        // Update cursor position
-        const updateCursorPosition = (e) => {
-            cursor.style.left = `${e.clientX - cursor.offsetWidth / 2}px`;
-            cursor.style.top = `${e.clientY - cursor.offsetHeight / 2}px`;
-        };
-
-        // Initialize with one-time listener to show the cursor on first movement
-        document.addEventListener('mousemove', onFirstMouseMove);
-
-        // Listen for mouse movement to update position
-        document.addEventListener('mousemove', updateCursorPosition);
-
-        // Add or remove 'hovered' class based on hovering over .hover-effect elements
-        document.addEventListener('mouseover', (e) => {
-            if (e.target.classList.contains('hover-effect')) {
-                cursor.classList.add('hovered');
-            }
-        });
-
-        document.addEventListener('mouseout', (e) => {
-            if (e.target.classList.contains('hover-effect')) {
-                cursor.classList.remove('hovered');
-            }
-        });
-
-
-
-    </script>
+    
 
 
 <!--This is the screen dialog and it's outside the container-->
@@ -232,5 +194,79 @@ function switchScreen()
 <script src="project/interpreter.js"></script>
 <script src="database/AJAXcalls.js"></script>
 <script src="libraries/html2canvas.js"></script>
+
+
+
+
+
+<div class="custom-cursor" style="z-index: 100;"></div>
+    <script>
+        const cursor = document.querySelector('.custom-cursor');
+
+        // Show cursor on first movement and remove listener
+        const onFirstMouseMove = (e) => {
+            cursor.style.opacity = 1;
+            updateCursorPosition(e);
+            document.removeEventListener('mousemove', onFirstMouseMove);
+        };
+
+        // Update cursor position
+        const updateCursorPosition = (e) => {
+            if(!isMouseInIframe)
+                {
+                    cursor.style.left = `${e.clientX - cursor.offsetWidth / 2}px`;
+                    cursor.style.top = `${e.clientY - cursor.offsetHeight / 2}px`;
+                }
+
+
+        };
+
+        // Initialize with one-time listener to show the cursor on first movement
+        document.addEventListener('mousemove', onFirstMouseMove);
+
+        // Listen for mouse movement to update position
+        document.addEventListener('mousemove', updateCursorPosition);
+
+        // Add or remove 'hovered' class based on hovering over .hover-effect elements
+        document.addEventListener('mouseover', (e) => {
+            if (e.target.classList.contains('hover-effect')) {
+                cursor.classList.add('hovered');
+            }
+        });
+
+        document.addEventListener('mouseout', (e) => {
+            if (e.target.classList.contains('hover-effect')) {
+                cursor.classList.remove('hovered');
+            }
+        });
+
+        //live_iframe
+        let isMouseInIframe = false;
+
+
+
+        // Detect when the mouse leaves the iframe
+        live_iframe.addEventListener('mouseleave', () => {
+            isMouseInIframe = false;
+            console.log('Mouse left the iframe');
+        });
+
+// When the mouse moves inside the iframe
+live_iframe.addEventListener('load', () => {
+    const iframeDoc = live_iframe.contentDocument || live_iframe.contentWindow.document;
+
+    // Add mousemove event inside iframe
+    iframeDoc.addEventListener('mousemove', (event) => {
+        const rect = live_iframe.getBoundingClientRect(); // Get iframe position
+            const mouseX = rect.left + event.clientX; // Adjust for iframe position
+            const mouseY = rect.top + event.clientY;  // Adjust for iframe position
+
+            // Update cursor position, centered around the mouse pointer
+            cursor.style.left = `${mouseX - cursor.offsetWidth / 2}px`;
+            cursor.style.top = `${mouseY - cursor.offsetHeight / 2}px`;
+
+    });
+});
+    </script>
     </body>
 </html>

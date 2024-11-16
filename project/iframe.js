@@ -9,6 +9,7 @@
             <head><meta charset="UTF-8"/>
              <style>
              *{margin:0}
+             html,body{cursor:none;}
              .MEselected{background:green;color:white;}
              .hide{display:none;}
              .alignment-button-center{text-align:center;}

@@ -35,7 +35,7 @@ i've add it here instead of project.css  because maybe i'll use it again with an
     border: dotted 3px black;
     margin-top: 10px;
     display: flex;
-    cursor: pointer;
+    /* cursor: pointer; */
     align-items: center;
 }
 .DivContainer .DialogImages{
@@ -118,4 +118,7 @@ html, body { /* Hide the default mouse cursor */}
     position: absolute;
     pointer-events: none; /* Disable interaction with the clone */
     opacity: 0.5;
+}
+html,body{
+    cursor: none;
 }
