@@ -17,9 +17,13 @@ document.addEventListener('keydown', function(event) {
         event.preventDefault();  // Prevent default behavior if needed
         switchScreen();
     }
-    if (event.altKey && event.code === 'Digit2') {
+    if (event.altKey && event.code === 'KeyR') {
         event.preventDefault();  // Prevent default behavior if needed
         runTHEproject();
+    }
+    if (event.altKey && event.code === 'KeyS') {
+        event.preventDefault();  // Prevent default behavior if needed
+        ScreenshotNow();
     }
 });
 
@@ -55,7 +59,8 @@ let project_timeline = document.getElementById('project_timeline'),
     RunButton = document.getElementById("RunButton"),
     ScreenshotButton = document.getElementById("Screenshot"),
     ScreenshotResult = document.getElementById("ScreenshotResult"),
-    ActButtonTooltip = document.getElementById("ActButtonTooltip");
+    ActButtonTooltip = document.getElementById("ActButtonTooltip"),
+    ScreenShotTooltip = document.getElementById("ScreenShotTooltip");
 
 
 let

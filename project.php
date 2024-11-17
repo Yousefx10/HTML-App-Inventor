@@ -36,8 +36,13 @@
         </span>
     </div>
 
-    <div style="position:absolute;z-index:1;" class="hover-effect">
-        <img id="Screenshot" onclick="ScreenshotNow();" src="media/svg/screenshot.svg" width="30px" alt="Screenshot"/>
+    <div style="position:absolute;z-index:1;display:flex;align-items: center;flex-direction: row;">
+        <img id="Screenshot" class="hover-effect" onclick="ScreenshotNow();" src="media/svg/screenshot.svg" width="30px" alt="Screenshot"
+        onmouseover ="ShowingToolTip(ScreenShotTooltip,true);"
+        onmouseleave="ShowingToolTip(ScreenShotTooltip);"/>
+        <span id="ScreenShotTooltip" style="z-index:1;opacity:0;">
+            Alt+S
+        </span>
     </div>
 
 

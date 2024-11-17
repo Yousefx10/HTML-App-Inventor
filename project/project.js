@@ -40,8 +40,8 @@ function positionACTbutton() {
     absoluteElement.style.top   = `${rect.top + window.scrollY+20}px`; // Aligns with the top of the target
     absoluteElement2.style.top  = `${rect.top + window.scrollY+60}px`; // Aligns with the top of the target
 
-    absoluteElement.style.left  = `${(rect.right + window.scrollX - absoluteElement2.offsetWidth)+20}px`; // Aligns with the right of the target
-    absoluteElement2.style.left = `${(rect.right + window.scrollX - absoluteElement2.offsetWidth)+20}px`; // Aligns with the right of the target
+    absoluteElement.style.left  = `${(rect.right + window.scrollX - absoluteElement2.offsetWidth)+60}px`; // Aligns with the right of the target
+    absoluteElement2.style.left = `${(rect.right + window.scrollX - absoluteElement2.offsetWidth)+60}px`; // Aligns with the right of the target
 
 }
 
