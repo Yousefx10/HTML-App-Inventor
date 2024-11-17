@@ -1330,6 +1330,7 @@ draggables.forEach(draggable => {
             // When mouse is released, handle the drop logic
             overlay.addEventListener("mouseup", handleDrop);
             project_timeline.addEventListener("mouseup", handleDrop);
+            document.addEventListener("mouseup", WhenDropInGeneral);
     });
 
 /*
@@ -1350,7 +1351,16 @@ draggables.forEach(draggable => {
         }
     }
 
-    
+    //the purpose of this function to hide the cloned element, because the user have droped what he draged.
+    //there are another function to manage the dropped element if it's dropped in the selected zones.
+    function WhenDropInGeneral()
+    {
+        clone.remove(); //should be removed, in both cases
+        resetClone();   // Clean up after the drag ends
+        // Hide drop indicator after drop
+        dropIndicator.style.display = 'none';
+        live_iframe.contentWindow.hideIndicator();
+    }
     // Custom drop logic with elementFromPoint
     function handleDrop(event) {
         if (!isDragging) return;
@@ -1377,19 +1387,12 @@ draggables.forEach(draggable => {
           }
           else//then, it's just re arrange not adding new kit.
           ArrangeKITS(CurrentDraggedID.replace("active_kit",""));
-
-            // Hide drop indicator after drop
-            dropIndicator.style.display = 'none';
-            live_iframe.contentWindow.hideIndicator();
         } 
 
         /*
         else if( elementUnderMouse.id === "overlay"){}
         */
 
-
-        clone.remove(); //should be removed, in both cases
-        resetClone();   // Clean up after the drag ends
     }
 
 
@@ -1423,6 +1426,7 @@ function resetClone() {
     overlay.removeEventListener("mouseup", handleDrop);
     project_timeline.removeEventListener("mouseup", handleDrop);
     project_timeline.removeEventListener('mouseover', handleMouseOver);
+    document.addEventListener("mouseup", WhenDropInGeneral);
 
     CurrentDraggedID='';
 }

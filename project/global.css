@@ -59,18 +59,16 @@ i've add it here instead of project.css  because maybe i'll use it again with an
 Custom Cursor Area :
 */
 
-html, body { /* Hide the default mouse cursor */}
-
 
 /* Custom Mouse Cursor */
 .custom-cursor {
     position: absolute;
-    width: 25px;
-    height: 25px;
+    width: 20px;
+    height: 20px;
     border-radius: 50%;
     background-color: #ff00ff;
     pointer-events: none;
-    transition: transform 0.4s ease, opacity 0.3s ease; /* Smooth transition for cursor movements */
+    transition: transform 0.3s ease, opacity 0.4s ease; /* Smooth transition for cursor movements */
     opacity: 0; /* Initially hidden */
 
 }
@@ -82,31 +80,24 @@ html, body { /* Hide the default mouse cursor */}
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 5px; /* Fixed size of the dot */
-    height: 5px;
+    width: 3px; /* Fixed size of the dot */
+    height: 3px;
     background-color: #ffffff; /* Color for the dot */
     border-radius: 50%;
 }
 
 /* Larger cursor when hovering over .hover-effect elements */
 .custom-cursor.hovered {
-    transform: scale(1.5); /* Scale the cursor circle, but not the dot */
+    transform: scale(2); /* Scale the cursor circle, but not the dot */
 }
 /* Hoverable Elements */
 .hover-effect {
-    /* font-size: 18px;
-    padding: 10px 20px;
-    color: #fff;
-    background-color: #ff6347;
-    border: none;
-    border-radius: 5px;
-    text-decoration: none; */
     transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
 .hover-effect:hover {
-    /* transform: scale(1.1); */
-    /* background-color: #ff4500; */
+     transform: scale(1.09); 
+    background-color: #ff4500;
 }
 
 

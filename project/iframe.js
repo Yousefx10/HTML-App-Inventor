@@ -16,6 +16,13 @@
              .alignment-button-right{text-align:right;}
              .working-screen{height:100%}/*this means it will take the full screen in case background color applied*/
              #dropIndicator{box-shadow: 0 10px 15px rgba(0, 0, 0, 0.5), 0 -10px 15px rgba(0, 0, 0, 0.5);}
+             
+             
+            /*
+                Selected items to not have pointer mouse :
+                [ button ]
+            */
+           button{cursor:none;}
              </style>
             </head>
             <body id="updateME">
