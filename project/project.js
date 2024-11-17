@@ -1289,6 +1289,9 @@ function CloneIT(ElementDOM,event)
 {
     clone = ElementDOM.cloneNode(true);
     clone.classList.add("clone");
+    clone.style.display="block";
+    clone.style.zIndex="200";
+    clone.id="justcloned";
     document.body.appendChild(clone);
 
     // Initially position the clone at the drag start point
@@ -1387,7 +1390,10 @@ draggables.forEach(draggable => {
               console.log("added");
           }
           else//then, it's just re arrange not adding new kit.
-          ArrangeKITS(CurrentDraggedID.replace("active_kit",""));
+          {
+            ArrangeKITS(CurrentDraggedID.replace("active_kit",""));
+            document.getElementById(CurrentDraggedID).style.display="block";
+          }
         } 
 
         /*
@@ -1401,8 +1407,7 @@ draggables.forEach(draggable => {
 function resetClone() {
     isDragging = false;
 
-    // Remove the moveClone listener and cleanup the clone
-    document.removeEventListener("mousemove", moveClone);
+
 
     // Nullify the clone after the operation
     clone = null;
@@ -1423,11 +1428,19 @@ function resetClone() {
      //isDragging = false;
      //cursor.style.backgroundColor = '#ff00ff'; // Reset the cursor background color after dragging
      cursor.classList.remove('dragAffect');
+
+
     // remove those logics after mouse is up.
+
+    // Remove the moveClone listener and cleanup the clone
+    document.removeEventListener("mousemove", moveClone);
     overlay.removeEventListener("mouseup", handleDrop);
     project_timeline.removeEventListener("mouseup", handleDrop);
     project_timeline.removeEventListener('mouseover', handleMouseOver);
     document.removeEventListener("mouseup", WhenDropInGeneral);
+    // Listen for mousemove to update the position of the clone
+    project_timeline.addEventListener("mousemove", moveClone);
+
 
     CurrentDraggedID='';
 }
@@ -1435,6 +1448,7 @@ function resetClone() {
 //so this function will be called when needed to move place of kit.
 function MOVEArrangeKITS(currentDOM,event){
     isDragging=true;
+    currentDOM.style.display="none";
     CurrentDraggedID=currentDOM.id;
     //until now the cloned element is not visible, will check on it later if required to be visible.
     /*
@@ -1443,6 +1457,9 @@ function MOVEArrangeKITS(currentDOM,event){
     */
     CloneIT(currentDOM,event);
     project_timeline.addEventListener('mouseover', handleMouseOver);
+    // Listen for mousemove to update the position of the clone
+    project_timeline.addEventListener("mousemove", moveClone);
+
     project_timeline.addEventListener("mouseup", handleDrop);
     document.addEventListener("mouseup", WhenDropInGeneral);
 }

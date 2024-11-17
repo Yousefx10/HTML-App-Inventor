@@ -301,14 +301,17 @@ function switchScreen()
             if (document.hidden) {
                 cursor.style.display = 'none';
             }
-            else cursor.style.display = 'none';
+            else cursor.style.display = 'block';
+            
+            document.body.style.cursor = 'none'; // Hide default cursor
         });
 
         // Hide cursor when the user leaves browser
         window.addEventListener('blur', () => {
             if(!isMouseInIframe)
             cursor.style.display = 'none';
-            
+        
+            document.body.style.cursor = 'none'; // Hide default cursor
         });      
         // Show cursor when the user returns to the tab or window
         window.addEventListener('focus', () => {
