@@ -12,13 +12,13 @@ Modern technology leverages HTML to create straightforward projects with minimal
 
 Everything start's with your mouse movements...
 
-![Drag](media/readme/drag.gif)
+![Drag](media/README/drag.gif)
 
 **More Customizations**
 
 Change everything can came to your mind...
 
-![options](media/readme/options.gif)
+![options](media/README/options.gif)
 
 
 ### What's New 🆕
