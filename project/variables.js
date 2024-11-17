@@ -17,9 +17,25 @@ document.addEventListener('keydown', function(event) {
         event.preventDefault();  // Prevent default behavior if needed
         switchScreen();
     }
+    if (event.altKey && event.code === 'Digit2') {
+        event.preventDefault();  // Prevent default behavior if needed
+        runTHEproject();
+    }
 });
 
-
+function ShowingToolTip(selectedELEMENT,STATUS)
+{
+    if(STATUS)
+    {
+        selectedELEMENT.style.zIndex='300';
+        selectedELEMENT.style.opacity='1';
+    }
+    else
+    {
+        selectedELEMENT.style.zIndex='1';
+        selectedELEMENT.style.opacity='0';
+    }
+}
 
 
 //Basic array list for active added elements to the project time_line and project_live
@@ -38,7 +54,8 @@ let project_timeline = document.getElementById('project_timeline'),
     screensPage = document.getElementById("screensPAGE"),
     RunButton = document.getElementById("RunButton"),
     ScreenshotButton = document.getElementById("Screenshot"),
-    ScreenshotResult = document.getElementById("ScreenshotResult");
+    ScreenshotResult = document.getElementById("ScreenshotResult"),
+    ActButtonTooltip = document.getElementById("ActButtonTooltip");
 
 
 let

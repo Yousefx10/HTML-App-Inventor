@@ -467,3 +467,9 @@ color:mediumseagreen;
 #UnselectIMG:hover{
     background-color: bisque;
 }
+
+
+
+#ActButtonTooltip{
+    transition: opacity 0.5s ease;
+}

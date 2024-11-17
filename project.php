@@ -27,8 +27,13 @@
 
     </div>
 
-    <div style="position:absolute;z-index:1;" class="hover-effect">
-        <img id="RunButton" onclick="runTHEproject();" class="btn-active-start" src="media/svg/play.svg" width="30px" alt="ActButton"/>
+    <div style="position:absolute;z-index:1;display:flex;align-items: center;flex-direction: row;">
+        <img id="RunButton"  onclick="runTHEproject();" class="btn-active-start hover-effect" src="media/svg/play.svg" width="30px" alt="ActButton"
+        onmouseover ="ShowingToolTip(ActButtonTooltip,true);"
+        onmouseleave="ShowingToolTip(ActButtonTooltip);"/>
+        <span id="ActButtonTooltip" style="z-index:1;opacity:0;">
+            Alt+2
+        </span>
     </div>
 
     <div style="position:absolute;z-index:1;" class="hover-effect">
