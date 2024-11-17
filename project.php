@@ -32,7 +32,7 @@
         onmouseover ="ShowingToolTip(ActButtonTooltip,true);"
         onmouseleave="ShowingToolTip(ActButtonTooltip);"/>
         <span id="ActButtonTooltip" style="z-index:1;opacity:0;">
-            Alt+2
+            Alt+R
         </span>
     </div>
 

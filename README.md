@@ -20,7 +20,28 @@ Change everything can came to your mind...
 
 ![options](media/README/options.gif)
 
+**Your Code, Your Workspace**
+
+Start crafting actions, so you know what result you'll get.
+
+![options](media/README/action.gif)
+
+**Multi Screens Means Multi Interfaces**
+
+No matter what your app will do, we feel your needs.
+
+![options](media/README/screen.gif)
+
+**Share a snap to your friends?**
+
+Single Click With Shortcut (ALT + S) gets you a screenshot !
+
+![options](media/README/screenshot.gif)
 
 ### What's New 🆕
 
 Fully compatible with all modern browsers.
+
+### COOMING SOON ⏰
+
+Store Custom Variables
