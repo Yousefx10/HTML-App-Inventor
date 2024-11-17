@@ -1272,33 +1272,39 @@ function RenameUploadedIMG(clickedNAME)
 
 //drag and drop EVENTS
 
-let currentTarget = null; // Track the current target element
-let Zones = [document.getElementById('project_timeline'), document.getElementById('overlay')];
-
 let clone = null;//this stores a temp clone of draged element....
 let draggableElement;//referes to current dragged element...
 let isDragging = false;//status if current drag is active...
 let CurrentDraggedID;//this will saves the ID of dragged element.
 
+/*================================================================*/
 //when drag is active, add this :
 //document.addEventListener('mouseover', handleMouseOver);
-
+/*================================================================*/
 //when drag ends, run this :
 //document.removeEventListener('mouseover', handleMouseOver);
+/*================================================================*/
 
+function CloneIT(ElementDOM,event)
+{
+    clone = ElementDOM.cloneNode(true);
+    clone.classList.add("clone");
+    document.body.appendChild(clone);
+
+    // Initially position the clone at the drag start point
+    clone.style.left = `${event.pageX - ElementDOM.offsetWidth / 2}px`;
+    clone.style.top = `${event.pageY - ElementDOM.offsetHeight / 2}px`;
+}
 
 draggables.forEach(draggable => {
     //THE START OF DRAGGING LIFE.
     draggable.addEventListener('dragstart', (event) => {
-
-
-
         event.preventDefault(); // Prevent the default drag behavior (native)
         document.body.style.cursor = 'none'; // Hide default cursor
 
         CurrentDraggedID = event.target.id;
-        event.dataTransfer.setData('text', event.target.id);
-        event.dataTransfer.effectAllowed = 'copy';
+        //event.dataTransfer.setData('text', event.target.id);
+        //event.dataTransfer.effectAllowed = 'copy';
 
         draggableElement = document.getElementById(CurrentDraggedID);
         
@@ -1308,43 +1314,47 @@ draggables.forEach(draggable => {
         isDragging = true;
         cursor.style.backgroundColor = 'green'; // Change the cursor color when dragging
 
-
         // Clone the element
-        clone = draggableElement.cloneNode(true);
-        clone.classList.add("clone");
-        document.body.appendChild(clone);
+        CloneIT(draggableElement,event);
 
-        // Initially position the clone at the drag start point
-        clone.style.left = `${event.pageX - draggableElement.offsetWidth / 2}px`;
-        clone.style.top = `${event.pageY - draggableElement.offsetHeight / 2}px`;
 
         // Keep the original element in its place and make it invisible
-        event.dataTransfer.setDragImage(new Image(), 0, 0); // Disable native drag image
+        //event.dataTransfer.setDragImage(new Image(), 0, 0); // Disable native drag image
 
         // Listen for mousemove to update the position of the clone
         document.addEventListener("mousemove", moveClone);
 
         //add this instead of dragOver:
-        document.addEventListener('mouseover', handleMouseOver);
+        project_timeline.addEventListener('mouseover', handleMouseOver);
+
+            // When mouse is released, handle the drop logic
+            overlay.addEventListener("mouseup", handleDrop);
+            project_timeline.addEventListener("mouseup", handleDrop);
     });
 
+/*
+//no need to use it anymore:
+    //THE END OF DRAGGING LIFE.
+    draggable.addEventListener('dragend', () => { 
+    });
+*/
+});
     // Function to update the position of the clone
     function moveClone(event) {
         if (clone && isDragging) {
-            clone.style.left = `${event.pageX - draggableElement.offsetWidth / 2}px`;
-            clone.style.top = `${event.pageY - draggableElement.offsetHeight / 2}px`;
+            clone.style.left = `${(event.pageX - clone.offsetWidth / 2) - 45}px`;
+            clone.style.top = `${(event.pageY - clone.offsetHeight / 2) - 15}px`;
+            //clone.style.left = `${(event.pageX - draggableElement.offsetWidth / 2)}px`;
+            //clone.style.top = `${(event.pageY - draggableElement.offsetHeight / 2)}px`;
+        
         }
     }
 
-    // When mouse is released, handle the drop logic
-    document.addEventListener("mouseup", (e) => {
-        if (isDragging) {
-            handleDrop(e);
-        }
-    });
-
+    
     // Custom drop logic with elementFromPoint
     function handleDrop(event) {
+        if (!isDragging) return;
+
         // Get the mouse position (relative to the document)
         //const mouseX = event.pageX;
         //const mouseY = event.pageY;
@@ -1355,8 +1365,8 @@ draggables.forEach(draggable => {
 
         // Check if the element under the mouse is a valid drop area (check for its ID or class)
         //if (elementUnderMouse && elementUnderMouse.id === "overlay") {
-            console.log(elementUnderMouse.id);
-        if ( elementUnderMouse.id === "overlay" || elementUnderMouse.id.includes('screen')) {
+            
+        if ( elementUnderMouse.id === "overlay" || elementUnderMouse.closest('.timelineSCREEN')) {
             // Append the clone to the drop area
           //  alert("should be draged :)");
 
@@ -1364,80 +1374,77 @@ draggables.forEach(draggable => {
           {
               addKIT(Number(CurrentDraggedID.replace('drag', '')));
               console.log("added");
-
           }
           else//then, it's just re arrange not adding new kit.
-          {
-              ArrangeKITS(id.replace("active_kit",""));
-          }
+          ArrangeKITS(CurrentDraggedID.replace("active_kit",""));
 
             // Hide drop indicator after drop
             dropIndicator.style.display = 'none';
             live_iframe.contentWindow.hideIndicator();
-
-
         } 
+
         /*
-        else if( elementUnderMouse.id === "overlay"){
-            
-            }
+        else if( elementUnderMouse.id === "overlay"){}
         */
-        clone.remove();//should be removed, in both cases
-        // Clean up after the drag ends
-        resetClone();
-    }
-
-    // Reset the clone's position and cleanup listeners
-    function resetClone() {
-        isDragging = false;
-
-        // Remove the moveClone listener and cleanup the clone
-        document.removeEventListener("mousemove", moveClone);
-
-        // Remove the original element's visibility
-        draggableElement.style.visibility = 'visible';
-
-        // Nullify the clone after the operation
-        clone = null;
-        //run this so no need for mouseOver:(dragover).
-        document.removeEventListener('mouseover', handleMouseOver);
 
 
-
-
-         // Disable overlay after drag operation
-         overlay.style.pointerEvents = 'none'; // Allow interaction with iframe
-
-         // Hide drop indicator
-         dropIndicator.style.display = 'none';
-         live_iframe.contentWindow.hideIndicator();
- 
-         //dropIndicator.parentElement.append(dropIndicator);
-         //live_iframe.contentWindow.MoveIndicatorToEnd();
- 
-         currentTarget = null; // Reset the current target
-         
-         // After drag ends, reset cursor appearance
-         //isDragging = false;
-         cursor.style.backgroundColor = '#ff00ff'; // Reset the cursor background color after dragging
+        clone.remove(); //should be removed, in both cases
+        resetClone();   // Clean up after the drag ends
     }
 
 
+// Reset the clone's position and cleanup listeners
+function resetClone() {
+    isDragging = false;
 
-    //THE END OF DRAGGING LIFE.
-    draggable.addEventListener('dragend', () => {
-       
-        
-    });
-});
+    // Remove the moveClone listener and cleanup the clone
+    document.removeEventListener("mousemove", moveClone);
 
+    // Nullify the clone after the operation
+    clone = null;
+    //run this so no need for mouseOver:(dragover).
+    project_timeline.removeEventListener('mouseover', handleMouseOver);
 
+     // Disable overlay after drag operation
+     overlay.style.pointerEvents = 'none'; // Allow interaction with iframe
+
+     // Hide drop indicator
+     dropIndicator.style.display = 'none';
+     live_iframe.contentWindow.hideIndicator();
+
+     //dropIndicator.parentElement.append(dropIndicator);
+     //live_iframe.contentWindow.MoveIndicatorToEnd();
+     
+     // After drag ends, reset cursor appearance
+     //isDragging = false;
+     cursor.style.backgroundColor = '#ff00ff'; // Reset the cursor background color after dragging
+
+    // remove those logics after mouse is up.
+    overlay.removeEventListener("mouseup", handleDrop);
+    project_timeline.removeEventListener("mouseup", handleDrop);
+    project_timeline.removeEventListener('mouseover', handleMouseOver);
+
+    CurrentDraggedID='';
+}
+
+//so this function will be called when needed to move place of kit.
+function MOVEArrangeKITS(currentDOM,event){
+    isDragging=true;
+    CurrentDraggedID=currentDOM.id;
+    //until now the cloned element is not visible, will check on it later if required to be visible.
+    /*
+    note : the clone is visible behind it,
+    also need to fix when mouse get outside the [project_timeline]
+    */
+    CloneIT(currentDOM,event);
+    project_timeline.addEventListener('mouseover', handleMouseOver);
+    project_timeline.addEventListener("mouseup", handleDrop);
+}
 //Newst function of mouse over "replaces the dragover":
 // Define the mouseover handler function
 function handleMouseOver(event) {
     const hoveredElement = event.target; // Get the element being hovered over
     const elementId = hoveredElement.id; // Get the ID of the element
-
     
 
     if(elementId!="overlay")
@@ -1448,6 +1455,7 @@ function handleMouseOver(event) {
         // Get the target element to position the drop indicator
         const targetElement = hoveredElement.closest('.project_timeline_kit');
         if (targetElement) {
+            console.log('yes you are over');
             // Show the drop indicator before or after the target element
             const rect = targetElement.getBoundingClientRect();
             const offsetY = event.clientY - rect.top; // Mouse position relative to the target element
@@ -1467,7 +1475,7 @@ function handleMouseOver(event) {
                 live_iframe.contentWindow.showIndicator(LIVE_SCREEN,targetElement.id.replace("active_kit",""));
 
             }
-            currentTarget = targetElement; // Update the current target
+
             //console.log(targetElement);
 
         }

@@ -24,6 +24,7 @@ function addKIT(kit_type) {
     newKIT.classList.add('project_timeline_kit');
     newKIT.id = 'active_kit' + COUNT_KIT_PROGRESS;
     newKIT.setAttribute("draggable", "true");//adding the option to drag it so it can be arranged later.
+    newKIT.setAttribute("ondragstart", "event.preventDefault();MOVEArrangeKITS(this,event);");
     let currentkitID = COUNT_KIT_PROGRESS;
     //[END] Main element that will have the content for the new added element.
 
@@ -40,6 +41,7 @@ function addKIT(kit_type) {
     newKIT.setAttribute("data-border-color", "black");
     newKIT.setAttribute("data-border-style", "solid");
     newKIT.setAttribute("data-border-size", "2px");
+    
 
 
     //this i can pass parameters without EXECUTE the function FROM FIRST TIME.
