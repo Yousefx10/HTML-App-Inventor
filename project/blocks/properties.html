@@ -4,7 +4,7 @@
 
 
 
-    <button id="unselect" onclick="unFocus();" title="close this window">X</button>
+    <button id="unselect" onclick="unFocus();" class="hover-effect" title="close this window">X</button>
     <label>
         Kit's Value :
     </label>
@@ -42,7 +42,7 @@ only-timer
     <div id="propertiesVISIBILITY">
         <hr/>
         <span>Kit's Visibility :</span>
-        <button id="btn_visible" onclick="change_visibility();this.classList.toggle('btn_unvisible');" title="show or hide the kit">Visible</button>
+        <button class="hover-effect" id="btn_visible" onclick="change_visibility();this.classList.toggle('btn_unvisible');" title="show or hide the kit">Visible</button>
         <hr/>
     </div>
 
@@ -50,9 +50,9 @@ only-timer
 
     <div id="propertiesALIGNMENT">
         <span id="mainAlignmentSPAN">Text Alignment :</span>
-        <span class='btn_alignment btn_alignment-SELECTED' onclick="alignTEXT(1,mainAlignmentSPAN.dataset.alignmentType,this)"id="align1">Left</span>
-        <span class='btn_alignment'                        onclick="alignTEXT(2,mainAlignmentSPAN.dataset.alignmentType,this)"id="align2">Center</span>
-        <span class='btn_alignment'                        onclick="alignTEXT(3,mainAlignmentSPAN.dataset.alignmentType,this)"id="align3">Right</span>
+        <span class='hover-effect btn_alignment btn_alignment-SELECTED' onclick="alignTEXT(1,mainAlignmentSPAN.dataset.alignmentType,this)"id="align1">Left</span>
+        <span class='hover-effect btn_alignment'                        onclick="alignTEXT(2,mainAlignmentSPAN.dataset.alignmentType,this)"id="align2">Center</span>
+        <span class='hover-effect btn_alignment'                        onclick="alignTEXT(3,mainAlignmentSPAN.dataset.alignmentType,this)"id="align3">Right</span>
         <hr/>
     </div>
 
@@ -90,7 +90,7 @@ only-timer
         <span>[Image Section]</span>
 
         <hr/>
-        <label class="upload-btn" onclick="showImgDialog();">
+        <label class="upload-btn hover-effect" onclick="showImgDialog();">
             Select Picture
         </label>
         <br/>
@@ -99,7 +99,7 @@ only-timer
         <hr/>
 
         <label for="ImageSize">Image Size :</label>
-        <select id="ImageSize" onchange="UpdateImgSize(this)">
+        <select id="ImageSize" onchange="UpdateImgSize(this)" class="hover-effect">
             <option value="100%">100% Size</option>
             <option value="50%">50% Size</option>
             <option value="200px">Fixed Size</option>
@@ -114,11 +114,11 @@ only-timer
         <br/>
         <hr/>
         <span>Timer Settings :</span>
-        <button onclick="ManageTimer();" id="TimerButton">Timer</button>
+        <button onclick="ManageTimer();" id="TimerButton" class="hover-effect">Timer</button>
         <br/>
         <label for="timerDuration">Interval:</label>
         <input id="timerDuration"type="range" min="1" max="100" value="1"
-               oninput="updateTIMERduration(this.value);"/>
+               oninput="updateTIMERduration(this.value);" class="hover-effect"/>
         <span id="spanRanger">1</span><span>SEC</span>
         <hr/>
     </div>
@@ -132,7 +132,7 @@ only-timer
     <!--propertiesCOLOR-->
     <div id="propertiesCOLOR">
         <label for="ColorDropDown">Kit's Color:</label>
-        <select id="ColorDropDown" onchange="UpdateColor(this)">
+        <select id="ColorDropDown" onchange="UpdateColor(this)" class="hover-effect">
             <option value="black">Black</option>
             <option value="red">Red</option>
             <option value="blue">Blue</option>
@@ -144,7 +144,7 @@ only-timer
 <!--propertiesSIZE-->
     <div id="propertiesSIZE">
         <label for="FontSizeDropDown">Font Size :</label>
-        <select id="FontSizeDropDown" onchange="UpdateFontSize(this)">
+        <select id="FontSizeDropDown" onchange="UpdateFontSize(this)" class="hover-effect">
             <option value="x-large">Huge</option>
             <option value="large">Large</option>
             <option value="medium" selected>Medium</option>
@@ -160,7 +160,7 @@ only-timer
     <!--propertiesBACKGROUND-->
     <div id="propertiesBACKGROUND">
         <label for="scBackground">Background Color :</label>
-        <select id="scBackground" onchange="UPDATEbackgroundVALUE(this.value);">
+        <select id="scBackground" onchange="UPDATEbackgroundVALUE(this.value);" class="hover-effect">
             <option value="#f0f0f0">Default</option>
             <option value="White">White</option>
             <option value="Green">Green</option>
@@ -177,7 +177,7 @@ only-timer
     <!--propertiesMARGIN-->
     <div id="propertiesMARGIN">
         <label for="MarginDropDown">Margin :</label>
-        <select id="MarginDropDown" onchange="UpdateMargin(this)">
+        <select id="MarginDropDown" onchange="UpdateMargin(this)" class="hover-effect">
             <option value="20">Large</option>
             <option value="10">Medium</option>
             <option value="5" >Small</option>
@@ -189,10 +189,9 @@ only-timer
 
     <!--propertiesBORDER-->
     <div id="propertiesBORDER">
-        <label>
-
+        <label class="hover-effect">
             Add Border
-            <input type="checkbox" id="border_checkBox" onchange="EnableBorder(this.checked);">
+            <input type="checkbox" id="border_checkBox" onchange="EnableBorder(this.checked);" class="hover-effect">
         </label>
 
         <br/>
@@ -200,7 +199,7 @@ only-timer
 
 
             <label for="theBorderType">Border Type :</label>
-            <select id="theBorderType" onchange="haveBORDER(this,1)">
+            <select id="theBorderType" onchange="haveBORDER(this,1)" class="hover-effect">
                 <option value="1" selected>Full</option>
                 <option value="2">Underline</option>
                 <option value="3" >Side</option>
@@ -209,7 +208,7 @@ only-timer
             <hr/>
 
             <label for="theBorderColor">Border Color :</label>
-            <select id="theBorderColor" onchange="haveBORDER(this,2)">
+            <select id="theBorderColor" onchange="haveBORDER(this,2)" class="hover-effect">
                 <option value="black" selected>Black</option>
                 <option value="red">Red</option>
                 <option value="blue" >Blue</option>
@@ -219,7 +218,7 @@ only-timer
             <hr/>
 
             <label for="theBorderStyle">Border Style :</label>
-            <select id="theBorderStyle" onchange="haveBORDER(this,3)">
+            <select id="theBorderStyle" onchange="haveBORDER(this,3)" class="hover-effect">
                 <option value="solid" selected>Solid</option>
                 <option value="double">Double</option>
                 <option value="ridge" >Ridge</option>
@@ -228,7 +227,7 @@ only-timer
             <hr/>
 
             <label for="theBorderSize">Border Size :</label>
-            <select id="theBorderSize" onchange="haveBORDER(this,4)">
+            <select id="theBorderSize" onchange="haveBORDER(this,4)" class="hover-effect">
                 <option value="20px">Huge</option>
                 <option value="10px">Large</option>
                 <option value="5px" selected>Medium</option>

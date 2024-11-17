@@ -230,6 +230,8 @@ function switchScreen()
                     const element = e.target;
                     if (element.tagName === 'BUTTON')
                         ManageCursorHover(true);
+                    else 
+                        ManageCursorHover(false);
                 }
 
 
@@ -287,8 +289,9 @@ function switchScreen()
         // Detect when the mouse leaves the iframe
         live_iframe.addEventListener('mouseleave', () => {
             isMouseInIframe = false;
+            ManageCursorHover(false);
         });
-                // Detect when the mouse leaves the iframe
+        // Detect when the mouse go inside the iframe
         live_iframe.addEventListener('mouseenter', () => {
         isMouseInIframe = true;
 
