@@ -21,7 +21,7 @@ project.js : function updateKITname           >>> Updates The Name for the kit.
 function addKIT(kit_type) {
     //[START] Main element that will have the content for the new added element.
     let newKIT = document.createElement('p');
-    newKIT.classList.add('project_timeline_kit');
+    newKIT.classList.add('project_timeline_kit','hover-effect');
     newKIT.id = 'active_kit' + COUNT_KIT_PROGRESS;
     newKIT.setAttribute("draggable", "true");//adding the option to drag it so it can be arranged later.
     newKIT.setAttribute("ondragstart", "event.preventDefault();MOVEArrangeKITS(this,event);");

@@ -244,6 +244,8 @@
 
             // Call the parent function to update the cursor position
             window.parent.updateCursorPosition(event);
+            
+
         });
             </script>
             </body>

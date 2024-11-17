@@ -90,6 +90,10 @@ Custom Cursor Area :
 .custom-cursor.hovered {
     transform: scale(2); /* Scale the cursor circle, but not the dot */
     background-color: #ff00ff4a;
+    border: 1px solid darkgray;
+}
+.custom-cursor.dragAffect{
+    background-color: green;
 }
 /* Hoverable Elements */
 .hover-effect {

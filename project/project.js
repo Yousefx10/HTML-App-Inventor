@@ -1312,24 +1312,25 @@ draggables.forEach(draggable => {
         overlay.style.pointerEvents = 'auto'; // Capture drag events
         
         isDragging = true;
-        cursor.style.backgroundColor = 'green'; // Change the cursor color when dragging
-
+        //cursor.style.backgroundColor = 'green'; // Change the cursor color when dragging
+        cursor.classList.add('dragAffect');
         // Clone the element
         CloneIT(draggableElement,event);
 
 
-        // Keep the original element in its place and make it invisible
-        //event.dataTransfer.setDragImage(new Image(), 0, 0); // Disable native drag image
+            // Keep the original element in its place and make it invisible
+            //event.dataTransfer.setDragImage(new Image(), 0, 0); // Disable native drag image
 
-        // Listen for mousemove to update the position of the clone
-        document.addEventListener("mousemove", moveClone);
+            // Listen for mousemove to update the position of the clone
+            document.addEventListener("mousemove", moveClone);
 
-        //add this instead of dragOver:
-        project_timeline.addEventListener('mouseover', handleMouseOver);
+            //add this instead of dragOver:
+            project_timeline.addEventListener('mouseover', handleMouseOver);
 
             // When mouse is released, handle the drop logic
             overlay.addEventListener("mouseup", handleDrop);
             project_timeline.addEventListener("mouseup", handleDrop);
+
             document.addEventListener("mouseup", WhenDropInGeneral);
     });
 
@@ -1420,13 +1421,13 @@ function resetClone() {
      
      // After drag ends, reset cursor appearance
      //isDragging = false;
-     cursor.style.backgroundColor = '#ff00ff'; // Reset the cursor background color after dragging
-
+     //cursor.style.backgroundColor = '#ff00ff'; // Reset the cursor background color after dragging
+     cursor.classList.remove('dragAffect');
     // remove those logics after mouse is up.
     overlay.removeEventListener("mouseup", handleDrop);
     project_timeline.removeEventListener("mouseup", handleDrop);
     project_timeline.removeEventListener('mouseover', handleMouseOver);
-    document.addEventListener("mouseup", WhenDropInGeneral);
+    document.removeEventListener("mouseup", WhenDropInGeneral);
 
     CurrentDraggedID='';
 }
@@ -1443,6 +1444,7 @@ function MOVEArrangeKITS(currentDOM,event){
     CloneIT(currentDOM,event);
     project_timeline.addEventListener('mouseover', handleMouseOver);
     project_timeline.addEventListener("mouseup", handleDrop);
+    document.addEventListener("mouseup", WhenDropInGeneral);
 }
 //Newst function of mouse over "replaces the dragover":
 // Define the mouseover handler function
@@ -1459,7 +1461,6 @@ function handleMouseOver(event) {
         // Get the target element to position the drop indicator
         const targetElement = hoveredElement.closest('.project_timeline_kit');
         if (targetElement) {
-            console.log('yes you are over');
             // Show the drop indicator before or after the target element
             const rect = targetElement.getBoundingClientRect();
             const offsetY = event.clientY - rect.top; // Mouse position relative to the target element

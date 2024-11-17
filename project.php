@@ -74,12 +74,12 @@
         <div id="btns">
 
             <!--REMOVE BUTTON-->
-            <button id="Remove_button" onclick="REMOVINGtime({});" title="Delete The Entire Kit" disabled>Remove</button>
+            <button id="Remove_button" class="hover-effect" onclick="REMOVINGtime({});" title="Delete The Entire Kit" disabled>Remove</button>
             <!--REMOVE BUTTON-->
 
 
             <!--SAVE BUTTON-->
-            <button id="Save_button" onclick="SAVINGtime();" title="Save Your New Changes" disabled>Save</button>
+            <button id="Save_button" class="hover-effect" onclick="SAVINGtime();" title="Save Your New Changes" disabled>Save</button>
             <!--SAVE BUTTON-->
 
 
@@ -89,7 +89,7 @@
 
     <div class='project_div' id='project_timeline'><p id="timelineTITLE">project_timeline</p>
 
-                <p id="screenSETTINGS" onclick="showScreenProperties();" data-only="screen" data-id="1" data-name="Screen1" data-background="#f0f0f0">Current Screen Settings Properties</p>
+                <p id="screenSETTINGS" class="hover-effect" onclick="showScreenProperties();" data-only="screen" data-id="1" data-name="Screen1" data-background="#f0f0f0">Current Screen Settings Properties</p>
 
         <div id="screen1" class="timelineSCREEN">
             <div id="drop-indicator" style="display: none;">
@@ -225,6 +225,11 @@ function switchScreen()
                     // Update cursor position, centered around the mouse pointer
                     cursor.style.left = `${mouseX - cursor.offsetWidth / 2}px`;
                     cursor.style.top = `${mouseY - cursor.offsetHeight / 2}px`;
+
+                    //hover on certian elements like button, within IFRAME....
+                    const element = e.target;
+                    if (element.tagName === 'BUTTON')
+                        ManageCursorHover(true);
                 }
 
 
@@ -236,6 +241,13 @@ function switchScreen()
         // Listen for mouse movement to update position
         document.addEventListener('mousemove', updateCursorPosition);
 
+
+      function ManageCursorHover(Status)
+        {
+            if(Status)  cursor.classList.add('hovered');
+            else        cursor.classList.remove('hovered');
+        }
+
         // Add or remove 'hovered' class based on hovering over .hover-effect elements
         document.addEventListener('mouseover', (e) => {
         // Check if the hovered element or any of its parents has the 'hover-effect' class
@@ -244,11 +256,12 @@ function switchScreen()
 
         if (parentWithHoverEffect) {
         // Apply the 'hovered' class to the cursor when hovering over the element or its children
-        cursor.classList.add('hovered');
+         ManageCursorHover(true);
+        
     } 
-            if (e.target.classList.contains('hover-effect')) {
+            /* if (e.target.classList.contains('hover-effect')) {
                 
-            }
+             } */
         });
 
         document.addEventListener('mouseout', (e) => {
@@ -259,11 +272,11 @@ function switchScreen()
 
         if (parentWithHoverEffect) {
         // Apply the 'hovered' class to the cursor when hovering over the element or its children
-        cursor.classList.remove('hovered');
+        ManageCursorHover(false);
     } 
-            if (e.target.classList.contains('hover-effect')) {
+            /* if (e.target.classList.contains('hover-effect')) {
                 
-            }
+             }*/
         });
 
         //live_iframe
@@ -278,6 +291,7 @@ function switchScreen()
                 // Detect when the mouse leaves the iframe
         live_iframe.addEventListener('mouseenter', () => {
         isMouseInIframe = true;
+
         });
 
 
@@ -287,7 +301,15 @@ function switchScreen()
             if (document.hidden) {
                 cursor.style.display = 'none';
             }
+            else cursor.style.display = 'none';
         });
+
+        // Hide cursor when the user leaves browser
+        window.addEventListener('blur', () => {
+            if(!isMouseInIframe)
+            cursor.style.display = 'none';
+            
+        });      
         // Show cursor when the user returns to the tab or window
         window.addEventListener('focus', () => {
             cursor.style.display = 'block';

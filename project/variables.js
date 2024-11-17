@@ -12,7 +12,8 @@ function GET_DOC_ID(prefix_name,kitID){
 
 document.addEventListener('keydown', function(event) {
     // Check if the Alt key and the '1' key are pressed
-    if (event.altKey && event.key === '1') {
+    //use key code instaed of key known name
+    if (event.altKey && event.code === 'Digit1') {
         event.preventDefault();  // Prevent default behavior if needed
         switchScreen();
     }
