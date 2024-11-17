@@ -27,11 +27,11 @@
 
     </div>
 
-    <div style="position:absolute;z-index:1;cursor:pointer">
+    <div style="position:absolute;z-index:1;" class="hover-effect">
         <img id="RunButton" onclick="runTHEproject();" class="btn-active-start" src="media/svg/play.svg" width="30px" alt="ActButton"/>
     </div>
 
-    <div style="position:absolute;z-index:1;cursor:pointer">
+    <div style="position:absolute;z-index:1;" class="hover-effect">
         <img id="Screenshot" onclick="ScreenshotNow();" src="media/svg/screenshot.svg" width="30px" alt="Screenshot"/>
     </div>
 
@@ -156,7 +156,7 @@
 
 
 </div>
-<button class="functionBTN" onclick="switchScreen();">
+<button class="functionBTN hover-effect" onclick="switchScreen();">
 Code Workspace⬇️
 <div class="tooltip">ALT + 1</div>
 </button>
@@ -201,21 +201,30 @@ function switchScreen()
 
 <div class="custom-cursor" style="z-index: 100;"></div>
     <script>
-        const cursor = document.querySelector('.custom-cursor');
+    const cursor = document.querySelector('.custom-cursor');
 
         // Show cursor on first movement and remove listener
-        const onFirstMouseMove = (e) => {
+        window. onFirstMouseMove = (e) => {
             cursor.style.opacity = 1;
             updateCursorPosition(e);
             document.removeEventListener('mousemove', onFirstMouseMove);
         };
 
         // Update cursor position
-        const updateCursorPosition = (e) => {
+        window. updateCursorPosition = (e) => {
             if(!isMouseInIframe)
                 {
                     cursor.style.left = `${e.clientX - cursor.offsetWidth / 2}px`;
                     cursor.style.top = `${e.clientY - cursor.offsetHeight / 2}px`;
+                }
+                else
+                {
+                    const rect = live_iframe.getBoundingClientRect(); // Get iframe position
+                    const mouseX = rect.left + e.clientX; // Adjust for iframe position
+                    const mouseY = rect.top + e.clientY;  // Adjust for iframe position
+                    // Update cursor position, centered around the mouse pointer
+                    cursor.style.left = `${mouseX - cursor.offsetWidth / 2}px`;
+                    cursor.style.top = `${mouseY - cursor.offsetHeight / 2}px`;
                 }
 
 
@@ -265,25 +274,24 @@ function switchScreen()
         // Detect when the mouse leaves the iframe
         live_iframe.addEventListener('mouseleave', () => {
             isMouseInIframe = false;
-            console.log('Mouse left the iframe');
+        });
+                // Detect when the mouse leaves the iframe
+        live_iframe.addEventListener('mouseenter', () => {
+        isMouseInIframe = true;
         });
 
-// When the mouse moves inside the iframe
-live_iframe.addEventListener('load', () => {
-    const iframeDoc = live_iframe.contentDocument || live_iframe.contentWindow.document;
 
-    // Add mousemove event inside iframe
-    iframeDoc.addEventListener('mousemove', (event) => {
-        const rect = live_iframe.getBoundingClientRect(); // Get iframe position
-            const mouseX = rect.left + event.clientX; // Adjust for iframe position
-            const mouseY = rect.top + event.clientY;  // Adjust for iframe position
-
-            // Update cursor position, centered around the mouse pointer
-            cursor.style.left = `${mouseX - cursor.offsetWidth / 2}px`;
-            cursor.style.top = `${mouseY - cursor.offsetHeight / 2}px`;
-
-    });
-});
+        
+        // Hide cursor when the user leaves the tab or window
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) {
+                cursor.style.display = 'none';
+            }
+        });
+        // Show cursor when the user returns to the tab or window
+        window.addEventListener('focus', () => {
+            cursor.style.display = 'block';
+        });
     </script>
     </body>
 </html>

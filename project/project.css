@@ -18,7 +18,7 @@ font-size: 1.5em;
 
     padding: 10px;
     border: none;
-    /* cursor: pointer; */
+    cursor: none;
 
 }
 .functionBTN:hover{
@@ -167,7 +167,7 @@ background-color: rgb(164, 20, 20);
 
 .kit .kit_right{
     width:40%;
-    /* cursor:pointer; */
+    cursor: none;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
@@ -178,10 +178,17 @@ background-color: rgb(164, 20, 20);
     align-items: center;
     width:55%;
     padding: 5px;
-    margin-left:2px;
+    margin-left:10px;
     font-weight: bold;
     /* cursor: grab; */
     cursor: none;
+
+
+}
+.kit .kit_left:hover{
+    transform: scale(1.2);
+    transition: background-color 0.4s linear;
+    background-color: lightgray;
 }
 .kit .kit_left span::before{
     content: " ";
@@ -198,7 +205,7 @@ background-color: rgb(164, 20, 20);
 
     background:lightcoral;
     color:white;
-    /* cursor:pointer; */
+    cursor: none;
     height: 25px;
 }
 .project_timeline_kit:hover{
@@ -216,7 +223,7 @@ background-color: rgb(164, 20, 20);
 #screenSETTINGS{
 background-color: antiquewhite;
     padding: 10px;
-    /* cursor: pointer; */
+    cursor: none;
 }
 .screenSETTINGS-ACTIVE{
     color:green;
@@ -308,7 +315,7 @@ background-color: antiquewhite;
     padding:10px;
     margin:5px;
     width:80%;
-    /* cursor:pointer; */
+    cursor: none;
 }
 #newParent{
     height: 70%;
@@ -331,14 +338,14 @@ background-color: antiquewhite;
 
     color:white;
     background-color:red;
-    /* cursor:pointer; */
+    cursor: none;
 }
 
 
 #btn_visible{
     padding:10px;
     border:none;
-    /* cursor:pointer; */
+    cursor: none;
     background-color:palegreen;
     font-weight:bolder;
 }
@@ -352,7 +359,7 @@ background-color: antiquewhite;
 
 
 .btn_alignment{
-    /* cursor:pointer; */
+    cursor: none;
 }
 .btn_alignment:hover{
 color:mediumseagreen;
@@ -364,7 +371,7 @@ color:mediumseagreen;
 }
 .btn_alignment-SELECTED:hover{
     color:green;
-    cursor:default;
+    cursor: none;
 }
 
 /*The information Div*/
@@ -408,7 +415,7 @@ color:mediumseagreen;
             color: white;
             border: none;
             border-radius: 5px;
-            /* cursor: pointer; */
+            cursor: none;
             font-size: 16px;
         }
 
@@ -454,7 +461,7 @@ color:mediumseagreen;
 #UnselectIMG{
     color:red;
     font-size:small;
-    /* cursor:pointer; */
+    cursor: none;
     display: none;
 }
 #UnselectIMG:hover{

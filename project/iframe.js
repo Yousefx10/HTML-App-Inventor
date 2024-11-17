@@ -233,6 +233,19 @@
                 }
             </script>
             <script src="libraries/html2canvas.js"></script>
+
+
+
+            <script>
+
+        document.addEventListener('mousemove', (event) => {
+            const mouseX = event.clientX;
+            const mouseY = event.clientY;
+
+            // Call the parent function to update the cursor position
+            window.parent.updateCursorPosition(event);
+        });
+            </script>
             </body>
           </html>
         `);

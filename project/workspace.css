@@ -44,7 +44,7 @@
     box-sizing: border-box;
     display: flex;
     align-items: center;
-    cursor: pointer;
+    cursor: none;
 }
 #status_Warning:hover{
     background-color: #0001da30;
@@ -95,7 +95,7 @@
 
 .event_item{
     color:green;
-    cursor: pointer;
+    cursor: none;
 }
 
 .event_item:hover{
@@ -135,7 +135,7 @@
 
 
 #actions_space_container p{
-    cursor: pointer;
+    cursor: none;
 }
 #actions_space_container p:hover{
     background-color: darkcyan;
@@ -144,7 +144,7 @@
 
 .kit_space_element{
     Color: green;
-    cursor: pointer;
+    cursor: none;
 }
 .kit_space_element:hover{
     color: crimson;
@@ -164,7 +164,7 @@ content: "*";
 .DeleteBlock{
     color:red;
     padding: 5px;
-    cursor: pointer;
+    cursor: none;
     background-color: beige;
     border-radius: 40%;
 }
@@ -182,7 +182,7 @@ content: "*";
 }
 #dialog p{
     display: inline;
-    cursor: pointer;
+    cursor: none;
     color: red;
 }
 
@@ -224,7 +224,7 @@ dialog::backdrop {
 
 .special_td{
     text-align: center;
-    cursor: pointer;
+    cursor: none;
     text-decoration: underline;
     color: blue;
 }
@@ -270,7 +270,7 @@ dialog::backdrop {
     margin: 5px;
     vertical-align: middle;
     padding:2px;
-    cursor: pointer;
+    cursor: none;
 }
 .CommentBTN{
     background-color: aquamarine;

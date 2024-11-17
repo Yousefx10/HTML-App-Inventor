@@ -89,6 +89,7 @@ Custom Cursor Area :
 /* Larger cursor when hovering over .hover-effect elements */
 .custom-cursor.hovered {
     transform: scale(2); /* Scale the cursor circle, but not the dot */
+    background-color: #ff00ff4a;
 }
 /* Hoverable Elements */
 .hover-effect {
@@ -96,8 +97,8 @@ Custom Cursor Area :
 }
 
 .hover-effect:hover {
-     transform: scale(1.09); 
-    background-color: #ff4500;
+     /* transform: scale(1.1);  */
+
 }
 
 
