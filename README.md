@@ -4,18 +4,23 @@ Without any worries you can just start drag and drop to build your first applica
 
 ## How it works ⁉️
 
-Modern tech's uses HTML structure to just build a pretty simple projects without any effort, even this can be more EASIER with this project you are reading about.
-
+Modern technology leverages HTML to create straightforward projects with minimal effort. This project takes it a step further, making the process even simpler and more accessible for anyone to use.
 
 ## Contains tools that can help plan your app⚙️
 
-**TO DO LIST:** To point all the features you want to add in future.
+**Drag And Drop**
 
-**NOTES:** Just in case you would like to point something just to remember.
+Everything start's with your mouse movements...
 
-**LIVE PREVIEW:** While doing the changes you can watch them instantly.
+![Drag](media/readme/drag.gif)
+
+**More Customizations**
+
+Change everything can came to your mind...
+
+![options](media/readme/options.gif)
 
 
 ### What's New 🆕
 
-This is just the start and upcoming features will appear here
+Fully compatible with all modern browsers.

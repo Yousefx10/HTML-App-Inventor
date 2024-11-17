@@ -128,7 +128,7 @@
     <div style="width:17.5em;">
         <!--will use it to add informations later, maybe screen controls?-->
         <!--i think maybe i will use it to add EXPORT button to save and download the project-->
-        <p style="font-size:10px;margin: 0;">Version v.0.1.4</p>
+        <p style="font-size:10px;margin: 0;">Version v.0.1.5</p>
     </div>
     <div class="iframe-container">
         <iframe frameborder="0" id="live_iframe" style="flex: 1;height:100%;width:100%;border:0;z-index: 1;"></iframe>
