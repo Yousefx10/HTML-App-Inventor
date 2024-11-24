@@ -133,6 +133,12 @@
     color: crimson;
 }
 
+#actions_space{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
 
 #actions_space_container p{
     cursor: none;
