@@ -35,7 +35,7 @@ function show_Event_KIT(kitID,KITtype)
     hideDialog(true);//forcing to hide dialog
     workspace_hidden_kitID.value=kitID;
     document.getElementById("playground_space_container").innerHTML="<p id='playground_text'></p>";
-    actions_space.style.display="none";
+    actions_space.style.visibility="hidden";
 
     // Loop through each kit to remove selected highlight
     document.querySelectorAll('.kit_space_element').forEach((element) => {
@@ -91,7 +91,7 @@ function Event_KIT(CurrentEvent)
     let CurrentkitID = workspace_hidden_kitID.value;
     let CurrentCode = document.getElementById("code" + CurrentkitID);
 
-    actions_space.style.display="block";
+    actions_space.style.visibility="visible";
     switch (CurrentEvent)
     {
         case "click":
@@ -137,7 +137,7 @@ function StartPlayGround(kitID,EventCase)
     NumricLineNumber=0;
     hideDialog(true);//forcing to hide dialog
     document.getElementById("playground_space_container").innerHTML="";
-    actions_space.style.display="block";
+    actions_space.style.visibility="visible";
     switch (EventCase){
         case "click":
 

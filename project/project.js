@@ -446,7 +446,7 @@ function commonPROJECTclearWORKSPACE() {
     //clears the playground container
     document.getElementById("playground_space_container").innerHTML = "<p id='playground_text'></p>";
     //to hide the action section
-    actions_space.style.display = "none";
+    actions_space.style.visibility = "hidden";
 
     //to hide dialog if it's shown.
     hideDialog(true);

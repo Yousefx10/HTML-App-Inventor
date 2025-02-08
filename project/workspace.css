@@ -289,3 +289,8 @@ dialog::backdrop {
     width: 25px;
     color: slategrey;
 }
+
+#VariableBOX{
+    display: flex;
+    flex-direction: column-reverse;
+}
