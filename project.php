@@ -172,10 +172,12 @@ Code Workspace⬇️
 </button>
 
 <?php include "project/blocks/workspace.html"?>
+<?php include "project/blocks/variablebox.html"?>
 
 <script>
         const screen1 = document.getElementById('project_container');
         const screen2 = document.getElementById('CodeWorkspace');
+        const screen3 = document.getElementById('VariableBox');
 function switchScreen()
 {
     // Toggle classes to switch screens
@@ -191,6 +193,19 @@ function switchScreen()
     //Hiding, Or Showing The Act Button, maybe will need better enhance in the future to remove the animation.
     RunButton.parentElement.classList.toggle("ToggleLikeSwitchScreen");
     ScreenshotButton.parentElement.classList.toggle("ToggleLikeSwitchScreen");
+}
+
+function switchVariableBox()
+{
+    // showing the WORKSPACE screen
+    if (screen3.style.transform.includes('translateX(0')) {//checks if VariableBox is visible or not, i used includes instead of === because error of "0px"
+        screen3.style.transform = 'translateX(100%)'; //Hide Screen2.
+        console.log("Showing Workspace");
+    } else {//showing the Variable Box screen
+        //screen2.style.transform = 'translateY(-100%)';//Hide Screen1.
+        screen3.style.transform = 'translateX(0)'; // Show Screen2.
+        console.log("Showing VARIABLE BOX");
+    }
 }
 </script>
 

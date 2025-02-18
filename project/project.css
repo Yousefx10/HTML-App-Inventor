@@ -64,7 +64,7 @@ font-size: 1.5em;
 
 
 
-#project_container, #CodeWorkspace {
+#project_container, #CodeWorkspace , #VariableBox{
     position: absolute;
     transition: transform 0.5s ease; /* Smooth transition for the transform */
 }
@@ -73,6 +73,14 @@ font-size: 1.5em;
     background-color: #e74c3c; /* Light red */
     transform: translateY(100%); /* Start off-screen below */
     z-index: 5; /* Screen 2 is below screen 1 */
+    width: 100%;
+    height: 100vh; /* Full height of the viewport */
+}
+
+#VariableBox {
+    background-color: lightgreen;
+    transform: translateX(100%); /* Start off-screen below */
+    z-index: 6; /* Screen 2 is below screen 1 */
     width: 100%;
     height: 100vh; /* Full height of the viewport */
 }
