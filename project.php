@@ -200,10 +200,13 @@ function switchVariableBox()
     // showing the WORKSPACE screen
     if (screen3.style.transform.includes('translateX(0')) {//checks if VariableBox is visible or not, i used includes instead of === because error of "0px"
         screen3.style.transform = 'translateX(100%)'; //Hide Screen2.
+        screen3.style.opacity = "0"; 
         console.log("Showing Workspace");
-    } else {//showing the Variable Box screen
+    }
+    else {//showing the Variable Box screen
         //screen2.style.transform = 'translateY(-100%)';//Hide Screen1.
         screen3.style.transform = 'translateX(0)'; // Show Screen2.
+        screen3.style.opacity = "1"; 
         console.log("Showing VARIABLE BOX");
     }
 }
