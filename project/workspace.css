@@ -185,6 +185,7 @@ content: "*";
     padding: 10px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
     z-index: 100; /* Make sure it's on top */
+    cursor: default;
 }
 #dialog p{
     display: inline;

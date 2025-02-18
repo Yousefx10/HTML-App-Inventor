@@ -254,13 +254,14 @@ function CaseResolve(FullActionBlockID,CaseOfUpdate)
 
 }
 
-//for RunTime Errors, For Example if kit color is set to "hi"
+//for RunTime Errors, For Example if kit color is set to "hi"*
+//didn't know that i mention this information here already.
 function ThroughWARNING(gettingValue)
 {
     runTHEproject(true);
     console.log("==[Through WARNING]==");
     BugsContent.innerHTML="";//removing old/previous warnings.
-
+    tableBody.innerHTML="";//removing old/previous warnings.
 
 
     const row = document.createElement("tr");
