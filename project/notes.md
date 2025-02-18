@@ -206,3 +206,12 @@ maybe using this code in the future to replace the violation error related to do
 - Temp View via QR code, saves the project into REAL LIVE PREVIEW so i can scan it from my smartphone, after that automatic deletes the file.
 
 </details>
+
+
+
+the RUN TIME error still encounter problems,
+for example when trying to set the label color as label text "hi" for example, the status bar won't change.
+
+also when the warning box being visible, the mouse still goes hidden.
+
+also try to control the new variable box feature.
