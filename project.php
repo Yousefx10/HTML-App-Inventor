@@ -46,7 +46,7 @@
     </div>
 
     <div style="position:absolute;z-index:1;display:flex;align-items: center;flex-direction: row;">
-        <img id="BuildAPP" class="hover-effect" onclick="BuildAPP();" src="media/svg/build.svg" width="30px" alt="BuildAPP"
+        <img id="BuildAPP" class="hover-effect" onclick="StartBuildAPP();" src="media/svg/build.svg" width="30px" alt="BuildAPP"
         onmouseover ="ShowingToolTip(BuildAPPTooltip,true);"
         onmouseleave="ShowingToolTip(BuildAPPTooltip);"/>
         <span id="BuildAPPTooltip" style="z-index:1;opacity:0;">

@@ -21,4 +21,10 @@ document.addEventListener('keydown', function(event) {
         if(currentSCOPE) ScreenshotNow();
         else parent.ScreenshotNow();
     }
+
+    if (event.altKey && event.code === 'KeyB') {
+        event.preventDefault();  // Prevent default behavior if needed
+        if(currentSCOPE) StartBuildAPP();
+        else parent.StartBuildAPP();
+    }
 });

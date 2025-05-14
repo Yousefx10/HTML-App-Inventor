@@ -1158,7 +1158,38 @@ function ScreenshotNow(ShotItNow)
 
 }
 
+function StartBuildAPP()
+{
+    console.log("Building APP");
 
+    /*
+    //THE BASIC NORMAL WAY TO DOWNLOAD THE HTML CODE OF THE IFRAME: 
+
+    function downloadIframeHtml(iframeId, filename) {
+        const iframe = document.getElementById(iframeId);
+        
+        if (iframe && iframe.contentDocument) {
+            const content = iframe.contentDocument.documentElement.outerHTML;  // Get the full HTML code
+            const element = document.createElement("a");
+            const file = new Blob([content], { type: "text/plain" });
+            element.href = URL.createObjectURL(file);
+            element.download = filename;
+            document.body.appendChild(element);
+            element.click();
+            document.body.removeChild(element);
+        } else {
+            console.error("Iframe not found or not accessible.");
+        }
+    }
+    
+    
+    // Example usage
+    downloadIframeHtml("live_iframe", "iframe-CODE.txt");
+    
+    */
+
+    // I NEED to build my own HTML engine output.
+}
 
 
 
