@@ -228,6 +228,8 @@ function switchVariableBox()
 <script src="project/project.js"></script>
 <script src="project/workspace.js"></script>
 
+<script src="project/build.js"></script>
+
 <script src="project/interpreter.js"></script>
 <script src="database/AJAXcalls.js"></script>
 <script src="libraries/html2canvas.js"></script>
