@@ -27,11 +27,12 @@ function correctDialogSize()
     CorrectImgDialog();
 }
 
-
+//This Func try to position the ACT button + Screenshot button + BuildAPP Button
 function positionACTbutton() {
     const target = document.getElementById("smartphone");
     const absoluteElement = RunButton.parentElement;
     const absoluteElement2 = ScreenshotButton.parentElement;
+    const absoluteElement3 = BuildAPP.parentElement;
 
     // Get the bounding rectangle of the target element
     const rect = target.getBoundingClientRect();
@@ -39,9 +40,11 @@ function positionACTbutton() {
     // Position the absolute element
     absoluteElement.style.top   = `${rect.top + window.scrollY+20}px`; // Aligns with the top of the target
     absoluteElement2.style.top  = `${rect.top + window.scrollY+60}px`; // Aligns with the top of the target
+    absoluteElement3.style.top  = `${rect.top + window.scrollY+100}px`; // Aligns with the top of the target
 
     absoluteElement.style.left  = `${(rect.right + window.scrollX - absoluteElement2.offsetWidth)+60}px`; // Aligns with the right of the target
     absoluteElement2.style.left = `${(rect.right + window.scrollX - absoluteElement2.offsetWidth)+60}px`; // Aligns with the right of the target
+    absoluteElement3.style.left = `${(rect.right + window.scrollX - absoluteElement2.offsetWidth)+60}px`; // Aligns with the right of the target
 
 }
 
@@ -50,6 +53,7 @@ function positionACTbutton() {
 positionACTbutton();
 RunButton.parentElement.style.zIndex="15";
 ScreenshotButton.parentElement.style.zIndex="15";
+BuildAPP.parentElement.style.zIndex="15";
 
 
 

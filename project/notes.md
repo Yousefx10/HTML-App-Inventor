@@ -209,3 +209,12 @@ maybe using this code in the future to replace the violation error related to do
 
 
 
+<details>
+
+<summary>Notes For BUGS</summary>
+
+- The shortcut : Alt+S Alt+R Alt+B NOT WORKING ON THE FIRST TIME AFTER CLICKING ON THE ICONS ITSELF.
+
+- empty note.
+
+</details>

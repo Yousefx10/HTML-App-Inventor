@@ -58,6 +58,7 @@ let project_timeline = document.getElementById('project_timeline'),
     screensPage = document.getElementById("screensPAGE"),
     RunButton = document.getElementById("RunButton"),
     ScreenshotButton = document.getElementById("Screenshot"),
+    BuildAPP = document.getElementById("BuildAPP"),
     ScreenshotResult = document.getElementById("ScreenshotResult"),
     ActButtonTooltip = document.getElementById("ActButtonTooltip"),
     ScreenShotTooltip = document.getElementById("ScreenShotTooltip");
