@@ -213,7 +213,7 @@ maybe using this code in the future to replace the violation error related to do
 
 <summary>Notes For BUGS</summary>
 
-- The shortcut : Alt+S Alt+R Alt+B NOT WORKING ON THE FIRST TIME AFTER CLICKING ON THE ICONS ITSELF.
+- SOLVED: because when focus on the iframe it calls unknowed function : The shortcut : Alt+S Alt+R Alt+B NOT WORKING ON THE FIRST TIME AFTER CLICKING ON THE ICONS ITSELF.
 
 - empty note.
 

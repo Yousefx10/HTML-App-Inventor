@@ -10,22 +10,7 @@ function GET_DOC_ID(prefix_name,kitID){
     return document.getElementById(prefix_name+kitID);
 }
 
-document.addEventListener('keydown', function(event) {
-    // Check if the Alt key and the '1' key are pressed
-    //use key code instaed of key known name
-    if (event.altKey && event.code === 'Digit1') {
-        event.preventDefault();  // Prevent default behavior if needed
-        switchScreen();
-    }
-    if (event.altKey && event.code === 'KeyR') {
-        event.preventDefault();  // Prevent default behavior if needed
-        runTHEproject();
-    }
-    if (event.altKey && event.code === 'KeyS') {
-        event.preventDefault();  // Prevent default behavior if needed
-        ScreenshotNow();
-    }
-});
+
 
 function ShowingToolTip(selectedELEMENT,STATUS)
 {

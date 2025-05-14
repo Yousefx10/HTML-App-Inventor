@@ -191,6 +191,13 @@
             </script>
             
             <script src="project/variables.js"></script>
+
+            <script src="project/shortcut.js"></script>
+            <script>
+                currentSCOPE = false;
+            </script>
+
+            
             <script src="project/actions.js"></script>
             
 

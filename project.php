@@ -221,6 +221,7 @@ function switchVariableBox()
 </script>
 
 <script src="project/variables.js"></script>
+<script src="project/shortcut.js"></script>
 <script src="project/actions.js"></script>
 <script src="project/iframe.js"></script>
 <script src="project/kit.js"></script>
