@@ -1161,10 +1161,10 @@ function ScreenshotNow(ShotItNow)
 function StartBuildAPP()
 {
     console.log("Building APP");
-    //DoBuild();
+    DoBuild();
     
     //THE BASIC NORMAL WAY TO DOWNLOAD THE HTML CODE OF THE IFRAME: 
-
+/*
     function downloadIframeHtml(iframeId, filename) {
         const iframe = document.getElementById(iframeId);
         
@@ -1186,7 +1186,7 @@ function StartBuildAPP()
     // Example usage
     downloadIframeHtml("live_iframe", "iframe-CODE.txt");
     
-    
+*/
 
     // I NEED to build my own HTML engine output.
 }

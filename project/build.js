@@ -59,13 +59,15 @@ function DoBuild()//will change the func name in future
     </head>
     `;
 
-    let DOCUMENT_body =
+    let DOCUMENT_body_start ="<body>\n" + generateElements(active_kit, dynamicMap);
+
+    let DOCUMENT_body_end =
     `
-    <body>
-    <h2>TEST the build with basic saved code.</h2>
+    <script src="build_actions.js"></script>
     </body>
     `;
 
+    let  DOCUMENT_body = DOCUMENT_body_start + DOCUMENT_body_end;
 
     let DOCUMENT_html_end =
     `
@@ -90,4 +92,44 @@ function DoBuild()//will change the func name in future
     URL.revokeObjectURL(link.href);
     
 }
+
+
+
+
+
+
+
+//This function will generate the HTML elements based on the active kit and their actions.
+function generateElements(active_kit, dynamicMap) {
+    let output = '';
+
+    active_kit.forEach(([id, type, name]) => {
+        let tag = '';
+        let onclick = '';
+
+        switch (type) {
+            case 'Label':
+                tag = `<h3 id="live${id}">example</h3>`;
+                break;
+            case 'Text':
+                tag = `<p id="live${id}">example</p>`;
+                break;
+            case 'Button':
+                const relevantCodes = Array.from(dynamicMap.entries())
+                    .filter(([key, value]) => key.startsWith(`clickcode${id}.`))
+                    .map(([_, value]) => {
+                        const [action, target, data] = value.split('~|');
+                        return `clickcode('${action}','${target}','${data}')`;
+                    }).join('; ');
+                onclick = ` onclick="${relevantCodes}"`;
+                tag = `<button id="live${id}"${onclick}>example</button>`;
+                break;
+        }
+
+        output += tag + '\n';
+    });
+
+    return output;
+}
+
 
