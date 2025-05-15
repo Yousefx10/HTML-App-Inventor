@@ -201,6 +201,7 @@ function switchScreen()
     //Hiding, Or Showing The Act Button, maybe will need better enhance in the future to remove the animation.
     RunButton.parentElement.classList.toggle("ToggleLikeSwitchScreen");
     ScreenshotButton.parentElement.classList.toggle("ToggleLikeSwitchScreen");
+    BuildAPP.parentElement.classList.toggle("ToggleLikeSwitchScreen");
 }
 
 function switchVariableBox()
