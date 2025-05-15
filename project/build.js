@@ -42,8 +42,7 @@ switchscreen:
 function DoBuild()//will change the func name in future
 {
    let DOCUMENT_html_start =
-   `
-   <!DOCTYPE html>
+   `<!DOCTYPE html>
     <html lang="en">
    `;
 
@@ -51,13 +50,14 @@ function DoBuild()//will change the func name in future
     `
     <head>
     <meta charset="UTF-8">
-    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <style>
         *{margin:0}
         .hide{display:none;}
         .alignment-button-center{text-align:center;}
         .alignment-button-right{text-align:right;}
+        .working-screen{height:100%}
     </style>
     </head>
     `;
@@ -121,16 +121,19 @@ function generateElements(active_kit, dynamicMap) {
 const parents = document.querySelectorAll('.timelineSCREEN');
 
 let CurrentCreatedScreen="\n";//this will store all screens that have been created.
+    const SCREEN_Comment  = "<!--Screen Starts-->\n";
+    const SCREEN_Comment2 = "<!--Screen Ends-->\n\n";
 
 
 parents.forEach((parent) => {
     // Find children with the 'project_timeline_kit' class
     const children = parent.querySelectorAll('.project_timeline_kit');
-    
+
+    const CurrentScreenProperties = screenPROPERTIES.find(item => item[0] == parent.id.slice(6))?.[1];//this stores the screen properties for now it's background color.
 
 
 
-     CurrentCreatedScreen+=`<div id="${parent.id}" class="working-screen" > \n`;
+     CurrentCreatedScreen+=`${SCREEN_Comment}<div id="${parent.id}" class="working-screen" style="${CurrentScreenProperties}"> \n`;
     
 
     children.forEach((child) => {
@@ -204,7 +207,7 @@ parents.forEach((parent) => {
       output += '\n'+ tag + '\n';
 
     });
-    CurrentCreatedScreen += output + "</div>\n\n";//this will close the div with the id of the Created Screen.'
+    CurrentCreatedScreen += output + `</div>\n${SCREEN_Comment2}`;//this will close the div with the id of the Created Screen.'
     output = '';//reset the output for the next screen.
 });
 
