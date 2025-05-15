@@ -55,6 +55,9 @@ function DoBuild()//will change the func name in future
     
     <style>
         *{margin:0}
+        .hide{display:none;}
+        .alignment-button-center{text-align:center;}
+        .alignment-button-right{text-align:right;}
     </style>
     </head>
     `;
@@ -119,17 +122,19 @@ function generateElements(active_kit, dynamicMap) {
                     .filter(([key, value]) => key.startsWith(`clickcode${id}.`))
                     .map(([_, value]) => {
                         const [action, target, data] = value.split('~|');
-                        return `clickcode('${action}','${target}','${data}')`;
-                    }).join('; ');
-                onclick = ` onclick="${relevantCodes}"`;
+                        return `    clickcode('${action}', '${target}', '${data}')`;
+                    }).join('\n');
+                onclick = `
+ onclick="\n${relevantCodes}\n"`;
                 tag = `<button id="live${id}"${onclick}>example</button>`;
                 break;
         }
 
-        output += tag + '\n';
+        output += '\n'+ tag + '\n';
     });
 
     return output;
 }
+
 
 
