@@ -113,7 +113,38 @@ function DoBuild()//will change the func name in future
 function generateElements(active_kit, dynamicMap) {
     let output = '';
 
-    active_kit.forEach(([id, type, name]) => {
+
+
+
+
+// Select all parents with the 'timelineSCREEN' class
+const parents = document.querySelectorAll('.timelineSCREEN');
+
+let CurrentCreatedScreen="\n";//this will store all screens that have been created.
+
+
+parents.forEach((parent) => {
+    // Find children with the 'project_timeline_kit' class
+    const children = parent.querySelectorAll('.project_timeline_kit');
+    
+
+
+
+     CurrentCreatedScreen+=`<div id="${parent.id}" class="working-screen" > \n`;
+    
+
+    children.forEach((child) => {
+        
+
+        const id = child.id.replace(/\D+/g, "");//THE REPLACE FUNCTION WILL REMOVE THE NON-DIGITS.
+        const type = active_kit[id][1];
+        const name = active_kit[id][2];
+
+        // console.log("Current ID :"+id);
+        // console.log("Current type :"+type);
+        // console.log("Current name :"+name);
+        //([id, type, name]
+
         let tag = '';
         let onclick = '';
         const elementId = `active_kit${id}`;
@@ -171,9 +202,17 @@ function generateElements(active_kit, dynamicMap) {
         }
 
       output += '\n'+ tag + '\n';
-    });
 
-    return output;
+    });
+    CurrentCreatedScreen += output + "</div>\n\n";//this will close the div with the id of the Created Screen.'
+    output = '';//reset the output for the next screen.
+});
+
+
+
+
+//console.log( "should be:"+output);
+    return CurrentCreatedScreen;
 }
 
 
