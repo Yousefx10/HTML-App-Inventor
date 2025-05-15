@@ -78,7 +78,7 @@ let screenPROPERTIES =[[1,"background:#f0f0f0"]];//storing each property, and th
 // for now, only background color.
 
 
-let totalSCREENS=1;//never gets decreased
+let totalSCREENS=1;//never gets decreased NOTE: never decreased because keeping biggest screen number as ID.
 
 let LIVE_SCREEN =1;//THE CURRENT OPENED SCREEN.
 

@@ -101,6 +101,13 @@ function DoBuild()//will change the func name in future
 
 
 
+//PERFECT, NOW LETS FOCUS ON ADDING THE SCREENS.
+//variables for this mission:
+//namingSCREENS
+//screenPROPERTIES
+
+//div with timelineSCREEN class.
+//contains element with project_timeline_kit class.
 
 //This function will generate the HTML elements based on the active kit and their actions.
 function generateElements(active_kit, dynamicMap) {
